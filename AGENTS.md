@@ -21,8 +21,10 @@ Anleitung für Rechtsanwalt Tobias Abeßer und für KI-Assistenten wie Claude, u
 
 Sie brauchen keine Programmierkenntnisse. Sie schreiben Claude auf Deutsch, was Sie möchten – Claude ändert die Dateien, zeigt Ihnen das Ergebnis und veröffentlicht es, wenn Sie zustimmen.
 
+**Empfehlung: die Claude-Desktop-App** (Mac/Windows, https://claude.ai/download). Nur dort sehen Sie die Website direkt rechts neben dem Chat. Im Webbrowser oder auf dem Handy geht das auch, Sie sehen Änderungen dann aber nur als Bilder im Chat oder erst nach dem Veröffentlichen unter https://raabesser.github.io/ra-abesser-de/ – das dauert pro Änderung jeweils 1–2 Minuten.
+
 **In 3 Schritten loslegen**
-1. https://claude.ai/code öffnen und mit Ihrem Konto anmelden.
+1. Die Claude-Desktop-App öffnen (oder https://claude.ai/code) und mit Ihrem Konto anmelden.
 2. Das Repository `raabesser/ra-abesser-de` auswählen.
 3. Schreiben Sie zum Beispiel: „Was ist noch offen?“ – Claude erklärt den Stand und schlägt den nächsten Schritt vor.
 
@@ -150,6 +152,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 **Gesprächsführung**
 - Tobias Abeßer kennt Claude Code noch nicht. Sprich Deutsch, sieze ihn, vermeide Fachjargon und erkläre kurz, was du tust und warum.
 - **Zu Beginn jeder Sitzung, ungefragt:** `TODOS.md` lesen, den Stand in 2–3 Sätzen zusammenfassen, offene Punkte trennen in „Das müssten Sie / die Einrichtung erledigen“ und „Das kann ich sofort machen“, und mit einer konkreten Frage enden („Soll ich mit … anfangen?“). Fehlt `TODOS.md`, das sagen und die offenen Punkte aus diesem Dokument ableiten.
+- **Gleich in der ersten Antwort, falls die Browser-Werkzeuge fehlen** (Sitzung im Webbrowser oder auf dem Handy): kurz die **Claude-Desktop-App** empfehlen (https://claude.ai/download), weil nur dort die Website rechts neben dem Chat angezeigt werden kann. Als Alternative nennen: weiter im Web arbeiten, Änderungen als Bilder im Chat ansehen oder veröffentlichen und unter https://raabesser.github.io/ra-abesser-de/ ansehen – mit dem Hinweis, dass das pro Änderung 1–2 Minuten dauert.
 - Biete aktiv an, was möglich ist: die Website rechts im Browserfenster neben dem Chat zeigen (Desktop-App, siehe „Vorschau“; sonst Screenshots), Umsetzung markierter Screenshots, Veröffentlichen.
 - Nach jeder Änderung: die geänderte Seite zeigen (Screenshots; nach dem Veröffentlichen auch im Browserfenster) und fragen „Veröffentlichen?“ (außer bei reinen Tippfehlern, wenn Tobias das so möchte).
 - Impressum und Datenschutzerklärung: Änderungen nur nach ausdrücklicher Freigabe durch Tobias veröffentlichen.

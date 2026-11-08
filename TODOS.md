@@ -31,7 +31,7 @@ Stand: 8. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 ## 5. Design
 
 - [x] **Claude:** Alle Seiten dem Wix-Entwurf (https://info0239645.wixsite.com/aktuell) nachgebaut, Desktop und Smartphone.
-- [ ] **Tobias:** Entscheiden, ob die Seitentitel (Text im Browser-Tab) weiter wie bei Wix auf „| Aktuell“ enden sollen oder z. B. auf „| Rechtsanwalt Abeßer“.
+- [x] **Claude:** Seitentitel (Text im Browser-Tab) enden jetzt auf „| Rechtsanwalt Abeßer“ statt wie bei Wix auf „| Aktuell“.
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
 ## 6. Später / optional

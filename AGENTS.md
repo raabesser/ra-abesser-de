@@ -83,7 +83,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 - **Navigation, Fußzeile und Jahreszahl stehen in jeder HTML-Datei**, die Navigation sogar zweimal (Kopfzeile `<nav>` und Mobilmenü `#menu`). Bei Änderungen alle Dateien anpassen.
 - **Neue Seite:** Ordner `name/index.html` anlegen (eine bestehende Unterseite als Vorlage kopieren), in allen Dateien in beiden Navigationen ergänzen, falls sie ins Menü soll.
 - **Cache:** Alle Seiten laden `style.css?v=3`, `site.js?v=3` und `kontakt.js?v=3`. Nach Änderungen an diesen Dateien die Versionsnummer in **allen** HTML-Dateien hochzählen (z. B. `?v=4`), sonst sehen Besucher wegen des Cloudflare-Zwischenspeichers die alte Version.
-- Seitentitel enden derzeit wie im Wix-Entwurf auf „| Aktuell“ (Name der Wix-Website); ändern nur auf Tobias' Wunsch.
+- Seitentitel (Text im Browser-Tab) haben die Form „SEITENNAME | Rechtsanwalt Abeßer“. Der Wix-Seitenname „| Aktuell“ wurde auf Wunsch entfernt.
 - Direkte Bearbeitung ohne Claude (für Fortgeschrittene): auf GitHub Datei öffnen → Stift-Symbol → bearbeiten → „Commit changes“.
 
 ## Design (entspricht dem Wix-Entwurf)

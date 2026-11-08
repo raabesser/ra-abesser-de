@@ -10,9 +10,12 @@ p,ul,h1,h2,h3{margin:0}
 h1,h2,h3{font-weight:400}
 ul{padding-left:29px}
 .wrap{position:relative;width:980px;margin:0 auto}
+body.pale{background:#eaf4f6}
+body.pale main{background:#fff}
 
 /* ---------- header ---------- */
-.hd{position:relative;height:66px;background:#fff;z-index:5}
+.hd{position:-webkit-sticky;position:sticky;top:0;height:66px;background:#fff;z-index:40}
+.band{scroll-margin-top:66px}
 .hd .wrap{height:66px}
 .logo{position:absolute;left:24px;top:25px;font:700 16px/22.4px Raleway,sans-serif;color:var(--navy);text-decoration:none;white-space:nowrap}
 .hd nav{position:absolute;left:282px;top:22px;display:flex;gap:10px}
@@ -22,9 +25,11 @@ ul{padding-left:29px}
 .burger,.menu,.totop{display:none}
 
 /* ---------- home: hero ---------- */
-.hero{position:relative;height:394px;overflow:hidden;color:#fff;background:var(--navy) url(img/hero.jpg) no-repeat fixed;background-size:cover;background-position:50% calc(50% - 27px)}
-.hero:before{content:"";position:absolute;top:0;bottom:0;left:0;right:calc(50% - 131px);background:rgba(0,48,91,.65)}
-.hero .wrap{height:100%}
+.hero{position:relative;height:394px;overflow:hidden;color:#fff;background:var(--navy)}
+/* Bild in Fenstergröße, scrollt wie bei Wix mit 0,2-facher Geschwindigkeit (site.js) */
+.hero-bg{position:absolute;left:0;top:0;width:100%;height:100vh;background:url(img/hero.jpg) no-repeat 50% 50%/cover;transform:translateY(-52.8px);will-change:transform}
+.hero:before{content:"";position:absolute;top:0;bottom:0;left:0;right:calc(50% - 131px);background:rgba(0,48,91,.65);z-index:1}
+.hero .wrap{height:100%;z-index:2}
 .hero h1{position:absolute;top:110px;left:21px;font:400 42px/49px Raleway,sans-serif;letter-spacing:2.1px;white-space:nowrap}
 .hero h1 b{font-weight:700}
 .hero p{position:absolute;top:237px;left:20px;font-size:16px;line-height:22.4px;white-space:nowrap}
@@ -61,6 +66,7 @@ ul{padding-left:29px}
 .pg .title{line-height:49px}
 .rt a{color:inherit}
 .rt b{font-weight:700}
+.rt a.nu{text-decoration:none}
 
 .anwalt .wrap{height:538px}
 .anwalt .title{position:absolute;left:356px;top:43px}
@@ -92,16 +98,19 @@ ul{padding-left:29px}
 .row2{display:grid;grid-template-columns:301px 301px;column-gap:18px}
 .fld{margin-bottom:18px}
 .fld label{display:block;height:30px;font-size:16px;line-height:22.4px}
-.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;height:38px;margin:0;padding:0 10px;border:1px solid #a0a0a0;border-radius:0;background:#fff;font:14px "Open Sans",sans-serif;color:#000;-webkit-appearance:none;appearance:none}
-.form textarea{height:92px;padding:8px 10px;resize:none}
+.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;height:38px;margin:0;padding:0 12px;border:1px solid #a0a0a0;border-radius:0;background:#fff;font:14px "Open Sans",sans-serif;color:var(--navy);outline:none;-webkit-appearance:none;appearance:none}
+.form textarea{height:92px;padding:8px 12px;resize:none}
+.form input[type=text]:hover,.form input[type=email]:hover,.form textarea:hover,.form input[type=text]:focus,.form input[type=email]:focus,.form textarea:focus{background:rgba(221,221,221,.3)}
+.form input:user-invalid,.form textarea:user-invalid,.consent input:user-invalid{border-color:#f30000}
 .consent{display:flex;align-items:center;gap:12px;margin-top:1px}
 .consent input{flex:none;width:16px;height:16px;margin:0;border:1px solid #a0a0a0;border-radius:0;background:#fff;-webkit-appearance:none;appearance:none;display:grid;place-content:center;cursor:pointer}
-.consent input:checked:after{content:"";width:8px;height:8px;background:var(--navy)}
+.consent input:checked{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.2l3 3 6-6.4' fill='none' stroke='%2300305b' stroke-width='1.6'/%3E%3C/svg%3E") center/14px no-repeat}
+.consent input:focus-visible{outline:1px solid var(--navy);outline-offset:2px}
 .consent label{font-size:14px;line-height:21px;width:586px}
 .consent br.m{display:none}
 .cf-turnstile{margin-top:10px}
 .form button{display:block;width:620px;height:43px;margin-top:17px;border:1px solid #fff;background:var(--blue);color:#fff;font:16px "Open Sans",sans-serif;cursor:pointer}
-.form button:hover{background:#0b3c69}
+.form button:hover{background:var(--navy);border-color:#a0a0a0}
 .form button:disabled{opacity:.7;cursor:default}
 #fs{margin-top:10px;font-size:14px;line-height:21px}
 
@@ -120,26 +129,29 @@ ul{padding-left:29px}
   .wrap{width:320px}
 
   .hd{height:72px}
+  .band{scroll-margin-top:72px}
   .logo{left:20px;top:24px}
   .hd nav{display:none}
   .burger{display:block;position:absolute;left:250px;top:11px;width:50px;height:50px;padding:0;border:0;background:#fff;cursor:pointer}
-  .burger span{position:absolute;left:14px;width:22px;height:2px;border-radius:1px;background:#000}
+  .burger span{position:absolute;left:14px;width:22px;height:2px;border-radius:2px;background:#000}
   .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:24px}.burger span:nth-child(3){top:33px}
 
   .menu:not([hidden]){display:block;position:fixed;inset:0;z-index:50}
   .menu-bg{position:absolute;inset:0;background:rgba(0,0,0,.6)}
   .menu-panel{position:absolute;top:0;right:0;bottom:0;width:260px;background:#fff;overflow-y:auto}
   .menu-x{position:absolute;left:190px;top:11px;width:50px;height:50px;padding:0;border:0;background:none;cursor:pointer}
-  .menu-x:before,.menu-x:after{content:"";position:absolute;left:14px;top:24px;width:22px;height:2px;border-radius:1px;background:#000;transform:rotate(45deg)}
+  .menu-x:before,.menu-x:after{content:"";position:absolute;left:14px;top:24px;width:22px;height:2px;border-radius:2px;background:#000;transform:rotate(45deg)}
   .menu-x:after{transform:rotate(-45deg)}
   .menu nav{position:absolute;left:30px;top:100px;width:188px}
-  .menu nav a{display:block;height:49px;font:18px/49px "Open Sans",sans-serif;color:#000}
+  .menu nav a{display:block;height:49px;padding-left:10px;font:18px/49px "Open Sans",sans-serif;color:#000}
   .menu nav a.active{color:#377dbd}
 
-  .totop{display:block;position:fixed;left:20px;bottom:40px;width:44px;height:44px;z-index:20}
+  .totop{display:block;position:fixed;left:20px;bottom:40px;width:44px;height:44px;z-index:20;opacity:0;visibility:hidden;transition:visibility 0s .5s,opacity .5s}
+  .totop.on{opacity:1;visibility:visible;transition:visibility 0s,opacity .5s}
   .totop svg{display:block;width:44px;height:44px}
 
-  .hero{height:378px;background-attachment:scroll;background-position:50% 50%}
+  .hero{height:378px}
+  .hero-bg{height:100%;transform:none!important}
   .hero:before{top:28px;left:14px;right:auto;bottom:auto;width:292px;height:305px}
   .hero h1{top:58px;left:30px;width:260px;font-size:31px;line-height:36px;letter-spacing:1.55px;white-space:normal}
   .hero p{top:218px;left:30px;width:260px;font-size:15px;line-height:21px;white-space:normal}
@@ -220,6 +232,8 @@ ul{padding-left:29px}
    Footer, Hero-Bild, Bilder, Karte und Formularfelder bleiben unverändert. */
 :root{--bg:#1e4fa0;--on-bg:#fff;--on-bg-soft:#dce8ff;--on-bg-hl:#a9cbff}
 body{background:var(--bg);color:var(--on-bg)}
+body.pale{background:var(--bg)}
+body.pale main{background:transparent}
 .hd{background:var(--bg)}
 .logo,.hd nav a{color:var(--on-bg)}
 .hd nav a.active,.hd nav a:hover{color:var(--on-bg-hl)}
@@ -239,6 +253,6 @@ body{background:var(--bg);color:var(--on-bg)}
 /* ===== VORSCHAU-BANNER =====
    Nur in preview/. Beim Übernehmen in die echte Website diesen Block entfernen
    (und in jeder HTML-Datei: <div class="preview-banner">, robots-noindex, „VORSCHAU – “ im Titel). */
-.preview-banner{position:sticky;top:0;z-index:40;background:#c62828;color:#fff;text-align:center;font:700 14px/1.4 "Open Sans",Arial,sans-serif;padding:8px 12px;letter-spacing:.03em;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.preview-banner{position:relative;z-index:41;background:#c62828;color:#fff;text-align:center;font:700 14px/1.4 "Open Sans",Arial,sans-serif;padding:8px 12px;letter-spacing:.03em;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .preview-banner a{color:#fff;text-decoration:underline;font-weight:400;white-space:nowrap}
 @media (max-width:600px){.preview-banner{font-size:12px;padding:6px 8px}}

@@ -8,7 +8,7 @@ Stand: 8. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 
 Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – wer – seit wann.
 
-- Design-Feinschliff nach Prüfung gegen Wix (Kopfzeile, Startbild, Formular, „Nach oben“-Knopf, Mobilmenü, Datenschutz-Links) – Claude (Sitzung `claude/nice-mayer-xon8pe`) – seit 8. 11. 2026, 17:00. Erst in `preview/`, echte Website nach Freigabe durch Tobias.
+- Design-Feinschliff nach Prüfung gegen Wix – Claude (Sitzung `claude/nice-mayer-xon8pe`) – in der Vorschau fertig; für die echte Website vorbereitet auf dem Zweig `claude/nice-mayer-xon8pe`, wartet auf Freigabe durch Tobias.
 
 ## 1. Website online bringen (Domain)
 
@@ -39,6 +39,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Claude:** Alle Seiten dem Wix-Entwurf (https://info0239645.wixsite.com/aktuell) nachgebaut, Desktop und Smartphone.
 - [x] **Claude:** Seitentitel (Text im Browser-Tab) enden jetzt auf „| Rechtsanwalt Abeßer“ statt wie bei Wix auf „| Aktuell“.
+- [ ] **Tobias:** Design-Feinschliff in der Vorschau ansehen (https://raabesser.github.io/ra-abesser-de/preview/) und für die echte Website freigeben: Kopfzeile bleibt beim Scrollen oben stehen, Startbild bewegt sich beim Scrollen leicht mit (wie bei Wix), Formularfelder färben sich beim Anklicken grau und das Häkchen ist ein echtes Häkchen, „Nach oben“-Knopf erscheint auf dem Handy erst nach dem Scrollen, Menüeinträge auf dem Handy etwas eingerückt, zwei Links in der Datenschutzerklärung ohne Unterstreichung, hellblauer Seitenhintergrund unter kurzen Seiten.
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
 ## 6. Später / optional

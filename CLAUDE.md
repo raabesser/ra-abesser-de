@@ -2,6 +2,8 @@
 
 Static website (plain HTML/CSS, no build step), hosted on GitHub Pages from `main`.
 
+**TODO:** The `CNAME` file (`ra-abesser.de`) was removed temporarily so the site can be previewed at raabesser.github.io/ra-abesser-de/. Restore it as soon as the Cloudflare zone is active, or GitHub will return 404 for ra-abesser.de.
+
 ## Hosting
 - Domain `ra-abesser.de` is on Cloudflare (zone `6b8d754c1632e183534ff0851dfe90df`).
 - Apex A/AAAA records point to GitHub Pages; `www` is a CNAME to `raabesser.github.io`. All proxied (orange cloud).

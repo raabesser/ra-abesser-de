@@ -108,3 +108,8 @@ form button:hover{background:#0b3c69}
   .site-footer .c1,.site-footer .c2{width:auto}
   .page{padding-bottom:50px}
 }
+
+/* square bullet before the Beamte / Soldaten paragraphs */
+.beamte .txt,.soldaten .txt{position:relative}
+.beamte .txt:before,.soldaten .txt:before{content:"";position:absolute;left:-30px;top:6px;width:10px;height:10px;background:var(--navy)}
+@media(max-width:820px){.beamte .txt:before,.soldaten .txt:before{display:none}}

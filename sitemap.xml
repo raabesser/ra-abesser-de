@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Nur Seiten der echten Website; die Vorschau unter /preview/ gehört NICHT hierher. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ra-abesser.de/</loc></url>
+  <url><loc>https://ra-abesser.de/der-anwalt/</loc></url>
+  <url><loc>https://ra-abesser.de/kosten/</loc></url>
+  <url><loc>https://ra-abesser.de/kontakt/</loc></url>
+  <url><loc>https://ra-abesser.de/karte/</loc></url>
+  <url><loc>https://ra-abesser.de/impressum/</loc></url>
+  <url><loc>https://ra-abesser.de/datenschutz/</loc></url>
+</urlset>

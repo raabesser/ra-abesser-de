@@ -1,0 +1,5 @@
+# Vorschau-Kopie der Website nicht durchsuchen (siehe AGENTS.md, Abschnitt „Vorschau“)
+User-agent: *
+Disallow: /preview/
+
+Sitemap: https://ra-abesser.de/sitemap.xml

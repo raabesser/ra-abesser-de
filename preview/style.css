@@ -215,23 +215,9 @@ ul{padding-left:29px}
   .ft .cr{margin-top:88px}
 }
 
-/* ===== VORSCHAU: blauer Hintergrund =====
-   Überschreibt die hellen Flächen der Seite mit Blau und macht Text darauf hell.
-   Footer, Hero-Bild, Bilder, Karte und Formularfelder bleiben unverändert. */
-:root{--bg:#1e4fa0;--on-bg:#fff;--on-bg-soft:#dce8ff;--on-bg-hl:#a9cbff}
-body{background:var(--bg);color:var(--on-bg)}
-.hd{background:var(--bg)}
-.logo,.hd nav a{color:var(--on-bg)}
-.hd nav a.active,.hd nav a:hover{color:var(--on-bg-hl)}
-.title{color:var(--on-bg)}
-.band .txt,.gb p{color:var(--on-bg-soft)}
-.gb h3{color:var(--on-bg)}
-.band .txt:before,.gb h3:before{background:var(--on-bg)}
-.anwalt .ln{border-top-color:rgba(255,255,255,.65)}
-@media (max-width:600px){
-  .burger{background:var(--bg)}
-  .burger span,.menu-x:before,.menu-x:after{background:var(--on-bg)}
-  .menu-panel{background:var(--bg)}
-  .menu nav a{color:var(--on-bg)}
-  .menu nav a.active{color:var(--on-bg-hl)}
-}
+/* ===== VORSCHAU-BANNER =====
+   Nur in preview/. Beim Übernehmen in die echte Website diesen Block entfernen
+   (und in jeder HTML-Datei: <div class="preview-banner">, robots-noindex, „VORSCHAU – “ im Titel). */
+.preview-banner{position:sticky;top:0;z-index:40;background:#c62828;color:#fff;text-align:center;font:700 14px/1.4 "Open Sans",Arial,sans-serif;padding:8px 12px;letter-spacing:.03em;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.preview-banner a{color:#fff;text-decoration:underline;font-weight:400;white-space:nowrap}
+@media (max-width:600px){.preview-banner{font-size:12px;padding:6px 8px}}

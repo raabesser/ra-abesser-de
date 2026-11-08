@@ -25,7 +25,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 ## 3. Rechtliches
 
-- [ ] **Tobias:** Neue Abschnitte der Datenschutzerklärung prüfen und freigeben: „Hosting und Cloudflare“, „Kontaktformular“ (Brevo) und Spamschutz (Turnstile) – https://raabesser.github.io/ra-abesser-de/datenschutz/ (nach der Umstellung: https://ra-abesser.de/datenschutz/).
+- [x] **Tobias:** Neue Abschnitte der Datenschutzerklärung („Hosting und Cloudflare“, „Kontaktformular“/Brevo, Spamschutz/Turnstile) geprüft und freigegeben (8. 11., im Chat mit Claude).
 - [x] **Einrichtung/Tobias:** Auftragsverarbeitungsverträge (AVV) mit Cloudflare und Brevo abgeschlossen (laut Tobias, 8. 11.).
 - [ ] **Tobias:** Impressum prüfen. Der Link „Internet: http://ra-abesser.de“ zeigt jetzt auf die eigene Domain (im Wix-Entwurf zeigte er auf eine andere Adresse).
 - [ ] **Tobias:** Entscheiden, ob der veraltete Hinweis auf das „EU-US-Privacy-Shield“ (Abschnitt Google Fonts/Maps, aus dem Wix-Entwurf übernommen) ersetzt werden soll – Nachfolger ist das EU-US Data Privacy Framework. Claude kann einen Textvorschlag machen.

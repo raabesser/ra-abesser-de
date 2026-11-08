@@ -8,7 +8,7 @@ Stand: 8. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 
 Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – wer – seit wann.
 
-- *(derzeit nichts)*
+- Design-Feinschliff nach Prüfung gegen Wix (Kopfzeile, Startbild, Formular, „Nach oben“-Knopf, Mobilmenü, Datenschutz-Links) – Claude (Sitzung `claude/nice-mayer-xon8pe`) – seit 8. 11. 2026, 17:00. Erst in `preview/`, echte Website nach Freigabe durch Tobias.
 
 ## 1. Website online bringen (Domain)
 

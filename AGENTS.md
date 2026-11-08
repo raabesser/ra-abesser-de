@@ -1,14 +1,14 @@
 # ra-abesser.de – Betriebsanleitung
 
-Anleitung für Rechtsanwalt Tobias Abeßer und für KI-Assistenten wie Claude, um Website, Domain, Kontaktformular und E-Mail-Versand zu verwalten.
+Anleitung für Rechtsanwalt Tobias Abeßer, seine Mitarbeiterin, die sich um die Website kümmert, und für KI-Assistenten wie Claude, um Website, Domain, Kontaktformular und E-Mail-Versand zu verwalten.
 
 > **Wichtig:** Dieses Repository (der Projektordner auf GitHub) ist **öffentlich**, und alles hier – auch diese Datei und `TODOS.md` – ist zusätzlich über die Website abrufbar. Niemals Passwörter, API-Keys, Mandanten- oder andere personenbezogene Daten in Dateien dieses Repositorys oder in einen Chat schreiben. Geheimnisse gehören ausschließlich in die Dashboards von Cloudflare und Brevo.
 
-**Aufbau:** Teil 1 ist für Tobias (ohne Technik). Teil 2 ist die technische Referenz für Claude und Fortgeschrittene.
+**Aufbau:** Teil 1 ist für Tobias und die Mitarbeiterin (ohne Technik). Teil 2 ist die technische Referenz für Claude und Fortgeschrittene.
 
 ---
 
-# Teil 1 – Für Tobias
+# Teil 1 – Für Tobias und die Mitarbeiterin
 
 ## Aktueller Stand
 
@@ -19,7 +19,7 @@ Anleitung für Rechtsanwalt Tobias Abeßer und für KI-Assistenten wie Claude, u
 
 ## Mit Claude an der Website arbeiten
 
-Sie brauchen keine Programmierkenntnisse. Sie schreiben Claude auf Deutsch, was Sie möchten – Claude ändert die Dateien, zeigt Ihnen das Ergebnis und veröffentlicht es, wenn Sie zustimmen.
+Sie brauchen keine Programmierkenntnisse. Sie schreiben Claude auf Deutsch, was Sie möchten – Claude ändert die Dateien in der Vorschau, zeigt Ihnen das Ergebnis und übernimmt es nach Freigabe durch Tobias in die echte Website.
 
 **Empfehlung: die Claude-Desktop-App** (Mac/Windows, https://claude.ai/download). Nur dort sehen Sie die Website direkt rechts neben dem Chat. Im Webbrowser oder auf dem Handy geht das auch, Sie sehen Änderungen dann aber nur als Bilder im Chat oder erst nach dem Veröffentlichen unter https://raabesser.github.io/ra-abesser-de/ – das dauert pro Änderung jeweils 1–2 Minuten.
 
@@ -34,7 +34,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 - Texte, Bilder und Seiten ändern oder neue Seiten anlegen – im bestehenden Design.
 - Ihnen die Website **rechts neben dem Chat in einem Browserfenster** anzeigen. Schreiben Sie einfach „Zeig mir die Website“ (oder „Zeig mir die Kostenseite“). Das geht nur in der **Claude-Desktop-App** (Mac/Windows), nicht im Webbrowser oder auf dem Handy. Sonst zeigt Claude Ihnen Bilder der Seite für Computer und Smartphone.
 - Änderungen nach **Screenshots** umsetzen: Screenshot machen, die Stelle markieren (Pfeil, Kreis, kurze Notiz) und in den Chat einfügen.
-- Die Änderungen **veröffentlichen** – 1–2 Minuten später sind sie online.
+- Änderungen in der **Vorschau** sofort veröffentlichen und nach Tobias' Freigabe in die **echte Website** übernehmen – jeweils 1–2 Minuten später online.
 - Domain-, Kontaktformular- und E-Mail-Einstellungen prüfen oder ändern (Cloudflare, Brevo) und erklären, was wo eingestellt ist.
 
 **Gut zu wissen**
@@ -43,13 +43,34 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 - Rechtstexte (Impressum, Datenschutz) veröffentlicht Claude nur nach Ihrer Freigabe – die inhaltliche Verantwortung liegt bei Ihnen.
 - Damit Claude Cloudflare und Brevo bedienen kann, müssen in claude.ai unter Einstellungen → Connectors „Cloudflare“ und „Brevo“ verbunden sein, und Ihr GitHub-Konto braucht Zugriff auf `raabesser/ra-abesser-de`. Fehlt etwas, sagt Claude Ihnen, wo Sie klicken müssen.
 
+## So arbeiten wir: Vorschau → Freigabe → Website
+
+| | **Vorschau** (`/preview/`, roter Balken „VORSCHAU“) | **Echte Website** |
+|---|---|---|
+| Zweck | Ausprobieren, Entwürfe, Design-Ideen | Was Besucher sehen |
+| Wer arbeitet daran | Mitarbeiterin und Tobias, jederzeit | – (wird nur aus der Vorschau übernommen) |
+| Claude veröffentlicht | **sofort, ohne Rückfrage** – nach 1–2 Minuten online unter https://raabesser.github.io/ra-abesser-de/preview/ | **nur nach Freigabe durch Tobias** |
+| Bei Google | nein (gesperrt) | ja |
+
+1. **Wunsch äußern:** Sie sagen Claude, was geändert werden soll – gern mit markiertem Screenshot. Claude ändert die **Vorschau** und veröffentlicht sie gleich.
+2. **Ansehen und abstimmen:** In der Desktop-App rechts im Browserfenster, sonst über den Vorschau-Link. Mitarbeiterin und Tobias können den Link jederzeit öffnen und sich gegenseitig Rückmeldung geben.
+3. **Freigabe:** Tobias sagt „Vorschau veröffentlichen“ (die Mitarbeiterin kann Claude bitten, die Freigabe vorzubereiten). Claude fasst vorher in 2–3 Sätzen zusammen, was sich auf der echten Website ändert, übernimmt es dann ohne den Vorschau-Balken und prüft das Ergebnis.
+4. **Rückgängig:** „Mach die letzte Veröffentlichung rückgängig“ geht jederzeit.
+
+**Damit Sie sich nicht in die Quere kommen**
+- Claude holt zu Beginn jeder Sitzung den neuesten Stand und prüft, ob gerade eine andere Claude-Sitzung am Projekt arbeitet; wenn ja, stimmt es sich mit ihr ab.
+- Kleine Schritte: Jede Änderung an der Vorschau wird sofort gespeichert und veröffentlicht – es bleibt nichts Halbfertiges liegen.
+- In `TODOS.md` steht unter „In Arbeit“, wer gerade woran arbeitet.
+- Impressum, Datenschutz und andere Rechtstexte: Inhalt und Freigabe ausschließlich durch Tobias.
+
 ## Wer macht was
 
 | Wer | Aufgaben |
 |---|---|
-| **Tobias** | Inhalte und Texte, Freigabe von Impressum und Datenschutz, Änderungswünsche |
+| **Tobias** | Inhalte und Texte, **Freigabe aller Änderungen an der echten Website**, Impressum und Datenschutz |
+| **Mitarbeiterin** (Website-Betreuung) | Pflege der Website mit Claude: Änderungen in der Vorschau, Abstimmung mit Tobias, Freigabe vorbereiten |
 | **Einrichtung** (wer die Konten bei Strato, Cloudflare, GitHub und Brevo betreut) | Anmeldungen, Verträge (AVV), Einstellungen, die nur im jeweiligen Dashboard gehen |
-| **Claude** | Änderungen an der Website, Vorschau, Veröffentlichen, Prüfen und Einstellen von Cloudflare und Brevo |
+| **Claude** | Änderungen in der Vorschau (sofort veröffentlicht), Übernahme in die echte Website nach Freigabe, Prüfen und Einstellen von Cloudflare und Brevo |
 
 ## Überblick der Dienste
 
@@ -115,7 +136,9 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 ## Veröffentlichen und Rückgängig machen
 
 - Veröffentlicht ist, was auf dem Hauptzweig `main` liegt. GitHub Pages baut die Seite danach in 1–2 Minuten neu (sichtbar unter Repository → Actions → „pages build and deployment“).
-- Claude-Code-Sitzungen arbeiten auf einem eigenen Zweig (`claude/…`). Veröffentlichen heißt: die Änderung auf `main` übernehmen – per Push auf `main`, wenn Tobias „veröffentlichen“ sagt, sonst per Pull Request.
+- Claude-Code-Sitzungen arbeiten auf einem eigenen Zweig (`claude/…`), der auf dem aktuellen `origin/main` aufsetzt. Veröffentlichen heißt: die Änderung per Push auf `main` übernehmen (vorher `git fetch origin main` und auf `origin/main` rebasen, nie force-pushen).
+- **Änderungen nur in `preview/`** (und Doku/`TODOS.md`): sofort und ohne Rückfrage auf `main` pushen, damit die Vorschau online aktuell ist.
+- **Änderungen an der echten Website** (alles außerhalb von `preview/`, inkl. `robots.txt`, `sitemap.xml`, `worker/`): nur nach ausdrücklicher Freigabe durch **Tobias** auf `main`. Commits so schneiden, dass Vorschau- und Website-Änderungen getrennt sind.
 - Rückgängig machen: `git revert` des betreffenden Commits auf `main`. Niemals die Historie von `main` umschreiben oder force-pushen.
 
 ## Domain, DNS und HTTPS
@@ -153,11 +176,13 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 ## Hinweise für KI-Assistenten
 
 **Gesprächsführung**
-- Tobias Abeßer kennt Claude Code noch nicht. Sprich Deutsch, sieze ihn, vermeide Fachjargon und erkläre kurz, was du tust und warum.
+- Mit Claude arbeiten Tobias Abeßer (Inhaber, gibt frei) und seine Mitarbeiterin (betreut die Website). Beide kennen Claude Code noch nicht. Sprich Deutsch, sieze, vermeide Fachjargon und erkläre kurz, was du tust und warum. Ist unklar, wer schreibt, zu Beginn einmal fragen. Namen von Mitarbeitenden nicht in Repository-Dateien schreiben (öffentlich) – dort nur „Mitarbeiterin“.
+- **Arbeitsablauf** siehe Teil 1 „So arbeiten wir“: Wünsche immer zuerst in `preview/` umsetzen und sofort veröffentlichen; in die echte Website nur auf „Vorschau veröffentlichen“ bzw. ausdrückliche Freigabe von **Tobias** übernehmen (Freigabe durch die Mitarbeiterin reicht dafür nicht). Fragt die Mitarbeiterin danach: Zusammenfassung der Änderungen für Tobias vorbereiten.
+- **Zu Beginn jeder Sitzung zusätzlich:** `git fetch origin main` und auf den aktuellen Stand gehen; mit `list_sessions` (Claude-Code-Remote-Werkzeuge) prüfen, ob eine andere Sitzung gerade am Repository arbeitet, und dich ggf. per `send_message` abstimmen (wer ändert welche Dateien, wer pusht wann). Abschnitt „In Arbeit“ in `TODOS.md` lesen und eigene Arbeit dort eintragen/austragen.
 - **Zu Beginn jeder Sitzung, ungefragt:** `TODOS.md` lesen, den Stand in 2–3 Sätzen zusammenfassen, offene Punkte trennen in „Das müssten Sie / die Einrichtung erledigen“ und „Das kann ich sofort machen“, und mit einer konkreten Frage enden („Soll ich mit … anfangen?“). Fehlt `TODOS.md`, das sagen und die offenen Punkte aus diesem Dokument ableiten.
 - **Gleich in der ersten Antwort, falls die Browser-Werkzeuge fehlen** (Sitzung im Webbrowser oder auf dem Handy): kurz die **Claude-Desktop-App** empfehlen (https://claude.ai/download), weil nur dort die Website rechts neben dem Chat angezeigt werden kann. Als Alternative nennen: weiter im Web arbeiten, Änderungen als Bilder im Chat ansehen oder veröffentlichen und unter https://raabesser.github.io/ra-abesser-de/ ansehen – mit dem Hinweis, dass das pro Änderung 1–2 Minuten dauert.
 - Biete aktiv an, was möglich ist: die Website rechts im Browserfenster neben dem Chat zeigen (Desktop-App, siehe „Vorschau“; sonst Screenshots), Umsetzung markierter Screenshots, Veröffentlichen.
-- Nach jeder Änderung: die geänderte Seite zeigen (Screenshots; nach dem Veröffentlichen auch im Browserfenster) und fragen „Veröffentlichen?“ (außer bei reinen Tippfehlern, wenn Tobias das so möchte).
+- Nach jeder Änderung an der Vorschau: veröffentlichen (ohne Rückfrage), dann die geänderte Seite zeigen (Browserfenster bzw. Screenshots) und fragen, ob noch etwas angepasst werden soll oder ob Tobias sie für die echte Website freigibt.
 - Impressum und Datenschutzerklärung: Änderungen nur nach ausdrücklicher Freigabe durch Tobias veröffentlichen.
 - Nach erledigten Aufgaben `TODOS.md` aktualisieren.
 

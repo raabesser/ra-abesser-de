@@ -33,6 +33,14 @@ Anleitung für Rechtsanwalt Tobias Abeßer (und für KI-Assistenten wie Claude),
 - Oder einen KI-Assistenten (z. B. Claude Code) beauftragen; er liest diese Datei.
 - Bilder liegen in `img/`.
 
+### Design (entspricht dem Wix-Entwurf)
+- Alle Maße, Schriftgrößen, Zeilenabstände und Farben sind 1:1 aus dem Wix-Entwurf übernommen (https://info0239645.wixsite.com/aktuell), gemessen bei 1440 px Fensterbreite und auf dem Smartphone.
+- **Desktop:** feste Inhaltsspalte von 980 px wie bei Wix. **Smartphone:** wie bei Wix ein festes 320-px-Layout, das der Browser auf die Bildschirmbreite skaliert (gesteuert über das kleine Skript im `<head>` jeder Seite, das den Viewport auf `width=320` setzt). Tablets zeigen das Desktop-Layout verkleinert.
+- Stile für Smartphones stehen in `style.css` im Block `@media (max-width:600px)`.
+- Das Mobilmenü (Hamburger) steuert `site.js`, das Kontaktformular `kontakt/kontakt.js`.
+- Leere Absätze (`<p>&nbsp;</p>`) erzeugen – wie bei Wix – die Leerzeilen zwischen Abschnitten.
+- Bewusste Abweichungen vom Wix-Entwurf: der Platzhalter „Beispielinhalte:“ am Ende der Datenschutzseite fehlt; die Datenschutzerklärung hat zusätzliche Abschnitte zu Hosting/Cloudflare, Kontaktformular/Brevo und Turnstile; die Karte ist eine Google-Maps-Einbettung statt des Wix-Kartenwidgets; Wix-Einblend-Animationen gibt es nicht.
+
 ### Website lokal ansehen
 ```bash
 git clone https://github.com/raabesser/ra-abesser-de.git
@@ -83,7 +91,7 @@ Dann http://localhost:8000 öffnen. (Das Absenden des Kontaktformulars funktioni
 2. **Eigene Domain bei GitHub wieder eintragen**, sobald Cloudflare „Active“ zeigt: Datei `CNAME` mit dem Inhalt `ra-abesser.de` im Repository anlegen (wurde zur Vorschau vorübergehend entfernt) und unter Repo → Settings → Pages prüfen, dass „Custom domain“ `ra-abesser.de` lautet. Ohne diesen Schritt zeigt die Domain eine GitHub-Fehlerseite.
 3. **Brevo-Domain authentifizieren:** In Brevo bei der Domain `ra-abesser.de` auf „Authenticate this email domain“ klicken (funktioniert erst nach Schritt 1).
 4. **Kontaktformular testen:** Auf https://ra-abesser.de/kontakt/ eine Testnachricht senden und prüfen, ob sie in `info@ra-abesser.de` ankommt.
-5. **Design mit dem Wix-Entwurf abgleichen** (https://info0239645.wixsite.com/aktuell), auf Desktop und Smartphone.
+5. **Design prüfen:** Die Seiten sind dem Wix-Entwurf nachgebaut (https://info0239645.wixsite.com/aktuell). Bei Änderungen am Layout immer Desktop und Smartphone gegen den Entwurf vergleichen.
 6. **Auftragsverarbeitungsverträge (AVV) abschließen:** in Cloudflare (Manage Account → Configurations → DPA) und in Brevo (Kontoeinstellungen). Die Datenschutzerklärung verweist darauf.
 7. **Datenschutzerklärung prüfen** (`datenschutz/index.html`): Abschnitte zu Hosting/Cloudflare, Kontaktformular/Brevo und Turnstile.
 8. **Zwei-Faktor-Anmeldung aktivieren** für Cloudflare, Brevo, GitHub und Strato.

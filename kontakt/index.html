@@ -43,7 +43,9 @@
 <div class="field"><input type="text" id="bt" required><label for="bt">Betreff *</label></div>
 <div class="field"><textarea id="ms" required></textarea><label for="ms">Nachricht *</label></div>
 <label class="consent"><input type="checkbox" id="ds" required><span>Ich habe die <a href="../datenschutz/">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden. Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a> widerrufen. *</span></label>
-<button type="submit" class="btn">Einreichen</button>
+<div class="cf-turnstile" data-sitekey="0x4AAAAAAF41vy0mR_0UU8DL" data-language="de" style="margin-top:24px"></div>
+<button type="submit" class="btn" id="sb">Einreichen</button>
+<p id="fs" role="status" aria-live="polite" style="margin-top:18px"></p>
 </form>
 </div>
 </div></main>
@@ -67,13 +69,36 @@
   });
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
-document.getElementById("f").addEventListener("submit",function(e){
-e.preventDefault();
-var v=function(i){return document.getElementById(i).value};
-var body="Name: "+v("vn")+" "+v("nn")+"\nE-Mail: "+v("em")+"\n\n"+v("ms");
-location.href="mailto:info@ra-abesser.de?subject="+encodeURIComponent(v("bt"))+"&body="+encodeURIComponent(body);
+(function(){
+var f=document.getElementById("f"),sb=document.getElementById("sb"),fs=document.getElementById("fs");
+var v=function(i){return document.getElementById(i).value.trim()};
+function mailto(){
+  var body="Name: "+v("vn")+" "+v("nn")+"\nE-Mail: "+v("em")+"\n\n"+v("ms");
+  return "mailto:info@ra-abesser.de?subject="+encodeURIComponent(v("bt"))+"&body="+encodeURIComponent(body);
+}
+function fail(msg){
+  fs.innerHTML=msg+' Alternativ können Sie Ihre Nachricht <a href="'+mailto()+'">per E-Mail senden</a>.';
+  sb.disabled=false;
+  if(window.turnstile)turnstile.reset();
+}
+f.addEventListener("submit",function(e){
+  e.preventDefault();
+  var tok=(f.querySelector('[name="cf-turnstile-response"]')||{}).value;
+  if(!tok){fs.textContent="Bitte bestätigen Sie kurz, dass Sie kein Roboter sind.";return}
+  sb.disabled=true;fs.textContent="Wird gesendet …";
+  fetch("/api/kontakt",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({
+    vorname:v("vn"),name:v("nn"),email:v("em"),betreff:v("bt"),nachricht:v("ms"),
+    consent:document.getElementById("ds").checked,token:tok
+  })}).then(function(r){return r.json().catch(function(){return{ok:false}})}).then(function(d){
+    if(d.ok){f.reset();f.querySelectorAll(".field").forEach(function(x){x.classList.remove("filled")});
+      fs.textContent="Vielen Dank! Ihre Nachricht wurde gesendet. Rechtsanwalt Abeßer meldet sich zeitnah bei Ihnen.";
+      sb.disabled=false;if(window.turnstile)turnstile.reset();}
+    else fail("Ihre Nachricht konnte leider nicht gesendet werden.");
+  }).catch(function(){fail("Ihre Nachricht konnte leider nicht gesendet werden.")});
 });
+})();
 </script>
 </body>
 </html>

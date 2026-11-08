@@ -13,6 +13,7 @@ Stand: 8. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 ## 2. Kontaktformular
 
 - [ ] **Einrichtung:** Nach der Domain-Umstellung in Brevo bei der Domain `ra-abesser.de` auf „Authenticate this email domain“ klicken (die DNS-Einträge dafür sind in Cloudflare schon angelegt).
+- [ ] **Einrichtung:** In Brevo unter Sicherheit → „Autorisierte IPs“ prüfen, dass API-Schlüssel nicht auf bestimmte IP-Adressen beschränkt sind (der Cloudflare Worker hat wechselnde IP-Adressen).
 - [ ] **Claude:** Kontaktformular auf https://ra-abesser.de/kontakt/ mit einer Testnachricht prüfen.
 - [ ] **Tobias:** Bestätigen, dass die Testnachricht im Postfach `info@ra-abesser.de` angekommen ist (auch im Spam-Ordner nachsehen).
 
@@ -30,6 +31,7 @@ Stand: 8. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 ## 5. Design
 
 - [x] **Claude:** Alle Seiten dem Wix-Entwurf (https://info0239645.wixsite.com/aktuell) nachgebaut, Desktop und Smartphone.
+- [ ] **Tobias:** Entscheiden, ob die Seitentitel (Text im Browser-Tab) weiter wie bei Wix auf „| Aktuell“ enden sollen oder z. B. auf „| Rechtsanwalt Abeßer“.
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
 ## 6. Später / optional

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KONTAKT | Aktuell</title>
+<meta name="description" content="Rechtsanwalt Abeßer – Disziplinarrecht, Soldatenrecht, Beamtenrecht, Strafrecht. Die Anwaltskanzlei für Frauen und Männer in Uniform.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;family=Raleway:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a class="logo" href="../">RECHTSANWALT ABEßER</a>
+<nav><a href="../">START</a><a href="../#beamte">BEAMTE</a><a href="../#soldaten">SOLDATEN</a><a href="../#rechtsgebiete">RECHTSGEBIETE</a><a href="../der-anwalt/">DER ANWALT</a><a href="../kosten/">KOSTEN</a><a href="../kontakt/" class="active">KONTAKT</a></nav>
+</div></header>
+<main><div class="wrap page lang" style="min-height:1206px">
+<div class="kontakt">
+<div class="col1">
+<h1 class="title" style="margin-bottom:35px">KONTAKT</h1>
+<p class="b" style="margin:0 0 2px">Kanzleisitz und Postanschrift:</p>
+<p style="margin:0 0 27px"><a href="https://maps.app.goo.gl/KoBYQGTSyqMKZcg38">Keithstr 14, 10787 Berlin (Google Maps)</a></p>
+<p style="margin:0 0 26px"><a href="../karte/">Interaktiver Kartenausschnitt</a></p>
+<p style="margin:0 0 2px"><span class="b">E-Mail:</span> <a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a></p>
+<p style="margin:0"><span class="b">Tel.:</span> <a href="tel:+4930399034006">+49 (0) 30 3990340-6</a></p>
+</div>
+<div class="col2" style="padding-top:1px">
+<p>Bei Fragen und Anmerkungen nutzen Sie bitte das Formular unten:</p>
+<p style="margin-top:25px;margin-bottom:24px">Nennen Sie dabei bitte:</p>
+<ul style="margin-bottom:22px"><li>Ihren Vor- und Nachnamen,</li><li>Ihre Amtsbezeichnung bzw. Ihren Dienstgrad,</li><li>Ihr Geburtsdatum,</li><li>Ihre Telefonnummer.</li></ul>
+<p style="margin-bottom:24px">Teilen Sie bitte sodann den Grund Ihrer Anfrage mit:</p>
+<ul>
+<li>Was wird Ihnen zur Last gelegt  oder zu welchem Thema wünschen Sie anwaltliche Unterstützung? Schildern Sie bitte nur den abstrakten Tatvorwurf (z.B. Betrug, Körperverletzung im Amt) oder das abstrakte Thema (z.B. Entlassung).</li>
+<li>Wurden Ihnen behördlicher- oder gerichtlicherseits Fristen gesetzt?</li>
+<li>Teilen Sie bitte NICHT mit, ob Tatvorwürfe, die gegen Sie erhoben werden, zutreffend sind oder nicht! Solche Informationen können Sie Rechtsanwalt Abeßer zu einem späteren Zeitpunkt auf alternativen Kommunikationswegen übermitteln.</li>
+<li><span>Für Angehörige von Diensten</span>: Beantragen Sie bitte vor jedweder Kontaktaufnahme unbedingt eine Aussagegenehmigung!</li>
+</ul>
+<form id="f" style="margin-top:60px;margin-left:-6px">
+<div class="two"><div><label for="vn">Vorname *</label><input type="text" id="vn" required></div><div><label for="nn">Name *</label><input type="text" id="nn" required></div></div>
+<label for="em">E-Mail *</label><input type="email" id="em" required>
+<label for="bt">Betreff *</label><input type="text" id="bt" required>
+<label for="ms">Nachricht *</label><textarea id="ms" required></textarea>
+<div class="consent"><input type="checkbox" id="ds" required><label for="ds" style="font-size:14px;line-height:20.5px;margin:0">Ich habe die <a href="../datenschutz/">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden. Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a> widerrufen. *</label></div>
+<button type="submit">Einreichen</button>
+</form>
+</div>
+</div>
+</div></main>
+<script>
+document.getElementById("f").addEventListener("submit",function(e){
+e.preventDefault();
+var v=function(i){return document.getElementById(i).value};
+var body="Name: "+v("vn")+" "+v("nn")+"\nE-Mail: "+v("em")+"\n\n"+v("ms");
+location.href="mailto:info@ra-abesser.de?subject="+encodeURIComponent(v("bt"))+"&body="+encodeURIComponent(body);
+});
+</script>
+<footer class="site-footer"><div class="wrap">
+<div class="c1">Rechtsanwalt Abeßer<br><a href="https://maps.app.goo.gl/KoBYQGTSyqMKZcg38">Keithstr 14, 10787 Berlin</a><br>(nahe Wittenbergplatz)</div>
+<div class="c2"><a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a><br><a href="tel:+4930399034006">+49 (0) 30 3990340-6</a></div>
+<div class="c3"><div><a href="../impressum/">Impressum</a><a href="../datenschutz/">Datenschutz</a></div><div>© 2026 Tobias Abeßer</div></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+:root{--navy:#00305b;--blue:#0f4c85;--grey:rgba(211,211,211,.4)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--navy);font-family:"Open Sans",sans-serif;font-size:16px;line-height:1.35}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px;position:relative}
+
+/* header */
+.site-header{background:#fff;height:66px}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 5px 0 20px}
+.logo{font-family:Raleway,sans-serif;font-weight:700;font-size:16px;color:var(--navy);text-decoration:none;margin-left:4px;white-space:nowrap}
+.site-header nav{display:flex;gap:10px}
+.site-header nav a{font-family:Raleway,sans-serif;font-size:14px;color:var(--navy);text-decoration:none;padding:0 10px;line-height:30px}
+.site-header nav a:hover,.site-header nav a.active{color:var(--blue)}
+
+/* hero */
+.hero{position:relative;height:394px;background:var(--navy) center/cover no-repeat;color:#fff;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:rgba(0,48,91,.65)}
+.hero .wrap{height:100%}
+.hero h1{position:absolute;top:110px;left:21px;margin:0;font-family:Raleway,sans-serif;font-size:42px;line-height:50px;font-weight:400}
+.hero h1 b{font-weight:700}
+.hero p{position:absolute;top:238px;left:20px;margin:0;font-size:16px;line-height:22px}
+
+/* titles */
+h1.title,h2.title{font-family:Raleway,sans-serif;font-size:42px;line-height:50px;font-weight:400;margin:0;color:var(--navy)}
+.title b{font-weight:700}
+
+/* home bands */
+.band{position:relative}
+.band:before{content:"";position:absolute;left:0;top:0;bottom:0;right:calc(50% + 123px);background:var(--grey)}
+.band .wrap{display:grid;grid-template-columns:390px 280px 1fr;column-gap:0}
+.band .txt{color:var(--blue);font-size:14px;line-height:19px;margin:0}
+.band img{display:block;width:255px;height:255px;margin-left:35px}
+.beamte{height:351px;padding-top:61px}
+.soldaten{height:317px;padding-top:33px}
+.gebiete{height:410px;padding-top:36px}
+.gebiete .wrap{display:grid;grid-template-columns:390px 330px 1fr}
+.gebiete .blk{height:161px}
+.gebiete .c1 .txt{max-width:280px}
+.gebiete .c2 .txt{max-width:230px}
+.gebiete h3{font-family:"Open Sans",sans-serif;font-weight:400;font-size:20px;line-height:27px;margin:0 0 9px;color:var(--navy)}
+.gebiete .txt{margin-bottom:0}
+
+
+/* inner pages */
+.page{padding:43px 20px 40px;min-height:508px}
+.page.lang{min-height:0}
+.page h1.title{margin:0}
+.page p{margin:0 0 22px}
+.page ul{margin:0 0 22px;padding-left:29px}
+.page .b{font-weight:700}
+.anwalt{display:grid;grid-template-columns:336px 1fr;margin-top:-1px}
+.anwalt .portrait{text-align:center;padding-top:89px;width:192px;margin-left:82px}
+.anwalt img{display:block;width:192px;height:250px;object-fit:cover}
+.anwalt .portrait .n{font-size:20px;line-height:27px;margin-top:19px;white-space:nowrap}
+.anwalt .portrait .r{font-size:16px;line-height:22px;margin-top:4px}
+.anwalt .col{padding:35px 0 0 4px;max-width:600px}
+.anwalt .col p{margin:0 0 21.6px}
+.anwalt .col ul{margin:0 22px 0 0;padding-left:29px}
+.kosten{padding-top:48px}
+.kosten p{margin:0;max-width:940px}
+.kosten .q{font-weight:700;line-height:22px;margin-bottom:1px}
+.kosten .a{margin-bottom:24px}
+
+.kontakt{display:grid;grid-template-columns:336px 1fr}
+.kontakt .col1{padding-left:4px}
+.kontakt .col2{line-height:22.4px}
+.kontakt .col2 p{margin:0 0 22px}
+.kontakt .col2 ul{margin:0 0 22px;padding-left:29px}
+.kontakt .col2 .gap{margin-bottom:22px}
+form{margin-top:30px;max-width:622px}
+form .two{display:grid;grid-template-columns:301px 301px;column-gap:18px}
+form label{display:block;font-size:16px;line-height:22px;margin-bottom:9px}
+form input[type=text],form input[type=email],form textarea{display:block;width:100%;height:38px;border:1px solid #a0a0a0;background:#fff;font:14px "Open Sans",sans-serif;color:#000;padding:0 10px;margin-bottom:17px;border-radius:0}
+form textarea{height:92px;padding:8px 10px;resize:none}
+form .consent{display:flex;gap:12px;font-size:14px;line-height:20.5px;margin:8px 0 19px 0}
+form .consent input{margin-top:3px;flex:none}
+form button{display:block;width:100%;height:43px;background:var(--blue);color:#fff;border:1px solid #fff;font:16px "Open Sans",sans-serif;cursor:pointer}
+form button:hover{background:#0b3c69}
+.map{display:block;width:100%;max-width:560px;height:340px;border:0;margin-top:28px}
+
+/* footer */
+.site-footer{background:var(--navy);color:#fff;font-size:14px;line-height:19px;height:123px}
+.site-footer .wrap{display:flex;padding-top:28px}
+.site-footer .c1{width:195px;margin-left:0}
+.site-footer .c2{width:195px}
+.site-footer a{color:#fff}
+.site-footer .c3 a{text-decoration:none;margin-right:15px}
+.site-footer .c3 div{margin-bottom:4px}
+
+@media(max-width:820px){
+  .site-header{height:auto}
+  .site-header .wrap{flex-direction:column;align-items:flex-start;height:auto;padding-top:14px;padding-bottom:8px}
+  .site-header nav{flex-wrap:wrap;margin-left:-10px}
+  .hero{height:auto;min-height:394px}
+  .hero h1,.hero p{position:relative;top:auto;left:auto}
+  .hero .wrap{padding:90px 20px 40px}
+  .hero h1{font-size:32px;line-height:40px}.hero p{margin-top:24px}
+  .band:before{right:0;bottom:auto;height:130px}
+  .band .wrap,.gebiete .wrap,.anwalt,.kontakt{display:block}
+  .beamte,.soldaten,.gebiete{height:auto;padding:36px 0 40px}
+  .band img{margin:24px 0 0}
+  .band .txt{margin-top:24px}
+  .gebiete .row2{margin-top:30px}
+  .anwalt .portrait{margin:24px 0}
+  form .two{display:block}
+  .site-footer{height:auto}.site-footer .wrap{flex-direction:column;gap:14px;padding-bottom:24px}
+  .site-footer .c1,.site-footer .c2{width:auto}
+  .page{padding-bottom:50px}
+}

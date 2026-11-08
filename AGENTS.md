@@ -4,6 +4,27 @@ Anleitung für Rechtsanwalt Tobias Abeßer (und für KI-Assistenten wie Claude),
 
 > **Wichtig:** Dieses Repository ist **öffentlich**, und alles hier wird auch auf der Website ausgeliefert. Niemals Passwörter, API-Keys oder andere Geheimnisse in Dateien dieses Repositorys oder in einen Chat schreiben. Geheimnisse gehören ausschließlich in die jeweiligen Dashboards (Cloudflare, Brevo).
 
+## Mit Claude an der Website arbeiten (für Tobias)
+
+Sie brauchen keine Programmierkenntnisse. Sie schreiben Claude auf Deutsch, was Sie möchten – Claude ändert die Dateien, zeigt Ihnen das Ergebnis und veröffentlicht es auf Ihren Wunsch.
+
+**So starten Sie**
+- **Im Browser:** https://claude.ai/code öffnen, das Repository `raabesser/ra-abesser-de` auswählen und losschreiben, z. B. „Was ist noch offen?“ oder „Ändere auf der Kostenseite den Betrag für die Erstberatung auf …“.
+- **In der Claude-Desktop-App (Mac/Windows):** Dort kann Claude die Website zusätzlich in einem Browserfenster direkt neben dem Chat anzeigen, sodass Sie jede Änderung sofort sehen, bevor sie online geht.
+
+**Was Claude für Sie tun kann**
+- Texte, Bilder und Seiten ändern oder neue Seiten anlegen – im bestehenden Design.
+- Eine **Vorschau** zeigen, bevor etwas veröffentlicht wird (Desktop- und Smartphone-Ansicht).
+- Änderungen nach **Screenshots** umsetzen: Machen Sie einen Screenshot, markieren Sie die Stelle (Pfeil, Kreis, kurze Notiz) und fügen Sie ihn in den Chat ein.
+- Die Seite **veröffentlichen** – 1–2 Minuten später ist sie online.
+- Domain-, DNS-, Kontaktformular- und E-Mail-Einstellungen prüfen oder ändern (Cloudflare, Brevo).
+- Erklären, was wo eingestellt ist, und die nächsten Schritte vorschlagen.
+
+**Gut zu wissen**
+- Jede Änderung wird gespeichert und kann rückgängig gemacht werden („Mach die letzte Änderung rückgängig“).
+- Schreiben Sie **niemals Passwörter oder API-Keys in den Chat**. Wenn ein Schlüssel nötig ist, sagt Claude Ihnen, in welchem Dashboard Sie ihn selbst eintragen.
+- Rechtstexte (Impressum, Datenschutz) ändert Claude nur nach Ihrer Freigabe – die inhaltliche Verantwortung liegt bei Ihnen.
+
 ## Überblick
 
 | Was | Wo | Zweck |
@@ -83,23 +104,22 @@ Dann http://localhost:8000 öffnen. (Das Absenden des Kontaktformulars funktioni
 
 ## Was als Nächstes zu tun ist
 
-1. **Nameserver-Umstellung abwarten.** Bei Strato sind die Cloudflare-Nameserver (`isla.ns.cloudflare.com`, `jason.ns.cloudflare.com`) einzutragen. Prüfen, ob die Registry (DENIC) sie schon kennt:
-   ```bash
-   dig NS ra-abesser.de @a.nic.de +norecurse
-   ```
-   Zeigt die Ausgabe die Cloudflare-Nameserver, aktiviert Cloudflare die Domain meist innerhalb einer Stunde (Status in Cloudflare → Overview: „Active“).
-2. **Eigene Domain bei GitHub wieder eintragen**, sobald Cloudflare „Active“ zeigt: Datei `CNAME` mit dem Inhalt `ra-abesser.de` im Repository anlegen (wurde zur Vorschau vorübergehend entfernt) und unter Repo → Settings → Pages prüfen, dass „Custom domain“ `ra-abesser.de` lautet. Ohne diesen Schritt zeigt die Domain eine GitHub-Fehlerseite.
-3. **Brevo-Domain authentifizieren:** In Brevo bei der Domain `ra-abesser.de` auf „Authenticate this email domain“ klicken (funktioniert erst nach Schritt 1).
-4. **Kontaktformular testen:** Auf https://ra-abesser.de/kontakt/ eine Testnachricht senden und prüfen, ob sie in `info@ra-abesser.de` ankommt.
-5. **Design prüfen:** Die Seiten sind dem Wix-Entwurf nachgebaut (https://info0239645.wixsite.com/aktuell). Bei Änderungen am Layout immer Desktop und Smartphone gegen den Entwurf vergleichen.
-6. **Auftragsverarbeitungsverträge (AVV) abschließen:** in Cloudflare (Manage Account → Configurations → DPA) und in Brevo (Kontoeinstellungen). Die Datenschutzerklärung verweist darauf.
-7. **Datenschutzerklärung prüfen** (`datenschutz/index.html`): Abschnitte zu Hosting/Cloudflare, Kontaktformular/Brevo und Turnstile.
-8. **Zwei-Faktor-Anmeldung aktivieren** für Cloudflare, Brevo, GitHub und Strato.
+Alle offenen Aufgaben – mit Zuständigkeit (Tobias, Einrichtung, Claude) – stehen in **[TODOS.md](TODOS.md)**. Erledigte Punkte dort abhaken bzw. entfernen.
 
 ## Hinweise für KI-Assistenten
 
-- Keine Geheimnisse in Repository-Dateien, Commits oder Chat-Antworten. Secrets nur über die Dashboards bzw. als Worker-Secret setzen, ohne den Wert auszugeben.
-- Die Mail-DNS-Einträge (Strato, DMARC, Brevo) nicht ändern.
+**Gesprächsführung**
+- Der Website-Inhaber, Rechtsanwalt Tobias Abeßer, kennt Claude Code noch nicht. Sprich Deutsch, vermeide Fachjargon und erkläre kurz, was du tust und warum.
+- Zu Beginn einer Sitzung (oder wenn er fragt, was zu tun ist): `TODOS.md` lesen, die offenen Punkte kurz zusammenfassen, sagen, wer was erledigen muss, und einen konkreten nächsten Schritt vorschlagen.
+- Biete aktiv an, was möglich ist: Vorschau im Browserfenster neben dem Chat (Desktop-App) oder als Screenshot, Umsetzung von markierten Screenshots, Smartphone-Ansicht, Veröffentlichen.
+- Zeige vor dem Veröffentlichen eine Vorschau (Screenshot Desktop 1440 px und Smartphone), außer bei reinen Tippfehlern.
+- Bei Impressum und Datenschutzerklärung: Änderungen erst nach ausdrücklicher Freigabe durch Tobias veröffentlichen.
+- Nach erledigten Aufgaben `TODOS.md` aktualisieren.
+
+**Technik und Sicherheit**
+- Keine Geheimnisse (API-Keys, Passwörter, Tokens) in Repository-Dateien, Commits oder Chat-Antworten – das Repository und die Website sind öffentlich. Secrets nur über die Dashboards bzw. als Worker-Secret setzen, ohne den Wert auszugeben. Schickt jemand einen Schlüssel in den Chat: nicht verwenden, zum Löschen und Neuerzeugen raten.
+- Die Mail-DNS-Einträge (Strato MX, DMARC, DKIM, Brevo) nicht ändern. Es gibt nur einen DMARC-Eintrag.
 - `worker/kontakt.js` und der in Cloudflare veröffentlichte Worker müssen übereinstimmen.
-- Das Design soll dem Wix-Entwurf entsprechen; bei Layoutänderungen mit Screenshots (Desktop 1440 px und Smartphone) gegen den Entwurf vergleichen.
+- Das Design soll dem Wix-Entwurf entsprechen; bei Layoutänderungen Desktop (1440 px) und Smartphone (320-px-Layout) gegen den Entwurf vergleichen.
+- Veröffentlichen = Commit und Push auf `main`; GitHub Pages stellt die Seite in 1–2 Minuten bereit.
 - Der Betreiber hat dauerhaft erlaubt, GitHub, Cloudflare und Brevo für dieses Projekt ohne Einzelrückfrage zu nutzen.

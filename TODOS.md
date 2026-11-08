@@ -28,7 +28,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Neue Abschnitte der Datenschutzerklärung („Hosting und Cloudflare“, „Kontaktformular“/Brevo, Spamschutz/Turnstile) geprüft und freigegeben (8. 11., im Chat mit Claude).
 - [x] **Einrichtung/Tobias:** Auftragsverarbeitungsverträge (AVV) mit Cloudflare und Brevo abgeschlossen (laut Tobias, 8. 11.).
 - [ ] **Tobias:** Impressum prüfen. Der Link „Internet: http://ra-abesser.de“ zeigt jetzt auf die eigene Domain (im Wix-Entwurf zeigte er auf eine andere Adresse).
-- [ ] **Tobias:** Entscheiden, ob der veraltete Hinweis auf das „EU-US-Privacy-Shield“ (Abschnitt Google Fonts/Maps, aus dem Wix-Entwurf übernommen) ersetzt werden soll – Nachfolger ist das EU-US Data Privacy Framework. Claude kann einen Textvorschlag machen.
+- [x] **Claude:** Hinweis auf das „EU-US-Privacy-Shield“ durch das EU-US Data Privacy Framework ersetzt, Adresse der Berliner Datenschutzbeauftragten (Alt-Moabit 59–61) aktualisiert und Rechtschreibung auf allen Seiten korrigiert (8. 11., von Tobias freigegeben).
+- [ ] **Tobias:** Telefonnummer prüfen: Angezeigt wird „+49 30 3990340-6“ (also 39903406), der anklickbare Telefon-Link wählt aber 399034006 (eine 0 mehr). Welche Nummer ist richtig?
 
 ## 4. Sicherheit
 

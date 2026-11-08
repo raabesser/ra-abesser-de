@@ -30,7 +30,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 
 **Was Claude für Sie tun kann**
 - Texte, Bilder und Seiten ändern oder neue Seiten anlegen – im bestehenden Design.
-- Eine **Vorschau** zeigen, bevor etwas online geht – als Bild für Computer und Smartphone. In der **Claude-Desktop-App** (Mac/Windows) kann Claude die Website außerdem, sofern verfügbar, in einem Browserfenster direkt neben dem Chat öffnen; dort sehen Sie Änderungen sofort.
+- Ihnen die Website **rechts neben dem Chat in einem Browserfenster** anzeigen. Schreiben Sie einfach „Zeig mir die Website“ (oder „Zeig mir die Kostenseite“). Dort sehen Sie Änderungen sofort, noch bevor etwas online geht. Zusätzlich oder falls das Fenster einmal nicht verfügbar ist: Bilder der Seite für Computer und Smartphone.
 - Änderungen nach **Screenshots** umsetzen: Screenshot machen, die Stelle markieren (Pfeil, Kreis, kurze Notiz) und in den Chat einfügen.
 - Die Änderungen **veröffentlichen** – 1–2 Minuten später sind sie online.
 - Domain-, Kontaktformular- und E-Mail-Einstellungen prüfen oder ändern (Cloudflare, Brevo) und erklären, was wo eingestellt ist.
@@ -95,12 +95,17 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 
 ## Vorschau
 
+- **Wenn Tobias die Website sehen will** („Zeig mir die Website“, „Wie sieht das aus?“, nach jeder Änderung): Die Website **im Browserfenster rechts neben dem Chat** anzeigen – das ist der Standard, nicht Screenshots.
+  - Cloud-Sitzung: lokalen Server starten (`python3 -m http.server 8000` im Hintergrund) und den Port mit dem Werkzeug `report_preview_port` melden; die Claude-App zeigt die Seite dann rechts in der Vorschau.
+  - Claude-Desktop-App: die Seite im eingebauten Browser (Claude Browser, `preview_start`) öffnen.
+  - Gewünschte Unterseite direkt nennen bzw. öffnen (z. B. `/kosten/`), und Tobias in einem Satz sagen, dass die Seite jetzt rechts zu sehen ist.
+  - Nur wenn das Browserfenster nicht verfügbar ist, oder für die Smartphone-Ansicht: Screenshots (Desktop 1440 × 900, Smartphone per iPhone-Emulation) im Chat zeigen.
 - **Online:** https://raabesser.github.io/ra-abesser-de/ zeigt den Stand von `main` (solange die Datei `CNAME` fehlt; danach leitet die Adresse auf ra-abesser.de weiter).
 - **Lokal:**
   ```bash
   python3 -m http.server 8000
   ```
-  im Repository-Ordner starten und http://localhost:8000 öffnen. In einer Cloud-Sitzung kann Claude den Port für die Vorschau im Claude-Chat freigeben oder Screenshots mit Headless-Chrome/Playwright machen (Desktop 1440 × 900, Smartphone per iPhone-Emulation).
+  im Repository-Ordner starten und http://localhost:8000 öffnen. Screenshots mit Headless-Chrome/Playwright (vorinstalliert).
 - Das **Absenden des Kontaktformulars** funktioniert weder lokal noch auf github.io: Turnstile kennt nur die Domain `ra-abesser.de`, und der Worker nimmt nur Anfragen von `https://ra-abesser.de` und `https://www.ra-abesser.de` an.
 
 ## Veröffentlichen und Rückgängig machen
@@ -146,8 +151,8 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 **Gesprächsführung**
 - Tobias Abeßer kennt Claude Code noch nicht. Sprich Deutsch, sieze ihn, vermeide Fachjargon und erkläre kurz, was du tust und warum.
 - **Zu Beginn jeder Sitzung, ungefragt:** `TODOS.md` lesen, den Stand in 2–3 Sätzen zusammenfassen, offene Punkte trennen in „Das müssten Sie / die Einrichtung erledigen“ und „Das kann ich sofort machen“, und mit einer konkreten Frage enden („Soll ich mit … anfangen?“). Fehlt `TODOS.md`, das sagen und die offenen Punkte aus diesem Dokument ableiten.
-- Biete aktiv an, was möglich ist: Vorschau (Browserfenster neben dem Chat, sofern verfügbar, sonst Screenshots für Desktop und Smartphone), Umsetzung markierter Screenshots, Veröffentlichen.
-- Nach jeder Änderung: Vorschau zeigen und fragen „Veröffentlichen?“ (außer bei reinen Tippfehlern, wenn Tobias das so möchte).
+- Biete aktiv an, was möglich ist: die Website rechts im Browserfenster neben dem Chat zeigen (siehe „Vorschau“; nur ersatzweise Screenshots), Umsetzung markierter Screenshots, Veröffentlichen.
+- Nach jeder Änderung: die geänderte Seite rechts im Browserfenster zeigen und fragen „Veröffentlichen?“ (außer bei reinen Tippfehlern, wenn Tobias das so möchte).
 - Impressum und Datenschutzerklärung: Änderungen nur nach ausdrücklicher Freigabe durch Tobias veröffentlichen.
 - Nach erledigten Aufgaben `TODOS.md` aktualisieren.
 

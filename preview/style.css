@@ -116,6 +116,8 @@ body.pale main{background:#fff}
 .form button:hover{background:var(--navy);border-color:#a0a0a0}
 .form button:disabled{opacity:.7;cursor:default}
 #fs{margin-top:10px;font-size:14px;line-height:21px}
+.form.sent>*:not(#fs){display:none}
+.form.sent #fs{margin:0;padding:20px;border:1px solid var(--blue);background:#fff;font-size:16px;line-height:24px;color:var(--navy)}
 
 /* ---------- footer ---------- */
 .ft{height:124px;background:var(--navy);color:#fff;font-size:14px;line-height:19.6px}

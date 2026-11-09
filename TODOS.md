@@ -8,7 +8,7 @@ Stand: 9. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 
 Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – wer – seit wann.
 
-- Design-Feinschliff nach Prüfung gegen Wix – Claude (Sitzung `claude/nice-mayer-xon8pe`) – in der Vorschau fertig; für die echte Website vorbereitet auf dem Zweig `claude/nice-mayer-xon8pe`, wartet auf Freigabe durch Tobias.
+- (derzeit nichts)
 
 ## 1. Website online bringen (Domain)
 
@@ -31,15 +31,14 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Neue Abschnitte der Datenschutzerklärung („Hosting und Cloudflare“, „Kontaktformular“/Brevo, Spamschutz/Turnstile) geprüft und freigegeben (8. 11., im Chat mit Claude).
 - [x] **Einrichtung/Tobias:** Auftragsverarbeitungsverträge (AVV) mit Cloudflare und Brevo abgeschlossen (laut Tobias, 8. 11.).
 - [x] **Tobias:** Neue, auf Anwaltskanzleien zugeschnittene Datenschutzerklärung geprüft und freigegeben; auf der echten Website veröffentlicht (9. 11.).
-- [ ] **Tobias:** Technik- und Design-Optimierung in der Vorschau ansehen und freigeben (9. 11.): Schriftarten liegen jetzt auf der eigenen Website (keine Übertragung an Google), Google-Karte lädt erst nach Klick, Bilder ca. 60 % kleiner (schnelleres Laden), Tastaturbedienung und Bildbeschreibungen verbessert, Website-Symbol im Browser-Tab, Vorschaudaten für geteilte Links. Optik: Schaltfläche „Kontakt aufnehmen“ im Startbild, Schatten an Kopfzeile und Bildern, feine Unterstreichung im Menü, fette Zwischenüberschriften in der Datenschutzerklärung. Abschnitt 10 der Datenschutzerklärung ist dazu angepasst und muss mit freigegeben werden.
-- [ ] **Tobias:** Datenschutzerklärung in der Vorschau ist auf Wunsch nicht mehr in der Ich-Form geschrieben, sondern in der dritten Person („Rechtsanwalt Abeßer …“). Bitte prüfen und mit der Vorschau freigeben (9. 11.).
+- [x] **Tobias:** Technik- und Design-Optimierung freigegeben und auf der echten Website veröffentlicht (9. 11.).
+- [x] **Tobias:** Datenschutzerklärung in dritter Person freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [x] **Claude:** Worker mit Dokumente-Upload bei Cloudflare hochgeladen (9. 11., Freigabe Tobias). Normale Nachrichten unverändert. Test: 10-MB-Anfrage verarbeitet (8–21 ms Rechenzeit), getarnte Datei abgelehnt.
-- [ ] **Tobias:** Dokumente-Upload einmal selbst testen: auf https://ra-abesser.de/preview/kontakt/ eine Nachricht mit 1–2 Dateien (gern auch eine größere PDF, z. B. 5–8 MB) senden und prüfen, ob sie mit Anhängen bei info@ra-abesser.de ankommt. (Automatisch nicht möglich: der Spamschutz blockiert Test-Browser.) Falls große Dateien scheitern: Grenze senken oder Cloudflare „Workers Paid“ (5 US-$/Monat).
-- [ ] **Tobias:** Echte Handy-Darstellung in der Vorschau ansehen und freigeben (9. 11.): Die Seiten passen sich jetzt an die Bildschirmbreite an (statt einer verkleinerten 320-px-Seite), Texte in gut lesbarer Größe, größere Formularfelder. Geprüft auf iPhone SE, iPhone 13 und Pixel 7. Bei Übernahme in die echte Website `AGENTS.md` (Abschnitt Design) anpassen.
-- [x] **Tobias:** Blauer Hintergrund aus der Vorschau gefällt und soll bei der nächsten Freigabe mit übernommen werden (9. 11.).
+- [x] **Tobias:** Dokumente-Upload freigegeben und auf der echten Website veröffentlicht (9. 11.).
+- [x] **Tobias:** Echte Handy-Darstellung freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [ ] **Tobias:** Impressum prüfen. Der Link „Internet: http://ra-abesser.de“ zeigt jetzt auf die eigene Domain (im Wix-Entwurf zeigte er auf eine andere Adresse).
 - [x] **Claude:** Hinweis auf das „EU-US-Privacy-Shield“ durch das EU-US Data Privacy Framework ersetzt, Adresse der Berliner Datenschutzbeauftragten (Alt-Moabit 59–61) aktualisiert und Rechtschreibung auf allen Seiten korrigiert (8. 11., von Tobias freigegeben).
-- [ ] **Tobias:** Telefonnummer prüfen: Angezeigt wird „+49 30 3990340-6“ (also 39903406), der anklickbare Telefon-Link wählt aber 399034006 (eine 0 mehr). Welche Nummer ist richtig?
+- [x] Telefonnummer geklärt: einheitlich +49 30 39 90 34 06 (9. 11.).
 
 ## 4. Sicherheit
 
@@ -49,10 +48,10 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Claude:** Alle Seiten dem Wix-Entwurf (https://info0239645.wixsite.com/aktuell) nachgebaut, Desktop und Smartphone.
 - [x] **Claude:** Seitentitel (Text im Browser-Tab) enden jetzt auf „| Rechtsanwalt Abeßer“ statt wie bei Wix auf „| Aktuell“.
-- [ ] **Tobias:** Design-Feinschliff in der Vorschau ansehen (https://ra-abesser.de/preview/) und für die echte Website freigeben: Kopfzeile bleibt beim Scrollen oben stehen, Startbild bewegt sich beim Scrollen leicht mit (wie bei Wix), Formularfelder färben sich beim Anklicken grau und das Häkchen ist ein echtes Häkchen, „Nach oben“-Knopf erscheint auf dem Handy erst nach dem Scrollen, Menüeinträge auf dem Handy etwas eingerückt, zwei Links in der Datenschutzerklärung ohne Unterstreichung, hellblauer Seitenhintergrund unter kurzen Seiten.
+- [x] **Tobias:** Design-Feinschliff (blauer Hintergrund u. a.) freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
 ## 6. Später / optional
 
 - [ ] **Claude:** Wix-Website abschalten bzw. auf die neue Domain verweisen lassen, sobald ra-abesser.de live ist (**Tobias** entscheidet).
-- [ ] **Claude:** Auf Wunsch die Schriftarten lokal ausliefern statt über Google Fonts (datenschutzfreundlicher; der Abschnitt „Google Fonts“ in der Datenschutzerklärung könnte dann entfallen).
+- [x] **Claude:** Schriftarten werden lokal ausgeliefert, Datenschutzerklärung angepasst (9. 11.).

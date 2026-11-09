@@ -3,23 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var s=Math.min(screen.width,screen.height),m=document.querySelector('meta[name=viewport]');if(s<600)m.content='width=320, user-scalable=yes';else if(screen.width<980)m.content='width=980';})();</script>
+<script>(function(){var s=Math.min(screen.width,screen.height),m=document.querySelector('meta[name=viewport]');if(s>=600&&screen.width<980)m.content='width=980';})();</script>
 <title>KARTE | Rechtsanwalt Abeßer</title>
 <meta name="description" content="Rechtsanwalt Abeßer – Disziplinarrecht, Soldatenrecht, Beamtenrecht, Strafrecht. Die Anwaltskanzlei für Frauen und Männer in Uniform.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;family=Raleway:wght@400;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=3">
+<link rel="preload" href="../fonts/open-sans.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/raleway.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#00305b">
+<link rel="canonical" href="https://ra-abesser.de/karte/">
+<meta property="og:title" content="KARTE | Rechtsanwalt Abeßer"><meta property="og:description" content="Rechtsanwalt Abeßer – Disziplinarrecht, Soldatenrecht, Beamtenrecht, Strafrecht. Die Anwaltskanzlei für Frauen und Männer in Uniform."><meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta property="og:site_name" content="Rechtsanwalt Abeßer"><meta property="og:url" content="https://ra-abesser.de/karte/"><meta property="og:image" content="https://ra-abesser.de/img/hero.jpg">
+<link rel="stylesheet" href="../style.css?v=10">
 </head>
-<body id="top">
+<body id="top" class="pale">
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
 <header class="hd"><div class="wrap">
 <a class="logo" href="../">RECHTSANWALT ABEßER</a>
 <nav><a href="../">START</a><a href="../#beamte">BEAMTE</a><a href="../#soldaten">SOLDATEN</a><a href="../#rechtsgebiete">RECHTSGEBIETE</a><a href="../der-anwalt/">DER ANWALT</a><a href="../kosten/">KOSTEN</a><a href="../kontakt/">KONTAKT</a></nav>
 <button class="burger" type="button" aria-label="Navigationsmenü öffnen" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></header>
 <div class="menu" id="menu" hidden><div class="menu-bg" data-close></div><div class="menu-panel"><button class="menu-x" type="button" aria-label="Navigationsmenü schließen" data-close></button><nav><a href="../">START</a><a href="../#beamte">BEAMTE</a><a href="../#soldaten">SOLDATEN</a><a href="../#rechtsgebiete">RECHTSGEBIETE</a><a href="../der-anwalt/">DER ANWALT</a><a href="../kosten/">KOSTEN</a><a href="../kontakt/">KONTAKT</a></nav></div></div>
-<main class="pg karte"><div class="wrap">
+<main id="inhalt" class="pg karte"><div class="wrap">
 <h1 class="title">ADRESSE</h1>
 <div class="rt"><p>Kanzleisitz und Postanschrift: <a href="https://maps.app.goo.gl/KoBYQGTSyqMKZcg38">Keithstr. 14, 10787 Berlin</a><br>E-Mail: <a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a><br>Tel.:&nbsp; <a href="tel:+493039903406">+49 30 39 90 34 06</a></p></div>
-<div class="mapbox"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte: Rechtsanwalt Abeßer, Keithstr. 14, 10787 Berlin" src="https://www.google.com/maps?q=Rechtsanwalt+Abe%C3%9Fer,+Keithstr.+14,+10787+Berlin&amp;z=15&amp;output=embed"></iframe></div>
+<div class="mapbox"><div class="map-consent" data-src="https://www.google.com/maps?q=Rechtsanwalt+Abe%C3%9Fer,+Keithstr.+14,+10787+Berlin&amp;z=15&amp;output=embed"><p><b>Karte von Google Maps</b></p><p>Die Karte wird erst nach Ihrem Klick geladen. Dabei werden Daten (u. a. Ihre IP-Adresse) an Google übertragen. Näheres in der <a href="../datenschutz/">Datenschutzerklärung</a>.</p><button type="button">Karte laden</button><p class="alt"><a href="https://maps.app.goo.gl/KoBYQGTSyqMKZcg38">Oder direkt in Google Maps öffnen</a></p></div></div>
 </div></main>
 <footer class="ft"><div class="wrap">
 <div class="c1"><p>Rechtsanwalt Abeßer</p><p><a href="https://maps.app.goo.gl/KoBYQGTSyqMKZcg38">Keithstr. 14, 10787 Berlin</a></p><p>(nahe Wittenbergplatz)</p></div>
@@ -27,6 +32,6 @@
 <div class="c3"><p class="lk"><a href="../impressum/">Impressum</a><a href="../datenschutz/">Datenschutz</a></p><p class="cr">© 2026 Tobias Abeßer</p></div>
 </div></footer>
 <a class="totop" href="#top" aria-label="Nach oben"><svg viewBox="20 20 160 160" aria-hidden="true"><path fill="#00305B" d="M180 20v160H20V20h160z"/><path fill="#FFFFFF" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z"/><path fill="#FFFFFF" d="M59.668 112L56 107.407 99.037 74 142 107.41l-3.672 4.59-39.29-29.873L59.667 112z"/></svg></a>
-<script src="../site.js?v=3"></script>
+<script src="../site.js?v=10"></script>
 </body>
 </html>

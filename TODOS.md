@@ -1,6 +1,6 @@
 # Offene Aufgaben – ra-abesser.de
 
-Stand: 8. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. Claude aktualisiert diese Liste nach jeder erledigten Aufgabe.
+Stand: 9. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. Claude aktualisiert diese Liste nach jeder erledigten Aufgabe.
 
 **Zuständigkeiten:** **Tobias** = Rechtsanwalt Tobias Abeßer (Inhaber, Inhalte, Freigaben) · **Mitarbeiterin** = betreut die Website (Änderungen in der Vorschau) · **Einrichtung** = wer die Konten bei Strato, Cloudflare, GitHub und Brevo betreut · **Claude** = KI-Assistent (Claude Code), arbeitet auf Zuruf
 
@@ -12,7 +12,9 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 ## 1. Website online bringen (Domain)
 
-- [ ] **Strato:** Nameserver-Umstellung der Domain `ra-abesser.de` auf `isla.ns.cloudflare.com` und `jason.ns.cloudflare.com` ist beauftragt (8. 11.) und wartet auf Strato. Am 8. 11. zeigt die Domain noch auf die Strato-Nameserver (`docks06`/`shades14.rzone.de`); prüfen mit `dig NS ra-abesser.de @a.nic.de +norecurse`.
+- [x] **Strato:** Nameserver auf Cloudflare umgestellt; Cloudflare meldet die Domain seit 8. 11. abends als „Active“.
+- [x] **Claude:** Fehlende E-Mail-Einträge (SPF und Strato-DKIM) in Cloudflare ergänzt – ohne sie konnte Tobias nicht mehr von info@ra-abesser.de senden (9. 11.).
+- [ ] **Tobias:** Testmail von info@ra-abesser.de an eine externe Adresse senden und bestätigen, dass der Versand wieder klappt.
 - [ ] **Claude:** Sobald Cloudflare die Domain als „Active“ meldet: Datei `CNAME` mit `ra-abesser.de` wieder anlegen (sie wurde für die Vorschau auf github.io vorübergehend entfernt) und prüfen, dass https://ra-abesser.de die neue Website mit gültigem Zertifikat zeigt.
 - [ ] **Einrichtung:** Danach unter GitHub → Repository → Settings → Pages prüfen, dass „Custom domain“ `ra-abesser.de` lautet.
 

@@ -265,7 +265,7 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 
 /* Kontaktformular: Dokumente hochladen */
 .kontakt .wrap{height:auto;padding-bottom:30px;display:flow-root}
-@media (min-width:601px){.kontakt .form{position:relative;left:auto;top:auto;margin:601px 0 0 350px}}
+@media (min-width:601px){.kontakt .k2{position:relative;left:auto;top:auto;margin:43px 0 0 356px}.kontakt .form{position:relative;left:auto;top:auto;margin:44px 0 0 350px}}
 .upl input[type=file]{display:block;width:100%;padding:8px 0;font:14px "Open Sans",sans-serif;color:inherit}
 .upl input[type=file]::file-selector-button{margin-right:14px;height:38px;padding:0 18px;border:1px solid #a0a0a0;background:#fff;color:#00305b;font:14px "Open Sans",sans-serif;cursor:pointer;transition:background .2s}
 .upl input[type=file]::file-selector-button:hover{background:#e8eef4}

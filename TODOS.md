@@ -36,7 +36,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Worker mit Dokumente-Upload bei Cloudflare hochgeladen (9. 11., Freigabe Tobias). Normale Nachrichten unverändert. Test: 10-MB-Anfrage verarbeitet (8–21 ms Rechenzeit), getarnte Datei abgelehnt.
 - [x] **Tobias:** Dokumente-Upload freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [x] **Tobias:** Echte Handy-Darstellung freigegeben und auf der echten Website veröffentlicht (9. 11.).
-- [ ] **Tobias:** Überarbeitetes Impressum in der Vorschau prüfen und freigeben (https://ra-abesser.de/preview/impressum/, 9. 11.): Überschrift mit Rechtsgrundlagen (§ 5 DDG, § 2 DL-InfoV), Internetadresse mit https, Hinweis auf außergerichtliche Streitschlichtung (Rechtsanwaltskammer / Schlichtungsstelle der Rechtsanwaltschaft), „Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV“. Entschieden: Steuernummer entfernt, USt-IdNr. ergänzt, Vers.-Nr. bleibt.
+- [x] **Tobias:** Überarbeitetes Impressum freigegeben und veröffentlicht (Steuernummer entfernt, USt-IdNr. ergänzt, Rechtsgrundlagen, Streitschlichtung, 9. 11.).
 - [x] **Tobias:** Dokumente-Upload selbst getestet – funktioniert (9. 11.).
 - [x] **Claude:** Cloudflare Web Analytics (automatisch eingefügtes Statistik-Skript) abgeschaltet, damit die Datenschutzerklärung („keine Analysedienste“) stimmt (9. 11.).
 - [x] **Claude:** Hinweis auf das „EU-US-Privacy-Shield“ durch das EU-US Data Privacy Framework ersetzt, Adresse der Berliner Datenschutzbeauftragten (Alt-Moabit 59–61) aktualisiert und Rechtschreibung auf allen Seiten korrigiert (8. 11., von Tobias freigegeben).

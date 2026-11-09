@@ -24,7 +24,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Einrichtung:** IP-Sperre für API-Schlüssel in Brevo ist aus (9. 11.).
 - [x] **Claude/Einrichtung:** Testnachricht über https://ra-abesser.de/kontakt/ laut Brevo zugestellt (9. 11., 07:50).
 - [x] Entschieden (9. 11.): Absender erhalten **keine** Kopie und keine Eingangsbestätigung per E-Mail (Missbrauchsgefahr als Spam-Versender). Die Erfolgsmeldung im Formular genügt.
-- [ ] **Tobias:** Bestätigen, dass die Testnachricht im Postfach `info@ra-abesser.de` angekommen ist (auch im Spam-Ordner nachsehen).
+- [x] **Tobias:** Testnachricht ist im Postfach `info@ra-abesser.de` angekommen; Kontaktformular funktioniert vollständig (9. 11.).
 
 ## 3. Rechtliches
 

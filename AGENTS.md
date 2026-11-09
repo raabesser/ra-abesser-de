@@ -86,7 +86,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 | Kontaktformular | Cloudflare Worker `ra-abesser-kontakt` – ein kleines Programm bei Cloudflare, das das Formular verschickt | Nimmt das Formular entgegen und versendet es |
 | Spamschutz | Cloudflare Turnstile (Widget „ra-abesser.de Kontakt“) | Prüft unsichtbar, ob ein Mensch das Formular absendet |
 | Formular-Versand | Brevo: https://app.brevo.com | Stellt die Formular-Nachrichten per E-Mail zu |
-| Design-Vorlage | Wix-Entwurf: https://info0239645.wixsite.com/aktuell | Das Aussehen der Website entspricht diesem Entwurf |
+| Design-Vorlage | Wix-Entwurf: https://info0239645.wixsite.com/aktuell (wird abgeschaltet, Entscheidung 9. 11.) | Grundlage des Designs; nach dem Abschalten nicht mehr als Vergleich verfügbar |
 
 ## So hängt alles zusammen
 

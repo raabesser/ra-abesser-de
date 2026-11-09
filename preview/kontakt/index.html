@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#00305b">
 <link rel="canonical" href="https://ra-abesser.de/kontakt/">
 <meta property="og:title" content="KONTAKT | Rechtsanwalt Abeßer"><meta property="og:description" content="Kontakt zu Rechtsanwalt Abeßer, Keithstr. 14, 10787 Berlin: Telefon +49 30 39 90 34 06, E-Mail info@ra-abesser.de oder Kontaktformular mit Dokumente-Upload."><meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta property="og:site_name" content="Rechtsanwalt Abeßer"><meta property="og:url" content="https://ra-abesser.de/kontakt/"><meta property="og:image" content="https://ra-abesser.de/img/hero.jpg">
-<link rel="stylesheet" href="../style.css?v=15">
+<link rel="stylesheet" href="../style.css?v=16">
 </head>
 <body id="top">
 <div class="preview-banner">VORSCHAU – nicht die veröffentlichte Website · <a href="../../kontakt/">Zur veröffentlichten Seite</a></div>
@@ -41,8 +41,6 @@
 <p>&nbsp;</p>
 <ul>
 <li>Ihren Vor- und Nachnamen,</li>
-<li>Ihre Amtsbezeichnung bzw. Ihren Dienstgrad,</li>
-<li>Ihr Geburtsdatum,</li>
 <li>Ihre Telefonnummer.</li>
 </ul>
 <p>&nbsp;</p>
@@ -52,7 +50,7 @@
 </div>
 <form id="f" class="form" novalidate>
 <div class="row2"><div class="fld"><label for="vn">Vorname *</label><input type="text" id="vn" required></div><div class="fld"><label for="nn">Name *</label><input type="text" id="nn" required></div></div>
-<div class="fld"><label for="em">E-Mail *</label><input type="email" id="em" required></div>
+<div class="row2"><div class="fld"><label for="em">E-Mail *</label><input type="email" id="em" autocomplete="email" required></div><div class="fld"><label for="tl">Telefonnummer *</label><input type="tel" id="tl" autocomplete="tel" inputmode="tel" maxlength="40" pattern="[0-9 +\/\.\(\)\-]{5,40}" title="Bitte eine Telefonnummer angeben, z. B. 030 1234567 oder +49 170 1234567." required></div></div>
 <div class="fld"><label for="bt">Betreff *</label><input type="text" id="bt" required></div>
 <div class="fld"><label for="ms">Nachricht *</label><textarea id="ms" required></textarea></div>
 <div class="fld upl"><label for="dt">Dokumente (optional)</label><input type="file" id="dt" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,application/pdf,image/jpeg,image/png"><p class="hint">Zum Beispiel Bescheid, Anhörungsschreiben oder Ladung – als PDF, Word-Datei oder Foto (JPG, PNG). Höchstens 5 Dateien, zusammen bis 10 MB.</p><ul class="flist" id="dl" aria-live="polite"></ul></div>
@@ -70,6 +68,6 @@
 <a class="totop" href="#top" aria-label="Nach oben"><svg viewBox="20 20 160 160" aria-hidden="true"><path fill="#00305B" d="M180 20v160H20V20h160z"/><path fill="#FFFFFF" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z"/><path fill="#FFFFFF" d="M59.668 112L56 107.407 99.037 74 142 107.41l-3.672 4.59-39.29-29.873L59.667 112z"/></svg></a>
 <script src="../site.js?v=11"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="kontakt.js?v=10"></script>
+<script src="kontakt.js?v=11"></script>
 </body>
 </html>

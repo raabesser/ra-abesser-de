@@ -101,9 +101,9 @@ body.pale main{background:#fff}
 .row2{display:grid;grid-template-columns:301px 301px;column-gap:18px}
 .fld{margin-bottom:18px}
 .fld label{display:block;height:30px;font-size:16px;line-height:22.4px}
-.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;height:38px;margin:0;padding:0 12px;border:1px solid #a0a0a0;border-radius:0;background:#fff;font:14px "Open Sans",sans-serif;color:var(--navy);outline:none;-webkit-appearance:none;appearance:none}
+.form input[type=text],.form input[type=email],.form input[type=tel],.form textarea{display:block;width:100%;height:38px;margin:0;padding:0 12px;border:1px solid #a0a0a0;border-radius:0;background:#fff;font:14px "Open Sans",sans-serif;color:var(--navy);outline:none;-webkit-appearance:none;appearance:none}
 .form textarea{height:92px;padding:8px 12px;resize:none}
-.form input[type=text]:hover,.form input[type=email]:hover,.form textarea:hover,.form input[type=text]:focus,.form input[type=email]:focus,.form textarea:focus{background:rgba(221,221,221,.3)}
+.form input[type=text]:hover,.form input[type=email]:hover,.form input[type=tel]:hover,.form textarea:hover,.form input[type=text]:focus,.form input[type=email]:focus,.form input[type=tel]:focus,.form textarea:focus{background:rgba(221,221,221,.3)}
 .form input:user-invalid,.form textarea:user-invalid,.consent input:user-invalid{border-color:#f30000}
 .consent{display:flex;align-items:center;gap:12px;margin-top:1px}
 .consent input{flex:none;width:16px;height:16px;margin:0;border:1px solid #a0a0a0;border-radius:0;background:#fff;-webkit-appearance:none;appearance:none;display:grid;place-content:center;cursor:pointer}
@@ -201,7 +201,7 @@ body.pale main{background:#fff}
   .kontakt .k2>p:nth-of-type(1),.kontakt .k2>p:nth-of-type(2){line-height:1.55}
   .form{margin-top:36px}
   .row2{display:block}
-  .form input[type=text],.form input[type=email],.form textarea{height:46px;font-size:16px}
+  .form input[type=text],.form input[type=email],.form input[type=tel],.form textarea{height:46px;font-size:16px}
   .form textarea{height:140px}
   .form button{width:100%;height:48px}
   .consent{align-items:flex-start}

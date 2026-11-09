@@ -43,7 +43,7 @@
     });
   }
   function mailto() {
-    var body = "Name: " + v("vn") + " " + v("nn") + "\nE-Mail: " + v("em") + "\n\n" + v("ms");
+    var body = "Name: " + v("vn") + " " + v("nn") + "\nE-Mail: " + v("em") + "\nTelefon: " + v("tl") + "\n\n" + v("ms");
     if (files().length) body += "\n\n(Bitte fügen Sie Ihre Dokumente dieser E-Mail als Anhang hinzu.)";
     return "mailto:info@ra-abesser.de?subject=" + encodeURIComponent(v("bt")) + "&body=" + encodeURIComponent(body);
   }
@@ -64,7 +64,7 @@
     if (!tok) { fs.textContent = "Bitte einen Moment warten – die Sicherheitsprüfung läuft noch – und erneut senden."; return; }
     sb.disabled = true; fs.textContent = files().length ? "Dokumente werden hochgeladen und gesendet …" : "Wird gesendet …";
     Promise.all(files().map(read)).then(function (att) {
-      var data = { vorname: v("vn"), name: v("nn"), email: v("em"), betreff: v("bt"), nachricht: v("ms"),
+      var data = { vorname: v("vn"), name: v("nn"), email: v("em"), telefon: v("tl"), betreff: v("bt"), nachricht: v("ms"),
         consent: document.getElementById("ds").checked, token: tok };
       if (att.length) data.anhaenge = att;
       return fetch("/api/kontakt", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) });

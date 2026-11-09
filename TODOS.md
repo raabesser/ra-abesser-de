@@ -63,7 +63,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [ ] **Tobias/Einrichtung (optional):** Google-Unternehmensprofil anlegen bzw. prüfen (https://business.google.com) – Claude hilft bei den Texten.
 
 - [x] **Claude:** Kontaktformular in der Vorschau (9. 11., Wunsch Tobias): Hinweistext „Nennen Sie dabei bitte … Grund Ihrer Anfrage mit“ ganz gestrichen, neues Pflichtfeld „Telefonnummer“; Datenschutzerklärung Ziffer 7 um „Ihre Telefonnummer“ ergänzt.
-- [x] **Tobias:** Telefonfeld, gestrichener Hinweistext und ergänzte Datenschutzerklärung freigegeben; Worker mit Feld `telefon` bei Cloudflare hochgeladen und getestet, Website veröffentlicht (9. 11.).
+- [x] **Tobias:** Telefonfeld, gestrichener Hinweistext und ergänzte Datenschutzerklärung freigegeben; Worker mit Feld `telefon` bei Cloudflare hochgeladen und getestet, Website veröffentlicht; Testnachricht von Tobias mit Telefonnummer angekommen (9. 11.).
 
 ## 6. Später / optional
 

@@ -25,6 +25,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude/Einrichtung:** Testnachricht über https://ra-abesser.de/kontakt/ laut Brevo zugestellt (9. 11., 07:50).
 - [x] Entschieden (9. 11.): Absender erhalten **keine** Kopie und keine Eingangsbestätigung per E-Mail (Missbrauchsgefahr als Spam-Versender). Die Erfolgsmeldung im Formular genügt.
 - [x] **Tobias:** Testnachricht ist im Postfach `info@ra-abesser.de` angekommen; Kontaktformular funktioniert vollständig (9. 11.).
+- [ ] **Tobias:** Doppelte Formular-Mails (9. 11.): Ursache waren zwei Absendungen vom selben Handy im Abstand von 35 Sekunden – der Worker hat jeweils nur eine Mail verschickt. Abhilfe in der Vorschau (Formular verschwindet nach dem Senden, deutliche Bestätigung) und vorbereitete Doppelsendungs-Sperre im Worker; warten auf Freigabe für echte Website und Worker.
 
 ## 3. Rechtliches
 

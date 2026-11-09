@@ -1,6 +1,7 @@
 // Cloudflare Worker: ra-abesser.de/api/kontakt
 // Receives the contact form, checks Turnstile, and sends the message via Brevo.
 // Optional attachments (anhaenge: [{name, content(base64)}]) are checked and passed on to Brevo.
+// Identical messages sent again within 10 minutes are not mailed twice.
 // Secrets (set in Cloudflare, never in this file): TURNSTILE_SECRET, BREVO_API_KEY
 
 const TO = { email: "info@ra-abesser.de", name: "Rechtsanwalt Abeßer" };
@@ -54,6 +55,16 @@ const json = (status, body) =>
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
   });
 
+// Duplicate protection: the same message (same e-mail, subject, text and files) is sent only once
+// within DUP_SECONDS. A short-lived marker is kept in the Cloudflare cache (no message content is stored).
+const DUP_SECONDS = 600;
+async function dupKey(f, att) {
+  const raw = [f.email.toLowerCase(), f.betreff, f.nachricht, ...att.info].join("\n");
+  const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(raw));
+  const hex = [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return new Request(`https://ra-abesser.de/__kontakt-dup/${hex}`);
+}
+
 const esc = (s) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
@@ -95,6 +106,9 @@ export default {
 
     if (!env.BREVO_API_KEY) return json(503, { ok: false, error: "config" });
 
+    const key = await dupKey(f, att);
+    if (await caches.default.match(key)) return json(200, { ok: true, duplicate: true });
+
     const fullName = `${f.vorname} ${f.name}`;
     const text =
       `Neue Anfrage über das Kontaktformular auf ra-abesser.de\n\n` +
@@ -126,6 +140,7 @@ export default {
       console.error("Brevo error", res.status, await res.text());
       return json(502, { ok: false, error: "send" });
     }
+    await caches.default.put(key, new Response("1", { headers: { "cache-control": `max-age=${DUP_SECONDS}` } }));
     return json(200, { ok: true });
   },
 };

@@ -1,6 +1,6 @@
-/* ra-abesser.de – reproduces the Wix draft https://info0239645.wixsite.com/aktuell
-   Desktop: 980px content column (like Wix). Phones: fixed 320px layout that the
-   browser scales to the screen (viewport width=320, set in each page's <head>). */
+/* ra-abesser.de – nach dem Wix-Entwurf https://info0239645.wixsite.com/aktuell
+   Desktop: 980px Inhaltsspalte wie bei Wix. Smartphones (bis 600px): flexibles Layout in
+   echter Bildschirmbreite. Tablets (600–979px): 980px-Layout, vom Browser skaliert. */
 /* Schriftarten liegen auf der eigenen Website (keine Übertragung an Google). */
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:300 800;font-display:swap;src:url(fonts/open-sans.woff2) format("woff2")}
 @font-face{font-family:"Raleway";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/raleway.woff2) format("woff2")}
@@ -126,108 +126,95 @@ body.pale main{background:#fff}
 .ft .lk a{text-decoration:none;margin-right:15px}
 .ft .cr{margin-top:4px}
 
-/* ================= phones (320px layout) ================= */
+/* ================= Smartphones: flexibles Layout in echter Bildschirmbreite ================= */
 @media (max-width:600px){
-  body{min-width:0}
-  .wrap{width:320px}
+  body{min-width:0;font-size:16px;line-height:1.5}
+  .wrap{width:auto;max-width:100%}
 
-  .hd{height:72px}
-  .band{scroll-margin-top:72px}
-  .logo{left:20px;top:24px}
+  /* Kopfzeile und Menü */
+  .hd,.hd .wrap{height:64px}
+  .band{scroll-margin-top:64px}
+  .logo{left:20px;top:21px}
   .hd nav{display:none}
-  .burger{display:block;position:absolute;left:250px;top:11px;width:50px;height:50px;padding:0;border:0;background:#fff;cursor:pointer}
+  .burger{display:block;position:absolute;left:auto;right:6px;top:7px;width:50px;height:50px;padding:0;border:0;background:#fff;cursor:pointer}
   .burger span{position:absolute;left:14px;width:22px;height:2px;border-radius:2px;background:#000}
   .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:24px}.burger span:nth-child(3){top:33px}
-
   .menu:not([hidden]){display:block;position:fixed;inset:0;z-index:50}
   .menu-bg{position:absolute;inset:0;background:rgba(0,0,0,.6)}
-  .menu-panel{position:absolute;top:0;right:0;bottom:0;width:260px;background:#fff;overflow-y:auto}
-  .menu-x{position:absolute;left:190px;top:11px;width:50px;height:50px;padding:0;border:0;background:none;cursor:pointer}
+  .menu-panel{position:absolute;top:0;right:0;bottom:0;width:min(280px,85vw);background:#fff;overflow-y:auto}
+  .menu-x{position:absolute;right:6px;top:7px;width:50px;height:50px;padding:0;border:0;background:none;cursor:pointer}
   .menu-x:before,.menu-x:after{content:"";position:absolute;left:14px;top:24px;width:22px;height:2px;border-radius:2px;background:#000;transform:rotate(45deg)}
   .menu-x:after{transform:rotate(-45deg)}
-  .menu nav{position:absolute;left:30px;top:100px;width:188px}
-  .menu nav a{display:block;height:49px;padding-left:10px;font:18px/49px "Open Sans",sans-serif;color:#000}
+  .menu nav{padding:90px 24px 30px 30px}
+  .menu nav a{display:block;padding:0 10px;font:18px/52px "Open Sans",sans-serif;color:#000}
   .menu nav a.active{color:#377dbd}
 
-  .totop{display:block;position:fixed;left:20px;bottom:40px;width:44px;height:44px;z-index:20;opacity:0;visibility:hidden;transition:visibility 0s .5s,opacity .5s}
+  .totop{display:block;position:fixed;left:16px;bottom:24px;width:44px;height:44px;z-index:20;opacity:0;visibility:hidden;transition:visibility 0s .5s,opacity .5s}
   .totop.on{opacity:1;visibility:visible;transition:visibility 0s,opacity .5s}
   .totop svg{display:block;width:44px;height:44px}
 
-  .hero{height:378px}
+  /* Startbild */
+  .hero{height:auto;padding:24px 14px}
   .hero-bg{height:100%;transform:none!important}
-  .hero:before{top:28px;left:14px;right:auto;bottom:auto;width:292px;height:305px}
-  .hero h1{top:58px;left:30px;width:260px;font-size:31px;line-height:36px;letter-spacing:1.55px;white-space:normal}
-  .hero p{top:218px;left:30px;width:260px;font-size:15px;line-height:21px;white-space:normal}
+  .hero:before{display:none}
+  .hero .wrap{height:auto;padding:30px 20px 28px;background:rgba(0,48,91,.65)}
+  .hero h1{position:static;font-size:clamp(27px,8vw,34px);line-height:1.18;letter-spacing:.05em;white-space:normal}
+  .hero p{position:static;margin-top:22px;font-size:16px;line-height:1.45;white-space:normal}
+  .hero .wrap .cta{position:static;margin-top:24px;height:42px;padding:0 18px;font-size:13px;line-height:40px}
 
+  /* Startseite: Beamte, Soldaten, Rechtsgebiete */
   .title{font-size:31px;line-height:36px}
+  .band{height:auto!important;padding-bottom:44px}
   .band:before{right:0;bottom:auto;height:128px}
-  .band .title{top:28px!important;left:29px}
-  .band .txt{left:50px;width:250px;font-size:15px;line-height:21px}
-  .band .txt:before{left:-21px;top:6px}
-  .band img{left:50px;width:180px;height:180px}
-  .beamte{height:678px}
-  .beamte .txt{top:154px}
-  .beamte img{top:474px}
-  .soldaten{height:631px}
-  .soldaten .title{left:30px}
-  .soldaten .txt{top:154px;font-size:14px;line-height:19.6px}
-  .soldaten .txt:before{left:-20px;top:8px}
-  .soldaten img{top:416px}
-  .gebiete{height:830px}
-  .gebiete .title{left:36px}
-  .gb{left:50px;width:250px}
-  .gb h3:before{left:-24px!important;top:7px!important}
-  .gb p{font-size:15px;line-height:20px;width:250px!important}
-  .g1{top:163px}.g1 p{margin-top:22px}
-  .g2{top:327px}.g2 p{margin-top:20px}
-  .g3{top:469px}.g3 p{margin-top:27px}
-  .g3 h3:before,.g4 h3:before{top:8px!important}
-  .g4{top:658px}.g4 p{margin-top:22px}
+  .band .wrap{height:auto;padding:0 20px}
+  .band .title{position:static;min-height:128px;padding:28px 0 0 9px}
+  .band .txt{position:relative;left:auto;top:auto!important;width:auto;margin:26px 0 0 30px;font-size:16px;line-height:1.5}
+  .band .txt:before{left:-21px;top:8px}
+  .band img{position:static;width:min(255px,72vw);height:auto;aspect-ratio:1;margin:30px 0 0 30px}
+  .gb{position:relative;left:auto!important;top:auto!important;width:auto;margin:28px 0 0 30px}
+  .gb h3{font-size:19px;line-height:26px}
+  .gb h3:before{left:-24px!important;top:8px!important}
+  .gb p{width:auto!important;margin-top:8px!important;font-size:16px;line-height:1.45}
 
-  .pg .wrap{height:auto;min-height:0;padding:34px 20px 0}
+  /* Unterseiten */
+  .pg .wrap{height:auto!important;min-height:0!important;padding:32px 20px 48px!important}
   .pg .title{position:static;font-size:31px;line-height:36px}
-  .pg .rt{position:static;width:280px;margin-top:0}
+  .pg .rt{position:static;width:auto!important;margin-top:28px!important;font-size:16px;line-height:1.55}
   .pg .rt ul{padding-left:25px}
+  .datenschutz .rt,.impressum .rt{overflow-wrap:break-word;hyphens:auto}
 
-  .anwalt .wrap{padding-bottom:45px}
-  .anwalt .title{font-size:29px;line-height:34px;text-align:center}
-  .anwalt .portrait{position:static;width:auto;margin-top:21px}
-  .anwalt .portrait img{width:150px;height:199px;margin:0 auto}
-  .anwalt .portrait .n{margin-top:22px;font-size:19px;line-height:26px;letter-spacing:.38px}
+  .anwalt .title{text-align:center}
+  .anwalt .portrait{position:static;width:auto;margin-top:24px}
+  .anwalt .portrait img{width:170px;height:auto;aspect-ratio:192/250;margin:0 auto}
+  .anwalt .portrait .n{margin-top:20px;font-size:19px;line-height:26px}
   .anwalt .portrait .r{margin-top:4px;font-size:15px;line-height:20px}
-  .anwalt .ln{width:189px;margin:12.4px auto 0}
-  .anwalt .rt{margin-top:69.6px!important;line-height:22px}
+  .anwalt .ln{width:189px;margin:12px auto 0}
+  .anwalt .rt{margin-top:40px!important}
 
-  .kosten .wrap{padding-bottom:35px}
-  .kosten .title{font-size:29px;line-height:40.6px}
-  .kosten .rt{margin-top:34px!important;font-size:14px;line-height:19.6px}
+  .karte .mapbox{position:static;width:auto;height:340px;margin-top:28px}
 
-  .impressum .wrap,.datenschutz .wrap{padding-bottom:46px}
-  .impressum .rt,.datenschutz .rt{margin-top:34px!important;font-size:14px;line-height:19.6px}
-
-  .karte .wrap{height:547px}
-  .karte .rt{width:230px;margin-top:34px!important;font-size:15px;line-height:22.5px}
-  .karte .mapbox{left:20px;top:228px;width:280px;height:240px}
-
-  .kontakt .wrap{height:2089px;padding:0}
-  .kontakt .title{position:absolute;left:20px;top:34px}
-  .kontakt .k1{position:absolute;left:20px;top:105px;width:232px;font-size:15px;line-height:22.5px}
-  .kontakt .k2{position:absolute;left:20px;top:342px;width:280px}
-  .kontakt .k2 ul,.anwalt .rt ul{padding-left:29px}
-  .form{left:21px;top:1278px;width:278px}
+  .kontakt .title,.kontakt .k1,.kontakt .k2,.form{position:static;width:auto}
+  .kontakt .k1{margin-top:24px!important;line-height:1.55}
+  .kontakt .k2{margin-top:32px!important}
+  .kontakt .k2>p:nth-of-type(1),.kontakt .k2>p:nth-of-type(2){line-height:1.55}
+  .form{margin-top:36px}
   .row2{display:block}
-  .form button{width:278px}
-  .consent{gap:12px;margin-top:1px}
-  .consent label{width:246px}
-  .consent br.m{display:inline}
+  .form input[type=text],.form input[type=email],.form textarea{height:46px;font-size:16px}
+  .form textarea{height:140px}
+  .form button{width:100%;height:48px}
+  .consent{align-items:flex-start}
+  .consent input{width:20px;height:20px;margin-top:2px}
+  .consent label{flex:1;width:auto;font-size:14px}
+  .consent br.m{display:none}
 
-  .ft{height:435px;font-size:16px;line-height:22.4px}
-  .ft .wrap{display:block;padding:36px 0 0 50px}
+  /* Fußzeile */
+  .ft{height:auto;padding-bottom:84px;font-size:16px;line-height:24px}
+  .ft .wrap{display:block;padding:36px 20px 0 30px}
   .ft .c1,.ft .c2{width:auto}
-  .ft .c2{margin-top:29px}
-  .ft .c3{padding-top:0;margin-top:29px;line-height:22px}
-  .ft .lk a{display:block;margin:0}
-  .ft .cr{margin-top:88px}
+  .ft .c2,.ft .c3{margin-top:24px}
+  .ft .c3{padding-top:0}
+  .ft .lk a{display:inline-block;margin:0 20px 0 0;line-height:40px}
+  .ft .cr{margin-top:16px}
 }
 
 
@@ -271,9 +258,6 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 .map-consent .alt{font-size:13px}
 
 @media (max-width:600px){
-  .hero .cta{top:auto;bottom:62px;left:30px;height:38px;padding:0 16px;font-size:13px;line-height:36px}
-  .hero{height:430px}
-  .hero:before{height:357px}
   .datenschutz .rt p>u:only-child{font-size:15px}
   .map-consent{font-size:13px;line-height:18px;gap:8px;padding:12px}
 }

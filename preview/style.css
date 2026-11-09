@@ -350,9 +350,8 @@ body.pale main{background:transparent}
 .notfound .rt a.btn{display:inline-block;margin-top:24px;height:42px;padding:0 22px;border:1px solid currentColor;font:700 14px/40px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none}
 .notfound .rt a.btn:hover{background:#fff;color:#00305b}
 
-/* ===== Foto „Der Anwalt“: kleiner Hinweis „KI-generiert“ (als Text über dem Bild) ===== */
+/* ===== Foto „Der Anwalt“ (Rahmen für das Bild) ===== */
 .anwalt .pic{position:relative;width:192px}
-.anwalt .pic .ki{position:absolute;left:5px;bottom:4px;font:600 6px/1 "Open Sans",sans-serif;letter-spacing:.2px;color:rgba(255,255,255,.8);text-shadow:0 0 2px rgba(0,0,0,.5);pointer-events:none}
 @media (max-width:979px){
   .anwalt .pic{width:170px;margin:0 auto}
   .anwalt .portrait .pic img{width:100%}

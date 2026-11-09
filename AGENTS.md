@@ -157,6 +157,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
   - Brevo-Authentifizierung – **nicht ändern:** `TXT brevo-code:…`, `CNAME brevo1._domainkey` und `brevo2._domainkey` (graue Wolke, „DNS only“).
   - Es darf nur **einen** DMARC-Eintrag geben. Den vorhandenen behalten, auch wenn Brevo einen anderen vorschlägt.
   - Der Eintrag `go.ra-abesser.de` gehört nicht zur Website; nicht ohne Rückfrage ändern.
+- **Web Analytics:** Cloudflare Web Analytics für ra-abesser.de ist **aus** (automatisches Einfügen des Skripts `static.cloudflareinsights.com` deaktiviert, 9. 11.). Nicht wieder einschalten, ohne die Datenschutzerklärung (Ziffer 8: „keine Analysedienste“) anzupassen.
 - **HTTPS:** Das Zertifikat stellt Cloudflare automatisch aus. Cloudflare → SSL/TLS: Modus **Full**, „Always Use HTTPS“ an, Mindestversion TLS 1.2. **Nicht** auf „Flexible“ stellen (führt mit GitHub Pages zu einer Umleitungsschleife). „Enforce HTTPS“ bei GitHub Pages ist nicht nötig, weil Cloudflare das übernimmt.
 
 ## Kontaktformular (Worker, Turnstile, Brevo)

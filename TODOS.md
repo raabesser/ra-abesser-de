@@ -15,7 +15,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Strato:** Nameserver auf Cloudflare umgestellt; Cloudflare meldet die Domain seit 8. 11. abends als „Active“.
 - [x] **Claude:** Fehlende E-Mail-Einträge (SPF und Strato-DKIM) in Cloudflare ergänzt – ohne sie konnte Tobias nicht mehr von info@ra-abesser.de senden (9. 11.).
 - [ ] **Tobias:** Testmail von info@ra-abesser.de an eine externe Adresse senden und bestätigen, dass der Versand wieder klappt.
-- [ ] **Claude:** Sobald Cloudflare die Domain als „Active“ meldet: Datei `CNAME` mit `ra-abesser.de` wieder anlegen (sie wurde für die Vorschau auf github.io vorübergehend entfernt) und prüfen, dass https://ra-abesser.de die neue Website mit gültigem Zertifikat zeigt.
+- [x] **Claude:** Datei `CNAME` mit `ra-abesser.de` wieder angelegt; https://ra-abesser.de zeigt die neue Website mit gültigem Zertifikat, die Vorschau liegt jetzt unter https://ra-abesser.de/preview/ (9. 11.).
 - [ ] **Einrichtung:** Danach unter GitHub → Repository → Settings → Pages prüfen, dass „Custom domain“ `ra-abesser.de` lautet.
 
 ## 2. Kontaktformular

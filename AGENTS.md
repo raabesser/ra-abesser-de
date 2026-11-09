@@ -13,7 +13,7 @@ Anleitung für Rechtsanwalt Tobias Abeßer, seine Mitarbeiterin, die sich um die
 ## Aktueller Stand
 
 - Die neue Website ist fertig und sieht aus wie der Wix-Entwurf. Vorschau: https://raabesser.github.io/ra-abesser-de/
-- Unter **ra-abesser.de** ist sie noch nicht erreichbar: Die Umstellung der Domain von Strato auf Cloudflare läuft noch. Bis dahin ist die eigene Domain bei GitHub bewusst abgeschaltet (es gibt keine Datei `CNAME`).
+- Die Website ist seit 9. 11. unter **https://ra-abesser.de** online (Domain bei Cloudflare, Datei `CNAME` vorhanden). Die Vorschau liegt unter https://ra-abesser.de/preview/.
 - Das **Kontaktformular** funktioniert erst, wenn die Website unter ra-abesser.de läuft (nicht in der Vorschau).
 - Was offen ist und wer es erledigt: **[TODOS.md](TODOS.md)**.
 

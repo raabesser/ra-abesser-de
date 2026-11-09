@@ -2,6 +2,7 @@
 // Receives the contact form, checks Turnstile, and sends the message via Brevo.
 // Optional attachments (anhaenge: [{name, content(base64)}]) are checked and passed on to Brevo.
 // Identical messages sent again within 10 minutes are not mailed twice.
+// Optional phone number (telefon) is included in the e-mail.
 // Secrets (set in Cloudflare, never in this file): TURNSTILE_SECRET, BREVO_API_KEY
 
 const TO = { email: "info@ra-abesser.de", name: "Rechtsanwalt Abeßer" };
@@ -89,6 +90,10 @@ export default {
       f[k] = v;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) return json(400, { ok: false, error: "field", field: "email" });
+    // Telefonnummer (seit dem Telefonfeld im Formular; leer erlaubt, damit ältere Formularstände weiter funktionieren)
+    const tel = typeof data.telefon === "string" ? data.telefon.trim() : "";
+    if (tel && !/^[0-9 +\/.()-]{5,40}$/.test(tel)) return json(400, { ok: false, error: "field", field: "telefon" });
+    f.telefon = tel;
     if (data.consent !== true) return json(400, { ok: false, error: "consent" });
     const att = checkAttachments(data.anhaenge);
     if (!att) return json(400, { ok: false, error: "files" });
@@ -112,12 +117,12 @@ export default {
     const fullName = `${f.vorname} ${f.name}`;
     const text =
       `Neue Anfrage über das Kontaktformular auf ra-abesser.de\n\n` +
-      `Name: ${fullName}\nE-Mail: ${f.email}\nBetreff: ${f.betreff}\n\n${f.nachricht}\n\n` +
+      `Name: ${fullName}\nE-Mail: ${f.email}\n` + (f.telefon ? `Telefon: ${f.telefon}\n` : "") + `Betreff: ${f.betreff}\n\n${f.nachricht}\n\n` +
       (att.info.length ? `Anhänge: ${att.info.join(", ")}\n\n` : "") +
       `— Einwilligung zur Datenschutzerklärung erteilt.`;
     const html =
       `<p>Neue Anfrage über das Kontaktformular auf ra-abesser.de</p>` +
-      `<p><b>Name:</b> ${esc(fullName)}<br><b>E-Mail:</b> ${esc(f.email)}<br><b>Betreff:</b> ${esc(f.betreff)}</p>` +
+      `<p><b>Name:</b> ${esc(fullName)}<br><b>E-Mail:</b> ${esc(f.email)}<br>` + (f.telefon ? `<b>Telefon:</b> ${esc(f.telefon)}<br>` : "") + `<b>Betreff:</b> ${esc(f.betreff)}</p>` +
       `<p style="white-space:pre-wrap">${esc(f.nachricht)}</p>` +
       (att.info.length ? `<p><b>Anhänge:</b> ${att.info.map(esc).join(", ")}</p>` : "") +
       `<p style="color:#888">Einwilligung zur Datenschutzerklärung erteilt.</p>`;

@@ -14,15 +14,16 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Strato:** Nameserver auf Cloudflare umgestellt; Cloudflare meldet die Domain seit 8. 11. abends als „Active“.
 - [x] **Claude:** Fehlende E-Mail-Einträge (SPF und Strato-DKIM) in Cloudflare ergänzt – ohne sie konnte Tobias nicht mehr von info@ra-abesser.de senden (9. 11.).
-- [ ] **Tobias:** Testmail von info@ra-abesser.de an eine externe Adresse senden und bestätigen, dass der Versand wieder klappt.
+- [x] **Tobias:** Versand von info@ra-abesser.de klappt wieder (9. 11.).
 - [x] **Claude:** Datei `CNAME` mit `ra-abesser.de` wieder angelegt; https://ra-abesser.de zeigt die neue Website mit gültigem Zertifikat, die Vorschau liegt jetzt unter https://ra-abesser.de/preview/ (9. 11.).
 - [ ] **Einrichtung:** Danach unter GitHub → Repository → Settings → Pages prüfen, dass „Custom domain“ `ra-abesser.de` lautet.
 
 ## 2. Kontaktformular
 
-- [ ] **Einrichtung:** Nach der Domain-Umstellung in Brevo bei der Domain `ra-abesser.de` auf „Authenticate this email domain“ klicken (die DNS-Einträge dafür sind in Cloudflare schon angelegt).
-- [ ] **Einrichtung:** In Brevo unter Sicherheit → „Autorisierte IPs“ prüfen, dass API-Schlüssel nicht auf bestimmte IP-Adressen beschränkt sind (der Cloudflare Worker hat wechselnde IP-Adressen).
-- [ ] **Claude:** Kontaktformular auf https://ra-abesser.de/kontakt/ mit einer Testnachricht prüfen.
+- [x] **Einrichtung:** Domain `ra-abesser.de` in Brevo authentifiziert (9. 11.).
+- [x] **Einrichtung:** IP-Sperre für API-Schlüssel in Brevo ist aus (9. 11.).
+- [x] **Claude/Einrichtung:** Testnachricht über https://ra-abesser.de/kontakt/ laut Brevo zugestellt (9. 11., 07:50).
+- [ ] **Tobias:** Entscheiden, ob Absender eine automatische Eingangsbestätigung erhalten sollen (Empfehlung: ohne Nachrichtentext, wegen Missbrauchsgefahr). Braucht Änderung am Worker und einen Satz in der Datenschutzerklärung.
 - [ ] **Tobias:** Bestätigen, dass die Testnachricht im Postfach `info@ra-abesser.de` angekommen ist (auch im Spam-Ordner nachsehen).
 
 ## 3. Rechtliches

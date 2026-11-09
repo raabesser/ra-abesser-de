@@ -55,5 +55,5 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 ## 6. Später / optional
 
-- [ ] **Tobias/Einrichtung:** Wix-Website abschalten (entschieden 9. 11.): bei Wix anmelden → Website „aktuell“ → Einstellungen → „Website nicht mehr veröffentlichen“ (Unpublish). Claude hat keinen Wix-Zugang. Danach prüft Claude, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist. Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.
+- [x] **Tobias/Einrichtung:** Wix-Website abgeschaltet; Claude hat geprüft, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist (Fehler 404, 9. 11.). Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.
 - [x] **Claude:** Schriftarten werden lokal ausgeliefert, Datenschutzerklärung angepasst (9. 11.).

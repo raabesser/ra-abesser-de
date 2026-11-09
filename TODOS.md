@@ -52,8 +52,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Alle Seiten dem Wix-Entwurf (https://info0239645.wixsite.com/aktuell) nachgebaut, Desktop und Smartphone.
 - [x] **Claude:** Seitentitel (Text im Browser-Tab) enden jetzt auf „| Rechtsanwalt Abeßer“ statt wie bei Wix auf „| Aktuell“.
 - [x] **Tobias:** Design-Feinschliff (blauer Hintergrund u. a.) freigegeben und auf der echten Website veröffentlicht (9. 11.).
-- [x] **Claude:** Darstellung auf Handys im Querformat und Tablets (hoch und quer) repariert – vorher musste man dort seitlich wischen. Geprüft auf 9 Geräten in beiden Ausrichtungen (9. 11., **in der Vorschau**).
-- [ ] **Tobias:** Neue Handy-quer-/Tablet-Darstellung unter https://ra-abesser.de/preview/ ansehen und für die echte Website freigeben („Vorschau veröffentlichen“).
+- [x] **Claude:** Darstellung auf Handys im Querformat und Tablets (hoch und quer) repariert – vorher musste man dort seitlich wischen. Geprüft auf 9 Geräten in beiden Ausrichtungen (9. 11.).
+- [x] **Tobias:** Handy-quer-/Tablet-Darstellung freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
 ## 6. Später / optional

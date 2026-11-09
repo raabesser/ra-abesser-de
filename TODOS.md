@@ -16,7 +16,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Fehlende E-Mail-Einträge (SPF und Strato-DKIM) in Cloudflare ergänzt – ohne sie konnte Tobias nicht mehr von info@ra-abesser.de senden (9. 11.).
 - [x] **Tobias:** Versand von info@ra-abesser.de klappt wieder (9. 11.).
 - [x] **Claude:** Datei `CNAME` mit `ra-abesser.de` wieder angelegt; https://ra-abesser.de zeigt die neue Website mit gültigem Zertifikat, die Vorschau liegt jetzt unter https://ra-abesser.de/preview/ (9. 11.).
-- [ ] **Einrichtung:** Danach unter GitHub → Repository → Settings → Pages prüfen, dass „Custom domain“ `ra-abesser.de` lautet.
+- [x] GitHub Pages nutzt die eigene Domain `ra-abesser.de` (github.io leitet dorthin weiter, geprüft 9. 11.).
 
 ## 2. Kontaktformular
 
@@ -42,7 +42,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Claude:** Alle Seiten dem Wix-Entwurf (https://info0239645.wixsite.com/aktuell) nachgebaut, Desktop und Smartphone.
 - [x] **Claude:** Seitentitel (Text im Browser-Tab) enden jetzt auf „| Rechtsanwalt Abeßer“ statt wie bei Wix auf „| Aktuell“.
-- [ ] **Tobias:** Design-Feinschliff in der Vorschau ansehen (https://raabesser.github.io/ra-abesser-de/preview/) und für die echte Website freigeben: Kopfzeile bleibt beim Scrollen oben stehen, Startbild bewegt sich beim Scrollen leicht mit (wie bei Wix), Formularfelder färben sich beim Anklicken grau und das Häkchen ist ein echtes Häkchen, „Nach oben“-Knopf erscheint auf dem Handy erst nach dem Scrollen, Menüeinträge auf dem Handy etwas eingerückt, zwei Links in der Datenschutzerklärung ohne Unterstreichung, hellblauer Seitenhintergrund unter kurzen Seiten.
+- [ ] **Tobias:** Design-Feinschliff in der Vorschau ansehen (https://ra-abesser.de/preview/) und für die echte Website freigeben: Kopfzeile bleibt beim Scrollen oben stehen, Startbild bewegt sich beim Scrollen leicht mit (wie bei Wix), Formularfelder färben sich beim Anklicken grau und das Häkchen ist ein echtes Häkchen, „Nach oben“-Knopf erscheint auf dem Handy erst nach dem Scrollen, Menüeinträge auf dem Handy etwas eingerückt, zwei Links in der Datenschutzerklärung ohne Unterstreichung, hellblauer Seitenhintergrund unter kurzen Seiten.
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
 ## 6. Später / optional

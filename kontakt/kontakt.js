@@ -70,8 +70,10 @@
       return fetch("/api/kontakt", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) });
     }).then(function (r) { return r.json().catch(function () { return { ok: false }; }); }).then(function (d) {
       if (d.ok) {
-        f.reset(); show(); sb.disabled = false; if (window.turnstile) turnstile.reset();
-        fs.textContent = "Vielen Dank! Ihre Nachricht wurde gesendet. Rechtsanwalt Abeßer meldet sich zeitnah bei Ihnen.";
+        // Hide the form after success so the same message is not sent twice.
+        f.reset(); show(); f.classList.add("sent");
+        fs.textContent = "Vielen Dank! Ihre Nachricht wurde gesendet. Rechtsanwalt Abeßer meldet sich zeitnah bei Ihnen. Sie müssen nichts weiter tun.";
+        fs.scrollIntoView({ block: "center" });
       } else fail(ERR[d.error] || ERR.send);
     }).catch(function () { fail(ERR.send); });
   });

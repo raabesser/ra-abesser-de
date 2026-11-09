@@ -12,16 +12,16 @@ Anleitung für Rechtsanwalt Tobias Abeßer, seine Mitarbeiterin, die sich um die
 
 ## Aktueller Stand
 
-- Die neue Website ist fertig und sieht aus wie der Wix-Entwurf. Vorschau: https://raabesser.github.io/ra-abesser-de/
+- Die neue Website ist fertig und sieht aus wie der Wix-Entwurf.
 - Die Website ist seit 9. 11. unter **https://ra-abesser.de** online (Domain bei Cloudflare, Datei `CNAME` vorhanden). Die Vorschau liegt unter https://ra-abesser.de/preview/.
-- Das **Kontaktformular** funktioniert erst, wenn die Website unter ra-abesser.de läuft (nicht in der Vorschau).
+- Das **Kontaktformular** funktioniert (getestet 9. 11.), allerdings nur auf der echten Website, nicht in der Vorschau. Absender erhalten bewusst keine Kopie per E-Mail (Missbrauchsgefahr).
 - Was offen ist und wer es erledigt: **[TODOS.md](TODOS.md)**.
 
 ## Mit Claude an der Website arbeiten
 
 Sie brauchen keine Programmierkenntnisse. Sie schreiben Claude auf Deutsch, was Sie möchten – Claude ändert die Dateien in der Vorschau, zeigt Ihnen das Ergebnis und übernimmt es nach Freigabe durch Tobias in die echte Website.
 
-**Empfehlung: die Claude-Desktop-App** (Mac/Windows, https://claude.ai/download). Nur dort sehen Sie die Website direkt rechts neben dem Chat. Im Webbrowser oder auf dem Handy geht das auch, Sie sehen Änderungen dann aber nur als Bilder im Chat oder erst nach dem Veröffentlichen unter https://raabesser.github.io/ra-abesser-de/ – das dauert pro Änderung jeweils 1–2 Minuten.
+**Empfehlung: die Claude-Desktop-App** (Mac/Windows, https://claude.ai/download). Nur dort sehen Sie die Website direkt rechts neben dem Chat. Im Webbrowser oder auf dem Handy geht das auch, Sie sehen Änderungen dann aber nur als Bilder im Chat oder erst nach dem Veröffentlichen unter https://ra-abesser.de/preview/ – das dauert pro Änderung jeweils 1–2 Minuten.
 
 **In 3 Schritten loslegen**
 1. Die Claude-Desktop-App öffnen (oder https://claude.ai/code) und mit Ihrem Konto anmelden.
@@ -50,7 +50,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 |---|---|---|
 | Zweck | Ausprobieren, Entwürfe, Design-Ideen | Was Besucher sehen |
 | Wer arbeitet daran | Mitarbeiterin und Tobias, jederzeit | – (wird nur aus der Vorschau übernommen) |
-| Claude veröffentlicht | **sofort, ohne Rückfrage** – nach 1–2 Minuten online unter https://raabesser.github.io/ra-abesser-de/preview/ | **nur nach Freigabe durch Tobias** |
+| Claude veröffentlicht | **sofort, ohne Rückfrage** – nach 1–2 Minuten online unter https://ra-abesser.de/preview/ | **nur nach Freigabe durch Tobias** |
 | Bei Google | nein (gesperrt) | ja |
 
 1. **Wunsch äußern:** Sie sagen Claude, was geändert werden soll – gern mit markiertem Screenshot. Claude ändert die **Vorschau** und veröffentlicht sie gleich.
@@ -122,12 +122,12 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 
 - **Wenn Tobias die Website sehen will** („Zeig mir die Website“, „Wie sieht das aus?“, nach jeder Änderung): Die Website **im Browserfenster rechts neben dem Chat** anzeigen – das ist der Standard.
   - Das Browserfenster ist der eingebaute Browser der **Claude-Desktop-App** (Werkzeuge `mcp__Claude_Browser__*` bzw. in Cloud-Sitzungen `mcp__remote-devices__Claude_Browser__*`, ggf. erst mit `enable__mcp__remote-devices__Claude_Browser` einschalten). Gewünschte Seite mit `preview_start` öffnen und Tobias in einem Satz sagen, dass sie jetzt rechts zu sehen ist.
-  - Dieser Browser läuft auf Tobias' Computer und erreicht **keinen** lokalen Server (`localhost`) der Cloud-Sitzung. Er kann nur veröffentlichte Adressen öffnen: https://raabesser.github.io/ra-abesser-de/ (Stand `main`) bzw. später https://ra-abesser.de. Unveröffentlichte Änderungen deshalb per Screenshot zeigen.
+  - Dieser Browser läuft auf Tobias' Computer und erreicht **keinen** lokalen Server (`localhost`) der Cloud-Sitzung. Er kann nur veröffentlichte Adressen öffnen: https://ra-abesser.de (Stand `main`) bzw. https://ra-abesser.de/preview/. Unveröffentlichte Änderungen deshalb per Screenshot zeigen.
   - Fehlen die Browser-Werkzeuge (Sitzung im Webbrowser oder auf dem Handy, oder nicht mit dem Computer verbunden): sofort Screenshots (Desktop 1440 × 900 und iPhone-Emulation, `deviceScaleFactor: 2`) im Chat zeigen und erklären, dass das Browserfenster nur in der Desktop-App verfügbar ist.
-- **Vorschau-Kopie `preview/`:** eigenständige Kopie der Website zum Ausprobieren, online unter https://raabesser.github.io/ra-abesser-de/preview/ bzw. später https://ra-abesser.de/preview/. Gestaltungsversuch derzeit: blauer Hintergrund (CSS-Block „VORSCHAU: blauer Hintergrund“ am Ende von `preview/style.css`; gehört zum Inhalt der Vorschau und wird nur übernommen, wenn Tobias das möchte). Erkennungsmerkmale, die **nur** in `preview/` stehen dürfen: roter Balken `<div class="preview-banner">` direkt nach `<body>` (CSS-Block „VORSCHAU-BANNER“ am Ende von `preview/style.css`), `<meta name="robots" content="noindex, nofollow">` und „VORSCHAU – “ im `<title>`. Änderungen an der echten Website betreffen `preview/` nicht und umgekehrt.
+- **Vorschau-Kopie `preview/`:** eigenständige Kopie der Website zum Ausprobieren, online unter https://ra-abesser.de/preview/. Gestaltungsversuch derzeit: blauer Hintergrund (CSS-Block „VORSCHAU: blauer Hintergrund“ am Ende von `preview/style.css`; gehört zum Inhalt der Vorschau und wird nur übernommen, wenn Tobias das möchte). Erkennungsmerkmale, die **nur** in `preview/` stehen dürfen: roter Balken `<div class="preview-banner">` direkt nach `<body>` (CSS-Block „VORSCHAU-BANNER“ am Ende von `preview/style.css`), `<meta name="robots" content="noindex, nofollow">` und „VORSCHAU – “ im `<title>`. Änderungen an der echten Website betreffen `preview/` nicht und umgekehrt.
 - **Vorschau veröffentlichen** (wenn Tobias sagt, die Vorschau soll veröffentlicht werden): geänderte Inhalte aus `preview/` in die echte Website übernehmen und dabei **sicherstellen**, dass in den übernommenen Dateien Banner-`div`, Banner-CSS-Block, robots-`noindex` und „VORSCHAU – “ im Titel **entfernt** sind; Pfade prüfen (keine Verweise auf `preview/`); Cache-Versionen `?v=` in allen HTML-Dateien hochzählen. Danach prüfen: `grep -rn "preview-banner\|VORSCHAU\|noindex" --include=*.html --include=*.css . | grep -v "^./preview/"` darf nichts finden. `preview/` selbst bleibt mit Banner bestehen.
 - **Suchmaschinen:** `robots.txt` sperrt `/preview/` (`Disallow`), `sitemap.xml` listet nur die echten Seiten unter https://ra-abesser.de/. Neue echte Seiten in `sitemap.xml` ergänzen, `preview/` dort **nie** eintragen. Hinweis: `robots.txt` wirkt nur unter der eigenen Domain (Wurzel `ra-abesser.de/robots.txt`), nicht auf github.io; dort schützt nur das `noindex`.
-- **Online:** https://raabesser.github.io/ra-abesser-de/ zeigt den Stand von `main` (solange die Datei `CNAME` fehlt; danach leitet die Adresse auf ra-abesser.de weiter).
+- **Online:** https://ra-abesser.de zeigt den Stand von `main` (Cloudflare kann bis zu einigen Minuten zwischenspeichern). https://raabesser.github.io/ra-abesser-de/ leitet auf ra-abesser.de weiter.
 - **Lokal:**
   ```bash
   python3 -m http.server 8000
@@ -149,7 +149,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
   ```bash
   dig NS ra-abesser.de @a.nic.de +norecurse
   ```
-- **Eigene Domain bei GitHub:** Datei `CNAME` mit Inhalt `ra-abesser.de` im Repository; unter Settings → Pages muss „Custom domain“ `ra-abesser.de` lauten. Die Datei ist derzeit **entfernt**, damit die Vorschau auf github.io funktioniert – wieder anlegen, sobald die Cloudflare-Zone „Active“ ist.
+- **Eigene Domain bei GitHub:** Datei `CNAME` mit Inhalt `ra-abesser.de` im Repository; unter Settings → Pages muss „Custom domain“ `ra-abesser.de` lauten. Die Datei ist seit 9. 11. wieder vorhanden (Cloudflare-Zone „Active“ seit 8. 11.) – **nicht löschen**, sonst zeigt ra-abesser.de eine 404-Fehlerseite.
 - **DNS** (Cloudflare → `ra-abesser.de` → DNS → Records). Vor jeder Änderung die aktuelle Liste sichern (z. B. Export).
   - Website: 4 × `A` und 4 × `AAAA` für `ra-abesser.de` auf GitHub Pages (185.199.108–111.153 bzw. 2606:50c0:8000–8003::153), `CNAME www` → `raabesser.github.io`. Alle mit orangener Wolke („Proxied“).
   - E-Mail (Strato) – **nicht ändern:** `MX` → `smtpin.rzone.de` (auch für `*`), `_dmarc` (`p=reject`), `_domainkey`, `autoconfig` (CNAME → `autoconfigure.strato.de`, graue Wolke „DNS only“), `_autodiscover`, SPF `TXT ra-abesser.de "v=spf1 redirect=smtp.rzone.de"` sowie die DKIM-Einträge `CNAME strato-dkim-0002._domainkey` → `strato-dkim-0002._domainkey.strato.de` und `strato-dkim-0003._domainkey` → `strato-dkim-0003._domainkey.strato.de` (graue Wolke). **Ohne SPF und DKIM lehnt Strato wegen `p=reject` den Versand von info@ra-abesser.de ab** (Fehlermeldung „delivery rejected because of the DMARC policy“). Diese Einträge hatte Strato früher automatisch gesetzt; beim Umzug zu Cloudflare fehlten sie und wurden am 9. 11. ergänzt.
@@ -182,7 +182,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 - **Arbeitsablauf** siehe Teil 1 „So arbeiten wir“: Wünsche immer zuerst in `preview/` umsetzen und sofort veröffentlichen; in die echte Website nur auf „Vorschau veröffentlichen“ bzw. ausdrückliche Freigabe von **Tobias** übernehmen (Freigabe durch die Mitarbeiterin reicht dafür nicht; schreibt sie ausdrücklich, dass Tobias die konkreten Änderungen freigegeben hat, gilt das als seine Freigabe). Fragt die Mitarbeiterin danach: Zusammenfassung der Änderungen für Tobias vorbereiten.
 - **Zu Beginn jeder Sitzung zusätzlich:** `git fetch origin main` und auf den aktuellen Stand gehen; mit `list_sessions` (Claude-Code-Remote-Werkzeuge) prüfen, ob eine andere Sitzung gerade am Repository arbeitet, und dich ggf. per `send_message` abstimmen (wer ändert welche Dateien, wer pusht wann). Abschnitt „In Arbeit“ in `TODOS.md` lesen und eigene Arbeit dort eintragen/austragen.
 - **Zu Beginn jeder Sitzung, ungefragt:** `TODOS.md` lesen, den Stand in 2–3 Sätzen zusammenfassen, offene Punkte trennen in „Das müssten Sie / die Einrichtung erledigen“ und „Das kann ich sofort machen“, und mit einer konkreten Frage enden („Soll ich mit … anfangen?“). Fehlt `TODOS.md`, das sagen und die offenen Punkte aus diesem Dokument ableiten.
-- **Gleich in der ersten Antwort, falls die Browser-Werkzeuge fehlen** (Sitzung im Webbrowser oder auf dem Handy): kurz die **Claude-Desktop-App** empfehlen (https://claude.ai/download), weil nur dort die Website rechts neben dem Chat angezeigt werden kann. Als Alternative nennen: weiter im Web arbeiten, Änderungen als Bilder im Chat ansehen oder veröffentlichen und unter https://raabesser.github.io/ra-abesser-de/ ansehen – mit dem Hinweis, dass das pro Änderung 1–2 Minuten dauert.
+- **Gleich in der ersten Antwort, falls die Browser-Werkzeuge fehlen** (Sitzung im Webbrowser oder auf dem Handy): kurz die **Claude-Desktop-App** empfehlen (https://claude.ai/download), weil nur dort die Website rechts neben dem Chat angezeigt werden kann. Als Alternative nennen: weiter im Web arbeiten, Änderungen als Bilder im Chat ansehen oder veröffentlichen und unter https://ra-abesser.de/preview/ ansehen – mit dem Hinweis, dass das pro Änderung 1–2 Minuten dauert.
 - **Fragt Tobias oder die Mitarbeiterin nach Screenshots** (wie man sie macht, welches Werkzeug, wie man Stellen markiert): **Shottr** empfehlen (Mac, https://shottr.cc; aufnehmen, Pfeile/Rahmen/Text einzeichnen, kopieren, in den Chat einfügen), unter Windows das Snipping Tool (Windows + Umschalt + S). Dabei immer darauf hinweisen, dass die **Claude-Desktop-App mit dem Browserfenster neben dem Chat am besten** ist, weil man Änderungen dort live sieht – Screenshots dann nur noch, um Claude eine Stelle zu zeigen.
 - Live-Aktualisierung im Browserfenster: Läuft die Sitzung lokal in der Desktop-App, die Website lokal ausliefern und mit `preview_start` öffnen – Änderungen sind nach dem Neuladen sofort sichtbar. In Cloud-Sitzungen die Vorschau sofort veröffentlichen und `…/preview/` im Browserfenster neu laden (1–2 Minuten Verzögerung).
 - Biete aktiv an, was möglich ist: die Website rechts im Browserfenster neben dem Chat zeigen (Desktop-App, siehe „Vorschau“; sonst Screenshots), Umsetzung markierter Screenshots, Veröffentlichen.

@@ -23,7 +23,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Einrichtung:** Domain `ra-abesser.de` in Brevo authentifiziert (9. 11.).
 - [x] **Einrichtung:** IP-Sperre für API-Schlüssel in Brevo ist aus (9. 11.).
 - [x] **Claude/Einrichtung:** Testnachricht über https://ra-abesser.de/kontakt/ laut Brevo zugestellt (9. 11., 07:50).
-- [ ] **Tobias:** Entscheiden, ob Absender eine automatische Eingangsbestätigung erhalten sollen (Empfehlung: ohne Nachrichtentext, wegen Missbrauchsgefahr). Braucht Änderung am Worker und einen Satz in der Datenschutzerklärung.
+- [x] Entschieden (9. 11.): Absender erhalten **keine** Kopie und keine Eingangsbestätigung per E-Mail (Missbrauchsgefahr als Spam-Versender). Die Erfolgsmeldung im Formular genügt.
 - [ ] **Tobias:** Bestätigen, dass die Testnachricht im Postfach `info@ra-abesser.de` angekommen ist (auch im Spam-Ordner nachsehen).
 
 ## 3. Rechtliches

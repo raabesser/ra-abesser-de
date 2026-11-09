@@ -56,6 +56,11 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Handy-quer-/Tablet-Darstellung freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [ ] **Tobias:** Website auf Computer und Smartphone ansehen und Änderungswünsche an Claude geben (gern als Screenshot mit Markierungen).
 
+- [x] **Claude:** In der Vorschau umgesetzt (9. 11.): eigene Seitenbeschreibung für jede Seite (Google-Suchergebnisse), Kanzlei-Angaben für Google (strukturierte Daten auf der Startseite), Knopf „Anrufen“ in der Kopfzeile auf Handys/Tablets, eigene Fehlerseite (`preview/404.html`), Startbild im WebP-Format und für Handys verkleinert (220 KB → 46 KB). Lesbarkeit der Farben geprüft – erfüllt WCAG AA, keine Änderung nötig. Auf Wunsch von Tobias außerdem: Hinweis „KI-generiert“ auf dem Foto „Der Anwalt“ deutlich verkleinert (aus dem Bild entfernt, stattdessen kleiner Text über dem Bild).
+- [ ] **Tobias:** Diese Änderungen unter https://ra-abesser.de/preview/ ansehen und freigeben („Vorschau veröffentlichen“).
+- [ ] **Tobias:** Echtes Porträtfoto für „Der Anwalt“ an Claude schicken (das jetzige ist als „KI-GENERIERT“ gekennzeichnet).
+- [ ] **Tobias/Einrichtung (optional):** Google-Unternehmensprofil anlegen bzw. prüfen (https://business.google.com) – Claude hilft bei den Texten.
+
 ## 6. Später / optional
 
 - [x] **Tobias/Einrichtung:** Wix-Website abgeschaltet; Claude hat geprüft, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist (Fehler 404, 9. 11.). Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.

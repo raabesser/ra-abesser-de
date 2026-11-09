@@ -329,6 +329,35 @@ body.pale main{background:transparent}
   .menu nav a{line-height:44px}
 }
 
+/* ===== Startbild: modernes Bildformat (WebP), auf Handys/Tablets in kleinerer Größe ===== */
+.hero-bg{background-image:url(img/hero.jpg);background-image:image-set(url(img/hero.webp) type("image/webp"),url(img/hero.jpg) type("image/jpeg"))}
+@media (max-width:979px){
+  .hero-bg{background-image:url(img/hero-m.jpg);background-image:image-set(url(img/hero-m.webp) type("image/webp"),url(img/hero-m.jpg) type("image/jpeg"))}
+}
+
+/* ===== Handys und Tablets: Knopf „Anrufen“ in der Kopfzeile ===== */
+.call{display:none}
+@media (max-width:979px){
+  .call{display:block;position:absolute;right:58px;top:7px;width:46px;height:50px;color:var(--on-bg,#00305b)}
+  .call svg{position:absolute;left:12px;top:14px;width:22px;height:22px;fill:currentColor}
+  .call:focus-visible{outline-offset:-4px}
+}
+
+/* ===== Fehlerseite (404) ===== */
+.notfound .wrap{min-height:max(420px,calc(100vh - 190px));padding:60px 20px}
+.nw{white-space:nowrap}
+.notfound .rt{margin-top:28px;max-width:640px}
+.notfound .rt a.btn{display:inline-block;margin-top:24px;height:42px;padding:0 22px;border:1px solid currentColor;font:700 14px/40px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none}
+.notfound .rt a.btn:hover{background:#fff;color:#00305b}
+
+/* ===== Foto „Der Anwalt“: kleiner Hinweis „KI-generiert“ (als Text über dem Bild) ===== */
+.anwalt .pic{position:relative;width:192px}
+.anwalt .pic .ki{position:absolute;left:5px;bottom:4px;font:600 6px/1 "Open Sans",sans-serif;letter-spacing:.2px;color:rgba(255,255,255,.8);text-shadow:0 0 2px rgba(0,0,0,.5);pointer-events:none}
+@media (max-width:979px){
+  .anwalt .pic{width:170px;margin:0 auto}
+  .anwalt .portrait .pic img{width:100%}
+}
+
 /* ===== VORSCHAU-BANNER =====
    Nur in preview/. Beim Übernehmen in die echte Website diesen Block entfernen
    (und in jeder HTML-Datei: <div class="preview-banner">, robots-noindex, „VORSCHAU – “ im Titel). */

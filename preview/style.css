@@ -1,6 +1,9 @@
 /* ra-abesser.de – reproduces the Wix draft https://info0239645.wixsite.com/aktuell
    Desktop: 980px content column (like Wix). Phones: fixed 320px layout that the
    browser scales to the screen (viewport width=320, set in each page's <head>). */
+/* Schriftarten liegen auf der eigenen Website (keine Übertragung an Google). */
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:300 800;font-display:swap;src:url(fonts/open-sans.woff2) format("woff2")}
+@font-face{font-family:"Raleway";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/raleway.woff2) format("woff2")}
 :root{--navy:#00305b;--blue:#0f4c85;--grey:rgba(211,211,211,.4)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -225,6 +228,54 @@ body.pale main{background:#fff}
   .ft .c3{padding-top:0;margin-top:29px;line-height:22px}
   .ft .lk a{display:block;margin:0}
   .ft .cr{margin-top:88px}
+}
+
+
+/* ================= Optimierungen (Technik und behutsame Optik) ================= */
+/* Tastatur und Barrierefreiheit */
+.skip{position:absolute;left:12px;top:-60px;z-index:100;padding:10px 16px;background:#fff;color:#00305b;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.skip:focus{top:12px}
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Kopfzeile: dezenter Schatten, sobald gescrollt wird */
+.hd{transition:box-shadow .3s}
+.hd.scrolled{box-shadow:0 2px 12px rgba(0,0,0,.18)}
+/* Menü: feine Unterstreichung beim Überfahren und für die aktuelle Seite */
+.hd nav a{position:relative;transition:color .2s}
+.hd nav a:after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transition:transform .25s}
+.hd nav a:hover:after,.hd nav a.active:after{transform:scaleX(1)}
+
+/* Startbild: Schaltfläche „Kontakt aufnehmen“ */
+.hero .cta{position:absolute;top:302px;left:20px;display:inline-block;padding:0 22px;height:42px;border:1px solid #fff;color:#fff;font:700 14px/40px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none;transition:background .2s,color .2s}
+.hero .cta:hover{background:#fff;color:#00305b}
+
+/* Bilder mit leichtem Schatten */
+.band img{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.anwalt .portrait img{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+
+/* Lange Texte (Datenschutz): Zwischenüberschriften fett statt unterstrichen */
+.datenschutz .rt p>u:only-child{text-decoration:none;font-weight:700;font-size:17px;letter-spacing:.2px}
+.rt a{text-underline-offset:2px}
+
+/* Formular und Fußzeile: weiche Übergänge */
+.form button,.form input,.form textarea{transition:background .2s,border-color .2s}
+.ft a{transition:opacity .2s}
+.ft a:hover{opacity:.75}
+
+/* Karte: wird erst nach Klick geladen */
+.map-consent{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:100%;padding:20px;background:#eef3f7;color:#00305b;text-align:center;font-size:14px;line-height:20px}
+.map-consent p{max-width:520px}
+.map-consent button{height:40px;padding:0 24px;border:0;background:#0f4c85;color:#fff;font:700 14px "Open Sans",sans-serif;cursor:pointer;transition:background .2s}
+.map-consent button:hover{background:#00305b}
+.map-consent .alt{font-size:13px}
+
+@media (max-width:600px){
+  .hero .cta{top:auto;bottom:62px;left:30px;height:38px;padding:0 16px;font-size:13px;line-height:36px}
+  .hero{height:430px}
+  .hero:before{height:357px}
+  .datenschutz .rt p>u:only-child{font-size:15px}
+  .map-consent{font-size:13px;line-height:18px;gap:8px;padding:12px}
 }
 
 /* ===== VORSCHAU: blauer Hintergrund =====

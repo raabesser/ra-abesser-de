@@ -62,7 +62,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Echtes Porträtfoto für „Der Anwalt“ geschickt; in der Vorschau eingebaut (9. 11.).
 - [ ] **Tobias/Einrichtung (optional):** Google-Unternehmensprofil anlegen bzw. prüfen (https://business.google.com) – Claude hilft bei den Texten.
 
-- [x] **Claude:** Kontaktformular in der Vorschau (9. 11., Wunsch Tobias): Hinweise auf Amtsbezeichnung/Dienstgrad und Geburtsdatum gestrichen, neues Pflichtfeld „Telefonnummer“; Datenschutzerklärung Ziffer 7 um „Ihre Telefonnummer“ ergänzt.
+- [x] **Claude:** Kontaktformular in der Vorschau (9. 11., Wunsch Tobias): Hinweistext „Nennen Sie dabei bitte … Grund Ihrer Anfrage mit“ ganz gestrichen, neues Pflichtfeld „Telefonnummer“; Datenschutzerklärung Ziffer 7 um „Ihre Telefonnummer“ ergänzt.
 - [ ] **Tobias:** Telefonfeld und ergänzte Datenschutzerklärung freigeben („Vorschau veröffentlichen“). **Wichtig für Claude:** Beim Veröffentlichen zuerst den Worker (`worker/kontakt.js`) so erweitern, dass er das Feld `telefon` annimmt und in die E-Mail schreibt, und bei Cloudflare hochladen – erst danach die Website-Dateien übernehmen. Sonst fehlt die Telefonnummer in den Formular-Mails.
 
 ## 6. Später / optional

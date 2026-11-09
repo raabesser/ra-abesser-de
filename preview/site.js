@@ -17,7 +17,7 @@
 // Startbild: wie bei Wix fenstergroß, scrollt mit 0,2-facher Geschwindigkeit (nur Desktop).
 (function () {
   var hero = document.querySelector(".hero"), bg = hero && hero.querySelector(".hero-bg");
-  var mq = window.matchMedia("(min-width:601px)");
+  var mq = window.matchMedia("(min-width:980px)");
   var tick = false;
   function update() {
     tick = false;

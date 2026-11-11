@@ -356,3 +356,14 @@ body.pale main{background:transparent}
   .anwalt .pic{width:170px;margin:0 auto}
   .anwalt .portrait .pic img{width:100%}
 }
+
+/* ---------- Ratgeber „Beamte vor Gericht“ ---------- */
+.ratgeber .wrap{padding:43px 20px 48px}
+.ratgeber .rt{margin-top:34px;max-width:760px;line-height:22px}
+.ratgeber .rt h2{margin:34px 0 12px;font:700 20px/26px Raleway,sans-serif;letter-spacing:.4px}
+.ratgeber .rt li{margin-top:8px}
+.ratgeber .rt li ul{margin-top:4px}
+.ratgeber .rt li li{margin-top:2px;list-style:circle}
+.ratgeber .rt .gruss{margin-top:34px;font-weight:700}
+.ratgeber .rt .gruss+p{margin-top:12px}
+.band .txt a.mehr{display:inline-block;margin-top:10px;color:inherit;font-weight:700;text-underline-offset:2px}

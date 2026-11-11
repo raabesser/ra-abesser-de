@@ -65,7 +65,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Kontaktformular in der Vorschau (9. 11., Wunsch Tobias): Hinweistext „Nennen Sie dabei bitte … Grund Ihrer Anfrage mit“ ganz gestrichen, neues Pflichtfeld „Telefonnummer“; Datenschutzerklärung Ziffer 7 um „Ihre Telefonnummer“ ergänzt.
 - [x] **Tobias:** Telefonfeld, gestrichener Hinweistext und ergänzte Datenschutzerklärung freigegeben; Worker mit Feld `telefon` bei Cloudflare hochgeladen und getestet, Website veröffentlicht; Testnachricht von Tobias mit Telefonnummer angekommen (9. 11.).
 
-- [ ] **Tobias:** Neue Seite „Beamte vor Gericht“ (Text aus Word-Datei „Als Beamter vor Gericht“, offensichtliche Tippfehler korrigiert) samt Link „Leitfaden für Beamte vor Gericht“ im Abschnitt „Beamte“ der Startseite in der Vorschau prüfen und freigeben (11. 11.). Beim Veröffentlichen Seite in `sitemap.xml` ergänzen.
+- [x] **Tobias:** Neue Seite „Beamte vor Gericht“ (Text aus Word-Datei, mit Ausnahme zur Wahrheitspflicht) und Link „Leitfaden für Beamte vor Gericht“ auf der Startseite freigegeben; veröffentlicht und in `sitemap.xml` eingetragen (11. 11.).
 
 ## 6. Später / optional
 

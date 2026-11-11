@@ -71,6 +71,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Neue Seite „Leitfaden – Disziplinarverfahren gegen Beamte“ samt Link im Abschnitt „Beamte“ der Startseite freigegeben; veröffentlicht, in `sitemap.xml` eingetragen, `style.css?v=18` (11. 11.).
 
+- [ ] **Tobias:** Überarbeitete Gestaltung der drei Leitfäden in der Vorschau prüfen und freigeben (11. 11.): Überschrift „Leitfaden“ + Thema, Inhaltsübersicht, Zwischenüberschriften, Hinweiskästen für Beispielsätze, Disziplinarverfahren als 6 Schritte, Kontakt-Kasten und „Weitere Leitfäden“ am Ende; Startseiten-Link „Leitfaden – Soldat/in unter Verdacht“. Beim Veröffentlichen: CSS-Block „Leitfäden“ übernehmen, `style.css?v=19`.
+
 ## 6. Später / optional
 
 - [x] **Tobias/Einrichtung:** Wix-Website abgeschaltet; Claude hat geprüft, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist (Fehler 404, 9. 11.). Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.

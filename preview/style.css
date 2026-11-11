@@ -364,16 +364,62 @@ body.pale main{background:transparent}
 .preview-banner a{color:#fff;text-decoration:underline;font-weight:400;white-space:nowrap}
 @media (max-width:979px){.preview-banner{font-size:12px;padding:6px 8px}}
 
-/* ---------- Ratgeber „Beamte vor Gericht“ ---------- */
-.ratgeber .wrap{padding:43px 20px 48px}
-.ratgeber .rt{margin-top:34px;max-width:760px;line-height:22px}
-.ratgeber .rt h2{margin:34px 0 12px;font:700 20px/26px Raleway,sans-serif;letter-spacing:.4px}
-.ratgeber .rt li{margin-top:8px}
-.ratgeber .rt li ul{margin-top:4px}
-.ratgeber .rt li li{margin-top:2px;list-style:circle}
-.ratgeber .rt .gruss{margin-top:34px;font-weight:700}
-.ratgeber .rt .gruss+p{margin-top:12px}
 .band .txt a.mehr{display:inline-block;margin-top:10px;color:inherit;font-weight:700;text-underline-offset:2px}
-.ratgeber .rt>*+p,.ratgeber .rt>p+ul{margin-top:14px}
-.ratgeber .rt .gruss a{font-weight:400}
 .beamte{height:415px} /* Platz für zwei Leitfaden-Links (Mobil: height:auto!important) */
+
+/* ---------- Leitfäden (Seiten mit class="pg ratgeber") ---------- */
+.ratgeber .wrap{padding:40px 20px 56px}
+.ratgeber .kicker{font:700 13px/18px Raleway,sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:var(--on-bg-hl)}
+.ratgeber .title{margin-top:6px}
+.ratgeber .rt{margin-top:26px;max-width:720px;font-size:16px;line-height:25px}
+.ratgeber .rt>*+*{margin-top:14px}
+.ratgeber .rt .lead{font-size:19px;line-height:29px;color:var(--on-bg-soft)}
+.ratgeber .rt h2{margin-top:52px;padding-top:22px;border-top:1px solid rgba(255,255,255,.3);font:700 23px/30px Raleway,sans-serif;letter-spacing:.3px;scroll-margin-top:84px}
+.ratgeber .rt h3{margin-top:28px;font:700 17px/24px Raleway,sans-serif;letter-spacing:.3px;color:var(--on-bg-hl)}
+.ratgeber .rt h2+h3{margin-top:18px}
+.ratgeber .rt h3+*{margin-top:8px}
+.ratgeber .rt ul{list-style:none;padding-left:24px}
+.ratgeber .rt li{position:relative;margin-top:9px}
+.ratgeber .rt ul>li:before{content:"";position:absolute;left:-22px;top:9px;width:7px;height:7px;background:var(--on-bg)}
+.ratgeber .rt li b,.ratgeber .rt p b{font-weight:700}
+/* Inhaltsübersicht, Hinweiskästen, Weitere Leitfäden */
+.ratgeber .toc,.ratgeber .box,.ratgeber .more{padding:18px 22px;background:rgba(255,255,255,.08);border-left:4px solid var(--on-bg-hl)}
+.ratgeber .toc{margin-top:26px}
+.ratgeber .box-t{font:700 14px/20px Raleway,sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:var(--on-bg-hl)}
+.ratgeber .toc ol{margin:8px 0 0;padding-left:22px}
+.ratgeber .toc li{margin-top:4px}
+.ratgeber .toc a,.ratgeber .more a{color:var(--on-bg);text-underline-offset:3px}
+.ratgeber .toc a:hover,.ratgeber .more a:hover{color:var(--on-bg-hl)}
+.ratgeber .rt .box{margin-top:18px}
+.ratgeber .box ul,.ratgeber .more ul{margin-top:6px}
+.ratgeber .box li{font-style:italic}
+/* Schritte (Disziplinarverfahren) */
+.ratgeber .steps{list-style:none;margin:22px 0 0;padding:0;counter-reset:st}
+.ratgeber .steps>li{position:relative;margin:0;padding:0 0 26px 60px;counter-increment:st}
+.ratgeber .steps>li:before{content:counter(st);position:absolute;left:0;top:-2px;width:38px;height:38px;border:2px solid var(--on-bg);border-radius:50%;font:700 17px/34px Raleway,sans-serif;text-align:center}
+.ratgeber .steps>li:after{content:"";position:absolute;left:19px;top:42px;bottom:4px;width:2px;background:rgba(255,255,255,.3)}
+.ratgeber .steps>li:last-child{padding-bottom:0}
+.ratgeber .steps>li:last-child:after{display:none}
+.ratgeber .steps h3{margin-top:0!important;padding-top:6px;color:var(--on-bg)}
+.ratgeber .steps p,.ratgeber .steps ul{margin-top:8px}
+/* Schluss */
+.ratgeber .rt .gruss{margin-top:36px;font-weight:700}
+.ratgeber .cta-box{margin-top:44px!important;padding:26px 28px;background:#fff;color:var(--navy)}
+.ratgeber .cta-q{font:700 20px/28px Raleway,sans-serif}
+.ratgeber .cta-box p+p{margin-top:8px}
+.ratgeber .cta-box .btn{display:inline-block;margin:10px 22px 0 0;height:44px;padding:0 24px;background:var(--navy);color:#fff;font:700 14px/44px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none;transition:background .2s}
+.ratgeber .cta-box .btn:hover{background:var(--blue)}
+.ratgeber .cta-box .tel{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);text-underline-offset:3px;white-space:nowrap}
+.ratgeber .more{margin-top:28px!important}
+@media (max-width:979px){
+  .ratgeber .wrap{padding:28px 20px 44px!important}
+  .ratgeber .rt{margin-top:20px!important;line-height:1.6}
+  .ratgeber .rt .lead{font-size:18px;line-height:1.55}
+  .ratgeber .rt h2{margin-top:40px;font-size:21px;line-height:28px}
+  .ratgeber .toc,.ratgeber .box,.ratgeber .more{padding:16px 18px}
+  .ratgeber .steps>li{padding-left:52px}
+  .ratgeber .steps>li:before{width:34px;height:34px;line-height:30px;font-size:16px}
+  .ratgeber .steps>li:after{left:17px;top:38px}
+  .ratgeber .cta-box{padding:22px 20px}
+  .ratgeber .cta-q{font-size:18px;line-height:25px}
+}

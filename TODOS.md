@@ -71,7 +71,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Neue Seite „Leitfaden – Disziplinarverfahren gegen Beamte“ samt Link im Abschnitt „Beamte“ der Startseite freigegeben; veröffentlicht, in `sitemap.xml` eingetragen, `style.css?v=18` (11. 11.).
 
-- [ ] **Tobias:** Überarbeitete Gestaltung der drei Leitfäden in der Vorschau prüfen und freigeben (11. 11.): Überschrift „Leitfaden“ + Thema, Inhaltsübersicht, Zwischenüberschriften, Hinweiskästen für Beispielsätze, Disziplinarverfahren als 6 Schritte, Kontakt-Kasten und „Weitere Leitfäden“ am Ende; Startseiten-Link „Leitfaden – Soldat/in unter Verdacht“. Beim Veröffentlichen: CSS-Block „Leitfäden“ übernehmen, `style.css?v=19`.
+- [x] **Tobias:** Überarbeitete Gestaltung der drei Leitfäden freigegeben; veröffentlicht, `style.css?v=19` (11. 11.). Offen (optional): Hinweis „ersetzt keine Beratung im Einzelfall“ – Entscheidung Tobias.
 
 ## 6. Später / optional
 

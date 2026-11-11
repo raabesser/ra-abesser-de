@@ -67,7 +67,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Neue Seite „Beamte vor Gericht“ (Text aus Word-Datei, mit Ausnahme zur Wahrheitspflicht) und Link auf der Startseite freigegeben; veröffentlicht und in `sitemap.xml` eingetragen (11. 11.). Danach umbenannt in „Leitfaden – Beamte vor dem Strafgericht“ (Freigabe Tobias, 11. 11.).
 
-- [ ] **Tobias:** Neue Seite „Leitfaden: Soldat/in unter Verdacht“ (Text aus Word-Datei „Soldat im Disziplinarverfahren“) samt Link im Abschnitt „Soldaten“ der Startseite in der Vorschau prüfen und freigeben (11. 11.). Beim Veröffentlichen in `sitemap.xml` ergänzen.
+- [x] **Tobias:** Neue Seite „Leitfaden: Soldat/in unter Verdacht“ samt Link im Abschnitt „Soldaten“ der Startseite freigegeben; veröffentlicht und in `sitemap.xml` eingetragen (11. 11.).
 
 ## 6. Später / optional
 

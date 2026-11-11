@@ -365,7 +365,7 @@ body.pale main{background:transparent}
 @media (max-width:979px){.preview-banner{font-size:12px;padding:6px 8px}}
 
 .band .txt a.mehr{display:inline-block;margin-top:10px;color:inherit;font-weight:700;text-underline-offset:2px}
-.beamte{height:415px} /* Platz für zwei Leitfaden-Links (Mobil: height:auto!important) */
+.beamte{height:380px} /* Platz für zwei Leitfaden-Links (Mobil: height:auto!important) */
 
 /* ---------- Leitfäden (Seiten mit class="pg ratgeber") ---------- */
 .ratgeber .wrap{padding:40px 20px 56px}
@@ -423,3 +423,12 @@ body.pale main{background:transparent}
   .ratgeber .cta-box{padding:22px 20px}
   .ratgeber .cta-q{font-size:18px;line-height:25px}
 }
+/* Leitfaden-Symbol statt des Wortes „Leitfaden“ */
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ico{display:inline-block;width:1.25em;height:1.25em;margin-right:.4em;vertical-align:-.28em;flex:none}
+.band .txt a.mehr{display:inline-flex;align-items:flex-start;gap:0}
+.band .txt a.mehr .ico{margin-top:-.05em}
+.ratgeber .kicker .ico{width:44px;height:44px;margin:0;color:var(--on-bg-hl)}
+.ratgeber .more ul.ico-list{padding-left:0}
+.ratgeber .more ul.ico-list>li:before{display:none}
+.ratgeber .more ul.ico-list a{display:inline-flex;align-items:flex-start}

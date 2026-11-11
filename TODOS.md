@@ -73,6 +73,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Überarbeitete Gestaltung der drei Leitfäden freigegeben; veröffentlicht, `style.css?v=19` (11. 11.). Hinweis „ersetzt keine Beratung im Einzelfall“: von Tobias nicht gewünscht.
 
+- [ ] **Tobias:** Leitfäden mit Dokument-Symbol statt des Wortes „Leitfaden“ (Startseiten-Links, über der Seitenüberschrift, „Weitere Leitfäden“) in der Vorschau prüfen und freigeben (11. 11.). Beim Veröffentlichen: CSS-Block „Leitfaden-Symbol“ und `.beamte{height:380px}` übernehmen, `style.css?v=20`.
+
 ## 6. Später / optional
 
 - [x] **Tobias/Einrichtung:** Wix-Website abgeschaltet; Claude hat geprüft, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist (Fehler 404, 9. 11.). Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.

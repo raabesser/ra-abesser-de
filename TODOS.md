@@ -75,6 +75,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Leitfäden mit Dokument-Symbol statt des Wortes „Leitfaden“ freigegeben; veröffentlicht, `style.css?v=20` (11. 11.). Überschrift „Weitere Leitfäden“ und „LEITFADEN – …“ im Seitentitel bleiben bewusst.
 
+- [ ] **Tobias:** Leitfäden umbenannt in „So läuft ein Disziplinarverfahren“, „Vor dem Strafgericht“, „Unter Verdacht“ (Adressen unverändert) – in der Vorschau prüfen und freigeben (11. 11.).
+
 ## 6. Später / optional
 
 - [x] **Tobias/Einrichtung:** Wix-Website abgeschaltet; Claude hat geprüft, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist (Fehler 404, 9. 11.). Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.

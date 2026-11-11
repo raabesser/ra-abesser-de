@@ -426,3 +426,4 @@ body.pale main{background:transparent}
 .ratgeber .more ul.ico-list>li:before{display:none}
 .ratgeber .more ul.ico-list a{display:inline-flex;align-items:flex-start}
 .ratgeber .rt>h2:first-child{margin-top:8px;padding-top:0;border-top:0}
+.ratgeber .rt>.steps:first-child{margin-top:8px}

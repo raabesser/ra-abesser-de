@@ -75,7 +75,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Leitfäden mit Dokument-Symbol statt des Wortes „Leitfaden“ freigegeben; veröffentlicht, `style.css?v=20` (11. 11.). Überschrift „Weitere Leitfäden“ und „LEITFADEN – …“ im Seitentitel bleiben bewusst.
 
-- [ ] **Tobias:** Leitfäden umbenannt in „So läuft ein Disziplinarverfahren“, „Vor dem Strafgericht“, „Unter Verdacht“ (Adressen unverändert) – in der Vorschau prüfen und freigeben (11. 11.).
+- [ ] **Tobias:** Leitfäden umbenannt in „So läuft ein Disziplinarverfahren“, „Vor dem Strafgericht“, „Unter Verdacht“ (Adressen unverändert) – in der Vorschau prüfen und freigeben (11. 11.). Außerdem bei „Unter Verdacht“ Einleitungssatz und Inhaltsübersicht gestrichen; CSS-Zeile `.ratgeber .rt>h2:first-child` übernehmen, `style.css?v=21`.
 
 ## 6. Später / optional
 

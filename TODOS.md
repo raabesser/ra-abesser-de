@@ -71,7 +71,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Neue Seite „Leitfaden – Disziplinarverfahren gegen Beamte“ samt Link im Abschnitt „Beamte“ der Startseite freigegeben; veröffentlicht, in `sitemap.xml` eingetragen, `style.css?v=18` (11. 11.).
 
-- [x] **Tobias:** Überarbeitete Gestaltung der drei Leitfäden freigegeben; veröffentlicht, `style.css?v=19` (11. 11.). Offen (optional): Hinweis „ersetzt keine Beratung im Einzelfall“ – Entscheidung Tobias.
+- [x] **Tobias:** Überarbeitete Gestaltung der drei Leitfäden freigegeben; veröffentlicht, `style.css?v=19` (11. 11.). Hinweis „ersetzt keine Beratung im Einzelfall“: von Tobias nicht gewünscht.
 
 ## 6. Später / optional
 

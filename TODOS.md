@@ -77,6 +77,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Leitfäden umbenannt in „So läuft ein Disziplinarverfahren“, „Vor dem Strafgericht“, „Unter Verdacht“ (Adressen unverändert); bei „Unter Verdacht“ Einleitungssatz und Inhaltsübersicht gestrichen. Freigegeben und veröffentlicht, `style.css?v=21` (11. 11.).
 
+- [ ] **Tobias:** Bei „Vor dem Strafgericht“ Einleitungssatz und Inhaltsübersicht gestrichen – in der Vorschau prüfen und freigeben (11. 11.).
+
 ## 6. Später / optional
 
 - [x] **Tobias/Einrichtung:** Wix-Website abgeschaltet; Claude hat geprüft, dass https://info0239645.wixsite.com/aktuell nicht mehr erreichbar ist (Fehler 404, 9. 11.). Optional später: Wix-Website ganz löschen bzw. Wix-Abo kündigen, falls vorhanden.

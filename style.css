@@ -367,3 +367,6 @@ body.pale main{background:transparent}
 .ratgeber .rt .gruss{margin-top:34px;font-weight:700}
 .ratgeber .rt .gruss+p{margin-top:12px}
 .band .txt a.mehr{display:inline-block;margin-top:10px;color:inherit;font-weight:700;text-underline-offset:2px}
+.ratgeber .rt>*+p,.ratgeber .rt>p+ul{margin-top:14px}
+.ratgeber .rt .gruss a{font-weight:400}
+.beamte{height:415px} /* Platz für zwei Leitfaden-Links (Mobil: height:auto!important) */

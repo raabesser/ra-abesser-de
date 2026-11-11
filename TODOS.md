@@ -69,7 +69,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Tobias:** Neue Seite „Leitfaden: Soldat/in unter Verdacht“ samt Link im Abschnitt „Soldaten“ der Startseite freigegeben; veröffentlicht und in `sitemap.xml` eingetragen (11. 11.).
 
-- [ ] **Tobias:** Neue Seite „Leitfaden – Disziplinarverfahren gegen Beamte“ (Text aus Word-Datei „Leitfaden Disziplinarverfahren“) samt Link im Abschnitt „Beamte“ der Startseite in der Vorschau prüfen und freigeben (11. 11.). Beim Veröffentlichen: `sitemap.xml` ergänzen, CSS-Ergänzungen (Absatzabstände Leitfäden, Höhe `.beamte`) übernehmen, `style.css?v=18`.
+- [x] **Tobias:** Neue Seite „Leitfaden – Disziplinarverfahren gegen Beamte“ samt Link im Abschnitt „Beamte“ der Startseite freigegeben; veröffentlicht, in `sitemap.xml` eingetragen, `style.css?v=18` (11. 11.).
 
 ## 6. Später / optional
 

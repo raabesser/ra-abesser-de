@@ -11,10 +11,9 @@
   var MODI = [
     { id: "aus", name: "Kein Hintergrund" },
     { id: "weich", name: "Weichzeichner" },
-    { id: "kanzleibuero", name: "Kanzleibüro", bild: "kanzleibuero" },
-    { id: "arbeitszimmer", name: "Arbeitszimmer", bild: "arbeitszimmer" },
-    { id: "besprechung", name: "Besprechung", bild: "besprechung" },
-    { id: "foyer", name: "Foyer", bild: "foyer" }
+    { id: "blau", name: "Blau", bild: "blau" },
+    { id: "hellblau", name: "Hellblau", bild: "hellblau" },
+    { id: "dunkelblau", name: "Dunkelblau", bild: "dunkelblau" }
   ];
   var SEG_W = 480, SEG_H = 270;   // Auflösung für die Erkennung (schont den Prozessor)
   var FPS = 30;

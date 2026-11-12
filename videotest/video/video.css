@@ -76,3 +76,4 @@ body.v-incall{overflow:hidden}
   .v-hgo{width:68px;font-size:11px}
   .v-hgo img,.v-ohne{width:58px;height:33px}
 }
+.v-weich-i{border:0;background:radial-gradient(circle at 50% 45%,#c9b8a4 0 18%,transparent 34%),linear-gradient(135deg,#8a9bb0,#5d6f86);filter:blur(3px)}

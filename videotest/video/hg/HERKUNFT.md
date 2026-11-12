@@ -1,9 +1,10 @@
 # Hintergrundbilder (Videoportal)
 
-Fotos von Unsplash (Unsplash-Lizenz: kostenlose Nutzung, auch gewerblich, Namensnennung nicht erforderlich). Auf 1280 × 720 zugeschnitten und leicht weichgezeichnet; `-k` = Vorschaubild.
-Stil auf Wunsch von Tobias (12. 11.): modern („Kanzlei der Zukunft“), aber warm und vertrauenswürdig – Holz, Pflanzen, warmes Licht; keine Bücherregale, nichts Kühles.
+Wunsch von Tobias (12. 11.): neutraler, ruhiger Hintergrund in Blau (Fotos von Büros und Bücherregalen wurden verworfen).
+Die Bilder sind selbst erzeugt (keine Fremdrechte): sanfter Farbverlauf, in der Mitte hinter dem Kopf etwas heller, zu den Rändern dunkler, mit feinem Rauschen gegen Farbstufen. 1280 × 720; `-k` = Vorschaubild.
 
-- `kanzleibuero.jpg` – https://unsplash.com/photos/srTPWPbK0Dg („a room with a desk and a chair“)
-- `arbeitszimmer.jpg` – https://unsplash.com/photos/xTmez98cqAM („Modern office space with plants and artwork“)
-- `besprechung.jpg` – https://unsplash.com/photos/xaGFrbbJuAo („Modern office interior with meeting area and workstations“)
-- `foyer.jpg` – https://unsplash.com/photos/QVVHV24DA_o („Modern office lounge area with contemporary furniture“)
+- `blau.jpg` – Website-Blau (Mitte #2c5fb0, Rand #163f80)
+- `hellblau.jpg` – heller (Mitte #7fa3d8, Rand #4a74b5)
+- `dunkelblau.jpg` – dunkler, Richtung Navy (Mitte #1d4783, Rand #04233f)
+
+Erzeugt mit Python/NumPy; zum Neu-Erzeugen anderer Töne die Werte oben verwenden.

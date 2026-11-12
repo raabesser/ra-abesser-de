@@ -159,7 +159,7 @@
         b.className = "v-hgo v-hgo-" + m.id;
         b.setAttribute("data-m", m.id);
         var bild = m.bild ? '<img src="' + HG.HG + m.bild + '-k.jpg" alt="">' :
-          (m.id === "weich" ? '<img class="v-weich" src="' + HG.HG + 'arbeitszimmer-k.jpg" alt="">' : '<span class="v-ohne"></span>');
+          (m.id === "weich" ? '<span class="v-ohne v-weich-i"></span>' : '<span class="v-ohne"></span>');
         b.innerHTML = bild + "<span>" + m.name + "</span>";
         b.addEventListener("click", function () { applyBg(m.id); });
         box.appendChild(b);

@@ -195,7 +195,6 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
       <label class="f"><span>Rufnummer beruflich</span><input type="tel" data-k="telberuf"></label>
       <label class="f"><span>Rufnummer privat</span><input type="tel" data-k="telprivat" autocomplete="tel"></label>
       <label class="f"><span>Rufnummer mobil</span><input type="tel" data-k="telmobil"></label>
-      <label class="f"><span>Faxnummer <em>(falls vorhanden)</em></span><input type="tel" data-k="fax"></label>
     </div>
 
     <p class="group-label">Kostenübernahme durch <em style="font-weight:normal;color:var(--muted)">(falls zutreffend)</em></p>
@@ -280,7 +279,7 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
   '<h4 class="u">1. Name und Kontaktdaten des für die Verarbeitung Verantwortlichen sowie des betrieblichen Datenschutzbeauftragten</h4>'+
   '<p>Diese Datenschutzhinweise gelten für die Datenverarbeitung durch '+K.kurz+': '+ADR+', Internet: '+K.web+', Tel.: '+K.tel+', E-Mail: '+K.mail+', der zugleich auch betrieblicher Datenschutzbeauftragter ist und unter den vorgenannten Kontaktdaten erreichbar ist.</p>'+
   '<h4 class="u">2. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck und deren Verwendung</h4>'+
-  '<p>Wenn Sie RA Abeßer mandatieren, erhebt dieser folgende Informationen von Ihnen: Vorname, Nachname, Geburtsdatum, Straße und Hausnummer, Postleitzahl und Ort, Amtsbezeichnung und Dienstgrad, Besoldungs- / Entgeltgruppe, Personalnummer, Rufnummer beruflich/privat/mobil, Faxnummer, eine gültige E-Mail-Adresse, Rechtsschutzversicherung (Name und Versicherungsschein-/Schadensnummer), Gewerkschaft (Name und Mitgliedsnummer), die Information, ob Sie durch das Internet oder die Empfehlung Dritter auf die Kanzlei aufmerksam wurden, die Informationen, die für die Geltendmachung und Verteidigung Ihrer Rechte im Rahmen des Mandats notwendig sind.</p>'+
+  '<p>Wenn Sie RA Abeßer mandatieren, erhebt dieser folgende Informationen von Ihnen: Vorname, Nachname, Geburtsdatum, Straße und Hausnummer, Postleitzahl und Ort, Amtsbezeichnung und Dienstgrad, Besoldungs- / Entgeltgruppe, Personalnummer, Rufnummer beruflich/privat/mobil, eine gültige E-Mail-Adresse, Rechtsschutzversicherung (Name und Versicherungsschein-/Schadensnummer), Gewerkschaft (Name und Mitgliedsnummer), die Information, ob Sie durch das Internet oder die Empfehlung Dritter auf die Kanzlei aufmerksam wurden, die Informationen, die für die Geltendmachung und Verteidigung Ihrer Rechte im Rahmen des Mandats notwendig sind.</p>'+
   '<p>Die Erhebung dieser Daten erfolgt,</p><ul>'+
   '<li>um Sie als Mandanten identifizieren zu können;</li>'+
   '<li>um Sie angemessen anwaltlich beraten und vertreten zu können;</li>'+
@@ -369,7 +368,6 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
       row("Rufnummer beruflich:", v.telberuf)+
       row("Rufnummer privat:", v.telprivat)+
       row("Rufnummer mobil:", v.telmobil)+
-      row("ggf. Faxnummer:", v.fax)+
       row("E-Mail:", v.email)+
     '</table>'+
     '<div class="line">ggf. '+cb(v.rsv)+'Rechtsschutzversicherung &nbsp;&nbsp;&nbsp; '+cb(v.gew)+'Gewerkschaft:</div>'+

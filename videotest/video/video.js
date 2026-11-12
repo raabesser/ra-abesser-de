@@ -28,6 +28,7 @@
   var rawCam = null, bgSeq = 0, HG = window.VideoHintergrund;
   var bgMode = "aus";
   try { bgMode = localStorage.getItem("v-hintergrund") || "aus"; } catch (e) {}
+  if (bgMode === "bibliothek") bgMode = "fachbibliothek"; // frühere allgemeine Bibliothek
   if (!HG || !HG.MODI.some(function (m) { return m.id === bgMode; })) bgMode = "aus"; // z. B. frühere, inzwischen entfernte Auswahl
   var bgOk = !!(HG && window.WebAssembly && HTMLCanvasElement.prototype.captureStream && window.Worker);
 

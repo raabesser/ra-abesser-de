@@ -10,8 +10,9 @@
   var HG = new URL("hg/", document.currentScript.src).href;
   var MODI = [
     { id: "aus", name: "Kein Hintergrund" },
-    { id: "weich", name: "Weichzeichner" },
-    { id: "bibliothek", name: "Bibliothek", bild: "bibliothek" },
+    { id: "weich", name: "Weich\u00ADzeichner" },
+    { id: "fachbibliothek", name: "Fach\u00ADbibliothek", bild: "fachbibliothek" },
+    { id: "arbeitsbibliothek", name: "Arbeits\u00ADbibliothek", bild: "arbeitsbibliothek" },
     { id: "blau", name: "Blau", bild: "blau" },
     { id: "hellblau", name: "Hellblau", bild: "hellblau" },
     { id: "dunkelblau", name: "Dunkelblau", bild: "dunkelblau" }

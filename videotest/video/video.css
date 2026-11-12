@@ -60,7 +60,7 @@ body.v-incall{overflow:hidden}
 .v-hgw{margin:0 0 14px}
 .v-hgw .v-small{margin:0 0 6px}
 .v-hgl{display:flex;flex-wrap:wrap;gap:8px}
-.v-hgo{display:flex;flex-direction:column;align-items:center;gap:4px;width:84px;padding:4px;border:2px solid transparent;border-radius:6px;background:rgba(255,255,255,.08);color:#fff;font:12px/16px "Open Sans",sans-serif;cursor:pointer}
+.v-hgo{display:flex;flex-direction:column;align-items:center;gap:4px;width:100px;hyphens:manual;text-align:center;padding:4px;border:2px solid transparent;border-radius:6px;background:rgba(255,255,255,.08);color:#fff;font:12px/16px "Open Sans",sans-serif;cursor:pointer}
 .v-hgo:hover{background:rgba(255,255,255,.18)}
 .v-hgo[aria-pressed=true]{border-color:#fff;background:rgba(255,255,255,.22)}
 .v-hgo:focus-visible{outline:2px solid #fff;outline-offset:2px}
@@ -73,7 +73,7 @@ body.v-incall{overflow:hidden}
 .v-hgp .v-hgl{justify-content:center}
 .v-ic#v-hgb[aria-expanded=true]{background:#fff;color:var(--navy)}
 @media (max-width:979px){
-  .v-hgo{width:68px;font-size:11px}
+  .v-hgo{width:76px;font-size:11px}
   .v-hgo img,.v-ohne{width:58px;height:33px}
 }
 .v-weich-i{border:0;background:radial-gradient(circle at 50% 45%,#c9b8a4 0 18%,transparent 34%),linear-gradient(135deg,#8a9bb0,#5d6f86);filter:blur(3px)}

@@ -1,8 +1,11 @@
 # Hintergrundbilder (Videoportal)
 
-Wunsch von Tobias (12. 11.): zuerst ein neutraler, ruhiger Hintergrund in Blau, dann „doch die Bibliothek“ – beides steht zur Auswahl, die Bibliothek an erster Stelle.
+Wunsch von Tobias (12. 11.): eine juristische Fachbibliothek als Hauptwahl; daneben ein neutraler, ruhiger Hintergrund in Blau.
 
-- `bibliothek.jpg` – Foto von Unsplash (Unsplash-Lizenz: kostenlose Nutzung, auch gewerblich, ohne Namensnennung), https://unsplash.com/photos/fhOQfT1eVEA („brown wooden book shelf with books“); auf 1280 × 720 zugeschnitten und leicht weichgezeichnet.
+Juristische Bibliotheken – Fotos von Unsplash (Unsplash-Lizenz: kostenlose Nutzung, auch gewerblich, ohne Namensnennung), auf 1280 × 720 zugeschnitten und leicht weichgezeichnet:
+
+- `fachbibliothek.jpg` – https://unsplash.com/photos/yPoM-wmzKMM (gebundene Entscheidungssammlungen auf Holzregalen)
+- `arbeitsbibliothek.jpg` – https://unsplash.com/photos/h_YX8re2Uu4 (juristische Arbeitsbibliothek mit Kommentaren und Gesetzblättern)
 
 Blaue Hintergründe:
 Die Bilder sind selbst erzeugt (keine Fremdrechte): sanfter Farbverlauf, in der Mitte hinter dem Kopf etwas heller, zu den Rändern dunkler, mit feinem Rauschen gegen Farbstufen. 1280 × 720; `-k` = Vorschaubild.

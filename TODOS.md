@@ -48,7 +48,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Testkopie der Website unter https://ra-abesser.de/videotest/ angelegt und darin ein eigenes Videoportal gebaut: Seite „Videoberatung“, Gesprächslinks für die Kanzlei unter https://ra-abesser.de/videotest/video/neu/, Worker `ra-abesser-video` bei Cloudflare. Test mit zwei simulierten Teilnehmern erfolgreich (12. 11.).
 - [ ] **Tobias:** Videoportal mit echten Geräten ausprobieren (z. B. Computer in der Kanzlei + eigenes Handy) und Rückmeldung geben.
 - [ ] **Einrichtung:** TURN-Schlüssel im Cloudflare-Dashboard anlegen und beim Worker `ra-abesser-video` eintragen (Anleitung in `AGENTS.md`, Abschnitt „Testkopie mit Videoportal“) – nötig für Firmen- und manche Mobilfunknetze.
-- [ ] **Tobias:** Vor einer Übernahme in die echte Website: Abschnitt „Videoberatung“ in der Datenschutzerklärung (Entwurf kann Claude vorbereiten).
+- [ ] **Tobias:** Entwurf „8. Videoberatung“ in der Datenschutzerklärung der Testkopie prüfen und freigeben (https://ra-abesser.de/videotest/datenschutz/, seit 12. 11.; folgende Ziffern dort um eins verschoben). Die echte Datenschutzerklärung ist unverändert.
 
 ## 4. Sicherheit
 

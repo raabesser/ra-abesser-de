@@ -51,7 +51,7 @@ body.pale main{background:#fff}
 .beamte .title,.beamte .txt,.beamte img{top:61px}
 .soldaten{height:317px}
 .soldaten .title,.soldaten .txt,.soldaten img{top:33px}
-.gebiete{height:573px}
+.gebiete{height:410px}
 .gebiete .title{top:36px}
 .gb{position:absolute;width:280px}
 .gb h3{position:relative;font:400 20px/27px "Open Sans",sans-serif;color:var(--navy)}
@@ -61,7 +61,6 @@ body.pale main{background:#fff}
 .g2{left:740px;top:36px;width:240px}.g2 p{margin-top:19px;width:235px}
 .g3{left:410px;top:199px}.g3 p{margin-top:27px}
 .g4{left:740px;top:199px;width:240px}.g4 p{margin-top:22px;width:235px}
-.g5{left:410px;top:362px}.g5 p{margin-top:22px;width:285px}
 .g2 h3:before,.g4 h3:before{left:-35px}
 .g3 h3:before,.g4 h3:before{top:6px}
 

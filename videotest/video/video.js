@@ -14,6 +14,7 @@
     cam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10.5l6-3.5v10l-6-3.5z"/></svg>',
     camOff: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2M10 6h4a2 2 0 0 1 2 2v3.5l6-3.5v10M3 3l18 18"/></svg>',
     scr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M12 7v6M9 10l3-3 3 3"/></svg>',
+    hg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="11" r="3"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M5 8V6M8 8V6M16 8V6M19 8V6"/></svg>',
     end: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-3.4 0-6.6.9-9.3 2.5-.5.3-.7.9-.6 1.4l.6 2.6c.1.6.7 1 1.3.9l3.3-.5c.5-.1.9-.5 1-1l.3-1.9c1.1-.4 2.2-.5 3.4-.5s2.3.1 3.4.5l.3 1.9c.1.5.5.9 1 1l3.3.5c.6.1 1.2-.3 1.3-.9l.6-2.6c.1-.5-.1-1.1-.6-1.4C18.6 9.9 15.4 9 12 9z"/></svg>'
   };
 
@@ -24,6 +25,10 @@
   var ws = null, pc = null, polite = true, makingOffer = false, ignoreOffer = false;
   var iceServers = [{ urls: ["stun:stun.cloudflare.com:3478"] }];
   var pingTimer = null, ended = false, wakeLock = null, meterStop = null, peerThere = false;
+  var rawCam = null, bgSeq = 0, HG = window.VideoHintergrund;
+  var bgMode = "aus";
+  try { bgMode = localStorage.getItem("v-hintergrund") || "aus"; } catch (e) {}
+  var bgOk = !!(HG && window.WebAssembly && HTMLCanvasElement.prototype.captureStream && window.Worker);
 
   if (!window.RTCPeerConnection || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     var info = $("v-info");
@@ -43,6 +48,7 @@
     $("v-lmic").innerHTML = $("v-mic").innerHTML = micOn ? ICON.mic : ICON.micOff;
     $("v-lcam").innerHTML = $("v-cam").innerHTML = camOn ? ICON.cam : ICON.camOff;
     $("v-scr").innerHTML = ICON.scr;
+    $("v-hgb").innerHTML = ICON.hg;
     $("v-end").innerHTML = ICON.end;
     ["v-lmic", "v-mic"].forEach(function (id) { $(id).setAttribute("aria-pressed", String(micOn)); $(id).setAttribute("aria-label", micOn ? "Mikrofon ausschalten" : "Mikrofon einschalten"); });
     ["v-lcam", "v-cam"].forEach(function (id) { $(id).setAttribute("aria-pressed", String(camOn)); $(id).setAttribute("aria-label", camOn ? "Kamera ausschalten" : "Kamera einschalten"); });
@@ -78,8 +84,10 @@
       local = stream;
       micTrack = stream.getAudioTracks()[0] || null;
       camTrack = stream.getVideoTracks()[0] || null;
+      rawCam = camTrack;
       if (!camTrack) camOn = false;
       $("v-pv").srcObject = stream;
+      if (camTrack && bgOk) { $("v-hgw").hidden = false; baueAuswahl(); if (bgMode !== "aus") applyBg(bgMode); }
       setIcons();
       startMeter(stream);
       if (testMode) {
@@ -131,6 +139,7 @@
     if (!camTrack) return;
     camOn = !camOn;
     camTrack.enabled = camOn;
+    if (rawCam) rawCam.enabled = camOn;
     setIcons();
   }
   $("v-lmic").addEventListener("click", toggleMic);
@@ -138,13 +147,73 @@
   $("v-lcam").addEventListener("click", toggleCam);
   $("v-cam").addEventListener("click", toggleCam);
 
+  // ---------- Hintergrund ----------
+  function baueAuswahl() {
+    ["v-hgl", "v-hgl2"].forEach(function (id) {
+      var box = $(id);
+      if (box.childNodes.length) return;
+      HG.MODI.forEach(function (m) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "v-hgo v-hgo-" + m.id;
+        b.setAttribute("data-m", m.id);
+        var bild = m.bild ? '<img src="' + HG.HG + m.bild + '-k.jpg" alt="">' :
+          (m.id === "weich" ? '<img class="v-weich" src="' + HG.HG + 'regal-k.jpg" alt="">' : '<span class="v-ohne"></span>');
+        b.innerHTML = bild + "<span>" + m.name + "</span>";
+        b.addEventListener("click", function () { applyBg(m.id); });
+        box.appendChild(b);
+      });
+    });
+    markiere();
+  }
+  function markiere() {
+    Array.prototype.forEach.call(document.querySelectorAll(".v-hgo"), function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-m") === bgMode));
+    });
+  }
+  function setCam(t) {
+    camTrack = t;
+    t.enabled = camOn;
+    var vs = new MediaStream([t]);
+    $("v-pv").srcObject = vs;
+    if (!screenTrack) { $("v-lv").srcObject = vs; replaceVideo(t); }
+  }
+  function applyBg(m) {
+    if (!rawCam || !bgOk) return;
+    var my = ++bgSeq;
+    bgMode = m;
+    try { localStorage.setItem("v-hintergrund", m); } catch (e) {}
+    markiere();
+    if (m === "aus") { HG.stop(); setCam(rawCam); $("v-hgm").textContent = ""; return; }
+    $("v-hgm").textContent = "Hintergrund wird geladen …";
+    HG.start(rawCam, m).then(function (t) {
+      if (my !== bgSeq) return;
+      setCam(t);
+      $("v-hgm").textContent = "";
+    }).catch(function (e) {
+      console.warn(e);
+      if (my !== bgSeq) return;
+      bgMode = "aus";
+      markiere();
+      HG.stop();
+      setCam(rawCam);
+      $("v-hgm").textContent = "Auf diesem Gerät ist kein virtueller Hintergrund möglich.";
+    });
+  }
+  $("v-hgb").addEventListener("click", function () {
+    var p = $("v-hgp"), auf = p.hidden;
+    p.hidden = !auf;
+    $("v-hgb").setAttribute("aria-expanded", String(auf));
+  });
+
   // ---------- Gespräch ----------
   $("v-join").addEventListener("click", function () {
     if (meterStop) meterStop();
     $("v-call").hidden = false;
     $("v-over").hidden = true;
     document.body.classList.add("v-incall");
-    $("v-lv").srcObject = local;
+    $("v-lv").srcObject = camTrack ? new MediaStream([camTrack]) : local;
+    $("v-hgb").hidden = !(camTrack && bgOk);
     $("v-scr").hidden = !(navigator.mediaDevices.getDisplayMedia && !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && camTrack);
     status("Verbindung wird aufgebaut …");
     ended = false;
@@ -290,7 +359,7 @@
     screenTrack.stop();
     screenTrack = null;
     replaceVideo(camTrack);
-    $("v-lv").srcObject = local;
+    $("v-lv").srcObject = camTrack ? new MediaStream([camTrack]) : local;
     $("v-lv").classList.remove("v-screen");
     $("v-scr").setAttribute("aria-pressed", "false");
     $("v-scr").setAttribute("aria-label", "Bildschirm teilen");
@@ -315,7 +384,10 @@
     if (ws) { try { ws.close(); } catch (e) {} }
     closePC();
     if (screenTrack) { screenTrack.stop(); screenTrack = null; }
+    if (HG) HG.stop();
     if (local) local.getTracks().forEach(function (t) { t.stop(); });
+    if (camTrack) camTrack.stop();
+    $("v-hgp").hidden = true;
     if (wakeLock) { try { wakeLock.release(); } catch (e) {} wakeLock = null; }
     status("");
     $("v-otxt").textContent = text;

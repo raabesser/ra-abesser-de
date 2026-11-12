@@ -10,7 +10,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#00305b">
 <link rel="stylesheet" href="../style.css?v=23">
-<link rel="stylesheet" href="video.css?v=1">
+<link rel="stylesheet" href="video.css?v=2">
 </head>
 <body id="top">
 <div class="preview-banner">TESTKOPIE (Videoportal) – nicht die veröffentlichte Website · <a href="../../">Zur veröffentlichten Seite</a></div>
@@ -46,6 +46,7 @@
 <p id="v-lt"><b>Ihr Videogespräch mit Rechtsanwalt Abeßer</b></p>
 <p id="v-lmsg">Bitte erlauben Sie Ihrem Browser den Zugriff auf Kamera und Mikrofon.</p>
 <div class="v-ctrl v-ctrl-l"><button type="button" class="v-ic" id="v-lmic" aria-pressed="true" title="Mikrofon an/aus"></button><button type="button" class="v-ic" id="v-lcam" aria-pressed="true" title="Kamera an/aus"></button></div>
+<div class="v-hgw" id="v-hgw" hidden><p class="v-small"><b>Ihr Hintergrund</b> (wird auf diesem Gerät gespeichert)</p><div class="v-hgl" id="v-hgl"></div><p class="v-small" id="v-hgm" role="status" aria-live="polite"></p></div>
 <p><button type="button" class="v-btn" id="v-join" disabled>Gespräch beitreten</button></p>
 <p class="v-small">Bild und Ton werden verschlüsselt direkt übertragen und nicht aufgezeichnet. Mit dem Beitritt gelten die Hinweise der <a href="../datenschutz/">Datenschutzerklärung</a>.</p>
 </div>
@@ -58,9 +59,11 @@
 <div class="v-ctrl v-bar">
 <button type="button" class="v-ic" id="v-mic" aria-pressed="true" title="Mikrofon an/aus"></button>
 <button type="button" class="v-ic" id="v-cam" aria-pressed="true" title="Kamera an/aus"></button>
+<button type="button" class="v-ic" id="v-hgb" aria-expanded="false" aria-controls="v-hgp" title="Hintergrund wählen" hidden></button>
 <button type="button" class="v-ic" id="v-scr" aria-pressed="false" title="Bildschirm teilen" hidden></button>
 <button type="button" class="v-ic v-end" id="v-end" title="Gespräch beenden"></button>
 </div>
+<div class="v-hgp" id="v-hgp" hidden><p><b>Hintergrund</b></p><div class="v-hgl" id="v-hgl2"></div></div>
 <div class="v-over" id="v-over" hidden><p id="v-otxt">Das Gespräch ist beendet.</p><p><button type="button" class="v-btn" id="v-again">Erneut beitreten</button> <a class="v-btn v-ghost" href="../">Zur Startseite</a></p></div>
 </div>
 <footer class="ft"><div class="wrap">
@@ -70,7 +73,8 @@
 </div></footer>
 <a class="totop" href="#top" aria-label="Nach oben"><svg viewBox="20 20 160 160" aria-hidden="true"><path fill="#00305B" d="M180 20v160H20V20h160z"/><path fill="#FFFFFF" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z"/><path fill="#FFFFFF" d="M59.668 112L56 107.407 99.037 74 142 107.41l-3.672 4.59-39.29-29.873L59.667 112z"/></svg></a>
 <script src="../site.js?v=11"></script>
-<script src="video.js?v=1"></script>
+<script src="hintergrund.js?v=1"></script>
+<script src="video.js?v=2"></script>
 
 </body>
 </html>

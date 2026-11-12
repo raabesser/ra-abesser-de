@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>VORSCHAU – MANDANTENFORMULARE | Rechtsanwalt Abeßer</title>
-<meta name="description" content="Mandanten-Aufnahmebogen, Schweigepflichtbefreiung für E-Mail-Korrespondenz und Handakten-Erklärung online ausfüllen, digital unterschreiben und als PDF an Rechtsanwalt Abeßer senden.">
+<meta name="description" content="Mandanten-Aufnahmebogen, Schweigepflichtbefreiung für E-Mail-Korrespondenz, Handakten-Erklärung und Vollmacht online ausfüllen, digital unterschreiben und als PDF an Rechtsanwalt Abeßer senden.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#00305b">
 <link rel="canonical" href="https://ra-abesser.de/formulare/">
@@ -22,6 +22,7 @@
   --accent:#00305b; --accent-soft:#e6edf5; --warn:#9a3b1a; --warn-soft:#fbeee8;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.5 "Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
 .wrap{max-width:760px;margin:0 auto;padding:24px 16px 120px}
@@ -43,7 +44,7 @@ section.card .sub{color:var(--muted);font-size:14px;margin:0 0 12px}
 label.f{display:block;margin:0 0 12px}
 label.f span{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
 label.f span em{font-weight:normal;color:var(--muted);font-style:normal}
-input[type=text],input[type=email],input[type=tel],input[type=date]{
+select,input[type=text],input[type=email],input[type=tel],input[type=date]{
   width:100%;font:inherit;font-size:16px;padding:10px 11px;border:1px solid #b9c0c9;border-radius:6px;background:#fff;color:var(--ink);min-height:44px}
 input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
 input.missing{border-color:var(--warn);background:var(--warn-soft)}
@@ -96,6 +97,16 @@ button{font:inherit;font-size:16px;border-radius:8px;padding:11px 18px;cursor:po
 .sp-wrap.signed{border-style:solid;border-color:var(--accent)}
 .sp-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 button.sm{font-size:14px;padding:7px 12px;min-height:38px}
+.vmfix{background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:0 0 14px;font-size:15px}
+.vmfix small{display:block;color:var(--muted);font-size:13px}
+.doctext ol{margin:0 0 10px;padding-left:22px}
+.doctext ol li{margin-bottom:4px}
+.doctext .fix{color:var(--accent);font-weight:600}
+.doctext .zbox{float:right;border:1px solid #888;font-size:12px;padding:4px 8px;margin:0 0 8px 10px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+section.kanzlei{border:2px solid var(--accent);background:#fbfcfe}
+section.kanzlei .row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+section.kanzlei textarea{width:100%;font:14px/1.4 ui-monospace,Menlo,Consolas,monospace;padding:8px;border:1px solid #b9c0c9;border-radius:6px;min-height:70px;word-break:break-all}
+section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px}
 @media (max-width:560px){.grid{grid-template-columns:1fr}h1{font-size:23px}}
 
 /* ---------- Druckansicht ---------- */
@@ -138,6 +149,11 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
   .sig .l.si img{max-height:52pt;max-width:100%;margin-bottom:-6pt}
   .esig{font-size:7.5pt;margin-top:6pt;color:#333}
   .keep{page-break-inside:avoid;break-inside:avoid}
+  .zbox{float:right;border:.8pt solid #000;padding:4pt 9pt;font-size:8.5pt;text-align:center;margin:-4pt 0 6pt 10pt}
+  ol.vm{margin:0 0 6pt;padding-left:17pt}
+  ol.vm li{margin-bottom:2.5pt}
+  .body p.tight{margin-bottom:4pt}
+  .body p.l{text-align:left;line-height:1.9}
 }
 </style>
 </head>
@@ -151,8 +167,28 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
     <a class="back" href="../">← Zur Website</a>
   </header>
 
+  <section class="card kanzlei screen" id="kanzlei" hidden>
+    <h2>Für die Kanzlei: Vollmacht vorbereiten</h2>
+    <p class="sub">Rechtsgebiet und Gegenstand eintragen, dann den Link oder die Datei an den Mandanten senden. Beim Mandanten stehen diese Angaben fest in der Vollmacht.</p>
+    <div class="grid">
+      <label class="f"><span>Rechtsgebiet</span><select id="k_rg"></select></label>
+      <label class="f full"><span>Gegenstand des Mandats <em>(betr. …)</em></span><input type="text" id="k_betr" placeholder="z. B. Disziplinarverfahren wegen …"></label>
+    </div>
+    <div class="row">
+      <button type="button" class="primary" id="k_link">Link erzeugen</button>
+      <button type="button" class="ghost" id="k_file">Als Datei speichern (E-Mail-Anhang)</button>
+    </div>
+    <textarea id="k_out" readonly hidden></textarea>
+    <div class="row" id="k_acts" hidden>
+      <button type="button" class="ghost sm" id="k_copy">Link kopieren</button>
+      <button type="button" class="ghost sm" id="k_share">Teilen …</button>
+      <button type="button" class="ghost sm" id="k_open">Wie Mandant öffnen</button>
+    </div>
+    <p class="ok" id="k_msg" aria-live="polite"></p>
+  </section>
+
   <h1>Mandantenformulare</h1>
-  <p class="lead">Bitte füllen Sie die Felder aus. Das Tool enthält drei Formulare (1 · Aufnahmebogen, 2 · E-Mail-Erklärung, 3 · Handakten-Erklärung). Ihre persönlichen Angaben werden automatisch in alle drei übernommen.</p>
+  <p class="lead">Bitte füllen Sie die Felder aus. Das Tool enthält vier Formulare (1 · Aufnahmebogen, 2 · E-Mail-Erklärung, 3 · Handakten-Erklärung, 4 · Vollmacht). Ihre persönlichen Angaben werden automatisch in alle übernommen.</p>
   <ol class="howto">
     <li>Felder ausfüllen (leere Felder können Sie auch später von Hand ergänzen).</li>
     <li>In jedem Formular unterschreiben – mit dem Finger (Handy/Tablet) oder der Maus im Unterschriftsfeld. Alternativ später von Hand auf dem Ausdruck.</li>
@@ -237,6 +273,19 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
     <div class="sigpad" data-n="3"></div>
   </section>
 
+  <section class="card" id="c4">
+    <h2>4 · Vollmacht</h2>
+    <p class="sub">Vollmacht für Rechtsanwalt Abeßer im konkreten Mandat.</p>
+    <label class="incl"><input type="checkbox" id="d4"> Dieses Formular drucken</label>
+    <div class="vmfix" id="vmfix" hidden></div>
+    <div class="grid" id="vmedit">
+      <label class="f"><span>Rechtsgebiet</span><select data-k="rg" id="rgsel"></select></label>
+      <label class="f full"><span>Gegenstand des Mandats <em>(betr. …)</em></span><input type="text" data-k="betr"></label>
+    </div>
+    <div class="doctext" id="prev4"></div>
+    <div class="sigpad" data-n="4"></div>
+  </section>
+
   <div class="notice" id="notice"></div>
 
   <p class="sendback">Unterschriebene Formulare bitte an: Rechtsanwalt Tobias Abeßer, Keithstr. 14, 10787 Berlin · info@ra-abesser.de</p>
@@ -253,6 +302,7 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
 
 <script>
 (function(){
+  var ORIG = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
   /* ===== Kanzleidaten – hier zentral ändern ===== */
   var K = {
     name: "Rechtsanwalt Tobias Abeßer",
@@ -266,6 +316,69 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
     steuernr: "18 / 201 / 04009"
   };
   var ADR = K.strasse + ", " + K.ort;
+
+  /* ===== Vollmacht: Texte je Rechtsgebiet ===== */
+  var STD_INTRO = "Vollmacht zur außergerichtlichen Vertretung aller Art wie Prozessvollmacht für alle gerichtlichen Verfahren in allen Instanzen erteilt.";
+  function stdList(i1,i2,i5){
+    return [i1, i2,
+      "Begründung und Aufhebung von Vertragsverhältnissen und Abgabe und Entgegennahme von einseitigen Willenserklärungen (z. B. Kündigungen).",
+      "Prozessführung.",
+      i5,
+      "Außergerichtliche Verhandlungen, Abschluss von Vergleichen, sonstige Einigung, Erklärung von Verzicht oder Anerkenntnis.",
+      "Klagerücknahme, Einlegung und Rücknahme von Rechtsmitteln und Rechtsbehelfen sowie Verzicht auf solche.",
+      "Entgegennahme und Bewirken von Zustellungen und sonstigen Mitteilungen.",
+      "Alle Neben- und Folgeverfahren (z. B.: Eilverfahren, Kostenfestsetzung, Zwangsvollstreckung, Hinterlegung).",
+      "Empfangnahme der vom Gegner, von der Justizkasse oder anderen Stellen zu erstattenden Gelder, Kosten und notwendigen Auslagen.",
+      "Übertragung der Vollmacht ganz oder teilweise auf andere."];
+  }
+  var RG = {
+    disz: { name:"Disziplinarrecht", box:"DisziplinarR", intro:STD_INTRO, list:stdList(
+      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamten- und disziplinarrechtlichen Verfahren.",
+      "Einsichtnahme des Disziplinarvorgangs, der Personalakte der Mandantschaft und sonstiger Akten.",
+      "Vertretung vor Disziplinar- und Verwaltungsbehörden sowie der Verwaltungsgerichtsbarkeit und den dortigen Disziplinarkammern/-senaten.") },
+    beam: { name:"Beamtenrecht", box:"BeamtenR", intro:STD_INTRO, list:stdList(
+      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamtenrechtlichen Verfahren (z. B. Beförderung, dienstliche Beurteilung, Versetzung, Besoldung, Beihilfe, Dienstunfall, Zurruhesetzung).",
+      "Einsichtnahme der Personalakte der Mandantschaft und sonstiger Akten.",
+      "Vertretung vor Dienstherren, Dienst- und Widerspruchsbehörden sowie der Verwaltungsgerichtsbarkeit.") },
+    sold: { name:"Soldatenrecht", box:"SoldatenR", intro:STD_INTRO, list:stdList(
+      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in soldatenrechtlichen, wehrbeschwerde- und wehrdisziplinarrechtlichen Verfahren.",
+      "Einsichtnahme der Disziplinar- und Ermittlungsakten, der Personalakte der Mandantschaft und sonstiger Akten.",
+      "Vertretung vor Disziplinarvorgesetzten, Wehrdisziplinaranwaltschaften und sonstigen Dienststellen der Bundeswehr sowie vor den Truppendienstgerichten, den Wehrdienstsenaten des Bundesverwaltungsgerichts und der Verwaltungsgerichtsbarkeit.") },
+    richt: { name:"Richterrecht", box:"RichterR", intro:STD_INTRO, list:stdList(
+      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in richterdienst- und disziplinarrechtlichen Verfahren.",
+      "Einsichtnahme des Disziplinarvorgangs, der Personalakte der Mandantschaft und sonstiger Akten.",
+      "Vertretung vor Justizverwaltungen, Dienstbehörden und Präsidialräten sowie vor den Dienstgerichten für Richter und der Verwaltungsgerichtsbarkeit.") },
+    oed: { name:"Öffentliches Dienstrecht", box:"Öff. DienstR", intro:STD_INTRO, list:stdList(
+      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in Angelegenheiten des öffentlichen Dienstrechts.",
+      "Einsichtnahme der Personalakte der Mandantschaft und sonstiger Akten.",
+      "Vertretung vor Dienststellen, Behörden und Personalvertretungen sowie vor der Verwaltungs- und Arbeitsgerichtsbarkeit.") },
+    straf: { name:"Strafrecht", box:"StrafR",
+      intro:"Vollmacht zur Verteidigung und Vertretung in allen Instanzen sowie zur außergerichtlichen Vertretung aller Art erteilt.",
+      list:[
+      "Verteidigung und Vertretung der Mandantschaft in Straf- und Bußgeldverfahren einschließlich des Ermittlungsverfahrens, auch als Beistand von Nebenklägern, Verletzten oder Zeugen.",
+      "Einsichtnahme der Ermittlungs- und Strafakten einschließlich Beiakten und Beweismittel (§ 147 StPO, § 49 OWiG) sowie der Personalakte und sonstiger Akten.",
+      "Vertretung in Abwesenheit der Mandantschaft, insbesondere nach §§ 233 Abs. 1, 234, 329, 350, 387, 411 Abs. 2 StPO und § 73 OWiG.",
+      "Entgegennahme von Zustellungen, insbesondere von Ladungen, Urteilen und Beschlüssen (§ 145a StPO), und sonstigen Mitteilungen.",
+      "Vertretung gegenüber Polizei, Staatsanwaltschaft, Bußgeldbehörden, Strafgerichten und Strafvollstreckungsbehörden.",
+      "Stellung, Begründung und Rücknahme von Anträgen, insbesondere von Strafanträgen, Beweis- und Haftprüfungsanträgen sowie Anträgen nach dem StrEG.",
+      "Einlegung, Begründung und Rücknahme von Rechtsmitteln und Rechtsbehelfen sowie Verzicht auf solche (ausdrückliche Ermächtigung nach § 302 Abs. 2 StPO).",
+      "Mitwirkung an Verständigungen sowie an Einstellungen des Verfahrens, auch gegen Auflagen.",
+      "Alle Neben- und Folgeverfahren (z. B.: Kostenfestsetzung, Strafvollstreckung, Entschädigung nach dem StrEG).",
+      "Empfangnahme von Geldern, Sicherheitsleistungen, Kosten und notwendigen Auslagen, die von der Justizkasse oder anderen Stellen zu erstatten sind.",
+      "Übertragung der Vollmacht ganz oder teilweise auf andere (Untervollmacht)."] }
+  };
+  var RG_ORDER=["sold","beam","disz","straf","richt","oed"];
+  function rgOptions(){ return '<option value="">Bitte wählen</option>'+RG_ORDER.map(function(k){return '<option value="'+k+'">'+RG[k].name+'</option>';}).join(""); }
+  document.getElementById("rgsel").innerHTML=rgOptions();
+  document.getElementById("k_rg").innerHTML=rgOptions();
+
+  /* Vorgabe der Kanzlei (aus Link #v=… oder aus gespeicherter Datei) */
+  function b64e(o){ return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,""); }
+  function b64d(t){ try{ t=t.replace(/-/g,"+").replace(/_/g,"/"); return JSON.parse(decodeURIComponent(escape(atob(t)))); }catch(e){ return null; } }
+  var PRE = window.PREFILL || null;
+  var hm = /[#&]v=([A-Za-z0-9_-]+)/.exec(location.hash);
+  if(hm) PRE = b64d(hm[1]) || PRE;
+  if(PRE && !RG[PRE.rg]) PRE=null;
 
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
@@ -321,7 +434,7 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
   function letterhead(){
     return '<div class="lh"><span>'+K.name+' · '+ADR+'</span><span>Tel. '+K.tel+' · '+K.mail+'</span></div>';
   }
-  var SIGS={1:null,2:null,3:null};
+  var SIGS={1:null,2:null,3:null,4:null};
   function sig(v, cap, n){
     var img=SIGS[n];
     return '<div class="sig"><div><div class="l">'+esc(v.sigort)+'</div><div class="c">(Ort)</div></div>'+
@@ -354,7 +467,7 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
   function doc1(v){
     return '<div class="doc">'+letterhead()+
     '<div class="office">Von der Kanzlei auszufüllen: Aktenz. ________ / ____ &nbsp;RG:'+
-      '<span class="bx"></span>SoldatenR <span class="bx"></span>BeamtenR <span class="bx"></span>DisziplinarR <span class="bx"></span>StrafR <span class="bx"></span>RichterR <span class="bx"></span>Öff. DienstR</div>'+
+      RG_ORDER.map(function(k){ return '<span class="bx" style="text-align:center;line-height:7pt;font-size:7pt">'+(v.rg===k?"✕":"")+'</span>'+RG[k].box; }).join(" ")+'</div>'+
     '<h3>Mandanten-Aufnahmebogen / Mandanteninformation</h3>'+
     '<table class="rows">'+
       row("Vor- u. Nachname:", (v.vorname+" "+v.nachname).trim())+
@@ -414,11 +527,34 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
     '<p>Herr Rechtsanwalt Abeßer hat mich ausdrücklich darauf hingewiesen, dass er Handakten und Dokumente nach § 50 Abs. 4 BRAO ausschließlich in elektronischer Form speichern und aufbewahren kann. Ich bin mit dieser Art der Handakten- und Dokumentenspeicherung wie -aufbewahrung ausdrücklich einverstanden.</p>';
   }
 
+  function text4(v,screen){
+    var r=RG[v.rg], name=fv(v,"4","name");
+    return '<div class="zbox">Zustellungen bitte nur<br>an RA Abeßer!</div>'+
+      '<p class="tight">'+K.herr.replace("Herrn ","Herrn ")+'<br>'+ADR+'</p>'+
+      '<p class="tight">wird hiermit</p>'+
+      (screen ? '<div class="block">von '+inl("4","name","Vor- und Nachname")+'<div class="lbl">(Vor- und Nachname) – als Mandantschaft –</div></div>'
+              : '<p>von <span class="val" style="min-width:55%">'+(esc(name)||"&nbsp;")+'</span> &nbsp;– als Mandantschaft –</p>')+
+      '<p class="l">in Sachen: '+(screen?'<span class="fix" id="vmRg"></span>':'<span class="val" style="min-width:25%">'+(r?esc(r.name):"&nbsp;")+'</span>')+
+      ' – betr. '+(screen?'<span class="fix" id="vmBetr"></span>':'<span class="val" style="min-width:40%">'+(esc(v.betr)||"&nbsp;")+'</span>')+'</p>'+
+      '<p>'+(screen?'<span id="vmIntro"></span>':(r?r.intro:STD_INTRO))+'</p>'+
+      '<p class="tight">Diese Vollmacht berechtigt Herrn Rechtsanwalt Abeßer insbesondere zu:</p>'+
+      (screen?'<ol id="vmList"></ol>':'<ol class="vm">'+(r?r.list:[]).map(function(t){return '<li>'+t+'</li>';}).join("")+'</ol>');
+  }
+  function doc4(v){
+    var name=fv(v,"4","name");
+    return '<div class="doc">'+letterhead()+
+    '<h3 class="plain">Vollmacht</h3>'+
+    '<div class="body">'+text4(v)+'</div>'+
+    sig(v,(esc(name)||"Vor- und Nachname")+" als Mandantschaft",4)+
+    '</div>';
+  }
+
   function build(){
     var v=vals(), h="";
     if(document.getElementById("d1").checked) h+=doc1(v);
     if(document.getElementById("d2").checked) h+=doc2(v);
     if(document.getElementById("d3").checked) h+=doc3(v);
+    if(document.getElementById("d4").checked) h+=doc4(v);
     document.getElementById("print").innerHTML=h;
     return h;
   }
@@ -428,6 +564,7 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
      solange der Mandant sie nicht selbst geändert hat */
   document.getElementById("prev2").innerHTML=text2(vals(),true);
   document.getElementById("prev3").innerHTML=text3(vals(),true);
+  document.getElementById("prev4").innerHTML=text4(vals(),true);
   var inlines=Array.prototype.slice.call(document.querySelectorAll("input.inl"));
   inlines.forEach(function(el){
     el.addEventListener("input",function(){ el.dataset.own = el.value.trim() ? "1" : ""; });
@@ -435,7 +572,12 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
   function preview(){
     var v=vals(), d=defs(v);
     inlines.forEach(function(el){ if(!el.dataset.own) el.value=d[el.dataset.f.slice(1)]||""; });
-    ["1","2","3"].forEach(function(n){
+    var r=RG[v.rg];
+    document.getElementById("vmRg").textContent = r ? r.name : "(bitte Rechtsgebiet wählen)";
+    document.getElementById("vmBetr").textContent = v.betr || "(Gegenstand)";
+    document.getElementById("vmIntro").textContent = r ? r.intro : STD_INTRO;
+    document.getElementById("vmList").innerHTML = r ? r.list.map(function(t){return "<li>"+t+"</li>";}).join("") : "<li><em>Die Befugnisse erscheinen, sobald ein Rechtsgebiet gewählt ist.</em></li>";
+    ["1","2","3","4"].forEach(function(n){
       var c=document.getElementById("d"+n).closest("section");
       c.classList.toggle("off", !document.getElementById("d"+n).checked);
     });
@@ -514,12 +656,68 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
   (function(){ var d=new Date(), el=document.querySelector('[data-k=sigdatum]');
     if(el && !el.value) el.value=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); })();
 
+  /* ===== Vorgabe anwenden ===== */
+  function applyPre(){
+    if(!PRE) return;
+    document.getElementById("rgsel").value=PRE.rg;
+    document.querySelector('[data-k=betr]').value=PRE.b||"";
+    document.getElementById("d4").checked=true;
+    document.getElementById("vmedit").hidden=true;
+    var f=document.getElementById("vmfix"); f.hidden=false;
+    f.innerHTML='<strong>'+esc(RG[PRE.rg].name)+'</strong> – betr. <strong>'+(esc(PRE.b)||"…")+'</strong><small>Von der Kanzlei vorgegeben.</small>';
+    preview();
+  }
+  applyPre();
+
+  /* ===== Kanzlei-Bereich (Adresse mit #kanzlei öffnen) ===== */
+  var kz=document.getElementById("kanzlei");
+  function showK(){ kz.hidden = !/^#kanzlei/.test(location.hash); }
+  showK(); window.addEventListener("hashchange", showK);
+  var kMsg=document.getElementById("k_msg"), kOut=document.getElementById("k_out");
+  function kData(){
+    var rg=document.getElementById("k_rg").value, b=document.getElementById("k_betr").value.trim();
+    if(!rg){ kMsg.style.color="#9a3b1a"; kMsg.textContent="Bitte zuerst das Rechtsgebiet wählen."; return null; }
+    kMsg.style.color=""; return {rg:rg,b:b};
+  }
+  function base(){ return /^https?:/.test(location.protocol) ? location.origin+location.pathname : "https://ra-abesser.de/formulare/"; }
+  var lastLink="";
+  document.getElementById("k_link").addEventListener("click",function(){
+    var d=kData(); if(!d) return;
+    lastLink=base()+"#v="+b64e(d);
+    kOut.value=lastLink; kOut.hidden=false; document.getElementById("k_acts").hidden=false;
+    document.getElementById("k_share").hidden=!navigator.share;
+    kMsg.textContent="Link erzeugt. Senden Sie ihn dem Mandanten per E-Mail.";
+  });
+  document.getElementById("k_copy").addEventListener("click",function(){
+    function done(){ kMsg.textContent="Link kopiert."; }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(lastLink).then(done,function(){ kOut.select(); document.execCommand("copy"); done(); }); }
+    else { kOut.select(); document.execCommand("copy"); done(); }
+  });
+  document.getElementById("k_share").addEventListener("click",function(){
+    if(navigator.share) navigator.share({title:"Mandantenformulare – Rechtsanwalt Abeßer", text:"Bitte füllen Sie die Mandantenformulare aus und unterschreiben Sie sie:", url:lastLink}).catch(function(){});
+  });
+  document.getElementById("k_open").addEventListener("click",function(){ window.open(lastLink,"_blank"); });
+  document.getElementById("k_file").addEventListener("click",function(){
+    var d=kData(); if(!d) return;
+    var js=JSON.stringify(d).replace(/</g,"\\u003c");
+    var html=ORIG.replace("<script>\n(function(){", "<script>window.PREFILL="+js+";<\/script>\n<script>\n(function(){");
+    html=html.replace(/(href|src)="\.\.\//g,'$1="https://ra-abesser.de/');
+    var blob=new Blob([html],{type:"text/html"}), a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="Mandantenformulare_RA_Abesser_"+RG[d.rg].name.replace(/[^A-Za-zÄÖÜäöüß]+/g,"_")+".html";
+    document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },1000);
+    kMsg.textContent="Datei gespeichert. Hängen Sie sie an Ihre E-Mail an.";
+  });
+
   var notice=document.getElementById("notice");
   function showNotice(html){ notice.innerHTML=html; notice.classList.add("show"); notice.scrollIntoView({behavior:"smooth",block:"center"}); }
   function doPrint(){ notice.classList.remove("show"); build(); setTimeout(function(){ window.print(); }, 50); }
 
   document.getElementById("btnPrint").addEventListener("click", function(){
-    if(!document.querySelector("#d1:checked, #d2:checked, #d3:checked")){
+    if(document.getElementById("d4").checked && !vals().rg){
+      showNotice("Bitte wählen Sie für die Vollmacht (Formular 4) das Rechtsgebiet aus."); return;
+    }
+    if(!document.querySelector("#d1:checked, #d2:checked, #d3:checked, #d4:checked")){
       showNotice("Bitte wählen Sie mindestens ein Formular zum Drucken aus."); return;
     }
     var miss=[];
@@ -528,7 +726,7 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
       el.classList.toggle("missing", m);
       if(m) miss.push(el.closest("label").querySelector("span").textContent);
     });
-    ["1","2","3"].forEach(function(n){ if(document.getElementById("d"+n).checked && !SIGS[n]) miss.push("Unterschrift Formular "+n); });
+    ["1","2","3","4"].forEach(function(n){ if(document.getElementById("d"+n).checked && !SIGS[n]) miss.push("Unterschrift Formular "+n); });
     if(miss.length){
       showNotice("Noch leer: <strong>"+esc(miss.join(", "))+"</strong>. Sie können dies jetzt nachholen oder später auf dem Ausdruck von Hand ergänzen.<br><button type='button' class='ghost' id='printAnyway'>Trotzdem drucken</button>");
       document.getElementById("printAnyway").addEventListener("click", doPrint);
@@ -544,7 +742,8 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
     inputs.forEach(function(el){ if(el.type==="checkbox") el.checked=false; else el.value=""; el.classList.remove("missing"); });
     notice.classList.remove("show");
     inlines.forEach(function(el){ el.value=""; el.dataset.own=""; });
-    SIGS[1]=SIGS[2]=SIGS[3]=null; for(var k in PADS) PADS[k].redraw();
+    SIGS[1]=SIGS[2]=SIGS[3]=SIGS[4]=null; for(var k in PADS) PADS[k].redraw();
+    applyPre();
     preview();
     window.scrollTo({top:0,behavior:"smooth"});
   });

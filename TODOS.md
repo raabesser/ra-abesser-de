@@ -54,6 +54,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 ## 7. Mandantenformulare
 
 - [x] **Claude:** Neue Seite „Mandantenformulare“ in der Vorschau (https://ra-abesser.de/preview/formulare/, 12. 11., Wunsch Tobias): Mandanten-Aufnahmebogen, Schweigepflichtbefreiung für E-Mail-Korrespondenz und Handakten-Erklärung online ausfüllen, mit Finger/Maus unterschreiben, drucken oder als PDF speichern. Keine Datenübertragung, alles bleibt im Browser. Verlinkt auf der Kontaktseite und in der Fußzeile („Formulare“).
+- [x] **Claude:** Vollmacht als Formular 4 ergänzt (12. 11., Wunsch Tobias): Texte je Rechtsgebiet (Soldaten-, Beamten-, Disziplinar-, Straf-, Richter-, öffentliches Dienstrecht), Unterschriftsfeld, Kanzlei-Bereich unter …/formulare/#kanzlei zum Vorgeben von Rechtsgebiet und Gegenstand (Link oder Datei für den Mandanten).
+- [ ] **Tobias:** Vollmachtstexte prüfen – Disziplinarrecht entspricht dem Muster, die anderen Rechtsgebiete hat Claude danach entworfen.
 - [ ] **Tobias:** Vorschau prüfen und für die echte Website freigeben („Vorschau veröffentlichen“).
 
 ## 4. Sicherheit

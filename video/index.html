@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIDEOBERATUNG | Rechtsanwalt Abeßer</title>
+<link rel="canonical" href="https://ra-abesser.de/video/">
+<meta name="description" content="Videoberatung bei Rechtsanwalt Abeßer: vertrauliches Beratungsgespräch per Video, verschlüsselt, ohne Anmeldung und ohne App.">
+<link rel="preload" href="../fonts/open-sans.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/raleway.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#00305b">
+<link rel="stylesheet" href="../style.css?v=23">
+<link rel="stylesheet" href="video.css?v=4">
+</head>
+<body id="top">
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="hd"><div class="wrap">
+<a class="logo" href="../">RECHTSANWALT ABEßER</a>
+<nav><a href="../">START</a><a href="../#beamte">BEAMTE</a><a href="../#soldaten">SOLDATEN</a><a href="../#rechtsgebiete">RECHTSGEBIETE</a><a href="../der-anwalt/">DER ANWALT</a><a href="../kosten/">KOSTEN</a><a href="../kontakt/">KONTAKT</a></nav>
+<a class="call" href="tel:+493039903406" aria-label="Anrufen: +49 30 39 90 34 06"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+<button class="burger" type="button" aria-label="Navigationsmenü öffnen" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></header>
+<div class="menu" id="menu" hidden><div class="menu-bg" data-close></div><div class="menu-panel"><button class="menu-x" type="button" aria-label="Navigationsmenü schließen" data-close></button><nav><a href="../">START</a><a href="../#beamte">BEAMTE</a><a href="../#soldaten">SOLDATEN</a><a href="../#rechtsgebiete">RECHTSGEBIETE</a><a href="../der-anwalt/">DER ANWALT</a><a href="../kosten/">KOSTEN</a><a href="../kontakt/">KONTAKT</a></nav></div></div>
+<main id="inhalt" class="pg kosten video"><div class="wrap">
+<h1 class="title">VIDEOBERATUNG</h1>
+<div class="rt" id="v-info">
+<p>Rechtsanwalt Abeßer berät Sie auf Wunsch auch per Video – bundesweit, ohne Anfahrt und mit derselben Vertraulichkeit wie in der Kanzlei.</p>
+<p>&nbsp;</p>
+<p><b>So funktioniert es</b></p>
+<ol class="v-steps">
+<li>Sie vereinbaren einen Termin – telefonisch unter <a href="tel:+493039903406">+49 30 39 90 34 06</a> oder über das <a href="../kontakt/">Kontaktformular</a>.</li>
+<li>Sie erhalten per E-Mail Ihren persönlichen Link zum Videogespräch.</li>
+<li>Zum Termin öffnen Sie den Link – am Computer, Tablet oder Smartphone. Sie brauchen kein Konto und kein Programm, nur einen aktuellen Browser mit Kamera und Mikrofon.</li>
+</ol>
+<p>&nbsp;</p>
+<p><b>Vertraulichkeit</b></p>
+<p>Bild und Ton werden verschlüsselt direkt zwischen Ihrem Gerät und dem der Kanzlei übertragen. Nur wenn eine direkte Verbindung technisch nicht möglich ist, reicht ein Server des Dienstleisters Cloudflare die verschlüsselten Daten weiter, ohne sie lesen zu können. Das Gespräch wird nicht aufgezeichnet. Ihr persönlicher Link gilt nur für Ihr Gespräch – geben Sie ihn bitte nicht weiter.</p>
+<p>&nbsp;</p>
+<p><button type="button" class="v-btn v-ghost" id="v-test">Kamera und Mikrofon jetzt testen</button></p>
+</div>
+
+<div id="v-lobby" class="v-lobby" hidden>
+<div class="v-prev"><video id="v-pv" autoplay playsinline muted></video><div class="v-meter" aria-hidden="true"><span id="v-lvl"></span></div><p class="v-noc" id="v-noc" hidden>Kamera aus</p></div>
+<div class="v-side rt">
+<p id="v-lt"><b>Ihr Videogespräch mit Rechtsanwalt Abeßer</b></p>
+<p id="v-lmsg">Bitte erlauben Sie Ihrem Browser den Zugriff auf Kamera und Mikrofon.</p>
+<div class="v-ctrl v-ctrl-l"><button type="button" class="v-ic" id="v-lmic" aria-pressed="true" title="Mikrofon an/aus"></button><button type="button" class="v-ic" id="v-lcam" aria-pressed="true" title="Kamera an/aus"></button></div>
+<div class="v-hgw" id="v-hgw" hidden><p class="v-small"><b>Ihr Hintergrund</b> (wird auf diesem Gerät gespeichert)</p><div class="v-hgl" id="v-hgl"></div><p class="v-small" id="v-hgm" role="status" aria-live="polite"></p></div>
+<p><button type="button" class="v-btn" id="v-join" disabled>Gespräch beitreten</button></p>
+<p class="v-small">Bild und Ton werden verschlüsselt direkt übertragen und nicht aufgezeichnet. Mit dem Beitritt gelten die Hinweise der <a href="../datenschutz/">Datenschutzerklärung</a>.</p>
+</div>
+</div>
+</div></main>
+<div id="v-call" class="v-call" hidden>
+<video id="v-rv" autoplay playsinline></video>
+<div class="v-st" id="v-st" role="status" aria-live="polite"></div>
+<video id="v-lv" autoplay playsinline muted></video>
+<div class="v-ctrl v-bar">
+<button type="button" class="v-ic" id="v-mic" aria-pressed="true" title="Mikrofon an/aus"></button>
+<button type="button" class="v-ic" id="v-cam" aria-pressed="true" title="Kamera an/aus"></button>
+<button type="button" class="v-ic" id="v-hgb" aria-expanded="false" aria-controls="v-hgp" title="Hintergrund wählen" hidden></button>
+<button type="button" class="v-ic" id="v-scr" aria-pressed="false" title="Bildschirm teilen" hidden></button>
+<button type="button" class="v-ic v-end" id="v-end" title="Gespräch beenden"></button>
+</div>
+<div class="v-hgp" id="v-hgp" hidden><p><b>Hintergrund</b></p><div class="v-hgl" id="v-hgl2"></div></div>
+<div class="v-over" id="v-over" hidden><p id="v-otxt">Das Gespräch ist beendet.</p><p><button type="button" class="v-btn" id="v-again">Erneut beitreten</button> <a class="v-btn v-ghost" href="../">Zur Startseite</a></p></div>
+</div>
+<footer class="ft"><div class="wrap">
+<div class="c1"><p>Rechtsanwalt Abeßer</p><p><a href="https://maps.app.goo.gl/KoBYQGTSyqMKZcg38">Keithstr. 14, 10787 Berlin</a></p><p>(nahe Wittenbergplatz)</p></div>
+<div class="c2"><p><a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a></p><p><a href="tel:+493039903406">+49 30 39 90 34 06</a></p></div>
+<div class="c3"><p class="lk"><a href="../formulare/">Formulare</a><a href="../impressum/">Impressum</a><a href="../datenschutz/">Datenschutz</a></p><p class="cr">© 2026 Tobias Abeßer</p></div>
+</div></footer>
+<a class="totop" href="#top" aria-label="Nach oben"><svg viewBox="20 20 160 160" aria-hidden="true"><path fill="#00305B" d="M180 20v160H20V20h160z"/><path fill="#FFFFFF" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z"/><path fill="#FFFFFF" d="M59.668 112L56 107.407 99.037 74 142 107.41l-3.672 4.59-39.29-29.873L59.667 112z"/></svg></a>
+<script src="../site.js?v=11"></script>
+<script src="hintergrund.js?v=8"></script>
+<script src="video.js?v=7"></script>
+
+</body>
+</html>

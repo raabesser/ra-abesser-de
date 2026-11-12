@@ -344,14 +344,8 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in soldatenrechtlichen, wehrbeschwerde- und wehrdisziplinarrechtlichen Verfahren.",
       "Einsichtnahme der Disziplinar- und Ermittlungsakten, der Personalakte der Mandantschaft und sonstiger Akten.",
       "Vertretung vor Disziplinarvorgesetzten, Wehrdisziplinaranwaltschaften und sonstigen Dienststellen der Bundeswehr sowie vor den Truppendienstgerichten, den Wehrdienstsenaten des Bundesverwaltungsgerichts und der Verwaltungsgerichtsbarkeit.") },
-    richt: { name:"Richterrecht", box:"RichterR", intro:STD_INTRO, list:stdList(
-      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in richterdienst- und disziplinarrechtlichen Verfahren.",
-      "Einsichtnahme des Disziplinarvorgangs, der Personalakte der Mandantschaft und sonstiger Akten.",
-      "Vertretung vor Justizverwaltungen, Dienstbehörden und Präsidialräten sowie vor den Dienstgerichten für Richter und der Verwaltungsgerichtsbarkeit.") },
-    oed: { name:"Öffentliches Dienstrecht", box:"Öff. DienstR", intro:STD_INTRO, list:stdList(
-      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in Angelegenheiten des öffentlichen Dienstrechts.",
-      "Einsichtnahme der Personalakte der Mandantschaft und sonstiger Akten.",
-      "Vertretung vor Dienststellen, Behörden und Personalvertretungen sowie vor der Verwaltungs- und Arbeitsgerichtsbarkeit.") },
+    richt: { name:"Richterrecht", box:"RichterR", office:true },
+    oed: { name:"Öffentliches Dienstrecht", box:"Öff. DienstR", office:true },
     straf: { name:"Strafrecht", box:"StrafR",
       intro:"Vollmacht zur Verteidigung und Vertretung in allen Instanzen sowie zur außergerichtlichen Vertretung aller Art erteilt.",
       list:[
@@ -367,8 +361,9 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       "Empfangnahme von Geldern, Sicherheitsleistungen, Kosten und notwendigen Auslagen, die von der Justizkasse oder anderen Stellen zu erstatten sind.",
       "Übertragung der Vollmacht ganz oder teilweise auf andere (Untervollmacht)."] }
   };
-  var RG_ORDER=["sold","beam","disz","straf","richt","oed"];
-  function rgOptions(){ return '<option value="">Bitte wählen</option>'+RG_ORDER.map(function(k){return '<option value="'+k+'">'+RG[k].name+'</option>';}).join(""); }
+  var RG_ORDER=["sold","beam","disz","straf","richt","oed"];   /* Kästchen im Aufnahmebogen */
+  var VM_ORDER=["sold","beam","disz","straf"];                   /* Rechtsgebiete mit Vollmacht */
+  function rgOptions(){ return '<option value="">Bitte wählen</option>'+VM_ORDER.map(function(k){return '<option value="'+k+'">'+RG[k].name+'</option>';}).join(""); }
   document.getElementById("rgsel").innerHTML=rgOptions();
   document.getElementById("k_rg").innerHTML=rgOptions();
 
@@ -378,7 +373,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   var PRE = window.PREFILL || null;
   var hm = /[#&]v=([A-Za-z0-9_-]+)/.exec(location.hash);
   if(hm) PRE = b64d(hm[1]) || PRE;
-  if(PRE && !RG[PRE.rg]) PRE=null;
+  if(PRE && VM_ORDER.indexOf(PRE.rg)<0) PRE=null;
 
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 

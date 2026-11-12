@@ -26,7 +26,10 @@ function json(data, status = 200, origin) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const origin = request.headers.get("Origin");
+    // Nur Anfragen von der eigenen Website. Browser senden bei GET-Anfragen derselben Website
+    // oft keinen Origin-Header, dann zählt "Sec-Fetch-Site: same-origin".
+    let origin = request.headers.get("Origin");
+    if (!origin && request.headers.get("Sec-Fetch-Site") === "same-origin") origin = url.origin;
     if (!ORIGINS.includes(origin)) return json({ ok: false, error: "origin" }, 403);
 
     if (url.pathname === "/api/video/ice" && request.method === "GET") {

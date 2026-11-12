@@ -11,8 +11,8 @@
   var MODI = [
     { id: "aus", name: "Kein Hintergrund" },
     { id: "weich", name: "Weich\u00ADzeichner" },
-    { id: "fachbibliothek", name: "Fach\u00ADbibliothek", bild: "fachbibliothek" },
-    { id: "arbeitsbibliothek", name: "Arbeits\u00ADbibliothek", bild: "arbeitsbibliothek" },
+    { id: "dienstzimmer", name: "Dienst\u00ADzimmer", bild: "dienstzimmer" },
+    { id: "buero", name: "Büro", bild: "buero" },
     { id: "blau", name: "Blau", bild: "blau" },
     { id: "hellblau", name: "Hellblau", bild: "hellblau" },
     { id: "dunkelblau", name: "Dunkelblau", bild: "dunkelblau" }

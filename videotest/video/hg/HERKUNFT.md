@@ -1,11 +1,11 @@
 # Hintergrundbilder (Videoportal)
 
-Wunsch von Tobias (12. 11.): eine juristische Fachbibliothek als Hauptwahl; daneben ein neutraler, ruhiger Hintergrund in Blau.
+Wunsch von Tobias (12. 11.): ein typischer Büroraum in einer Sicherheitsbehörde (Mandanten sind v. a. Beamte von Polizei und Sicherheitsbehörden); daneben ein neutraler, ruhiger Hintergrund in Blau. Bewusst ohne Hoheitszeichen (Bundesadler, Polizeistern, Dienstflagge), damit kein falscher Eindruck einer Behörde entsteht.
 
-Juristische Bibliotheken – Fotos von Unsplash (Unsplash-Lizenz: kostenlose Nutzung, auch gewerblich, ohne Namensnennung), auf 1280 × 720 zugeschnitten und leicht weichgezeichnet:
+Büros – Fotos von Unsplash (Unsplash-Lizenz: kostenlose Nutzung, auch gewerblich, ohne Namensnennung), auf 1280 × 720 zugeschnitten und leicht weichgezeichnet:
 
-- `fachbibliothek.jpg` – https://unsplash.com/photos/yPoM-wmzKMM (gebundene Entscheidungssammlungen auf Holzregalen)
-- `arbeitsbibliothek.jpg` – https://unsplash.com/photos/h_YX8re2Uu4 (juristische Arbeitsbibliothek mit Kommentaren und Gesetzblättern)
+- `dienstzimmer.jpg` – https://unsplash.com/photos/qr4zVoMrSo8 („a room with a desk, chairs, shelves and a window“: Aktenordner, Ablagekörbe, Drucker, Jalousien)
+- `buero.jpg` – https://unsplash.com/photos/hLM702Wwj8I („an office with a desk, chairs, and a potted plant“: Doppelarbeitsplatz)
 
 Blaue Hintergründe:
 Die Bilder sind selbst erzeugt (keine Fremdrechte): sanfter Farbverlauf, in der Mitte hinter dem Kopf etwas heller, zu den Rändern dunkler, mit feinem Rauschen gegen Farbstufen. 1280 × 720; `-k` = Vorschaubild.

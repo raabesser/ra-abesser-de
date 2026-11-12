@@ -1,0 +1,435 @@
+/* ra-abesser.de – nach dem Wix-Entwurf https://info0239645.wixsite.com/aktuell
+   Ab 980px Fensterbreite: 980px Inhaltsspalte wie bei Wix. Darunter (Smartphones hoch und quer,
+   Tablets hochkant): flexibles Layout in echter Bildschirmbreite. */
+/* Schriftarten liegen auf der eigenen Website (keine Übertragung an Google). */
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:300 800;font-display:swap;src:url(fonts/open-sans.woff2) format("woff2")}
+@font-face{font-family:"Raleway";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/raleway.woff2) format("woff2")}
+:root{--navy:#00305b;--blue:#0f4c85;--grey:rgba(211,211,211,.4)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:980px;background:#fff;color:var(--navy);font-family:"Open Sans",sans-serif;font-size:16px;line-height:22.4px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a{color:inherit}
+p,ul,h1,h2,h3{margin:0}
+h1,h2,h3{font-weight:400}
+ul{padding-left:29px}
+.wrap{position:relative;width:980px;margin:0 auto}
+body.pale{background:#eaf4f6}
+body.pale main{background:#fff}
+
+/* ---------- header ---------- */
+.hd{position:-webkit-sticky;position:sticky;top:0;height:66px;background:#fff;z-index:40}
+.band{scroll-margin-top:66px}
+.hd .wrap{height:66px}
+.logo{position:absolute;left:24px;top:25px;font:700 16px/22.4px Raleway,sans-serif;color:var(--navy);text-decoration:none;white-space:nowrap}
+.hd nav{position:absolute;left:282px;top:22px;display:flex;gap:10px}
+.hd nav a,.menu nav a{text-decoration:none}
+.hd nav a{padding:0 10px;font:14px/30px Raleway,sans-serif;color:var(--navy);white-space:nowrap}
+.hd nav a.active,.hd nav a:hover{color:var(--blue)}
+.burger,.menu,.totop{display:none}
+
+/* ---------- home: hero ---------- */
+.hero{position:relative;height:394px;overflow:hidden;color:#fff;background:var(--navy)}
+/* Bild in Fenstergröße, scrollt wie bei Wix mit 0,2-facher Geschwindigkeit (site.js) */
+.hero-bg{position:absolute;left:0;top:0;width:100%;height:100vh;background:url(img/hero.jpg) no-repeat 50% 50%/cover;transform:translateY(-52.8px);will-change:transform}
+.hero:before{content:"";position:absolute;top:0;bottom:0;left:0;right:calc(50% - 131px);background:rgba(0,48,91,.65);z-index:1}
+.hero .wrap{height:100%;z-index:2}
+.hero h1{position:absolute;top:110px;left:21px;font:400 42px/49px Raleway,sans-serif;letter-spacing:2.1px;white-space:nowrap}
+.hero h1 b{font-weight:700}
+.hero p{position:absolute;top:237px;left:20px;font-size:16px;line-height:22.4px;white-space:nowrap}
+
+/* ---------- home: bands ---------- */
+.title{font:400 42px/49px Raleway,sans-serif;color:var(--navy)}
+.title b{font-weight:700}
+.band{position:relative}
+.band:before{content:"";position:absolute;top:0;bottom:0;left:0;right:calc(50% + 123px);background:var(--grey)}
+.band .wrap{height:100%}
+.band .title{position:absolute;left:20px}
+.band .txt{position:absolute;left:410px;width:280px;font-size:14px;line-height:19.6px;color:var(--blue)}
+.band .txt:before{content:"";position:absolute;left:-30px;top:9px;width:10px;height:10px;background:var(--navy)}
+.band img{position:absolute;left:725px;display:block;width:255px;height:255px;object-fit:cover}
+.beamte{height:351px}
+.beamte .title,.beamte .txt,.beamte img{top:61px}
+.soldaten{height:317px}
+.soldaten .title,.soldaten .txt,.soldaten img{top:33px}
+.gebiete{height:410px}
+.gebiete .title{top:36px}
+.gb{position:absolute;width:280px}
+.gb h3{position:relative;font:400 20px/27px "Open Sans",sans-serif;color:var(--navy)}
+.gb h3:before{content:"";position:absolute;left:-30px;top:9px;width:10px;height:10px;background:var(--navy)}
+.gb p{font-size:14px;line-height:19px;color:var(--blue)}
+.g1{left:410px;top:36px}.g1 p{margin-top:22px;width:285px}
+.g2{left:740px;top:36px;width:240px}.g2 p{margin-top:19px;width:235px}
+.g3{left:410px;top:199px}.g3 p{margin-top:27px}
+.g4{left:740px;top:199px;width:240px}.g4 p{margin-top:22px;width:235px}
+.g2 h3:before,.g4 h3:before{left:-35px}
+.g3 h3:before,.g4 h3:before{top:6px}
+
+/* ---------- inner pages ---------- */
+.pg .wrap{position:relative}
+.pg .title{line-height:49px}
+.rt a{color:inherit}
+.rt b{font-weight:700}
+.rt a.nu{text-decoration:none}
+
+.anwalt .wrap{height:538px}
+.anwalt .title{position:absolute;left:360px;top:43px}
+.anwalt .portrait{position:absolute;left:102px;top:131px;width:192px;text-align:center}
+.anwalt .portrait img{display:block;width:192px;height:250px;object-fit:cover}
+.anwalt .portrait .n{margin-top:25px;font-size:20px;line-height:27px;letter-spacing:.4px;white-space:nowrap}
+.anwalt .portrait .r{margin-top:4px;font-size:16px;line-height:22px}
+.anwalt .ln{height:5px;margin-top:13.4px;border-top:1px solid rgba(0,48,91,.65)}
+.anwalt .rt{position:absolute;left:360px;top:126px;width:585px;line-height:22px}
+
+.kosten .wrap{min-height:510px;padding:42px 20px 40px}
+.kosten .title{line-height:58.8px}
+.kosten .rt{margin-top:26px;width:939px}
+
+.impressum .wrap,.datenschutz .wrap{padding:43px 20px 34px;min-height:832px}
+.impressum .rt,.datenschutz .rt{margin-top:34px;width:646px}
+
+.karte .wrap{height:621px;padding:43px 20px 0}
+.karte .rt{margin-top:34px;font-size:14px;line-height:21px}
+.karte .mapbox{position:absolute;left:20px;top:229px;width:940px;height:334px;padding:3px;background:#fff}
+.karte iframe{display:block;width:100%;height:100%;border:0}
+
+.kontakt .wrap{height:1206px}
+.kontakt .title{position:absolute;left:24px;top:43px}
+.kontakt .k1{position:absolute;left:24px;top:126px;width:310px;line-height:24px}
+.kontakt .k2{position:absolute;left:356px;top:43px;width:616px}
+.kontakt .k2>p:nth-of-type(1),.kontakt .k2>p:nth-of-type(2){line-height:24px}
+.form{position:absolute;left:350px;top:601px;width:620px}
+.row2{display:grid;grid-template-columns:301px 301px;column-gap:18px}
+.fld{margin-bottom:18px}
+.fld label{display:block;height:30px;font-size:16px;line-height:22.4px}
+.form input[type=text],.form input[type=email],.form input[type=tel],.form textarea{display:block;width:100%;height:38px;margin:0;padding:0 12px;border:1px solid #a0a0a0;border-radius:0;background:#fff;font:14px "Open Sans",sans-serif;color:var(--navy);outline:none;-webkit-appearance:none;appearance:none}
+.form textarea{height:92px;padding:8px 12px;resize:none}
+.form input[type=text]:hover,.form input[type=email]:hover,.form input[type=tel]:hover,.form textarea:hover,.form input[type=text]:focus,.form input[type=email]:focus,.form input[type=tel]:focus,.form textarea:focus{background:rgba(221,221,221,.3)}
+.form input:user-invalid,.form textarea:user-invalid,.consent input:user-invalid{border-color:#f30000}
+.consent{display:flex;align-items:center;gap:12px;margin-top:1px}
+.consent input{flex:none;width:16px;height:16px;margin:0;border:1px solid #a0a0a0;border-radius:0;background:#fff;-webkit-appearance:none;appearance:none;display:grid;place-content:center;cursor:pointer}
+.consent input:checked{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.2l3 3 6-6.4' fill='none' stroke='%2300305b' stroke-width='1.6'/%3E%3C/svg%3E") center/14px no-repeat}
+.consent input:focus-visible{outline:1px solid var(--navy);outline-offset:2px}
+.consent label{font-size:14px;line-height:21px;width:586px}
+.consent br.m{display:none}
+.cf-turnstile{margin-top:10px}
+.form button{display:block;width:620px;height:43px;margin-top:17px;border:1px solid #fff;background:var(--blue);color:#fff;font:16px "Open Sans",sans-serif;cursor:pointer}
+.form button:hover{background:var(--navy);border-color:#a0a0a0}
+.form button:disabled{opacity:.7;cursor:default}
+#fs{margin-top:10px;font-size:14px;line-height:21px}
+.form.sent>*:not(#fs){display:none}
+.form.sent #fs{margin:0;padding:20px;border:1px solid var(--blue);background:#fff;font-size:16px;line-height:24px;color:var(--navy)}
+
+/* ---------- footer ---------- */
+.ft{height:124px;background:var(--navy);color:#fff;font-size:14px;line-height:19.6px}
+.ft .wrap{display:flex;padding:27px 0 0 20px}
+.ft a{color:#fff}
+.ft .c1,.ft .c2{width:195px}
+.ft .c3{padding-top:4px;line-height:19px}
+.ft .lk a{text-decoration:none;margin-right:15px}
+.ft .cr{margin-top:4px}
+
+/* ================= Smartphones: flexibles Layout in echter Bildschirmbreite ================= */
+@media (max-width:979px){
+  body{min-width:0;font-size:16px;line-height:1.5}
+  .wrap{width:auto;max-width:100%}
+
+  /* Kopfzeile und Menü */
+  .hd,.hd .wrap{height:64px}
+  .band{scroll-margin-top:64px}
+  .logo{left:20px;top:21px}
+  .hd nav{display:none}
+  .burger{display:block;position:absolute;left:auto;right:6px;top:7px;width:50px;height:50px;padding:0;border:0;background:#fff;cursor:pointer}
+  .burger span{position:absolute;left:14px;width:22px;height:2px;border-radius:2px;background:#000}
+  .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:24px}.burger span:nth-child(3){top:33px}
+  .menu:not([hidden]){display:block;position:fixed;inset:0;z-index:50}
+  .menu-bg{position:absolute;inset:0;background:rgba(0,0,0,.6)}
+  .menu-panel{position:absolute;top:0;right:0;bottom:0;width:min(280px,85vw);background:#fff;overflow-y:auto}
+  .menu-x{position:absolute;right:6px;top:7px;width:50px;height:50px;padding:0;border:0;background:none;cursor:pointer}
+  .menu-x:before,.menu-x:after{content:"";position:absolute;left:14px;top:24px;width:22px;height:2px;border-radius:2px;background:#000;transform:rotate(45deg)}
+  .menu-x:after{transform:rotate(-45deg)}
+  .menu nav{padding:90px 24px 30px 30px}
+  .menu nav a{display:block;padding:0 10px;font:18px/52px "Open Sans",sans-serif;color:#000}
+  .menu nav a.active{color:#377dbd}
+
+  .totop{display:block;position:fixed;left:16px;bottom:24px;width:44px;height:44px;z-index:20;opacity:0;visibility:hidden;transition:visibility 0s .5s,opacity .5s}
+  .totop.on{opacity:1;visibility:visible;transition:visibility 0s,opacity .5s}
+  .totop svg{display:block;width:44px;height:44px}
+
+  /* Startbild */
+  .hero{height:auto;padding:24px 14px}
+  .hero-bg{height:100%;transform:none!important}
+  .hero:before{display:none}
+  .hero .wrap{height:auto;padding:30px 20px 28px;background:rgba(0,48,91,.65)}
+  .hero h1{position:static;font-size:clamp(27px,8vw,34px);line-height:1.18;letter-spacing:.05em;white-space:normal}
+  .hero p{position:static;margin-top:22px;font-size:16px;line-height:1.45;white-space:normal}
+  .hero .wrap .cta{position:static;margin-top:24px;height:42px;padding:0 18px;font-size:13px;line-height:40px}
+
+  /* Startseite: Beamte, Soldaten, Rechtsgebiete */
+  .title{font-size:31px;line-height:36px}
+  .band{height:auto!important;padding-bottom:44px}
+  .band:before{right:0;bottom:auto;height:128px}
+  .band .wrap{height:auto;padding:0 20px}
+  .band .title{position:static;min-height:128px;padding:28px 0 0 9px}
+  .band .txt{position:relative;left:auto;top:auto!important;width:auto;margin:26px 0 0 30px;font-size:16px;line-height:1.5}
+  .band .txt:before{left:-21px;top:8px}
+  .band img{position:static;width:min(255px,72vw);height:auto;aspect-ratio:1;margin:30px 0 0 30px}
+  .gb{position:relative;left:auto!important;top:auto!important;width:auto;margin:28px 0 0 30px}
+  .gb h3{font-size:19px;line-height:26px}
+  .gb h3:before{left:-24px!important;top:8px!important}
+  .gb p{width:auto!important;margin-top:8px!important;font-size:16px;line-height:1.45}
+
+  /* Unterseiten */
+  .pg .wrap{height:auto!important;min-height:0!important;padding:32px 20px 48px!important}
+  .pg .title{position:static;font-size:31px;line-height:36px}
+  .pg .rt{position:static;width:auto!important;margin-top:28px!important;font-size:16px;line-height:1.55}
+  .pg .rt ul{padding-left:25px}
+  .datenschutz .rt,.impressum .rt{overflow-wrap:break-word;hyphens:auto}
+
+  .anwalt .title{text-align:center}
+  .anwalt .portrait{position:static;width:auto;margin-top:24px}
+  .anwalt .portrait img{width:170px;height:auto;aspect-ratio:192/250;margin:0 auto}
+  .anwalt .portrait .n{margin-top:20px;font-size:19px;line-height:26px}
+  .anwalt .portrait .r{margin-top:4px;font-size:15px;line-height:20px}
+  .anwalt .ln{width:189px;margin:12px auto 0}
+  .anwalt .rt{margin-top:40px!important}
+
+  .karte .mapbox{position:static;width:auto;height:340px;margin-top:28px}
+
+  .kontakt .title,.kontakt .k1,.kontakt .k2,.form{position:static;width:auto}
+  .kontakt .k1{margin-top:24px!important;line-height:1.55}
+  .kontakt .k2{margin-top:32px!important}
+  .kontakt .k2>p:nth-of-type(1),.kontakt .k2>p:nth-of-type(2){line-height:1.55}
+  .form{margin-top:36px}
+  .row2{display:block}
+  .form input[type=text],.form input[type=email],.form input[type=tel],.form textarea{height:46px;font-size:16px}
+  .form textarea{height:140px}
+  .form button{width:100%;height:48px}
+  .consent{align-items:flex-start}
+  .consent input{width:20px;height:20px;margin-top:2px}
+  .consent label{flex:1;width:auto;font-size:14px}
+  .consent br.m{display:none}
+
+  /* Fußzeile */
+  .ft{height:auto;padding-bottom:84px;font-size:16px;line-height:24px}
+  .ft .wrap{display:block;padding:36px 20px 0 30px}
+  .ft .c1,.ft .c2{width:auto}
+  .ft .c2,.ft .c3{margin-top:24px}
+  .ft .c3{padding-top:0}
+  .ft .lk a{display:inline-block;margin:0 20px 0 0;line-height:40px}
+  .ft .cr{margin-top:16px}
+}
+
+
+/* ================= Optimierungen (Technik und behutsame Optik) ================= */
+/* Tastatur und Barrierefreiheit */
+.skip{position:absolute;left:12px;top:-60px;z-index:100;padding:10px 16px;background:#fff;color:#00305b;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.skip:focus{top:12px}
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Kopfzeile: dezenter Schatten, sobald gescrollt wird */
+.hd{transition:box-shadow .3s}
+.hd.scrolled{box-shadow:0 2px 12px rgba(0,0,0,.18)}
+/* Menü: feine Unterstreichung beim Überfahren und für die aktuelle Seite */
+.hd nav a{position:relative;transition:color .2s}
+.hd nav a:after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transition:transform .25s}
+.hd nav a:hover:after,.hd nav a.active:after{transform:scaleX(1)}
+
+/* Startbild: Schaltfläche „Kontakt aufnehmen“ */
+.hero .cta{position:absolute;top:302px;left:20px;display:inline-block;padding:0 22px;height:42px;border:1px solid #fff;color:#fff;font:700 14px/40px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none;transition:background .2s,color .2s}
+.hero .cta:hover{background:#fff;color:#00305b}
+
+/* Bilder mit leichtem Schatten */
+.band img{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.anwalt .portrait img{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+
+/* Lange Texte (Datenschutz): Zwischenüberschriften fett statt unterstrichen */
+.datenschutz .rt p>u:only-child{text-decoration:none;font-weight:700;font-size:17px;letter-spacing:.2px}
+.rt a{text-underline-offset:2px}
+
+/* Formular und Fußzeile: weiche Übergänge */
+.form button,.form input,.form textarea{transition:background .2s,border-color .2s}
+.ft a{transition:opacity .2s}
+.ft a:hover{opacity:.75}
+
+/* Karte: wird erst nach Klick geladen */
+.map-consent{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:100%;padding:20px;background:#eef3f7;color:#00305b;text-align:center;font-size:14px;line-height:20px}
+.map-consent p{max-width:520px}
+.map-consent button{height:40px;padding:0 24px;border:0;background:#0f4c85;color:#fff;font:700 14px "Open Sans",sans-serif;cursor:pointer;transition:background .2s}
+.map-consent button:hover{background:#00305b}
+.map-consent .alt{font-size:13px}
+
+@media (max-width:979px){
+  .datenschutz .rt p>u:only-child{font-size:15px}
+  .map-consent{font-size:13px;line-height:18px;gap:8px;padding:12px}
+}
+
+
+/* Kontaktformular: Dokumente hochladen */
+.kontakt .wrap{height:auto;padding-bottom:30px;display:flow-root}
+@media (min-width:980px){.kontakt .k2{position:relative;left:auto;top:auto;margin:43px 0 0 356px}.kontakt .form{position:relative;left:auto;top:auto;margin:44px 0 0 350px}}
+.upl input[type=file]{display:block;width:100%;padding:8px 0;font:14px "Open Sans",sans-serif;color:inherit}
+.upl input[type=file]::file-selector-button{margin-right:14px;height:38px;padding:0 18px;border:1px solid #a0a0a0;background:#fff;color:#00305b;font:14px "Open Sans",sans-serif;cursor:pointer;transition:background .2s}
+.upl input[type=file]::file-selector-button:hover{background:#e8eef4}
+.upl .hint{margin-top:4px;font-size:13px;line-height:19px;opacity:.9}
+.upl .flist{margin:6px 0 0;padding-left:20px;font-size:13px;line-height:19px}
+.upl .flist:empty{display:none}
+
+/* ===== Blauer Hintergrund (seit 9. 11. auf der Website) =====
+   Überschreibt die hellen Flächen der Seite mit Blau und macht Text darauf hell.
+   Footer, Hero-Bild, Bilder, Karte und Formularfelder bleiben unverändert. */
+:root{--bg:#1e4fa0;--on-bg:#fff;--on-bg-soft:#dce8ff;--on-bg-hl:#a9cbff}
+body{background:var(--bg);color:var(--on-bg)}
+body.pale{background:var(--bg)}
+body.pale main{background:transparent}
+.hd{background:var(--bg)}
+.logo,.hd nav a{color:var(--on-bg)}
+.hd nav a.active,.hd nav a:hover{color:var(--on-bg-hl)}
+.title{color:var(--on-bg)}
+.band .txt,.gb p{color:var(--on-bg-soft)}
+.gb h3{color:var(--on-bg)}
+.band .txt:before,.gb h3:before{background:var(--on-bg)}
+.anwalt .ln{border-top-color:rgba(255,255,255,.65)}
+@media (max-width:979px){
+  .burger{background:var(--bg)}
+  .burger span,.menu-x:before,.menu-x:after{background:var(--on-bg)}
+  .menu-panel{background:var(--bg)}
+  .menu nav a{color:var(--on-bg)}
+  .menu nav a.active{color:var(--on-bg-hl)}
+}
+
+/* ===== Handys quer und Tablets hochkant (601–979px) =====
+   Gleiches flexibles Layout wie auf Smartphones, aber mittig auf höchstens 760px begrenzt,
+   Bild neben dem Text, Rechtsgebiete und Fußzeile zweispaltig. */
+@media (min-width:601px) and (max-width:979px){
+  .wrap{max-width:760px;margin:0 auto}
+  .hd .wrap{max-width:none}
+  .logo{left:max(24px,calc(50% - 356px))}
+  .hero{padding:36px 24px}
+  .hero .wrap{padding:36px 32px 32px}
+  .band .wrap{padding:0 24px}
+  .beamte .wrap,.soldaten .wrap{display:grid;grid-template-columns:1fr auto;column-gap:32px;align-items:start}
+  .beamte .title,.soldaten .title{grid-column:1/-1}
+  .band .txt{margin-top:30px}
+  .band img{width:220px;margin:30px 0 0}
+  .gebiete .wrap{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+  .gebiete .title{grid-column:1/-1}
+  .pg .wrap{padding:40px 24px 56px!important}
+  .ft .wrap{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;padding:36px 24px 0}
+  .ft .c2{margin-top:0}
+  .ft .c3{grid-column:1/-1}
+}
+/* Handy quer: niedrige Bildschirme – Startbild und Menü kompakter */
+@media (max-width:979px) and (max-height:500px){
+  .hero{padding:16px 24px}
+  .hero .wrap{padding:22px 28px 22px}
+  .hero p{margin-top:14px}
+  .hero .wrap .cta{margin-top:16px}
+  .menu nav{padding-top:64px}
+  .menu nav a{line-height:44px}
+}
+
+/* ===== Startbild: modernes Bildformat (WebP), auf Handys/Tablets in kleinerer Größe ===== */
+.hero-bg{background-image:url(img/hero.jpg);background-image:image-set(url(img/hero.webp) type("image/webp"),url(img/hero.jpg) type("image/jpeg"))}
+@media (max-width:979px){
+  .hero-bg{background-image:url(img/hero-m.jpg);background-image:image-set(url(img/hero-m.webp) type("image/webp"),url(img/hero-m.jpg) type("image/jpeg"))}
+}
+
+/* ===== Handys und Tablets: Knopf „Anrufen“ in der Kopfzeile ===== */
+.call{display:none}
+@media (max-width:979px){
+  .call{display:block;position:absolute;right:58px;top:7px;width:46px;height:50px;color:var(--on-bg,#00305b)}
+  .call svg{position:absolute;left:12px;top:14px;width:22px;height:22px;fill:currentColor}
+  .call:focus-visible{outline-offset:-4px}
+}
+
+/* ===== Fehlerseite (404) ===== */
+.notfound .wrap{min-height:max(420px,calc(100vh - 190px));padding:60px 20px}
+.nw{white-space:nowrap}
+.notfound .rt{margin-top:28px;max-width:640px}
+.notfound .rt a.btn{display:inline-block;margin-top:24px;height:42px;padding:0 22px;border:1px solid currentColor;font:700 14px/40px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none}
+.notfound .rt a.btn:hover{background:#fff;color:#00305b}
+
+/* ===== Foto „Der Anwalt“ (Rahmen für das Bild) ===== */
+.anwalt .pic{position:relative;width:192px}
+@media (max-width:979px){
+  .anwalt .pic{width:170px;margin:0 auto}
+  .anwalt .portrait .pic img{width:100%}
+}
+
+.band .txt a.mehr{display:inline-block;margin-top:10px;color:inherit;font-weight:700;text-underline-offset:2px}
+.beamte{height:380px} /* Platz für zwei Leitfaden-Links (Mobil: height:auto!important) */
+
+/* ---------- Leitfäden (Seiten mit class="pg ratgeber") ---------- */
+.ratgeber .wrap{padding:40px 20px 56px}
+.ratgeber .kicker{font:700 13px/18px Raleway,sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:var(--on-bg-hl)}
+.ratgeber .title{margin-top:6px}
+.ratgeber .rt{margin-top:26px;max-width:720px;font-size:16px;line-height:25px}
+.ratgeber .rt>*+*{margin-top:14px}
+.ratgeber .rt .lead{font-size:19px;line-height:29px;color:var(--on-bg-soft)}
+.ratgeber .rt h2{margin-top:52px;padding-top:22px;border-top:1px solid rgba(255,255,255,.3);font:700 23px/30px Raleway,sans-serif;letter-spacing:.3px;scroll-margin-top:84px}
+.ratgeber .rt h3{margin-top:28px;font:700 17px/24px Raleway,sans-serif;letter-spacing:.3px;color:var(--on-bg-hl)}
+.ratgeber .rt h2+h3{margin-top:18px}
+.ratgeber .rt h3+*{margin-top:8px}
+.ratgeber .rt ul{list-style:none;padding-left:24px}
+.ratgeber .rt li{position:relative;margin-top:9px}
+.ratgeber .rt ul>li:before{content:"";position:absolute;left:-22px;top:9px;width:7px;height:7px;background:var(--on-bg)}
+.ratgeber .rt li b,.ratgeber .rt p b{font-weight:700}
+/* Inhaltsübersicht, Hinweiskästen, Weitere Leitfäden */
+.ratgeber .toc,.ratgeber .box,.ratgeber .more{padding:18px 22px;background:rgba(255,255,255,.08);border-left:4px solid var(--on-bg-hl)}
+.ratgeber .toc{margin-top:26px}
+.ratgeber .box-t{font:700 14px/20px Raleway,sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:var(--on-bg-hl)}
+.ratgeber .toc ol{margin:8px 0 0;padding-left:22px}
+.ratgeber .toc li{margin-top:4px}
+.ratgeber .toc a,.ratgeber .more a{color:var(--on-bg);text-underline-offset:3px}
+.ratgeber .toc a:hover,.ratgeber .more a:hover{color:var(--on-bg-hl)}
+.ratgeber .rt .box{margin-top:18px}
+.ratgeber .box ul,.ratgeber .more ul{margin-top:6px}
+.ratgeber .box li{font-style:italic}
+/* Schritte (Disziplinarverfahren) */
+.ratgeber .steps{list-style:none;margin:22px 0 0;padding:0;counter-reset:st}
+.ratgeber .steps>li{position:relative;margin:0;padding:0 0 26px 60px;counter-increment:st}
+.ratgeber .steps>li:before{content:counter(st);position:absolute;left:0;top:-2px;width:38px;height:38px;border:2px solid var(--on-bg);border-radius:50%;font:700 17px/34px Raleway,sans-serif;text-align:center}
+.ratgeber .steps>li:after{content:"";position:absolute;left:19px;top:42px;bottom:4px;width:2px;background:rgba(255,255,255,.3)}
+.ratgeber .steps>li:last-child{padding-bottom:0}
+.ratgeber .steps>li:last-child:after{display:none}
+.ratgeber .steps h3{margin-top:0!important;padding-top:6px;color:var(--on-bg)}
+.ratgeber .steps p,.ratgeber .steps ul{margin-top:8px}
+/* Schluss */
+.ratgeber .rt .gruss{margin-top:36px;font-weight:700}
+.ratgeber .cta-box{margin-top:44px!important;padding:26px 28px;background:#fff;color:var(--navy)}
+.ratgeber .cta-q{font:700 20px/28px Raleway,sans-serif}
+.ratgeber .cta-box p+p{margin-top:8px}
+.ratgeber .cta-box .btn{display:inline-block;margin:10px 22px 0 0;height:44px;padding:0 24px;background:var(--navy);color:#fff;font:700 14px/44px Raleway,sans-serif;letter-spacing:1.4px;text-decoration:none;transition:background .2s}
+.ratgeber .cta-box .btn:hover{background:var(--blue)}
+.ratgeber .cta-box .tel{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);text-underline-offset:3px;white-space:nowrap}
+.ratgeber .more{margin-top:28px!important}
+@media (max-width:979px){
+  .ratgeber .wrap{padding:28px 20px 44px!important}
+  .ratgeber .rt{margin-top:20px!important;line-height:1.6}
+  .ratgeber .rt .lead{font-size:18px;line-height:1.55}
+  .ratgeber .rt h2{margin-top:40px;font-size:21px;line-height:28px}
+  .ratgeber .toc,.ratgeber .box,.ratgeber .more{padding:16px 18px}
+  .ratgeber .steps>li{padding-left:52px}
+  .ratgeber .steps>li:before{width:34px;height:34px;line-height:30px;font-size:16px}
+  .ratgeber .steps>li:after{left:17px;top:38px}
+  .ratgeber .cta-box{padding:22px 20px}
+  .ratgeber .cta-q{font-size:18px;line-height:25px}
+}
+/* Leitfaden-Symbol statt des Wortes „Leitfaden“ */
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ico{display:inline-block;width:1.25em;height:1.25em;margin-right:.4em;vertical-align:-.28em;flex:none}
+.band .txt a.mehr{display:inline-flex;align-items:flex-start;gap:0}
+.band .txt a.mehr .ico{margin-top:-.05em}
+.ratgeber .kicker .ico{width:44px;height:44px;margin:0;color:var(--on-bg-hl)}
+.ratgeber .more ul.ico-list{padding-left:0}
+.ratgeber .more ul.ico-list>li:before{display:none}
+.ratgeber .more ul.ico-list a{display:inline-flex;align-items:flex-start}
+.ratgeber .rt>h2:first-child{margin-top:8px;padding-top:0;border-top:0}
+.ratgeber .rt>.steps:first-child{margin-top:8px}
+
+/* ===== TESTKOPIE-BANNER =====
+   Nur in videotest/ (Testkopie für das Videoportal). */
+.preview-banner{position:relative;z-index:41;background:#6a1b9a;color:#fff;text-align:center;font:700 14px/1.4 "Open Sans",Arial,sans-serif;padding:8px 12px;letter-spacing:.03em;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.preview-banner a{color:#fff;text-decoration:underline;font-weight:400;white-space:nowrap}
+@media (max-width:979px){.preview-banner{font-size:12px;padding:6px 8px}}

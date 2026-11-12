@@ -140,6 +140,15 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
   im Repository-Ordner starten und http://localhost:8000 öffnen. Screenshots mit Headless-Chrome/Playwright (vorinstalliert).
 - Das **Absenden des Kontaktformulars** funktioniert weder lokal noch auf github.io: Turnstile kennt nur die Domain `ra-abesser.de`, und der Worker nimmt nur Anfragen von `https://ra-abesser.de` und `https://www.ra-abesser.de` an.
 
+## Testkopie mit Videoportal (`videotest/`)
+
+- **Was:** Seit 12. 11. (Auftrag Tobias) eine zweite, eigenständige Kopie der echten Website unter https://ra-abesser.de/videotest/ mit lila Balken „TESTKOPIE (Videoportal)“, `noindex` und „TESTKOPIE – “ im Titel; `robots.txt` sperrt `/videotest/`. Sie dient nur zum Ausprobieren des Videoportals und ist unabhängig von `preview/`.
+- **Seiten:** `videotest/video/` = Videoberatung (Info für Mandanten, Technik-Test; mit `#<Raum-ID>` in der Adresse = Vorraum und Gespräch). `videotest/video/neu/` = Gesprächslink erzeugen (für die Kanzlei, nicht verlinkt). Dateien: `video.js` (Gesprächslogik, WebRTC), `neu.js`, `video.css`. Hinweis auf der Kontaktseite der Kopie.
+- **Technik:** 1:1-Gespräche per WebRTC, Bild und Ton verschlüsselt direkt zwischen den Browsern. Raum-ID = 192 Bit Zufall, wird nirgends gespeichert; höchstens 2 Personen pro Raum. Worker **`ra-abesser-video`** (Quelltext `worker/video.js`, Routen `ra-abesser.de/api/video/*` und `www.…`): `GET /api/video/ice` liefert STUN/TURN-Server, `/api/video/raum/<id>` ist der WebSocket zur Vermittlung (Durable Object `Room`, Binding `ROOMS`, SQLite-Klasse, Migration `v1`). Nur Anfragen von ra-abesser.de. Der Kontaktformular-Worker ist davon unberührt.
+- **TURN (offen):** Ohne TURN-Relais scheitern Verbindungen in manchen Firmen- und Mobilfunknetzen. Der TURN-Schlüssel muss im Cloudflare-Dashboard angelegt werden (Realtime → TURN Server → Create), Claude kann den geheimen Teil über die API nicht auslesen. Dann beim Worker `ra-abesser-video` unter Settings → Variables and Secrets `TURN_KEY_ID` und `TURN_KEY_API_TOKEN` als **Secret** eintragen → Deploy. Der Worker nutzt TURN dann automatisch.
+- **Worker aktualisieren:** Code hochladen mit Metadaten `main_module: video.js`, `compatibility_date: 2025-06-01`, Binding `durable_object_namespace ROOMS → Room`, **ohne** erneute Migration; vorhandene Secrets bleiben erhalten (ggf. `keep_bindings: ["secret_text"]`).
+- **Vor einer Übernahme in die echte Website:** Datenschutzerklärung um die Videoberatung ergänzen (Tobias), TURN einrichten, mit echten Geräten testen.
+
 ## Veröffentlichen und Rückgängig machen
 
 - Veröffentlicht ist, was auf dem Hauptzweig `main` liegt. GitHub Pages baut die Seite danach in 1–2 Minuten neu (sichtbar unter Repository → Actions → „pages build and deployment“).

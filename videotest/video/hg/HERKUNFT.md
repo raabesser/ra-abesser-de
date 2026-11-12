@@ -1,7 +1,9 @@
 # Hintergrundbilder (Videoportal)
 
 Fotos von Unsplash (Unsplash-Lizenz: kostenlose Nutzung, auch gewerblich, Namensnennung nicht erforderlich). Auf 1280 × 720 zugeschnitten und leicht weichgezeichnet; `-k` = Vorschaubild.
+Stil auf Wunsch von Tobias (12. 11.): hypermodern, „Anwaltskanzlei der Zukunft“ – keine Bücherregale.
 
-- `bibliothek.jpg` – https://unsplash.com/photos/fhOQfT1eVEA („brown wooden book shelf with books“)
-- `kanzlei.jpg` – https://unsplash.com/photos/O_DUcg4cDlc („A room with a lot of books in it“)
-- `regal.jpg` – https://unsplash.com/photos/YbLitAY8bPA („books on brown wooden shelf“)
+- `glasbuero.jpg` – https://unsplash.com/photos/fftMS_6sRHo („an office with a plant in the middle of the room“)
+- `zukunft.jpg` – https://unsplash.com/photos/3BrefMTPZfc („Modern blue hallway with city view through window“)
+- `skyline.jpg` – https://unsplash.com/photos/-UdYbiywGeg („people sitting on chair near glass window during daytime“)
+- `lounge.jpg` – https://unsplash.com/photos/QVVHV24DA_o („Modern office lounge area with contemporary furniture“)

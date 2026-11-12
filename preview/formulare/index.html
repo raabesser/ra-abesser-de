@@ -331,6 +331,12 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       "Empfangnahme der vom Gegner, von der Justizkasse oder anderen Stellen zu erstattenden Gelder, Kosten und notwendigen Auslagen.",
       "Übertragung der Vollmacht ganz oder teilweise auf andere."];
   }
+  /* Soldatenrecht: Punkt 3 ohne Vertragsverhältnisse/Kündigungen, Punkt 7 mit Wehrbeschwerde (Wunsch Tobias, 12. 11.) */
+  function soldList(l){
+    l[2]="Abgabe und Entgegennahme von einseitigen Willenserklärungen.";
+    l[6]="Klagerücknahme, Einlegung und Rücknahme von Rechtsmitteln und Rechtsbehelfen, insbesondere von Beschwerde, weiterer Beschwerde und Antrag auf gerichtliche Entscheidung nach der Wehrbeschwerdeordnung (WBO), sowie Verzicht auf solche.";
+    return l;
+  }
   var RG = {
     disz: { name:"Disziplinarrecht", box:"DisziplinarR", intro:STD_INTRO, list:stdList(
       "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamten- und disziplinarrechtlichen Verfahren.",
@@ -340,10 +346,10 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamtenrechtlichen Verfahren (z. B. Beförderung, dienstliche Beurteilung, Versetzung, Besoldung, Beihilfe, Dienstunfall, Zurruhesetzung).",
       "Einsichtnahme der Personalakte der Mandantschaft und sonstiger Akten.",
       "Vertretung vor Dienstherren, Dienst- und Widerspruchsbehörden sowie der Verwaltungsgerichtsbarkeit.") },
-    sold: { name:"Soldatenrecht", box:"SoldatenR", intro:STD_INTRO, list:stdList(
+    sold: { name:"Soldatenrecht", box:"SoldatenR", intro:STD_INTRO, list:soldList(stdList(
       "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in soldatenrechtlichen, wehrbeschwerde- und wehrdisziplinarrechtlichen Verfahren.",
       "Einsichtnahme der Disziplinar- und Ermittlungsakten, der Personalakte der Mandantschaft und sonstiger Akten.",
-      "Vertretung vor Disziplinarvorgesetzten, Wehrdisziplinaranwaltschaften und sonstigen Dienststellen der Bundeswehr sowie vor den Truppendienstgerichten, den Wehrdienstsenaten des Bundesverwaltungsgerichts und der Verwaltungsgerichtsbarkeit.") },
+      "Vertretung vor Disziplinarvorgesetzten, Wehrdisziplinaranwaltschaften und sonstigen Dienststellen der Bundeswehr sowie vor den Truppendienstgerichten, den Wehrdienstsenaten des Bundesverwaltungsgerichts und der Verwaltungsgerichtsbarkeit.")) },
     richt: { name:"Richterrecht", box:"RichterR", office:true },
     oed: { name:"Öffentliches Dienstrecht", box:"Öff. DienstR", office:true },
     straf: { name:"Strafrecht", box:"StrafR",

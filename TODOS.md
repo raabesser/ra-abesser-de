@@ -58,6 +58,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 
 - [x] **Claude:** In der Vorschau umgesetzt (9. 11.): eigene Seitenbeschreibung für jede Seite (Google-Suchergebnisse), Kanzlei-Angaben für Google (strukturierte Daten auf der Startseite), Knopf „Anrufen“ in der Kopfzeile auf Handys/Tablets, eigene Fehlerseite (`preview/404.html`), Startbild im WebP-Format und für Handys verkleinert (220 KB → 46 KB). Lesbarkeit der Farben geprüft – erfüllt WCAG AA, keine Änderung nötig. Auf Wunsch von Tobias außerdem: Hinweis „KI-generiert“ auf dem Foto „Der Anwalt“ deutlich verkleinert (aus dem Bild entfernt, stattdessen kleiner Text über dem Bild).
 - [x] **Claude:** In der Vorschau das KI-generierte Foto auf „Der Anwalt“ durch das echte Foto von Tobias ersetzt; der Hinweis „KI-generiert“ entfällt (9. 11.).
+- [x] **Tobias:** Kontaktformular („Absenden“, neuer Einleitungssatz), Buch-Symbol für die Leitfäden, Dokument-Symbol oben auf den Leitfaden-Seiten entfernt und „Der Anwalt“ bündig – freigegeben und auf der echten Website veröffentlicht (12. 11.).
 - [x] **Tobias:** Diese Änderungen samt echtem Foto und neuem Erstberatungs-Satz („maximal 226,10 EUR brutto“) freigegeben und auf der echten Website veröffentlicht (9. 11.).
 - [x] **Tobias:** Echtes Porträtfoto für „Der Anwalt“ geschickt; in der Vorschau eingebaut (9. 11.).
 - [ ] **Tobias/Einrichtung (optional):** Google-Unternehmensprofil anlegen bzw. prüfen (https://business.google.com) – Claude hilft bei den Texten.

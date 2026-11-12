@@ -337,15 +337,22 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     l[6]="Klagerücknahme, Einlegung und Rücknahme von Rechtsmitteln und Rechtsbehelfen, insbesondere von Beschwerde, weiterer Beschwerde und Antrag auf gerichtliche Entscheidung nach der Wehrbeschwerdeordnung (WBO), sowie Verzicht auf solche.";
     return l;
   }
+  /* Beamtenrecht: Punkte 3, 4 und 7 angepasst (Wunsch Tobias, 12. 11.) */
+  function beamList(l){
+    l[2]="Abgabe und Entgegennahme von einseitigen Willenserklärungen (z. B. Anträge auf Entlassung).";
+    l[3]="Prozessführung vor der Verwaltungsgerichtsbarkeit einschließlich Oberverwaltungsgerichten / Verwaltungsgerichtshöfen und dem Bundesverwaltungsgericht.";
+    l[6]="Klagerücknahme, Einlegung und Rücknahme von Rechtsmitteln und Rechtsbehelfen, insbesondere von Widerspruch, Antrag auf Zulassung der Berufung und Nichtzulassungsbeschwerde, sowie Verzicht auf solche.";
+    return l;
+  }
   var RG = {
     disz: { name:"Disziplinarrecht", box:"DisziplinarR", intro:STD_INTRO, list:stdList(
       "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamten- und disziplinarrechtlichen Verfahren.",
       "Einsichtnahme des Disziplinarvorgangs, der Personalakte der Mandantschaft und sonstiger Akten.",
       "Vertretung vor Disziplinar- und Verwaltungsbehörden sowie der Verwaltungsgerichtsbarkeit und den dortigen Disziplinarkammern/-senaten.") },
-    beam: { name:"Beamtenrecht", box:"BeamtenR", intro:STD_INTRO, list:stdList(
-      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamtenrechtlichen Verfahren (z. B. Beförderung, dienstliche Beurteilung, Versetzung, Besoldung, Beihilfe, Dienstunfall, Zurruhesetzung).",
+    beam: { name:"Beamtenrecht", box:"BeamtenR", intro:STD_INTRO, list:beamList(stdList(
+      "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in beamtenrechtlichen Verfahren.",
       "Einsichtnahme der Personalakte der Mandantschaft und sonstiger Akten.",
-      "Vertretung vor Dienstherren, Dienst- und Widerspruchsbehörden sowie der Verwaltungsgerichtsbarkeit.") },
+      "Außergerichtliche Vertretung vor (Dienst-)Behörden und Widerspruchsbehörden.")) },
     sold: { name:"Soldatenrecht", box:"SoldatenR", intro:STD_INTRO, list:soldList(stdList(
       "Außergerichtliche und gerichtliche Vertretung der Mandantschaft in soldatenrechtlichen, wehrbeschwerde- und wehrdisziplinarrechtlichen Verfahren.",
       "Einsichtnahme der Disziplinar- und Ermittlungsakten, der Personalakte der Mandantschaft und sonstiger Akten.",

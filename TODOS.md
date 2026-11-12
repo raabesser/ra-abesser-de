@@ -49,7 +49,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Virtueller Kamerahintergrund im Videoportal (Büroraum einer Sicherheitsbehörde als Hauptwahl, dazu Blau in drei Tönen und Weichzeichner), wird lokal im Browser berechnet (12. 11.).
 - [ ] **Tobias/Mitarbeiterin:** Videoportal mit echten Geräten ausprobieren – Schritt für Schritt nach [videotest/TESTANLEITUNG.md](videotest/TESTANLEITUNG.md) – und Rückmeldung geben.
 - [x] **Claude (Auftrag Tobias):** TURN-Schlüssel „ra-abesser-video“ per Cloudflare-API angelegt und als Secrets `TURN_KEY_ID`/`TURN_KEY_API_TOKEN` beim Worker `ra-abesser-video` eingetragen; `/api/video/ice` liefert jetzt TURN-Server (12. 11.).
-- [ ] **Tobias:** Videogespräch über Mobilfunk bzw. ein Firmen-WLAN testen (Testkopie https://ra-abesser.de/videotest/video/).
+- [x] **Tobias:** Videogespräch mit TURN getestet – erfolgreich (12. 11.).
 - [ ] **Tobias:** Entwurf „8. Videoberatung“ in der Datenschutzerklärung der Testkopie prüfen und freigeben (https://ra-abesser.de/videotest/datenschutz/, seit 12. 11.; folgende Ziffern dort um eins verschoben). Die echte Datenschutzerklärung ist unverändert.
 
 ## 7. Mandantenformulare

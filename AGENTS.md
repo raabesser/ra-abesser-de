@@ -102,6 +102,7 @@ Weitere Beispiele: „Zeig mir die Startseite auf dem Handy.“ · „Ändere au
 ## Website-Dateien
 
 - Jede Seite ist ein Ordner mit `index.html` (z. B. `kosten/index.html`); die Startseite ist `index.html`. Unterseiten verlinken mit `../`.
+- **Mandantenformulare** (`formulare/index.html`, seit 12. 11. in der Vorschau): eigenständige Seite ohne `style.css`/`site.js` (eigenes CSS und Skript in der Datei, damit dieselbe Datei auch als E-Mail-Anhang funktioniert). Kanzleidaten im Skript zentral in `var K = {…}`; bei Adressänderung dort und im Kopf der Seite anpassen. Verlinkt auf der Kontaktseite und in der Fußzeile aller Seiten. Beim Veröffentlichen zusätzlich den Block „VORSCHAU-BANNER“ im `<style>` der Seite entfernen.
 - Aussehen: `style.css`. Mobilmenü (Hamburger): `site.js`. Kontaktformular im Browser: `kontakt/kontakt.js`. Bilder: `img/`.
 - **Navigation, Fußzeile und Jahreszahl stehen in jeder HTML-Datei**, die Navigation sogar zweimal (Kopfzeile `<nav>` und Mobilmenü `#menu`). Bei Änderungen alle Dateien anpassen.
 - **Neue Seite:** Ordner `name/index.html` anlegen (eine bestehende Unterseite als Vorlage kopieren), in allen Dateien in beiden Navigationen ergänzen, falls sie ins Menü soll.

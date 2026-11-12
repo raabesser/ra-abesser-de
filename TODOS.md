@@ -51,6 +51,11 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [ ] **Einrichtung:** TURN-Schlüssel im Cloudflare-Dashboard anlegen und beim Worker `ra-abesser-video` eintragen (Anleitung in `AGENTS.md`, Abschnitt „Testkopie mit Videoportal“) – nötig für Firmen- und manche Mobilfunknetze.
 - [ ] **Tobias:** Entwurf „8. Videoberatung“ in der Datenschutzerklärung der Testkopie prüfen und freigeben (https://ra-abesser.de/videotest/datenschutz/, seit 12. 11.; folgende Ziffern dort um eins verschoben). Die echte Datenschutzerklärung ist unverändert.
 
+## 7. Mandantenformulare
+
+- [x] **Claude:** Neue Seite „Mandantenformulare“ in der Vorschau (https://ra-abesser.de/preview/formulare/, 12. 11., Wunsch Tobias): Mandanten-Aufnahmebogen, Schweigepflichtbefreiung für E-Mail-Korrespondenz und Handakten-Erklärung online ausfüllen, mit Finger/Maus unterschreiben, drucken oder als PDF speichern. Keine Datenübertragung, alles bleibt im Browser. Verlinkt auf der Kontaktseite und in der Fußzeile („Formulare“).
+- [ ] **Tobias:** Vorschau prüfen und für die echte Website freigeben („Vorschau veröffentlichen“).
+
 ## 4. Sicherheit
 
 - [ ] **Einrichtung/Tobias:** Zwei-Faktor-Anmeldung aktivieren für Cloudflare, Brevo, GitHub und Strato – geplant beim nächsten Vor-Ort-Termin der Einrichtung.

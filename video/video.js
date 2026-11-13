@@ -180,6 +180,7 @@
     $("v-pv").srcObject = vs;
     if (!screenTrack) { $("v-lv").srcObject = vs; replaceVideo(t); }
   }
+  if (HG) HG.onTrack = function (t) { if (bgMode !== "aus") setCam(t); };
   function applyBg(m) {
     if (!rawCam || !bgOk) return;
     var my = ++bgSeq;

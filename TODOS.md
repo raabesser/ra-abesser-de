@@ -53,7 +53,7 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Entwurf „8. Videoberatung“ der Datenschutzerklärung freigegeben; Videoportal auf der echten Website veröffentlicht: https://ra-abesser.de/video/ (Gesprächslink erzeugen: https://ra-abesser.de/video/neu/) (12. 11.).
 - [x] **Claude:** Verzerrtes Kamerabild mit virtuellem Hintergrund (iPhones melden falsche Bildmaße) in der Testkopie behoben (13. 11.).
 - [x] **Claude:** Virtueller Hintergrund auf dem iPhone repariert (Erkennung per Prozessor, Ersatz-Weichzeichner, Bild über Zwischenfläche zusammensetzen) – in der Testkopie, von Tobias auf dem iPhone 16e bestätigt (13. 11.).
-- [ ] **Tobias:** Testgespräch iPhone ↔ Computer in der Testkopie mit Hintergrundwechsel; danach Freigabe für https://ra-abesser.de/video/ (ohne Diagnosezeile).
+- [x] **Tobias:** Freigabe Videoportal (13. 11.): Hintergrund-Korrektur fürs iPhone ins echte Videoportal https://ra-abesser.de/video/ übernommen (ohne Diagnosezeile).
 
 ## 7. Mandantenformulare
 

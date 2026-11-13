@@ -8,7 +8,7 @@ Stand: 9. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 
 Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – wer – seit wann.
 
-- Mandantenformulare: Versand an die Kanzlei (`formulare/`, `preview/formulare/`) – Claude (Sitzung mit Tobias) – seit 13. 11. morgens
+- (derzeit nichts)
 
 ## 1. Website online bringen (Domain)
 
@@ -60,7 +60,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Mandantenformulare samt Vollmacht, Links (Kontaktseite, Fußzeile) und Datenschutzerklärung ohne „Fax“ freigegeben; auf der echten Website veröffentlicht unter https://ra-abesser.de/formulare/ (12. 11.). Kanzlei-Bereich: https://ra-abesser.de/formulare/#kanzlei
 
 - [x] **Claude:** Mandantenformulare direkt an die Kanzlei senden (13. 11., Wunsch Tobias): Knopf „An Kanzlei senden“ erzeugt im Browser ein PDF (jsPDF/html2canvas, selbst gehostet in `formulare/lib/`) und sendet es über den Kontaktformular-Worker (Turnstile, Brevo) an das Kanzleipostfach. Nur mit allen Unterschriften und Einverständnis. In der Vorschau; Datenschutzerklärung Ziffer 7 in der Vorschau ergänzt.
-- [ ] **Tobias:** In der Vorschau (https://ra-abesser.de/preview/formulare/) einmal mit eigenen Testdaten senden, Ergebnis im Postfach prüfen, dann Freigabe inkl. Datenschutz-Ergänzung.
+- [x] **Tobias:** Freigabe 13. 11.: Versand, Prüfung der Eingaben, einheitliche Schrift, Datenschutz Ziffer 7, neue Reihenfolge auf der Kontaktseite – veröffentlicht.
+- [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 
 ## 4. Sicherheit
 

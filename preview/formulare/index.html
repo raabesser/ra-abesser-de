@@ -913,7 +913,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       if(d.getFullYear()<1920) return "Bitte prüfen Sie das Geburtsjahr.";
       return ""; },
     amt:function(v){ return letters(v)>=2 ? "" : "Bitte die Amtsbezeichnung bzw. den Dienstgrad ausschreiben (mindestens 2 Buchstaben)."; },
-    besoldung:function(v){ return /^[A-Za-z]{1,3}\s?\d{1,2}/.test(v) ? "" : "Bitte die Besoldungs- bzw. Entgeltgruppe angeben (z. B. A 11, B 3, R 1, E 9)."; },
+    besoldung:function(v){ return /^[A-Za-z]{1,3}\s?\d{1,2}/.test(v) ? "" : "Bitte die Besoldungsgruppe angeben (z. B. A 11, B 3, R 1)."; },
     personalnr:function(v){ return /^[A-Za-z0-9 .\/-]{3,25}$/.test(v) && /\d/.test(v) ? "" : "Bitte eine gültige Personalnummer angeben (mindestens 3 Zeichen, mit Ziffern)."; },
     telberuf:phone, telprivat:phone, telmobil:phone,
     rsvname:function(v){ return letters(v)>=2 ? "" : "Bitte den Namen der Versicherung bzw. Gewerkschaft angeben (mindestens 2 Buchstaben)."; },

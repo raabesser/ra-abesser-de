@@ -8,7 +8,7 @@ Stand: 9. November 2026. Erledigte Punkte bitte abhaken (`[x]`) oder entfernen. 
 
 Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – wer – seit wann.
 
-- (derzeit nichts)
+- Mandantenformulare: Versand an die Kanzlei (`formulare/`, `preview/formulare/`) – Claude (Sitzung mit Tobias) – seit 13. 11. morgens
 
 ## 1. Website online bringen (Domain)
 

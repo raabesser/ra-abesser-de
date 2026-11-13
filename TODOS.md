@@ -51,6 +51,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude (Auftrag Tobias):** TURN-Schlüssel „ra-abesser-video“ per Cloudflare-API angelegt und als Secrets `TURN_KEY_ID`/`TURN_KEY_API_TOKEN` beim Worker `ra-abesser-video` eingetragen; `/api/video/ice` liefert jetzt TURN-Server (12. 11.).
 - [x] **Tobias:** Videogespräch mit TURN getestet – erfolgreich (12. 11.).
 - [x] **Tobias:** Entwurf „8. Videoberatung“ der Datenschutzerklärung freigegeben; Videoportal auf der echten Website veröffentlicht: https://ra-abesser.de/video/ (Gesprächslink erzeugen: https://ra-abesser.de/video/neu/) (12. 11.).
+- [x] **Claude:** Verzerrtes Kamerabild mit virtuellem Hintergrund (iPhones melden falsche Bildmaße) in der Testkopie behoben (13. 11.).
+- [ ] **Tobias:** Hintergrund-Wechsel in der Testkopie (https://ra-abesser.de/videotest/video/) auf dem Gerät testen, auf dem er nicht ging; Gerät/Browser an Claude melden. Danach Freigabe für https://ra-abesser.de/video/.
 
 ## 7. Mandantenformulare
 

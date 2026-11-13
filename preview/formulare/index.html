@@ -36,6 +36,11 @@ h1{font-family:inherit;font-weight:600;font-size:25px;margin:18px 0 6px}
 ol.howto{margin:12px 0 0;padding-left:20px;color:var(--ink)}
 ol.howto li{margin:2px 0}
 .privacy{background:var(--accent-soft);border-radius:8px;padding:10px 14px;font-size:14px;margin:16px 0 0}
+.remember{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin:10px 0 0;cursor:pointer}
+.remember input{margin-top:3px;flex:none}
+.rmsg{font-size:14px;margin:8px 0 0;color:var(--accent)}
+.rmsg:empty{display:none}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
 section.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 8px;margin:18px 0}
 section.card h2{font-size:18px;margin:0 0 4px;color:var(--accent)}
 section.card .sub{color:var(--muted);font-size:14px;margin:0 0 12px}
@@ -121,6 +126,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 .web-only{display:none}
 .is-web .web-only{display:block}
 .is-web button.web-only{display:inline-block}
+.is-web span.web-only{display:inline}
 @media (max-width:560px){.grid{grid-template-columns:1fr}h1{font-size:23px}}
 
 /* ---------- Druckansicht ---------- */
@@ -214,7 +220,9 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <li class="web-only">Unten auf <strong>„An Kanzlei senden“</strong> tippen – die Formulare gehen dann direkt an die Kanzlei.</li>
     <li>Oder auf <strong>„Drucken / als PDF speichern“</strong> tippen und das PDF (bzw. den Ausdruck oder Scan) per E-Mail oder Post an die Kanzlei senden.</li>
   </ol>
-  <p class="privacy">Ihre Eingaben bleiben auf Ihrem Gerät. Dieses Formular überträgt keine Daten ins Internet und speichert nichts dauerhaft.</p>
+  <p class="privacy">Ihre Eingaben bleiben auf Ihrem Gerät<span class="web-only"> – an die Kanzlei gehen sie erst, wenn Sie auf „An Kanzlei senden“ tippen</span>. Damit nichts verloren geht, merkt sich dieses Fenster Ihre Eingaben, bis Sie es schließen (Unterschriften ausgenommen).</p>
+  <label class="remember"><input type="checkbox" id="remember"> <span><strong>Eingaben auf diesem Gerät merken</strong> – auch nach dem Schließen, bis zu 30 Tage. Bitte nur auf dem eigenen Gerät nutzen, nicht auf fremden oder öffentlichen Computern.</span></label>
+  <p class="rmsg" id="rmsg" aria-live="polite"></p>
 
   <section class="card">
     <h2>Persönliche Angaben</h2>
@@ -876,6 +884,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
           sMsg("Vielen Dank! Ihre Formulare wurden an Rechtsanwalt Abeßer gesendet. Sie müssen nichts weiter tun.","ok");
           document.getElementById("s_save").hidden=false;
           sGo.textContent="Gesendet"; 
+          if(!document.getElementById("remember").checked) wipe();
         } else { throw new Error(d.error||"send"); }
       })
       .catch(function(e){
@@ -1018,6 +1027,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 
   document.getElementById("btnClear").addEventListener("click", function(){
     if(!window.confirm("Alle Eingaben löschen?")) return;
+    wipe(); document.getElementById("remember").checked=false; document.getElementById("rmsg").textContent="";
     inputs.forEach(function(el){ if(el.type==="checkbox") el.checked=false; else el.value=""; el.classList.remove("missing"); });
     notice.classList.remove("show");
     inlines.forEach(function(el){ el.value=""; el.dataset.own=""; });
@@ -1028,6 +1038,63 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     preview();
     window.scrollTo({top:0,behavior:"smooth"});
   });
+
+  /* ===== Eingaben merken =====
+     Immer: in diesem Fenster (sessionStorage, endet mit dem Schließen) – damit Neuladen oder Zurück nichts löscht.
+     Auf Wunsch (Häkchen „Eingaben auf diesem Gerät merken“): zusätzlich im Browser dieses Geräts (localStorage), höchstens 30 Tage.
+     Nie gespeichert: Unterschriften, Einverständnis, Datum der Unterschrift. Nichts davon verlässt das Gerät. */
+  var MKEY="ra-mandantenformulare", MDAYS=30, remember=document.getElementById("remember"), rMsg=document.getElementById("rmsg");
+  function st(t){ try{ return window[t]||null; }catch(e){ return null; } }
+  function sGet(t){ try{ var s=st(t); return s?s.getItem(MKEY):null; }catch(e){ return null; } }
+  function sSet(t,j){ try{ var s=st(t); if(s){ if(j) s.setItem(MKEY,j); else s.removeItem(MKEY); } }catch(e){} }
+  function wipe(){ sSet("sessionStorage",null); sSet("localStorage",null); }
+  function fixed(k){ return PRE && (k==="rg"||k==="betr"); }
+  function snap(){
+    var d={t:Date.now(),k:{},f:{},d:{}};
+    inputs.forEach(function(el){ var k=el.dataset.k; if(k==="sigdatum"||fixed(k)) return; d.k[k]= el.type==="checkbox" ? el.checked : el.value; });
+    inlines.forEach(function(el){ if(el.dataset.own) d.f[el.dataset.f]=el.value; });
+    ["1","2","3","4"].forEach(function(n){ d.d[n]=document.getElementById("d"+n).checked; });
+    if(WEB){ var t=document.getElementById("s_tel"); d.tel=t.value; d.telOwn=!!t.dataset.own; d.msg=document.getElementById("s_msg").value; }
+    return d;
+  }
+  function leer(d){
+    for(var k in d.k) if(d.k[k]===true || (typeof d.k[k]==="string" && d.k[k].trim())) return false;
+    for(var f in d.f) if(String(d.f[f]).trim()) return false;
+    return !(d.msg && d.msg.trim());
+  }
+  function sichern(){
+    var d=snap(), j=leer(d) ? null : JSON.stringify(d);
+    sSet("sessionStorage",j);
+    sSet("localStorage", remember.checked ? j : null);
+  }
+  var saveT=null;
+  function save(){ clearTimeout(saveT); saveT=setTimeout(sichern,300); }
+  function restore(){
+    var j=sGet("sessionStorage"), local=sGet("localStorage");
+    if(local) remember.checked=true;
+    j=j||local;
+    if(!j) return;
+    var d; try{ d=JSON.parse(j); }catch(e){ d=null; }
+    if(!d || !d.k || leer(d) || Date.now()-(d.t||0) > MDAYS*864e5){ wipe(); remember.checked=false; return; }
+    inputs.forEach(function(el){ var k=el.dataset.k; if(!(k in d.k) || fixed(k)) return; if(el.type==="checkbox") el.checked=!!d.k[k]; else el.value=d.k[k]; });
+    ["1","2","3","4"].forEach(function(n){ if(n in d.d && !(PRE && n==="4")) document.getElementById("d"+n).checked=!!d.d[n]; });
+    inlines.forEach(function(el){ if(el.dataset.f in d.f){ el.value=d.f[el.dataset.f]; el.dataset.own="1"; } });
+    if(WEB){
+      var t=document.getElementById("s_tel");
+      if(d.tel!=null){ t.value=d.tel; t.dataset.own=d.telOwn?"1":""; }
+      if(d.msg!=null) document.getElementById("s_msg").value=d.msg;
+    }
+    preview();
+    rMsg.innerHTML='Ihre früheren Eingaben wurden wiederhergestellt – bitte noch unterschreiben. <button type="button" class="linkbtn" id="rclear">Alles löschen und neu beginnen</button>';
+    document.getElementById("rclear").addEventListener("click",function(){ document.getElementById("btnClear").click(); });
+  }
+  restore();
+  document.addEventListener("input", save);
+  document.addEventListener("change", save);
+  remember.addEventListener("change",function(){
+    rMsg.textContent = remember.checked ? "Ihre Eingaben werden auf diesem Gerät bis zu 30 Tage gemerkt." : "Ihre Eingaben werden nur noch gemerkt, bis Sie dieses Fenster schließen.";
+  });
+  window.addEventListener("pagehide",function(){ clearTimeout(saveT); sichern(); });
 })();
 </script>
 </body>

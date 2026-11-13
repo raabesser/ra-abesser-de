@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#00305b">
 <link rel="canonical" href="https://ra-abesser.de/kontakt/">
 <meta property="og:title" content="KONTAKT | Rechtsanwalt Abeßer"><meta property="og:description" content="Kontakt zu Rechtsanwalt Abeßer, Keithstr. 14, 10787 Berlin: Telefon +49 30 39 90 34 06, E-Mail info@ra-abesser.de oder Kontaktformular mit Dokumente-Upload."><meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta property="og:site_name" content="Rechtsanwalt Abeßer"><meta property="og:url" content="https://ra-abesser.de/kontakt/"><meta property="og:image" content="https://ra-abesser.de/img/hero.jpg">
-<link rel="stylesheet" href="../style.css?v=23">
+<link rel="stylesheet" href="../style.css?v=24">
 </head>
 <body id="top">
 <div class="preview-banner">VORSCHAU – nicht die veröffentlichte Website · <a href="../../kontakt/">Zur veröffentlichten Seite</a></div>
@@ -34,7 +34,7 @@
 <p><b>E-Mail:</b> <a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a><br>
 <b>Tel.: </b> <a href="tel:+493039903406">+49 30 39 90 34 06</a></p>
 <p>&nbsp;</p>
-<p><b>Videoberatung:</b> Gespräche sind auch per Video möglich. <a href="/video/">Mehr erfahren</a></p>
+<p><b>Videoberatung:</b> Gespräche sind auch per Video möglich. <a href="?anliegen=video#f">Videoberatung anfragen</a> · <a href="/video/">Mehr erfahren</a></p>
 <p>&nbsp;</p>
 <p><b>Mandantenformulare:</b> <a href="../formulare/">Aufnahmebogen, Erklärungen und Vollmacht online ausfüllen und unterschreiben</a></p>
 </div>
@@ -48,6 +48,12 @@
 <div class="row2"><div class="fld"><label for="em">E-Mail *</label><input type="email" id="em" autocomplete="email" required></div><div class="fld"><label for="tl">Telefonnummer *</label><input type="tel" id="tl" autocomplete="tel" inputmode="tel" maxlength="40" pattern="[0-9 +\/\.\(\)\-]{5,40}" title="Bitte eine Telefonnummer angeben, z. B. 030 1234567 oder +49 170 1234567." required></div></div>
 <div class="fld"><label for="bt">Betreff *</label><input type="text" id="bt" required></div>
 <div class="fld"><label for="ms">Nachricht *</label><textarea id="ms" required></textarea></div>
+<fieldset class="fld vb" id="vb" hidden><legend>Wunschtermine für die Videoberatung *</legend>
+<p class="hint">Bitte nennen Sie mindestens einen, gern bis zu drei Termine (Datum und Uhrzeit). Sie erhalten die Bestätigung mit Ihrem persönlichen Videolink per E-Mail.</p>
+<div class="vbt"><label for="w1">1.</label><input type="datetime-local" id="w1" step="900"></div>
+<div class="vbt"><label for="w2">2.</label><input type="datetime-local" id="w2" step="900"></div>
+<div class="vbt"><label for="w3">3.</label><input type="datetime-local" id="w3" step="900"></div>
+</fieldset>
 <div class="fld upl"><label for="dt">Dokumente (optional)</label><input type="file" id="dt" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,application/pdf,image/jpeg,image/png"><p class="hint">Z. B.: Bescheid, Anhörungsschreiben oder Ladung – als PDF, Word-Datei oder Foto (JPG, PNG). Höchstens 5 Dateien, zusammen bis 10 MB.</p><ul class="flist" id="dl" aria-live="polite"></ul></div>
 <div class="consent"><input type="checkbox" id="ds" required><label for="ds">Ich habe die<br class="m"> <a href="../datenschutz/">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden. Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <a href="mailto:info@ra-abesser.de">info@ra-abesser.de</a> widerrufen. *</label></div>
 <button type="submit" id="sb">Absenden</button>
@@ -63,6 +69,6 @@
 <a class="totop" href="#top" aria-label="Nach oben"><svg viewBox="20 20 160 160" aria-hidden="true"><path fill="#00305B" d="M180 20v160H20V20h160z"/><path fill="#FFFFFF" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z"/><path fill="#FFFFFF" d="M59.668 112L56 107.407 99.037 74 142 107.41l-3.672 4.59-39.29-29.873L59.667 112z"/></svg></a>
 <script src="../site.js?v=11"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="kontakt.js?v=11"></script>
+<script src="kontakt.js?v=12"></script>
 </body>
 </html>

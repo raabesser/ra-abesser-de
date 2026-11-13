@@ -24,6 +24,7 @@
   var loading = null, segmenter = null;
   var video = null, out = null, octx = null, small = null, sctx = null, mask = null, mctx = null, maskData = null;
   var outTrack = null, running = false, mode = "aus", bild = null, bilder = {}, lastTs = 0, timer = null, busy = false;
+  var zw = null, zctx = null;  // Zwischenfläche: Safari ignoriert beim direkten Zeichnen aus dem Video teils die Überlagerungsregeln
   var hatFilter = null, klein = null, kctx = null;   // Ersatz-Weichzeichner für Browser ohne Canvas-Filter (Safari)
   var diag = { status: "nicht gestartet", technik: "", fehler: "", bilder: 0, maske: "" };
   // Safari (iPhone, iPad, Mac; auch Chrome auf dem iPhone) liefert mit der Grafikkarte teils eine
@@ -149,6 +150,9 @@
     try {
       masse();
       var W = out.width, H = out.height;
+      if (!zw) { zw = document.createElement("canvas"); zctx = zw.getContext("2d"); }
+      if (zw.width !== W || zw.height !== H) { zw.width = W; zw.height = H; }
+      zctx.drawImage(video, 0, 0, W, H);
       sctx.drawImage(video, 0, 0, small.width, small.height);
       var ts = performance.now();
       if (ts <= lastTs) ts = lastTs + 1;
@@ -183,15 +187,15 @@
       octx.drawImage(mask, 0, 0, W, H);
       if (hatFilter) octx.filter = "none";
       octx.globalCompositeOperation = "source-in";
-      octx.drawImage(video, 0, 0, W, H);
+      octx.drawImage(zw, 0, 0, W, H);
       octx.globalCompositeOperation = "destination-over";
       if (mode === "weich" || !bild) {
         if (hatFilter) {
           octx.filter = "blur(16px)";
-          octx.drawImage(video, 0, 0, W, H);
+          octx.drawImage(zw, 0, 0, W, H);
           octx.filter = "none";
         } else {
-          weichOhneFilter(video, W, H, 28);
+          weichOhneFilter(zw, W, H, 28);
         }
       } else {
         zeichneBild(bild, W, H);

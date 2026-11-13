@@ -25,7 +25,11 @@
   var video = null, out = null, octx = null, small = null, sctx = null, mask = null, mctx = null, maskData = null;
   var outTrack = null, running = false, mode = "aus", bild = null, bilder = {}, lastTs = 0, timer = null, busy = false;
   var hatFilter = null, klein = null, kctx = null;   // Ersatz-Weichzeichner für Browser ohne Canvas-Filter (Safari)
-  var diag = { status: "nicht gestartet", technik: "", fehler: "", bilder: 0 };
+  var diag = { status: "nicht gestartet", technik: "", fehler: "", bilder: 0, maske: "" };
+  // Safari (iPhone, iPad, Mac; auch Chrome auf dem iPhone) liefert mit der Grafikkarte teils eine
+  // unbrauchbare Maske (alles „Person“). Dort gleich den Prozessor nehmen.
+  var webkit = /AppleWebKit/.test(navigator.userAgent) && !/Chrome\/|Chromium|Edg\//.test(navigator.userAgent) || /CriOS|FxiOS|EdgiOS/.test(navigator.userAgent);
+  var nurCPU = webkit, flach = 0;
   var naechster = 0, dauer = 0; // Selbstbremse: langsame Geräte rechnen seltener, die Seite bleibt bedienbar
 
   function frist(p, ms, text) {
@@ -38,10 +42,15 @@
     loading = import(BASE + "vision_bundle.mjs").then(function (mp) {
       return mp.FilesetResolver.forVisionTasks(BASE + "wasm").then(function (fs) {
         var opts = {
-          baseOptions: { modelAssetPath: BASE + "selfie_segmenter.tflite", delegate: "GPU" },
+          baseOptions: { modelAssetPath: BASE + "selfie_segmenter.tflite", delegate: nurCPU ? "CPU" : "GPU" },
           runningMode: "VIDEO", outputConfidenceMasks: true, outputCategoryMask: false
         };
         // Grafikkarte zuerst; hängt oder scheitert das (manche Handys), auf den Prozessor ausweichen
+        if (nurCPU) {
+          return frist(mp.ImageSegmenter.createFromOptions(fs, opts), 20000, "CPU-Zeitüberschreitung").then(function (s) {
+            diag.technik = "CPU"; return s;
+          });
+        }
         return frist(mp.ImageSegmenter.createFromOptions(fs, opts), 10000, "GPU-Zeitüberschreitung").then(function (s) {
           diag.technik = "GPU"; return s;
         }, function (e) {
@@ -145,9 +154,22 @@
       var cm = res && res.confidenceMasks && res.confidenceMasks[0];
       if (cm) {
         var f = cm.getAsFloat32Array(), d = maskData.data;
-        var n = Math.min(f.length, d.length / 4);
-        for (var i = 0, j = 3; i < n; i++, j += 4) d[j] = f[i] * 255;
+        var n = Math.min(f.length, d.length / 4), lo = 1, hi = 0, sum = 0;
+        for (var i = 0, j = 3; i < n; i++, j += 4) {
+          var x = f[i]; d[j] = x * 255;
+          if (x < lo) lo = x; if (x > hi) hi = x; sum += x;
+        }
         mctx.putImageData(maskData, 0, 0);
+        diag.maske = Math.round(100 * sum / n) + " % Person (" + Math.round(lo * 100) + "–" + Math.round(hi * 100) + ")";
+        // Maske ohne Unterschiede über viele Bilder: Grafikkarten-Erkennung unbrauchbar -> auf Prozessor wechseln
+        flach = hi - lo < 0.05 ? flach + 1 : 0;
+        if (flach > 45 && !nurCPU) {
+          nurCPU = true; flach = 0;
+          var alt = segmenter; segmenter = null; loading = null;
+          try { alt.close(); } catch (e) {}
+          diag.fehler = "GPU-Maske leer, wechsle zu CPU";
+          laden();
+        }
       }
       if (res && res.close) res.close();
 
@@ -241,6 +263,7 @@
       " · Filter " + (hatFilter === null ? "?" : hatFilter ? "ja" : "nein (Ersatz)") +
       " · Kamera " + v + " · Bild " + (out ? out.width + "×" + out.height : "–") +
       " · Bilder " + diag.bilder + " · " + Math.round(dauer) + " ms" +
+      (diag.maske ? " · Maske " + diag.maske : "") +
       (diag.fehler ? " · Fehler: " + diag.fehler : "");
   }
 

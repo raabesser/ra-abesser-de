@@ -71,7 +71,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** In der Vorschau: Kontaktseite mit Link „Videoberatung anfragen“ – Betreff und Anfragetext vorausgefüllt, bis zu drei Wunschtermine (https://ra-abesser.de/preview/kontakt/?anliegen=video, 13. 11., Wunsch Tobias).
 - [x] **Claude:** Kontaktformular-Worker erweitert und Kalender-Worker `ra-abesser-kalender` eingerichtet: Die E-Mail an die Kanzlei zeigt je Wunschtermin „frei/belegt laut Kalender“ und enthält fertige Antwort-Entwürfe mit Datum, Uhrzeit und Videolink sowie „In Google Kalender eintragen“ (13. 11.). Normale Anfragen unverändert.
 - [x] **Tobias:** Google-Kalender verbunden (Secret `KALENDER_ICS` beim Worker `ra-abesser-kalender`, 13. 11.); Claude hat den Abgleich geprüft – Kalender wird gelesen, frei/belegt wird erkannt.
-- [ ] **Tobias:** In der Vorschau eine Testanfrage senden (https://ra-abesser.de/preview/kontakt/?anliegen=video) und die E-Mail mit den Antwort-Entwürfen prüfen; danach Freigabe für die echte Website (dann auch Knopf „Videoberatung anfragen“ auf https://ra-abesser.de/video/).
+- [x] **Claude:** Wunschtermine nehmen jetzt jede Uhrzeit an (vorher nur Viertelstunden, am Computer kam „der nächste gültige Wert ist …“) (13. 11.).
+- [x] **Tobias:** Testanfrage erfolgreich; Videoberatung anfragen freigegeben und auf der echten Website veröffentlicht: https://ra-abesser.de/kontakt/?anliegen=video, Link auch auf https://ra-abesser.de/video/ (13. 11.). `style.css?v=24`, `kontakt.js?v=12`.
 
 ## 4. Sicherheit
 

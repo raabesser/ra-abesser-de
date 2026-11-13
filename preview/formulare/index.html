@@ -65,6 +65,8 @@ details .legal{font-size:14px;color:#333}
 .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
 .bar .in{max-width:760px;margin:0 auto;display:flex;gap:10px;align-items:center}
 .bar .primary{flex:1;max-width:340px}
+.is-web .bar #btnPrint{background:#fff;color:var(--accent);flex:0 1 auto}
+.is-web .bar #btnPrint .lg{display:none}
 button{font:inherit;font-size:16px;border-radius:8px;padding:11px 18px;cursor:pointer;min-height:44px}
 .primary{background:var(--accent);color:#fff;border:1px solid var(--accent);font-weight:600}
 .ghost{background:#fff;color:var(--accent);border:1px solid #b9c0c9}
@@ -107,53 +109,68 @@ section.kanzlei{border:2px solid var(--accent);background:#fbfcfe}
 section.kanzlei .row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 section.kanzlei textarea{width:100%;font:14px/1.4 ui-monospace,Menlo,Consolas,monospace;padding:8px;border:1px solid #b9c0c9;border-radius:6px;min-height:70px;word-break:break-all}
 section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px}
+.sendcard textarea{width:100%;font:inherit;font-size:16px;padding:10px 11px;border:1px solid #b9c0c9;border-radius:6px;min-height:90px;resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 14px;font-size:15px;cursor:pointer}
+.consent input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--accent)}
+.sendstatus{font-size:15px;margin:10px 0 0;min-height:22px}
+.sendstatus.err{color:var(--warn)}
+.sendstatus.ok{color:#1d6b35;font-weight:600}
+#ts{margin:8px 0}
+.web-only{display:none}
+.is-web .web-only{display:block}
+.is-web button.web-only{display:inline-block}
 @media (max-width:560px){.grid{grid-template-columns:1fr}h1{font-size:23px}}
 
 /* ---------- Druckansicht ---------- */
 #print{display:none}
 @page{size:A4;margin:16mm 20mm 16mm 22mm}
+/* Formular-Dokumente: gilt für den Ausdruck (#print) und das PDF (#pdfwrap) */
+.docs{font:10.5pt/1.42 Arial,"Helvetica Neue",Helvetica,sans-serif;color:#000;background:#fff}
+.docs .lh{font-size:8.5pt;border-bottom:.6pt solid #000;padding-bottom:3pt;margin-bottom:14pt;display:flex;justify-content:space-between;gap:10pt}
+.docs .office{font-size:7.5pt;margin:-10pt 0 12pt;color:#000}
+.docs .office .bx{display:inline-block;width:8pt;height:8pt;border:.6pt solid #000;vertical-align:-1pt;margin:0 2pt 0 4pt}
+.docs .doc h3{font-size:12.5pt;text-align:center;margin:4pt 0 16pt;text-decoration:underline}
+.docs .doc h3.plain{text-decoration:none;line-height:1.35}
+.docs table.rows{width:100%;border-collapse:collapse;margin-bottom:8pt}
+.docs table.rows td{padding:5pt 0 2pt;vertical-align:bottom}
+.docs table.rows td.k{width:42%;white-space:nowrap;padding-right:8pt}
+.docs table.rows td.v{border-bottom:.6pt solid #000;font-family:"Courier New",Courier,monospace;font-size:10.5pt}
+.docs table.rows td.k2{width:1%;white-space:nowrap;padding:5pt 8pt 2pt 14pt}
+.docs .val{font-family:"Courier New",Courier,monospace;border-bottom:.6pt solid #000;padding:0 4pt;display:inline-block;min-width:60%}
+.docs .cb{display:inline-block;width:9pt;height:9pt;border:.7pt solid #000;text-align:center;line-height:8pt;font-size:8pt;vertical-align:-1pt;margin-right:4pt}
+.docs .line{margin:6pt 0}
+.docs .legal{font-size:9.3pt;line-height:1.38}
+.docs .legal h4{font-size:9.6pt;margin:8pt 0 3pt}
+.docs .legal h4.u{font-weight:normal;text-decoration:underline}
+.docs .legal p{margin:0 0 5pt}
+.docs .legal ul{margin:0 0 5pt;padding-left:16pt}
+.docs .legal li{margin-bottom:2pt}
+.docs .body p{margin:0 0 9pt;text-align:justify}
+.docs .block{margin:6pt 0 12pt}
+.docs .block .lbl{font-size:8.5pt;color:#000}
+.docs .sig{display:flex;align-items:flex-end;gap:18pt;margin-top:34pt;page-break-inside:avoid;break-inside:avoid}
+.docs .sig>div{flex:1}
+.docs .sig .l{border-bottom:.6pt solid #000;min-height:16pt;font-family:"Courier New",Courier,monospace;padding:0 2pt}
+.docs .sig .c{font-size:8.5pt;text-align:center;margin-top:2pt}
+.docs .sig .w{flex:1.6}
+.docs .sig .l.si{height:46pt;display:flex;align-items:flex-end;justify-content:center;padding:0}
+.docs .sig .l.si img{max-height:52pt;max-width:100%;margin-bottom:-6pt}
+.docs .esig{font-size:7.5pt;margin-top:6pt;color:#333}
+.docs .keep{page-break-inside:avoid;break-inside:avoid}
+.docs .zbox{float:right;border:.8pt solid #000;padding:4pt 9pt;font-size:8.5pt;text-align:center;margin:-4pt 0 6pt 10pt}
+.docs ol.vm{margin:0 0 6pt;padding-left:17pt}
+.docs ol.vm li{margin-bottom:2.5pt}
+.docs .body p.tight{margin-bottom:4pt}
+.docs .body p.l{text-align:left;line-height:1.9}
+#pdfwrap{position:fixed;left:-20000px;top:0;width:635px}
+#pdfwrap .doc{padding:0;margin:0 0 40px}
 @media print{
   body{background:#fff;font:10.5pt/1.42 Arial,"Helvetica Neue",Helvetica,sans-serif;color:#000}
   .screen{display:none!important}
   #print{display:block}
   .doc{page-break-after:always;break-after:page}
   .doc:last-child{page-break-after:auto;break-after:auto}
-  .lh{font-size:8.5pt;border-bottom:.6pt solid #000;padding-bottom:3pt;margin-bottom:14pt;display:flex;justify-content:space-between;gap:10pt}
-  .office{font-size:7.5pt;margin:-10pt 0 12pt;color:#000;white-space:nowrap}
-  .office .bx{display:inline-block;width:8pt;height:8pt;border:.6pt solid #000;vertical-align:-1pt;margin:0 2pt 0 4pt}
-  .doc h3{font-size:12.5pt;text-align:center;margin:4pt 0 16pt;text-decoration:underline}
-  .doc h3.plain{text-decoration:none;line-height:1.35}
-  table.rows{width:100%;border-collapse:collapse;margin-bottom:8pt}
-  table.rows td{padding:5pt 0 2pt;vertical-align:bottom}
-  table.rows td.k{width:42%;white-space:nowrap;padding-right:8pt}
-  table.rows td.v{border-bottom:.6pt solid #000;font-family:"Courier New",Courier,monospace;font-size:10.5pt}
-  table.rows td.k2{width:1%;white-space:nowrap;padding:5pt 8pt 2pt 14pt}
-  .val{font-family:"Courier New",Courier,monospace;border-bottom:.6pt solid #000;padding:0 4pt;display:inline-block;min-width:60%}
-  .cb{display:inline-block;width:9pt;height:9pt;border:.7pt solid #000;text-align:center;line-height:8pt;font-size:8pt;vertical-align:-1pt;margin-right:4pt}
-  .line{margin:6pt 0}
-  .legal{font-size:9.3pt;line-height:1.38}
-  .legal h4{font-size:9.6pt;margin:8pt 0 3pt}
-  .legal h4.u{font-weight:normal;text-decoration:underline}
-  .legal p{margin:0 0 5pt}
-  .legal ul{margin:0 0 5pt;padding-left:16pt}
-  .legal li{margin-bottom:2pt}
-  .body p{margin:0 0 9pt;text-align:justify}
-  .block{margin:6pt 0 12pt}
-  .block .lbl{font-size:8.5pt;color:#000}
-  .sig{display:flex;align-items:flex-end;gap:18pt;margin-top:34pt;page-break-inside:avoid;break-inside:avoid}
-  .sig>div{flex:1}
-  .sig .l{border-bottom:.6pt solid #000;min-height:16pt;font-family:"Courier New",Courier,monospace;padding:0 2pt}
-  .sig .c{font-size:8.5pt;text-align:center;margin-top:2pt}
-  .sig .w{flex:1.6}
-  .sig .l.si{height:46pt;display:flex;align-items:flex-end;justify-content:center;padding:0}
-  .sig .l.si img{max-height:52pt;max-width:100%;margin-bottom:-6pt}
-  .esig{font-size:7.5pt;margin-top:6pt;color:#333}
-  .keep{page-break-inside:avoid;break-inside:avoid}
-  .zbox{float:right;border:.8pt solid #000;padding:4pt 9pt;font-size:8.5pt;text-align:center;margin:-4pt 0 6pt 10pt}
-  ol.vm{margin:0 0 6pt;padding-left:17pt}
-  ol.vm li{margin-bottom:2.5pt}
-  .body p.tight{margin-bottom:4pt}
-  .body p.l{text-align:left;line-height:1.9}
+  #pdfwrap{display:none}
 }
 </style>
 </head>
@@ -192,8 +209,8 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   <ol class="howto">
     <li>Felder ausfüllen (leere Felder können Sie auch später von Hand ergänzen).</li>
     <li>In jedem Formular unterschreiben – mit dem Finger (Handy/Tablet) oder der Maus im Unterschriftsfeld. Alternativ später von Hand auf dem Ausdruck.</li>
-    <li>Unten auf <strong>„Drucken / als PDF speichern“</strong> tippen.</li>
-    <li>Das PDF (oder den Ausdruck bzw. Scan) per E-Mail oder Post an die Kanzlei senden.</li>
+    <li class="web-only">Unten auf <strong>„An Kanzlei senden“</strong> tippen – die Formulare gehen dann direkt an die Kanzlei.</li>
+    <li>Oder auf <strong>„Drucken / als PDF speichern“</strong> tippen und das PDF (bzw. den Ausdruck oder Scan) per E-Mail oder Post an die Kanzlei senden.</li>
   </ol>
   <p class="privacy">Ihre Eingaben bleiben auf Ihrem Gerät. Dieses Formular überträgt keine Daten ins Internet und speichert nichts dauerhaft.</p>
 
@@ -286,6 +303,20 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <div class="sigpad" data-n="4"></div>
   </section>
 
+  <section class="card sendcard web-only" id="send">
+    <h2>An die Kanzlei senden</h2>
+    <p class="sub">Die ausgewählten Formulare werden als PDF-Datei mit Ihren Unterschriften verschlüsselt an Rechtsanwalt Abeßer (info@ra-abesser.de) übermittelt. Ein Ausdruck ist dann nicht nötig.</p>
+    <div class="grid">
+      <label class="f"><span>Telefon für Rückfragen <em>(freiwillig)</em></span><input type="tel" id="s_tel" autocomplete="tel"></label>
+      <label class="f full"><span>Nachricht an die Kanzlei <em>(freiwillig)</em></span><textarea id="s_msg" maxlength="3000"></textarea></label>
+    </div>
+    <label class="consent"><input type="checkbox" id="s_consent"><span>Ich bin damit einverstanden, dass meine Angaben und Unterschriften zur Bearbeitung meines Anliegens an Rechtsanwalt Abeßer übermittelt werden. Hinweise dazu in der <a href="../datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a> (Ziffer 7).</span></label>
+    <div id="ts"></div>
+    <button type="button" class="primary" id="s_go">Jetzt an die Kanzlei senden</button>
+    <p class="sendstatus" id="s_status" aria-live="polite"></p>
+    <button type="button" class="ghost sm" id="s_save" hidden>PDF für Ihre Unterlagen speichern</button>
+  </section>
+
   <div class="notice" id="notice"></div>
 
   <p class="sendback">Unterschriebene Formulare bitte an: Rechtsanwalt Tobias Abeßer, Keithstr. 14, 10787 Berlin · info@ra-abesser.de</p>
@@ -293,12 +324,14 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 
 <div class="bar screen">
   <div class="in">
-    <button class="primary" id="btnPrint" type="button">Drucken / als PDF speichern</button>
+    <button class="primary web-only" id="btnSend" type="button">An Kanzlei senden</button>
+    <button class="primary" id="btnPrint" type="button">Drucken<span class="lg"> / als PDF speichern</span></button>
     <button class="ghost" id="btnClear" type="button">Löschen</button>
   </div>
 </div>
 
-<div id="print"></div>
+<div id="print" class="docs"></div>
+<div id="pdfwrap" class="docs" aria-hidden="true"></div>
 
 <script>
 (function(){
@@ -474,7 +507,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 
   function doc1(v){
     return '<div class="doc">'+letterhead()+
-    '<div class="office">Von der Kanzlei auszufüllen: Aktenz. ________ / ____ &nbsp;RG:'+
+    '<div class="office">Kanzlei: Aktenz. ________ / ____ &nbsp;RG:'+
       RG_ORDER.map(function(k){ return '<span class="bx" style="text-align:center;line-height:7pt;font-size:7pt">'+(v.rg===k?"✕":"")+'</span>'+RG[k].box; }).join(" ")+'</div>'+
     '<h3>Mandanten-Aufnahmebogen / Mandanteninformation</h3>'+
     '<table class="rows">'+
@@ -717,6 +750,144 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     kMsg.textContent="Datei gespeichert. Hängen Sie sie an Ihre E-Mail an.";
   });
 
+  /* ===== Versand an die Kanzlei (nur auf der Website, nicht als Datei-Anhang) ===== */
+  var WEB = /^https?:$/.test(location.protocol);
+  if(WEB) document.documentElement.classList.add("is-web");
+  var SITEKEY="0x4AAAAAAF41vy0mR_0UU8DL", lastPdf=null, lastPdfName="";
+  function loadScript(src){ return new Promise(function(ok,no){ var t=document.createElement("script"); t.src=src; t.async=true; t.onload=ok; t.onerror=function(){no(new Error("load "+src));}; document.head.appendChild(t); }); }
+  var libsP=null;
+  function libs(){ if(!libsP) libsP=Promise.all([loadScript("lib/jspdf.umd.min.js"),loadScript("lib/html2canvas.min.js")]).catch(function(e){libsP=null;throw e;}); return libsP; }
+
+  /* Turnstile (Spamschutz) erst beim Senden laden */
+  var tsP=null, tsWidget=null, tsToken=null, tsWait=null;
+  function turnstileToken(){
+    if(tsToken) return Promise.resolve(tsToken);
+    if(!tsP) tsP=new Promise(function(ok,no){
+      window.__tsReady=function(){ ok(); };
+      loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__tsReady").catch(function(e){tsP=null;no(e);});
+    });
+    return tsP.then(function(){
+      return new Promise(function(ok,no){
+        tsWait={ok:ok,no:no};
+        if(tsWidget===null){
+          tsWidget=turnstile.render("#ts",{sitekey:SITEKEY,language:"de",appearance:"interaction-only",
+            callback:function(t){ tsToken=t; if(tsWait){tsWait.ok(t);tsWait=null;} },
+            "expired-callback":function(){ tsToken=null; },
+            "error-callback":function(){ if(tsWait){tsWait.no(new Error("captcha"));tsWait=null;} }});
+        } else { turnstile.reset(tsWidget); }
+      });
+    });
+  }
+
+  /* PDF aus denselben Dokumenten wie der Ausdruck */
+  var PX_W=635, PX_H=Math.floor(265*96/25.4);   /* Inhaltsbreite 168 mm, Seitenhöhe 265 mm */
+  function makePdf(){
+    var wrap=document.getElementById("pdfwrap");
+    wrap.innerHTML=build();
+    var docs=Array.prototype.slice.call(wrap.querySelectorAll(".doc"));
+    var pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4",compress:true}), first=true;
+    var chain=Promise.resolve();
+    docs.forEach(function(d){
+      chain=chain.then(function(){
+        return html2canvas(d,{scale:2,backgroundColor:"#ffffff",logging:false,useCORS:true}).then(function(cv){
+          var top=d.getBoundingClientRect().top, H=d.scrollHeight, sc=cv.height/H;
+          var atoms=Array.prototype.slice.call(d.querySelectorAll("p,li,tr,h3,h4,.sig,.block,.line,.office,.lh,.zbox,.esig")).map(function(e){var r=e.getBoundingClientRect();return [r.top-top,r.bottom-top];});
+          var heads=Array.prototype.slice.call(d.querySelectorAll("h3,h4")).map(function(e){var r=e.getBoundingClientRect();return r.top-top;});
+          var start=0;
+          while(start<H-2){
+            var end=Math.min(H,start+PX_H);
+            if(end<H){
+              var best=null;
+              atoms.forEach(function(a){ var y=a[1]+2; if(y>start+PX_H*0.4 && y<=end && !atoms.some(function(b){return b[0]<y-1 && b[1]>y+1;}) && (best===null||y>best)) best=y; });
+              if(best!==null) end=best;
+              /* Überschrift nicht allein am Seitenende lassen */
+              heads.forEach(function(t){ if(t>start+PX_H*0.4 && t<end && t>end-40) end=t-2; });
+            }
+            var c=document.createElement("canvas"); c.width=cv.width; c.height=Math.round((end-start)*sc);
+            var g=c.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,c.width,c.height);
+            g.drawImage(cv,0,Math.round(start*sc),cv.width,c.height,0,0,cv.width,c.height);
+            if(!first) pdf.addPage(); first=false;
+            pdf.addImage(c.toDataURL("image/jpeg",0.82),"JPEG",22,16,168,(end-start)*168/PX_W);
+            start=end;
+          }
+        });
+      });
+    });
+    return chain.then(function(){ wrap.innerHTML=""; return pdf.output("blob"); });
+  }
+  function blobB64(b){ return new Promise(function(ok,no){ var r=new FileReader(); r.onload=function(){ok(String(r.result).split(",")[1]||"");}; r.onerror=function(){no(r.error);}; r.readAsDataURL(b); }); }
+  function savePdf(){
+    if(!lastPdf) return;
+    var a=document.createElement("a"); a.href=URL.createObjectURL(lastPdf); a.download=lastPdfName;
+    document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);
+  }
+  var sStat=document.getElementById("s_status"), sGo=document.getElementById("s_go");
+  function sMsg(t,cls){ sStat.className="sendstatus"+(cls?" "+cls:""); sStat.innerHTML=t; }
+  var NAMES={1:"Mandanten-Aufnahmebogen",2:"Befreiung von der Schweigepflicht (E-Mail)",3:"Erklärung zu Dokumenten / Handakte",4:"Vollmacht"};
+  if(WEB){
+    document.getElementById("btnSend").addEventListener("click",function(){ var c=document.getElementById("send"); c.scrollIntoView({behavior:"smooth",block:"start"}); });
+    var v0=vals(); document.getElementById("s_tel").value=v0.telmobil||v0.telprivat||v0.telberuf||"";
+    document.addEventListener("input",function(e){ if(e.target && /^(telmobil|telprivat|telberuf)$/.test(e.target.dataset&&e.target.dataset.k||"")){ var t=document.getElementById("s_tel"); if(!t.dataset.own){ var v=vals(); t.value=v.telmobil||v.telprivat||v.telberuf||""; } } });
+    document.getElementById("s_tel").addEventListener("input",function(){ this.dataset.own="1"; });
+    document.getElementById("s_save").addEventListener("click",savePdf);
+    sGo.addEventListener("click",function(){
+      var v=vals(), sel=["1","2","3","4"].filter(function(n){return document.getElementById("d"+n).checked;});
+      var miss=[];
+      if(!v.vorname) miss.push("Vorname"); if(!v.nachname) miss.push("Nachname");
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) miss.push("E-Mail-Adresse");
+      if(miss.length){ sMsg("Bitte ergänzen Sie oben: "+esc(miss.join(", "))+".","err"); return; }
+      if(!sel.length){ sMsg("Bitte wählen Sie mindestens ein Formular aus.","err"); return; }
+      if(document.getElementById("d4").checked && !v.rg){ sMsg("Bitte wählen Sie für die Vollmacht (Formular 4) das Rechtsgebiet aus.","err"); return; }
+      var unsigned=sel.filter(function(n){return !SIGS[n];});
+      if(unsigned.length){ sMsg("Bitte unterschreiben Sie noch im Unterschriftsfeld von Formular "+unsigned.join(", ")+".","err"); return; }
+      var tel=document.getElementById("s_tel").value.trim();
+      if(tel && !/^[0-9 +\/.()-]{5,40}$/.test(tel)){ sMsg("Bitte prüfen Sie die Telefonnummer (nur Ziffern, Leerzeichen und + / . ( ) -).","err"); return; }
+      if(!document.getElementById("s_consent").checked){ sMsg("Bitte bestätigen Sie das Einverständnis zur Übermittlung.","err"); return; }
+      sGo.disabled=true; sMsg("Sicherheitsprüfung …");
+      var tok;
+      turnstileToken().then(function(t){ tok=t; sMsg("PDF wird erstellt …"); return libs(); })
+      .then(makePdf)
+      .then(function(blob){
+        lastPdf=blob;
+        var d=new Date(), ds=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+        lastPdfName="Mandantenformulare_"+(v.nachname||"Mandant").replace(/[^A-Za-z0-9ÄÖÜäöüß-]+/g,"_")+"_"+ds+".pdf";
+        if(blob.size>9.5*1024*1024) throw new Error("size");
+        sMsg("Wird gesendet …");
+        return blobB64(blob);
+      })
+      .then(function(b64){
+        var r=RG[v.rg], name=(v.vorname+" "+v.nachname).trim();
+        var txt="Übermittelt über die Seite „Mandantenformulare“ (ra-abesser.de/formulare/).\n\n"+
+          "Enthaltene Formulare (alle digital unterschrieben):\n"+sel.map(function(n){return "– "+NAMES[n];}).join("\n")+
+          (document.getElementById("d4").checked && r ? "\n\nVollmacht: "+r.name+(v.betr?" – betr. "+v.betr:"") : "")+
+          "\n\nAnschrift: "+[v.strasse,(v.plz+" "+v.wohnort).trim()].filter(Boolean).join(", ")+
+          (document.getElementById("s_msg").value.trim() ? "\n\nNachricht:\n"+document.getElementById("s_msg").value.trim() : "")+
+          "\n\nDie Formulare sind als PDF angehängt.";
+        var data={vorname:v.vorname.slice(0,100), name:v.nachname.slice(0,100), email:v.email, telefon:tel,
+          betreff:("Mandantenformulare – "+name).slice(0,200), nachricht:txt.slice(0,10000), consent:true, token:tok,
+          anhaenge:[{name:lastPdfName, content:b64}]};
+        return fetch("/api/kontakt",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)});
+      })
+      .then(function(res){ return res.json().catch(function(){return {ok:false};}); })
+      .then(function(d){
+        tsToken=null;
+        if(d.ok){
+          sMsg("Vielen Dank! Ihre Formulare wurden an Rechtsanwalt Abeßer gesendet. Sie müssen nichts weiter tun.","ok");
+          document.getElementById("s_save").hidden=false;
+          sGo.textContent="Gesendet"; 
+        } else { throw new Error(d.error||"send"); }
+      })
+      .catch(function(e){
+        tsToken=null; sGo.disabled=false;
+        var m = e && e.message==="captcha" ? "Die Sicherheitsprüfung ist fehlgeschlagen. Bitte versuchen Sie es noch einmal." :
+                e && e.message==="size" ? "Die PDF-Datei ist zu groß für den Versand." :
+                "Die Formulare konnten leider nicht gesendet werden.";
+        sMsg(m+" Alternativ: Tippen Sie unten auf „Drucken / als PDF speichern“ und senden Sie das PDF per E-Mail an <a href=\"mailto:info@ra-abesser.de\">info@ra-abesser.de</a>.","err");
+        if(window.turnstile && tsWidget!==null) try{ turnstile.reset(tsWidget); }catch(_){}
+      });
+    });
+  }
+
   var notice=document.getElementById("notice");
   function showNotice(html){ notice.innerHTML=html; notice.classList.add("show"); notice.scrollIntoView({behavior:"smooth",block:"center"}); }
   function doPrint(){ notice.classList.remove("show"); build(); setTimeout(function(){ window.print(); }, 50); }
@@ -752,6 +923,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     inlines.forEach(function(el){ el.value=""; el.dataset.own=""; });
     SIGS[1]=SIGS[2]=SIGS[3]=SIGS[4]=null; for(var k in PADS) PADS[k].redraw();
     applyPre();
+    if(WEB){ lastPdf=null; document.getElementById("s_save").hidden=true; sGo.disabled=false; sGo.textContent="Jetzt an die Kanzlei senden"; sMsg(""); document.getElementById("s_consent").checked=false; document.getElementById("s_msg").value=""; }
     preview();
     window.scrollTo({top:0,behavior:"smooth"});
   });

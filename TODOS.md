@@ -59,6 +59,9 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Vollmachtstexte geprüft und angepasst (Soldaten-, Beamten- und Strafrecht nach Diktat, Bußgeldverfahren gestrichen; 12. 11.).
 - [x] **Tobias:** Mandantenformulare samt Vollmacht, Links (Kontaktseite, Fußzeile) und Datenschutzerklärung ohne „Fax“ freigegeben; auf der echten Website veröffentlicht unter https://ra-abesser.de/formulare/ (12. 11.). Kanzlei-Bereich: https://ra-abesser.de/formulare/#kanzlei
 
+- [x] **Claude:** Mandantenformulare direkt an die Kanzlei senden (13. 11., Wunsch Tobias): Knopf „An Kanzlei senden“ erzeugt im Browser ein PDF (jsPDF/html2canvas, selbst gehostet in `formulare/lib/`) und sendet es über den Kontaktformular-Worker (Turnstile, Brevo) an das Kanzleipostfach. Nur mit allen Unterschriften und Einverständnis. In der Vorschau; Datenschutzerklärung Ziffer 7 in der Vorschau ergänzt.
+- [ ] **Tobias:** In der Vorschau (https://ra-abesser.de/preview/formulare/) einmal mit eigenen Testdaten senden, Ergebnis im Postfach prüfen, dann Freigabe inkl. Datenschutz-Ergänzung.
+
 ## 4. Sicherheit
 
 - [ ] **Einrichtung/Tobias:** Zwei-Faktor-Anmeldung aktivieren für Cloudflare, Brevo, GitHub und Strato – geplant beim nächsten Vor-Ort-Termin der Einrichtung.

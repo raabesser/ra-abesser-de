@@ -123,12 +123,15 @@
 
   // Maße immer aus dem tatsächlichen Kamerabild nehmen: iPhones melden im Hochformat
   // oft Querformat-Maße (getSettings), und beim Drehen ändert sich das Format.
-  function masse() {
+  function masse(ohneNeu) {
     var vw = video.videoWidth, vh = video.videoHeight;
     if (!vw || !vh) return;
     var r = Math.min(1, MAXW / Math.max(vw, vh));
     var W = Math.round(vw * r / 2) * 2, H = Math.round(vh * r / 2) * 2;
-    if (out.width !== W || out.height !== H) { out.width = W; out.height = H; }
+    if (out.width !== W || out.height !== H) {
+      out.width = W; out.height = H;
+      if (outTrack && !ohneNeu) neuerTrack();
+    }
     var sr = SEG / Math.max(vw, vh);
     var sw = Math.round(vw * sr), sh = Math.round(vh * sr);
     if (small.width !== sw || small.height !== sh) {
@@ -194,6 +197,7 @@
         zeichneBild(bild, W, H);
       }
       octx.globalCompositeOperation = "source-over";
+      if (outTrack && outTrack.requestFrame) outTrack.requestFrame();
       diag.bilder++;
       diag.status = "läuft";
     } catch (e) {
@@ -217,19 +221,41 @@
     return Promise.resolve();
   }
 
+  var VERSTECKT = "position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none;z-index:-1";
+
+  // Neuen Videostrom aus der Zeichenfläche erzeugen (Safari liefert nach Größenänderung sonst keine Bilder mehr)
+  function neuerTrack() {
+    var alt = outTrack;
+    outTrack = out.captureStream(FPS).getVideoTracks()[0];
+    if (alt) {
+      if (api.onTrack) api.onTrack(outTrack);
+      setTimeout(function () { alt.stop(); }, 500);
+    }
+  }
+
+  function warteMasse() {
+    return new Promise(function (ok) {
+      var t0 = Date.now();
+      (function pruef() {
+        if (video.videoWidth || Date.now() - t0 > 3000) ok(); else setTimeout(pruef, 50);
+      })();
+    });
+  }
+
   function start(kamera, m) {
     if (hatFilter === null) hatFilter = filterTest();
-    var s = kamera.getSettings ? kamera.getSettings() : {};
-    var W = Math.min(s.width || MAXW, MAXW), H = Math.round(W * ((s.height || 720) / (s.width || 1280)));
     return Promise.all([laden(), setMode(m)]).then(function () {
       if (!video) {
         video = document.createElement("video");
         video.muted = true; video.playsInline = true; video.autoplay = true;
         video.setAttribute("playsinline", ""); video.setAttribute("muted", "");
         // Unsichtbar ins Dokument hängen: iPhones liefern sonst teils keine neuen Bilder
-        video.style.cssText = "position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none;z-index:-1";
+        video.style.cssText = VERSTECKT;
         document.body.appendChild(video);
         out = document.createElement("canvas");
+        out.width = 1280; out.height = 720;
+        out.style.cssText = VERSTECKT;
+        document.body.appendChild(out);
         octx = out.getContext("2d");
         small = document.createElement("canvas"); small.width = SEG; small.height = Math.round(SEG * 9 / 16);
         sctx = small.getContext("2d");
@@ -238,14 +264,12 @@
         maskData = mctx.createImageData(small.width, small.height);
         for (var i = 0; i < maskData.data.length; i += 4) { maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = 255; }
       }
-      if (out.width !== W || out.height !== H || !outTrack) {
-        out.width = W; out.height = H;
-        if (outTrack) outTrack.stop();
-        outTrack = out.captureStream(FPS).getVideoTracks()[0];
-      }
-      video.srcObject = new MediaStream([kamera]);
-      return video.play().catch(function () {});
+      if (video.srcObject && video.srcObject.getVideoTracks()[0] !== kamera) video.srcObject = null;
+      if (!video.srcObject) video.srcObject = new MediaStream([kamera]);
+      return video.play().catch(function () {}).then(warteMasse);
     }).then(function () {
+      masse(true);
+      if (!outTrack || outTrack.readyState === "ended") neuerTrack();
       running = true;
       taktStart();
       return outTrack;
@@ -264,8 +288,9 @@
       " · Kamera " + v + " · Bild " + (out ? out.width + "×" + out.height : "–") +
       " · Bilder " + diag.bilder + " · " + Math.round(dauer) + " ms" +
       (diag.maske ? " · Maske " + diag.maske : "") +
+      (outTrack ? " · Ausgabe " + outTrack.readyState + (outTrack.muted ? " stumm" : "") + (outTrack.requestFrame ? " rF" : "") : "") +
       (diag.fehler ? " · Fehler: " + diag.fehler : "");
   }
 
-  window.VideoHintergrund = { info: info, last: function () { return dauer; }, start: start, setMode: setMode, stop: stop, MODI: MODI, HG: HG };
+  var api = window.VideoHintergrund = { onTrack: null, info: info, last: function () { return dauer; }, start: start, setMode: setMode, stop: stop, MODI: MODI, HG: HG };
 })();

@@ -190,9 +190,12 @@
       var box = $("v-hgw");
       if (!box || box.hidden) return;
       if (!d.parentNode) box.appendChild(d);
-      d.textContent = HG.info() + " · Modus " + bgMode + " · " + navigator.userAgent.replace(/^Mozilla\/5\.0 /, "");
+      var pv = $("v-pv"), pt = pv.srcObject && pv.srcObject.getVideoTracks()[0];
+      d.textContent = HG.info() + " · Vorschau " + pv.videoWidth + "×" + pv.videoHeight + " " + (pt === rawCam ? "Kamera" : pt ? "bearbeitet" : "–") +
+        " · Modus " + bgMode + " · " + navigator.userAgent.replace(/^Mozilla\/5\.0 /, "");
     }, 1000);
   })();
+  if (HG) HG.onTrack = function (t) { if (bgMode !== "aus") setCam(t); };
   function applyBg(m) {
     if (!rawCam || !bgOk) return;
     var my = ++bgSeq;

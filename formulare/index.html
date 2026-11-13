@@ -160,11 +160,21 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 .docs .legal{font-size:9.3pt;line-height:1.38}
 .docs .legal h4{font-size:9.6pt;margin:8pt 0 3pt}
 .docs .legal h4.u{font-weight:normal;text-decoration:underline}
-.docs .doc.sv .body h4{font-size:10.5pt;margin:9pt 0 2pt;page-break-after:avoid;break-after:avoid}
-.docs .doc.sv .body p.c{text-align:center;margin-bottom:14pt}
-.docs .doc.sv .sig{margin-top:22pt}
+/* Vergütungsvereinbarungen: kompakt, jeweils genau eine A4-Seite (notfalls verkleinert, siehe fitA4) */
+.docs .doc.sv{font-size:9.3pt;line-height:1.27;page-break-inside:avoid;break-inside:avoid}
+.docs .doc.sv .lh{margin-bottom:7pt}
+.docs .doc.sv .body p{margin:0 0 4pt}
+.docs .doc.sv .body p.l{line-height:1.5}
+.docs .doc.sv .body p{margin:0 0 3.5pt}
+.docs .doc.sv .par{margin-right:3pt}
+.docs .doc.sv .body p.c{text-align:center;margin-bottom:8pt}
+.docs .doc.sv ol.vm{margin:0 0 3pt}
+.docs .doc.sv ol.vm li{margin-bottom:1pt}
+.docs .doc.sv .sig{margin-top:14pt}
+.docs .doc.sv .sig .c{font-size:8pt}
+#fitbox{position:absolute;left:-30000px;top:0;width:168mm;visibility:hidden}
 .docs .doc.sv ol.al{list-style:lower-alpha;margin:0 0 4pt;padding-left:17pt}
-.docs .doc.sv ol.al li{margin-bottom:2pt}
+.docs .doc.sv ol.al li{margin-bottom:1pt}
 .docs .doc.sv .ind{margin-left:14pt}
 .docs .legal p{margin:0 0 5pt}
 .docs .legal ul{margin:0 0 5pt;padding-left:16pt}
@@ -721,18 +731,18 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       '<p class="tight">und '+K.name+',<br>geschäftsansässig: '+ADR+',</p>'+
       '<p>– im Folgenden „Rechtsanwalt“ genannt –</p>'+
       '<p>treffen folgende Vereinbarung:</p>'+
-      '<h4>§ 1</h4><p class="tight">Der Rechtsanwalt vertritt die Mandantschaft in folgendem Verfahren:</p><p>'+fx(verf,"80%",screen)+'</p>'+
-      '<h4>§ 2</h4><p>Die Mandantschaft erklärt ihr Einverständnis, dass der Rechtsanwalt für jedwede außergerichtliche wie gerichtliche Tätigkeit in dem nach § 1 bezeichneten Verfahren zur Berechnung seiner Anwaltsgebühren nach dem Rechtsanwaltsvergütungsgesetz einen Gegenstandswert von '+fx(wert,"15%",screen)+' EUR (in Worten: '+fx(wo,"30%",screen)+' Euro) zugrunde legt.</p>'+
-      '<h4>§ 3</h4><p class="tight">Der Rechtsanwalt hat die Mandantschaft ausdrücklich darauf hingewiesen, dass</p><ol class="vm">'+
+      '<p class="tight"><strong class="par">§ 1</strong> Der Rechtsanwalt vertritt die Mandantschaft in folgendem Verfahren:</p><p>'+fx(verf,"80%",screen)+'</p>'+
+      '<p><strong class="par">§ 2</strong> Die Mandantschaft erklärt ihr Einverständnis, dass der Rechtsanwalt für jedwede außergerichtliche wie gerichtliche Tätigkeit in dem nach § 1 bezeichneten Verfahren zur Berechnung seiner Anwaltsgebühren nach dem Rechtsanwaltsvergütungsgesetz einen Gegenstandswert von '+fx(wert,"15%",screen)+' EUR (in Worten: '+fx(wo,"30%",screen)+' Euro) zugrunde legt.</p>'+
+      '<p class="tight"><strong class="par">§ 3</strong> Der Rechtsanwalt hat die Mandantschaft ausdrücklich darauf hingewiesen, dass</p><ol class="vm">'+
         '<li>ein Gericht im Laufe des Verfahrens zu einer vom Gegenstandswert nach § 2 dieser Vereinbarung abweichenden Streitwertberechnung gelangen wird und</li>'+
         '<li>der hier vereinbarte Gegenstandswert vom Streitwertkatalog der Verwaltungsgerichtsbarkeit abweicht.</li></ol>'+
-      '<h4>§ 4</h4><p class="tight">Die Mandantschaft erklärt, dass</p><ol class="vm">'+
+      '<p class="tight"><strong class="par">§ 4</strong> Die Mandantschaft erklärt, dass</p><ol class="vm">'+
         '<li>die in §§ 1 bis 3 dieser Übereinkunft getroffenen Regelungen frei vereinbart wurden,</li>'+
         '<li>sie davon in Kenntnis gesetzt wurde, dass die gegnerische Partei, ein Verfahrensbeteiligter oder die Staatskasse im Falle der Kostenerstattung regelmäßig nicht mehr als die gesetzliche Vergütung erstatten muss.</li></ol>'+
-      '<h4>§ 5</h4><p>Die vorstehend getroffenen Vereinbarungen gelten unabhängig von einem Erfolg der Vertretung durch den Rechtsanwalt.</p>'+
-      '<h4>§ 6</h4><p>Es gelten die gesetzlichen Gebühren, wenn diese höher sind als die in dieser Vereinbarung abgesprochene Vergütung.</p>'+
-      '<h4>§ 7</h4><p>Die Vereinbarung bleibt auch bei vorzeitiger Mandatsauflösung unter Rückforderungsverzicht für geleistete Beträge bestehen.</p>'+
-      '<h4>§ 8</h4><p>Die Mandantschaft erklärt, dass sie eine Originalausfertigung dieser Vereinbarung erhalten hat.</p>';
+      '<p><strong class="par">§ 5</strong> Die vorstehend getroffenen Vereinbarungen gelten unabhängig von einem Erfolg der Vertretung durch den Rechtsanwalt.</p>'+
+      '<p><strong class="par">§ 6</strong> Es gelten die gesetzlichen Gebühren, wenn diese höher sind als die in dieser Vereinbarung abgesprochene Vergütung.</p>'+
+      '<p><strong class="par">§ 7</strong> Die Vereinbarung bleibt auch bei vorzeitiger Mandatsauflösung unter Rückforderungsverzicht für geleistete Beträge bestehen.</p>'+
+      '<p><strong class="par">§ 8</strong> Die Mandantschaft erklärt, dass sie eine Originalausfertigung dieser Vereinbarung erhalten hat.</p>';
   }
   function doc5(v){
     return '<div class="doc sv">'+letterhead()+'<div class="body">'+text5(v)+'</div>'+sigHand(esc(SV?SV.m.name:"")||"Vor- und Nachname")+'</div>';
@@ -748,7 +758,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       '<p>– im Folgenden: „Mandantschaft“ –</p>'+
       '<p class="tight">und '+K.name+', '+ADR+',</p><p>– im Folgenden: „Rechtsanwalt“ –,</p>'+
       '<p>treffen folgende Vergütungsvereinbarung:</p>'+
-      '<h4>§ 1</h4><p class="tight l">In dem gegen die Mandantschaft seitens '+fx(beh,"45%",screen)+' zum dortigen Aktenzeichen '+fx(az,"20%",screen)+' geführten und mit behördlichem Schreiben vom '+fx(dat,"14%",screen)+' eingeleiteten Disziplinarverfahren verpflichtet sich die Mandantschaft, dem Rechtsanwalt abweichend von den gesetzlichen Gebühren</p>'+
+      '<p class="tight l"><strong class="par">§ 1</strong> In dem gegen die Mandantschaft seitens '+fx(beh,"45%",screen)+' zum dortigen Aktenzeichen '+fx(az,"20%",screen)+' geführten und mit behördlichem Schreiben vom '+fx(dat,"14%",screen)+' eingeleiteten Disziplinarverfahren verpflichtet sich die Mandantschaft, dem Rechtsanwalt abweichend von den gesetzlichen Gebühren</p>'+
       '<ol class="vm"><li>im außergerichtlichen Verfahren<ol class="al">'+
         '<li>eine Grundgebühr gem. Ziff. 6200 VV RVG in Höhe von 840,00 EUR (achthundertundvierzig Euro),</li>'+
         '<li>eine Terminsgebühr gem. Ziff. 6201 VV RVG in Höhe von 888,00 EUR (achthundertundachtundachtzig Euro) pro Tag,</li>'+
@@ -756,34 +766,46 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       '<li>im gerichtlichen Verfahren I. Instanz<ol class="al">'+
         '<li>eine Verfahrensgebühr gem. Ziff. 6203 VV RVG in Höhe von 768,00 EUR (siebenhundertundachtundsechzig Euro),</li>'+
         '<li>eine Terminsgebühr gem. Ziff. 6204 VV RVG in Höhe von 1.342,00 EUR (eintausenddreihundertundzweiundvierzig Euro) pro Verhandlungstag</li></ol></li></ol>'+
-      '<p>zu zahlen. Die Mandantschaft und der Rechtsanwalt sind sich einig, dass die Terminsgebühren nach Satz 1 Ziff. 1b) und 2b) auch dann anfallen, wenn der Termin oder die mündliche Gerichtsverhandlung als Videokonferenz stattfindet.</p>'+
-      '<h4>§ 2</h4><p>Die in § 1 genannte Vergütung umfasst nur die Kosten einer anwaltlichen Tätigkeit bis zum Abschluss des erstinstanzlichen Verfahrens. Für alle weiteren Verfahren, insbesondere bei Eintritt in ein zweitinstanzliches Gerichtsverfahren, ist eine neue Vergütungsvereinbarung zu treffen.</p>'+
-      '<h4>§ 3</h4><p>Die Mandantschaft verpflichtet sich zudem, die bei der Verteidigung entstehenden Auslagen – z. B. Fahrkosten (ICE erster Klasse), Unterkunft (mind. 3-Sterne-Hotel), Tage- u. Abwesenheitsgeld – nach gesetzlicher Vorschrift an den Rechtsanwalt zu zahlen und auf Vergütung und Auslagen den jeweils gültigen Mehrwertsteuersatz – derzeit 19 % – sowie einen Pauschalbetrag in Höhe von 40,00 EUR (vierzig Euro) für die etwaige Anfertigung und/oder Überlassung von Aktenscans an den Rechtsanwalt zu entrichten.</p>'+
-      '<h4>§ 4</h4><p class="tight">Die Mandantschaft erklärt, dass</p><ol class="al">'+
+      '<p>zu zahlen. Die Mandantschaft und der Rechtsanwalt sind sich einig, dass die Terminsgebühren nach Satz 1 Ziff. 1b. und 2b. auch dann anfallen, wenn der Termin oder die mündliche Gerichtsverhandlung als Videokonferenz stattfindet.</p>'+
+      '<p><strong class="par">§ 2</strong> Die in § 1 genannte Vergütung umfasst nur die Kosten einer anwaltlichen Tätigkeit bis zum Abschluss des erstinstanzlichen Verfahrens. Für alle weiteren Verfahren, insbesondere bei Eintritt in ein zweitinstanzliches Gerichtsverfahren, ist eine neue Vergütungsvereinbarung zu treffen.</p>'+
+      '<p><strong class="par">§ 3</strong> Die Mandantschaft verpflichtet sich zudem, die bei der Verteidigung entstehenden Auslagen – z. B. Fahrkosten (ICE erster Klasse), Unterkunft (mind. 3-Sterne-Hotel), Tage- u. Abwesenheitsgeld – nach gesetzlicher Vorschrift an den Rechtsanwalt zu zahlen und auf Vergütung und Auslagen den jeweils gültigen Mehrwertsteuersatz – derzeit 19 % – sowie einen Pauschalbetrag in Höhe von 40,00 EUR (vierzig Euro) für die etwaige Anfertigung und/oder Überlassung von Aktenscans an den Rechtsanwalt zu entrichten.</p>'+
+      '<p class="tight"><strong class="par">§ 4</strong> Die Mandantschaft erklärt, dass</p><ol class="al">'+
         '<li>die in den §§ 1 bis 3 dieses Vertrages genannte Vergütung frei vereinbart worden ist,</li>'+
         '<li>sie davon in Kenntnis gesetzt wurde, dass<div class="ind">aa) die gegnerische Partei, ein Verfahrensbeteiligter oder die Staatskasse im Falle der Kostenerstattung regelmäßig nicht mehr als die gesetzliche Vergütung erstatten muss,<br>bb) diese Vergütungsvereinbarung von der gesetzlichen Gebührenregelung für Rechtsanwälte, wie sie das Rechtsanwaltsvergütungsgesetz vorsieht, abweicht,</div></li>'+
         '<li>die Angelegenheit von überragender beruflicher, wirtschaftlicher und persönlicher Bedeutung für sie ist.</li></ol>'+
-      '<h4>§ 5</h4><p>Die vorstehenden Vereinbarungen gelten unabhängig vom Erfolg der anwaltlichen Tätigkeit.</p>'+
-      '<h4>§ 6</h4><p>Die Vergütung ist fällig wie folgt: '+fx(vor,"14%",screen)+' EUR (in Worten: '+fx(vorw,"28%",screen)+' Euro) sofort, der Rest nach anwaltlicher Rechnungsstellung.</p>'+
-      '<h4>§ 7</h4><p>Es gelten die gesetzlichen Gebühren, wenn diese höher sind als die in dieser Vereinbarung abgesprochene Vergütung.</p>'+
-      '<h4>§ 8</h4><p>Die Vergütungsvereinbarung bleibt bei vorzeitiger Mandatsauflösung unter Rückforderungsverzicht für geleistete Beträge bestehen.</p>'+
-      '<h4>§ 9</h4><p>Jede Änderung dieser Vereinbarung bedarf der Schriftform; auch das Schriftformerfordernis darf nur schriftlich geändert werden.</p>'+
-      '<h4>§ 10</h4><p>Sollten einzelne Teile dieser Vereinbarung unwirksam sein, so tritt an ihre Stelle die gesetzliche Regelung.</p>'+
-      '<h4>§ 11</h4><p>Die Mandantschaft erklärt, dass sie eine Originalausfertigung dieser Vereinbarung erhalten hat.</p>';
+      '<p><strong class="par">§ 5</strong> Die vorstehenden Vereinbarungen gelten unabhängig vom Erfolg der anwaltlichen Tätigkeit.</p>'+
+      '<p><strong class="par">§ 6</strong> Die Vergütung ist fällig wie folgt: '+fx(vor,"14%",screen)+' EUR (in Worten: '+fx(vorw,"28%",screen)+' Euro) sofort, der Rest nach anwaltlicher Rechnungsstellung.</p>'+
+      '<p><strong class="par">§ 7</strong> Es gelten die gesetzlichen Gebühren, wenn diese höher sind als die in dieser Vereinbarung abgesprochene Vergütung.</p>'+
+      '<p><strong class="par">§ 8</strong> Die Vergütungsvereinbarung bleibt bei vorzeitiger Mandatsauflösung unter Rückforderungsverzicht für geleistete Beträge bestehen.</p>'+
+      '<p><strong class="par">§ 9</strong> Jede Änderung dieser Vereinbarung bedarf der Schriftform; auch das Schriftformerfordernis darf nur schriftlich geändert werden.</p>'+
+      '<p><strong class="par">§ 10</strong> Sollten einzelne Teile dieser Vereinbarung unwirksam sein, so tritt an ihre Stelle die gesetzliche Regelung.</p>'+
+      '<p><strong class="par">§ 11</strong> Die Mandantschaft erklärt, dass sie eine Originalausfertigung dieser Vereinbarung erhalten hat.</p>';
   }
   function doc6(v){
     var m=VD?VD.m:{};
     return '<div class="doc sv">'+letterhead()+'<div class="body">'+text6(v)+'</div>'+sigHand(esc([m.amt,m.name].filter(Boolean).join(" "))||"Dienstgrad Vor- u. Nachname")+'</div>';
   }
 
+  /* Vergütungsvereinbarung auf genau eine A4-Seite bringen: Höhe in Druckbreite (168 mm) messen
+     und bei Bedarf verkleinern (nutzbare Höhe 265 mm laut @page, mit kleiner Reserve) */
+  function fitA4(html){
+    var box=document.getElementById("fitbox");
+    if(!box){ box=document.createElement("div"); box.id="fitbox"; box.className="docs"; document.body.appendChild(box); }
+    box.innerHTML=html;
+    var d=box.firstChild, mm=96/25.4, avail=262*mm, h=d.scrollHeight;
+    box.innerHTML="";
+    if(!h || h<=avail) return html;
+    var z=Math.max(0.6, Math.floor(avail/h*1000)/1000);
+    return html.replace('<div class="doc sv">','<div class="doc sv" style="zoom:'+z+'">');
+  }
   function build(){
     var v=vals(), h="";
     if(document.getElementById("d1").checked) h+=doc1(v);
     if(document.getElementById("d2").checked) h+=doc2(v);
     if(document.getElementById("d3").checked) h+=doc3(v);
     if(document.getElementById("d4").checked) h+=doc4(v);
-    if(SV && document.getElementById("d5").checked) h+=doc5(v);
-    if(VD && document.getElementById("d6").checked) h+=doc6(v);
+    if(SV && document.getElementById("d5").checked) h+=fitA4(doc5(v));
+    if(VD && document.getElementById("d6").checked) h+=fitA4(doc6(v));
     document.getElementById("print").innerHTML=h;
     return h;
   }

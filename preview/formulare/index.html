@@ -40,6 +40,15 @@ ol.howto li{margin:2px 0}
 .remember input{margin-top:3px;flex:none}
 .rmsg{font-size:14px;margin:8px 0 0;color:var(--accent)}
 .rmsg:empty{display:none}
+label.f.ac{position:relative}
+.achint{display:none;font-size:12px;color:var(--muted);margin-top:4px;font-weight:400}
+.is-web .achint{display:block}
+ul.acl{position:absolute;left:0;right:0;z-index:30;margin:2px 0 0;padding:4px 0;list-style:none;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.14);max-height:280px;overflow:auto}
+ul.acl[hidden]{display:none}
+ul.acl li{padding:8px 12px;cursor:pointer;font-size:15px;line-height:1.35}
+ul.acl li small{display:block;color:var(--muted);font-size:13px}
+ul.acl li[aria-selected=true],ul.acl li:hover{background:var(--accent-soft)}
+ul.acl li.src{cursor:default;font-size:11px;color:var(--muted);padding:4px 12px 2px;background:none}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
 section.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 8px;margin:18px 0}
 section.card h2{font-size:18px;margin:0 0 4px;color:var(--accent)}
@@ -228,12 +237,12 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <h2>Persönliche Angaben</h2>
     <p class="sub">Erscheinen in allen Formularen.</p>
     <div class="grid">
-      <label class="f"><span>Vorname</span><input type="text" data-k="vorname" autocomplete="given-name" data-req></label>
-      <label class="f"><span>Nachname</span><input type="text" data-k="nachname" autocomplete="family-name" data-req></label>
-      <label class="f full"><span>Straße und Hausnummer</span><input type="text" data-k="strasse" autocomplete="street-address" data-req></label>
-      <label class="f"><span>PLZ</span><input type="text" data-k="plz" inputmode="numeric" autocomplete="postal-code" data-req></label>
-      <label class="f"><span>Ort</span><input type="text" data-k="wohnort" autocomplete="address-level2" data-req></label>
-      <label class="f full"><span>E-Mail</span><input type="email" data-k="email" autocomplete="email" data-req></label>
+      <label class="f"><span>Vorname</span><input type="text" name="vorname" data-k="vorname" autocomplete="given-name" data-req></label>
+      <label class="f"><span>Nachname</span><input type="text" name="nachname" data-k="nachname" autocomplete="family-name" data-req></label>
+      <label class="f full"><span>Straße und Hausnummer</span><input type="text" name="strasse" data-k="strasse" autocomplete="address-line1" data-req><small class="achint web-only">Beim Tippen erscheinen Adressvorschläge (OpenStreetMap über den Dienst Photon; übermittelt wird nur der eingegebene Adressteil).</small></label>
+      <label class="f"><span>PLZ</span><input type="text" name="plz" data-k="plz" inputmode="numeric" autocomplete="postal-code" data-req></label>
+      <label class="f"><span>Ort</span><input type="text" name="wohnort" data-k="wohnort" autocomplete="address-level2" data-req></label>
+      <label class="f full"><span>E-Mail</span><input type="email" name="email" data-k="email" autocomplete="email" data-req></label>
     </div>
   </section>
 
@@ -241,8 +250,8 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <h2>Ort und Datum der Unterschrift</h2>
     <p class="sub">Wird unter alle Formulare gesetzt.</p>
     <div class="grid">
-      <label class="f"><span>Ort</span><input type="text" data-k="sigort"></label>
-      <label class="f"><span>Datum</span><input type="date" data-k="sigdatum"></label>
+      <label class="f"><span>Ort</span><input type="text" name="sigort" data-k="sigort"></label>
+      <label class="f"><span>Datum</span><input type="date" name="sigdatum" data-k="sigdatum"></label>
     </div>
   </section>
 
@@ -251,30 +260,30 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <p class="sub">Weitere Angaben für die Mandatsaufnahme.</p>
     <label class="incl"><input type="checkbox" id="d1" checked> Dieses Formular drucken</label>
     <div class="grid">
-      <label class="f"><span>Geburtsdatum</span><input type="date" data-k="geburt" autocomplete="bday"></label>
-      <label class="f"><span>Amtsbezeichnung / Dienstgrad</span><input type="text" data-k="amt"></label>
-      <label class="f"><span>Besoldungsgruppe</span><input type="text" data-k="besoldung"></label>
-      <label class="f"><span>Personalnummer</span><input type="text" data-k="personalnr"></label>
-      <label class="f"><span>Rufnummer beruflich</span><input type="tel" data-k="telberuf"></label>
-      <label class="f"><span>Rufnummer privat</span><input type="tel" data-k="telprivat" autocomplete="tel"></label>
-      <label class="f"><span>Rufnummer mobil</span><input type="tel" data-k="telmobil"></label>
+      <label class="f"><span>Geburtsdatum</span><input type="date" name="geburt" data-k="geburt" autocomplete="bday"></label>
+      <label class="f"><span>Amtsbezeichnung / Dienstgrad</span><input type="text" name="amt" data-k="amt" autocomplete="organization-title"></label>
+      <label class="f"><span>Besoldungsgruppe</span><input type="text" name="besoldung" data-k="besoldung"></label>
+      <label class="f"><span>Personalnummer</span><input type="text" name="personalnr" data-k="personalnr"></label>
+      <label class="f"><span>Rufnummer beruflich</span><input type="tel" name="telberuf" data-k="telberuf" autocomplete="work tel"></label>
+      <label class="f"><span>Rufnummer privat</span><input type="tel" name="telprivat" data-k="telprivat" autocomplete="home tel"></label>
+      <label class="f"><span>Rufnummer mobil</span><input type="tel" name="telmobil" data-k="telmobil" autocomplete="mobile tel"></label>
     </div>
 
     <p class="group-label">Kostenübernahme durch <em style="font-weight:normal;color:var(--muted)">(falls zutreffend)</em></p>
     <div class="checks">
-      <label><input type="checkbox" data-k="rsv"> Rechtsschutzversicherung</label>
-      <label><input type="checkbox" data-k="gew"> Gewerkschaft</label>
+      <label><input type="checkbox" name="rsv" data-k="rsv"> Rechtsschutzversicherung</label>
+      <label><input type="checkbox" name="gew" data-k="gew"> Gewerkschaft</label>
     </div>
     <div class="grid">
-      <label class="f full"><span>Name der Versicherung / Gewerkschaft</span><input type="text" data-k="rsvname"></label>
-      <label class="f"><span>Nr. d. Versicherungsscheins / Mitgliedsnr.</span><input type="text" data-k="rsvnr"></label>
-      <label class="f"><span>Schadensnummer <em>(falls vorhanden)</em></span><input type="text" data-k="schadennr"></label>
+      <label class="f full"><span>Name der Versicherung / Gewerkschaft</span><input type="text" name="rsvname" data-k="rsvname"></label>
+      <label class="f"><span>Nr. d. Versicherungsscheins / Mitgliedsnr.</span><input type="text" name="rsvnr" data-k="rsvnr"></label>
+      <label class="f"><span>Schadensnummer <em>(falls vorhanden)</em></span><input type="text" name="schadennr" data-k="schadennr"></label>
     </div>
 
     <p class="group-label">Ich wurde auf die Kanzlei aufmerksam durch</p>
     <div class="checks">
-      <label><input type="checkbox" data-k="internet"> Internet</label>
-      <label><input type="checkbox" data-k="empfehlung"> Empfehlung Dritter</label>
+      <label><input type="checkbox" name="internet" data-k="internet"> Internet</label>
+      <label><input type="checkbox" name="empfehlung" data-k="empfehlung"> Empfehlung Dritter</label>
     </div>
 
     <details>
@@ -306,8 +315,8 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <label class="incl"><input type="checkbox" id="d4"> Dieses Formular drucken</label>
     <div class="vmfix" id="vmfix" hidden></div>
     <div class="grid" id="vmedit">
-      <label class="f"><span>Rechtsgebiet</span><select data-k="rg" id="rgsel"></select></label>
-      <label class="f full"><span>Gegenstand des Mandats <em>(betr. …)</em></span><input type="text" data-k="betr"></label>
+      <label class="f"><span>Rechtsgebiet</span><select name="rg" data-k="rg" id="rgsel"></select></label>
+      <label class="f full"><span>Gegenstand des Mandats <em>(betr. …)</em></span><input type="text" name="betr" data-k="betr"></label>
     </div>
     <div class="doctext" id="prev4"></div>
     <div class="sigpad" data-n="4"></div>
@@ -1038,6 +1047,81 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     preview();
     window.scrollTo({top:0,behavior:"smooth"});
   });
+
+  /* ===== Adressvorschläge =====
+     Straße: Vorschläge über /api/adresse (eigener Cloudflare-Worker, leitet nur den Adressteil an Photon/OpenStreetMap weiter).
+     PLZ: trägt den Ort ein, solange der Mandant ihn nicht selbst geschrieben hat. Nur auf der Website (nicht in der gespeicherten Datei). */
+  if(WEB){
+    var fS=document.querySelector('[data-k=strasse]'), fP=document.querySelector('[data-k=plz]'), fO=document.querySelector('[data-k=wohnort]');
+    function fire(el){ el.dispatchEvent(new Event("input",{bubbles:true})); el.dispatchEvent(new Event("change",{bubbles:true})); }
+    function api(params){ return fetch("/api/adresse?"+new URLSearchParams(params).toString(),{cache:"no-store"}).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }); }
+    function makeList(input,id,onPick){
+      var host=input.closest("label.f"); host.classList.add("ac");
+      var ul=document.createElement("ul"); ul.className="acl"; ul.id=id; ul.setAttribute("role","listbox"); ul.hidden=true; host.appendChild(ul);
+      input.setAttribute("role","combobox"); input.setAttribute("aria-autocomplete","list"); input.setAttribute("aria-expanded","false"); input.setAttribute("aria-controls",id);
+      var items=[], sel=-1;
+      function close(){ ul.hidden=true; input.setAttribute("aria-expanded","false"); input.removeAttribute("aria-activedescendant"); sel=-1; }
+      function mark(i){ sel=i; Array.prototype.forEach.call(ul.querySelectorAll("li[role=option]"),function(li,k){ li.setAttribute("aria-selected",String(k===i)); if(k===i){ input.setAttribute("aria-activedescendant",li.id); li.scrollIntoView({block:"nearest"}); } }); }
+      function pick(i){ var it=items[i]; close(); if(it) onPick(it); }
+      function show(list,render,src){
+        items=list||[]; ul.innerHTML=""; sel=-1;
+        if(!items.length || document.activeElement!==input){ close(); return; }
+        items.forEach(function(it,i){ var li=document.createElement("li"); li.id=id+"-"+i; li.setAttribute("role","option"); li.setAttribute("aria-selected","false"); li.innerHTML=render(it);
+          li.addEventListener("mousedown",function(e){ e.preventDefault(); pick(i); }); ul.appendChild(li); });
+        if(src){ var s=document.createElement("li"); s.className="src"; s.setAttribute("aria-hidden","true"); s.textContent=src; ul.appendChild(s); }
+        ul.hidden=false; input.setAttribute("aria-expanded","true");
+      }
+      input.addEventListener("keydown",function(e){
+        if(ul.hidden) return;
+        if(e.key==="ArrowDown"){ e.preventDefault(); mark(Math.min(sel+1,items.length-1)); }
+        else if(e.key==="ArrowUp"){ e.preventDefault(); mark(Math.max(sel-1,0)); }
+        else if(e.key==="Enter" && sel>=0){ e.preventDefault(); pick(sel); }
+        else if(e.key==="Escape"){ close(); }
+      });
+      input.addEventListener("blur",function(){ setTimeout(close,150); });
+      return {show:show, close:close};
+    }
+
+    // Straße mit Hausnummer
+    var lS=makeList(fS,"acl-strasse",function(it){
+      var nr=it.nr || ((/\s(\d+\s?[a-zA-Z]?(?:\s?-\s?\d+[a-zA-Z]?)?)\s*$/.exec(fS.value)||[])[1]||"");
+      fS.value=it.strasse+(nr?" "+nr:""); fire(fS);
+      if(it.plz){ fP.value=it.plz; fire(fP); }
+      if(it.ort){ fO.value=it.ort; fO.dataset.auto="1"; fire(fO); }
+      if(!nr) fS.focus();
+    });
+    var tS=null, nS=0;
+    fS.addEventListener("input",function(e){
+      if(!e.isTrusted) return;
+      clearTimeout(tS);
+      var q=fS.value.trim();
+      if(q.length<3){ lS.close(); return; }
+      tS=setTimeout(function(){
+        var my=++nS, p={q:q};
+        if(/^\d{5}$/.test(fP.value.trim())) p.plz=fP.value.trim();
+        if(fO.value.trim()) p.ort=fO.value.trim();
+        api(p).then(function(d){ if(my!==nS) return;
+          lS.show(d.vorschlaege,function(it){ return esc(it.strasse+(it.nr?" "+it.nr:""))+"<small>"+esc(it.plz+" "+it.ort)+"</small>"; },"Vorschläge: © OpenStreetMap-Mitwirkende");
+        });
+      },300);
+    });
+
+    // Ort zur Postleitzahl
+    var lO=makeList(fO,"acl-ort",function(o){ fO.value=o; fO.dataset.auto="1"; fire(fO); });
+    fO.addEventListener("input",function(e){ if(e.isTrusted) fO.dataset.auto=""; });
+    var nP=0;
+    fP.addEventListener("input",function(e){
+      if(!e.isTrusted) return;
+      var plz=fP.value.trim();
+      if(!/^\d{5}$/.test(plz) || (fO.value.trim() && !fO.dataset.auto)) return;
+      var my=++nP;
+      api({plz:plz}).then(function(d){ if(my!==nP || !d.orte || !d.orte.length) return;
+        if(fO.value.trim() && !fO.dataset.auto) return;
+        if(d.orte.length===1){ fO.value=d.orte[0]; fO.dataset.auto="1"; fire(fO); }
+        else { fO.value=""; fire(fO); fO.focus(); lO.show(d.orte,function(o){ return esc(o); }); }
+      });
+    });
+  }
 
   /* ===== Eingaben merken =====
      Immer: in diesem Fenster (sessionStorage, endet mit dem Schließen) – damit Neuladen oder Zurück nichts löscht.

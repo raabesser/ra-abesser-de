@@ -62,7 +62,9 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** Mandantenformulare direkt an die Kanzlei senden (13. 11., Wunsch Tobias): Knopf „An Kanzlei senden“ erzeugt im Browser ein PDF (jsPDF/html2canvas, selbst gehostet in `formulare/lib/`) und sendet es über den Kontaktformular-Worker (Turnstile, Brevo) an das Kanzleipostfach. Nur mit allen Unterschriften und Einverständnis. In der Vorschau; Datenschutzerklärung Ziffer 7 in der Vorschau ergänzt.
 - [x] **Tobias:** Freigabe 13. 11.: Versand, Prüfung der Eingaben, einheitliche Schrift, Datenschutz Ziffer 7, neue Reihenfolge auf der Kontaktseite – veröffentlicht.
 - [x] **Claude:** In der Vorschau: Mandantenformulare merken sich die Eingaben (13. 11., Wunsch Tobias). Immer bis zum Schließen des Fensters; mit Häkchen „Eingaben auf diesem Gerät merken“ bis zu 30 Tage. Nur im Browser des Mandanten, nie Unterschriften, Einverständnis oder Datum; „Löschen“ und erfolgreicher Versand (ohne Häkchen) entfernen alles.
-- [ ] **Tobias:** Funktion „Eingaben merken“ in der Vorschau ansehen (https://ra-abesser.de/preview/formulare/) und für die echte Website freigeben.
+- [x] **Claude:** In der Vorschau: Adressvorschläge beim Tippen von Straße und PLZ (Worker `ra-abesser-adresse`, OpenStreetMap über Photon/komoot) und besseres automatisches Ausfüllen durch den Browser (gespeicherte Name/Anschrift/Telefon) (13. 11., Wunsch Tobias). Datenschutzerklärung der Vorschau, Ziffer 7: Entwurf zu Adressvorschlägen und Zwischenspeicherung.
+- [ ] **Tobias:** Datenschutz-Entwurf (Vorschau, Ziffer 7: „Adressvorschläge“, „Zwischenspeicherung auf Ihrem Gerät“) prüfen und freigeben.
+- [ ] **Tobias:** Funktionen „Eingaben merken“ und „Adressvorschläge“ in der Vorschau ansehen (https://ra-abesser.de/preview/formulare/) und für die echte Website freigeben.
 - [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 
 ## 4. Sicherheit

@@ -66,6 +66,13 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Freigabe 13. 11.: „Eingaben merken“, Adressvorschläge, Browser-Ausfüllen, Hinweis Besoldungsgruppe und Datenschutz Ziffer 7 (Adressvorschläge, Zwischenspeicherung) – auf der echten Website veröffentlicht.
 - [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 
+## 8. Videoberatung anfragen und Termin bestätigen
+
+- [x] **Claude:** In der Vorschau: Kontaktseite mit Link „Videoberatung anfragen“ – Betreff und Anfragetext vorausgefüllt, bis zu drei Wunschtermine (https://ra-abesser.de/preview/kontakt/?anliegen=video, 13. 11., Wunsch Tobias).
+- [x] **Claude:** Kontaktformular-Worker erweitert und Kalender-Worker `ra-abesser-kalender` eingerichtet: Die E-Mail an die Kanzlei zeigt je Wunschtermin „frei/belegt laut Kalender“ und enthält fertige Antwort-Entwürfe mit Datum, Uhrzeit und Videolink sowie „In Google Kalender eintragen“ (13. 11.). Normale Anfragen unverändert.
+- [ ] **Tobias/Einrichtung:** Google-Kalender verbinden: „Privatadresse im iCal-Format“ als Secret `KALENDER_ICS` beim Worker `ra-abesser-kalender` eintragen (Anleitung in `AGENTS.md`, Abschnitt Kontaktformular → Kalenderabgleich). Nicht in den Chat schreiben.
+- [ ] **Tobias:** In der Vorschau eine Testanfrage senden (https://ra-abesser.de/preview/kontakt/?anliegen=video) und die E-Mail mit den Antwort-Entwürfen prüfen; danach Freigabe für die echte Website (dann auch Knopf „Videoberatung anfragen“ auf https://ra-abesser.de/video/).
+
 ## 4. Sicherheit
 
 - [ ] **Einrichtung/Tobias:** Zwei-Faktor-Anmeldung aktivieren für Cloudflare, Brevo, GitHub und Strato – geplant beim nächsten Vor-Ort-Termin der Einrichtung.

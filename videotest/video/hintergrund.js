@@ -24,24 +24,65 @@
   var loading = null, segmenter = null;
   var video = null, out = null, octx = null, small = null, sctx = null, mask = null, mctx = null, maskData = null;
   var outTrack = null, running = false, mode = "aus", bild = null, bilder = {}, lastTs = 0, timer = null, busy = false;
+  var hatFilter = null, klein = null, kctx = null;   // Ersatz-Weichzeichner für Browser ohne Canvas-Filter (Safari)
+  var diag = { status: "nicht gestartet", technik: "", fehler: "", bilder: 0 };
   var naechster = 0, dauer = 0; // Selbstbremse: langsame Geräte rechnen seltener, die Seite bleibt bedienbar
+
+  function frist(p, ms, text) {
+    return Promise.race([p, new Promise(function (_, no) { setTimeout(function () { no(new Error(text)); }, ms); })]);
+  }
 
   function laden() {
     if (loading) return loading;
+    diag.status = "Erkennung wird geladen";
     loading = import(BASE + "vision_bundle.mjs").then(function (mp) {
       return mp.FilesetResolver.forVisionTasks(BASE + "wasm").then(function (fs) {
         var opts = {
           baseOptions: { modelAssetPath: BASE + "selfie_segmenter.tflite", delegate: "GPU" },
           runningMode: "VIDEO", outputConfidenceMasks: true, outputCategoryMask: false
         };
-        return mp.ImageSegmenter.createFromOptions(fs, opts).catch(function () {
+        // Grafikkarte zuerst; hängt oder scheitert das (manche Handys), auf den Prozessor ausweichen
+        return frist(mp.ImageSegmenter.createFromOptions(fs, opts), 10000, "GPU-Zeitüberschreitung").then(function (s) {
+          diag.technik = "GPU"; return s;
+        }, function (e) {
+          diag.fehler = "GPU: " + (e && e.message || e);
           opts.baseOptions.delegate = "CPU";
-          return mp.ImageSegmenter.createFromOptions(fs, opts);
+          return frist(mp.ImageSegmenter.createFromOptions(fs, opts), 20000, "CPU-Zeitüberschreitung").then(function (s) {
+            diag.technik = "CPU"; return s;
+          });
         });
       });
-    }).then(function (s) { segmenter = s; });
-    loading.catch(function () { loading = null; });
+    }).then(function (s) { segmenter = s; diag.status = "bereit"; });
+    loading.catch(function (e) {
+      loading = null;
+      diag.status = "Erkennung nicht verfügbar";
+      diag.fehler = (diag.fehler ? diag.fehler + " / " : "") + (e && e.message || e);
+    });
     return loading;
+  }
+
+  // Kann der Browser Canvas-Filter (blur)? Safari auf dem iPhone ignoriert sie teils stillschweigend.
+  function filterTest() {
+    try {
+      var c = document.createElement("canvas"); c.width = c.height = 9;
+      var x = c.getContext("2d");
+      x.fillStyle = "#000"; x.fillRect(0, 0, 9, 9);
+      x.filter = "blur(2px)";
+      x.fillStyle = "#fff"; x.fillRect(4, 4, 1, 1);
+      x.filter = "none";
+      return x.getImageData(2, 4, 1, 1).data[0] > 0;
+    } catch (e) { return false; }
+  }
+
+  // Weichzeichnen ohne Filter: stark verkleinern und wieder vergrößern
+  function weichOhneFilter(quelle, W, H, faktor) {
+    var w = Math.max(2, Math.round(W / faktor)), h = Math.max(2, Math.round(H / faktor));
+    if (!klein) { klein = document.createElement("canvas"); kctx = klein.getContext("2d"); }
+    if (klein.width !== w || klein.height !== h) { klein.width = w; klein.height = h; }
+    kctx.imageSmoothingEnabled = true; kctx.imageSmoothingQuality = "high";
+    kctx.drawImage(quelle, 0, 0, w, h);
+    octx.imageSmoothingEnabled = true; octx.imageSmoothingQuality = "high";
+    octx.drawImage(klein, 0, 0, W, H);
   }
 
   function bildLaden(name) {
@@ -112,22 +153,30 @@
 
       // 1. Maske (weiche Kanten)  2. Person hinein  3. Hintergrund dahinter
       octx.globalCompositeOperation = "copy";
-      octx.filter = "blur(3px)";
+      if (hatFilter) octx.filter = "blur(3px)";
+      octx.imageSmoothingEnabled = true; octx.imageSmoothingQuality = "high";
       octx.drawImage(mask, 0, 0, W, H);
-      octx.filter = "none";
+      if (hatFilter) octx.filter = "none";
       octx.globalCompositeOperation = "source-in";
       octx.drawImage(video, 0, 0, W, H);
       octx.globalCompositeOperation = "destination-over";
       if (mode === "weich" || !bild) {
-        octx.filter = "blur(16px)";
-        octx.drawImage(video, 0, 0, W, H);
-        octx.filter = "none";
+        if (hatFilter) {
+          octx.filter = "blur(16px)";
+          octx.drawImage(video, 0, 0, W, H);
+          octx.filter = "none";
+        } else {
+          weichOhneFilter(video, W, H, 28);
+        }
       } else {
         zeichneBild(bild, W, H);
       }
       octx.globalCompositeOperation = "source-over";
+      diag.bilder++;
+      diag.status = "läuft";
     } catch (e) {
       console.warn("Hintergrund:", e);
+      diag.fehler = "Bild: " + (e && e.message || e);
     }
     var dt = performance.now() - t0;
     dauer = dauer ? dauer * 0.8 + dt * 0.2 : dt;
@@ -147,6 +196,7 @@
   }
 
   function start(kamera, m) {
+    if (hatFilter === null) hatFilter = filterTest();
     var s = kamera.getSettings ? kamera.getSettings() : {};
     var W = Math.min(s.width || MAXW, MAXW), H = Math.round(W * ((s.height || 720) / (s.width || 1280)));
     return Promise.all([laden(), setMode(m)]).then(function () {
@@ -185,5 +235,14 @@
     if (timer) timer.postMessage(0);
   }
 
-  window.VideoHintergrund = { last: function () { return dauer; }, start: start, setMode: setMode, stop: stop, MODI: MODI, HG: HG };
+  function info() {
+    var v = video ? video.videoWidth + "×" + video.videoHeight : "–";
+    return "Diagnose: " + diag.status + (diag.technik ? " (" + diag.technik + ")" : "") +
+      " · Filter " + (hatFilter === null ? "?" : hatFilter ? "ja" : "nein (Ersatz)") +
+      " · Kamera " + v + " · Bild " + (out ? out.width + "×" + out.height : "–") +
+      " · Bilder " + diag.bilder + " · " + Math.round(dauer) + " ms" +
+      (diag.fehler ? " · Fehler: " + diag.fehler : "");
+  }
+
+  window.VideoHintergrund = { info: info, last: function () { return dauer; }, start: start, setMode: setMode, stop: stop, MODI: MODI, HG: HG };
 })();

@@ -180,6 +180,19 @@
     $("v-pv").srcObject = vs;
     if (!screenTrack) { $("v-lv").srcObject = vs; replaceVideo(t); }
   }
+  // Diagnose (nur Testkopie): zeigt unter der Auswahl, was der Hintergrund gerade tut
+  (function () {
+    if (!HG || !HG.info) return;
+    var d = document.createElement("p");
+    d.className = "v-small"; d.id = "v-diag";
+    d.style.cssText = "font-size:11px;opacity:.85;word-break:break-word";
+    setInterval(function () {
+      var box = $("v-hgw");
+      if (!box || box.hidden) return;
+      if (!d.parentNode) box.appendChild(d);
+      d.textContent = HG.info() + " · Modus " + bgMode + " · " + navigator.userAgent.replace(/^Mozilla\/5\.0 /, "");
+    }, 1000);
+  })();
   function applyBg(m) {
     if (!rawCam || !bgOk) return;
     var my = ++bgSeq;

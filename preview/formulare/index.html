@@ -209,21 +209,25 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 
   <section class="card kanzlei screen" id="kanzlei" hidden>
     <h2>Für die Kanzlei: Vollmacht und Vergütungsvereinbarung vorbereiten</h2>
-    <p class="sub">Angaben eintragen, dann den Link oder die Datei an den Mandanten senden. Beim Mandanten stehen diese Angaben fest in den Formularen und können nicht geändert werden. Was leer bleibt, wird nicht vorgegeben.</p>
+    <p class="sub">Vollmacht und Vergütungsvereinbarung werden getrennt versandt: Für jede gibt es einen eigenen Link bzw. eine eigene Datei. Beim Mandanten stehen Ihre Angaben fest im Formular und können nicht geändert werden.</p>
     <p class="group-label">Vollmacht</p>
     <div class="grid">
       <label class="f"><span>Rechtsgebiet</span><select id="k_rg"></select></label>
       <label class="f full"><span>Gegenstand des Mandats <em>(betr. …)</em></span><input type="text" id="k_betr" placeholder="z. B. Disziplinarverfahren wegen …"></label>
     </div>
-    <p class="group-label">Vergütungsvereinbarung (Gegenstandswert nach § 3a RVG)</p>
+    <div class="row">
+      <button type="button" class="primary" data-kl="vm">Link zur Vollmacht</button>
+      <button type="button" class="ghost" data-kf="vm">Vollmacht als Datei (E-Mail-Anhang)</button>
+    </div>
+    <p class="group-label" style="margin-top:22px">Vergütungsvereinbarung (Gegenstandswert nach § 3a RVG)</p>
     <div class="grid">
       <label class="f full"><span>Verfahren <em>(§ 1)</em></span><input type="text" id="k_verf" placeholder="z. B. Disziplinarverfahren vor dem Verwaltungsgericht Berlin, Az. …"></label>
       <label class="f"><span>Gegenstandswert in EUR <em>(§ 2)</em></span><input type="text" id="k_wert" inputmode="numeric" placeholder="z. B. 25.000"></label>
       <label class="f"><span>in Worten <em>(automatisch)</em></span><input type="text" id="k_worte" readonly tabindex="-1"></label>
     </div>
     <div class="row">
-      <button type="button" class="primary" id="k_link">Link erzeugen</button>
-      <button type="button" class="ghost" id="k_file">Als Datei speichern (E-Mail-Anhang)</button>
+      <button type="button" class="primary" data-kl="sv">Link zur Vergütungsvereinbarung</button>
+      <button type="button" class="ghost" data-kf="sv">Vergütungsvereinbarung als Datei (E-Mail-Anhang)</button>
     </div>
     <textarea id="k_out" readonly hidden></textarea>
     <div class="row" id="k_acts" hidden>
@@ -465,6 +469,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   if(PRE){
     if(VM_ORDER.indexOf(PRE.rg)<0){ delete PRE.rg; delete PRE.b; }
     if(!(PRE.sv && typeof PRE.sv.verf==="string" && PRE.sv.verf.trim() && euro(PRE.sv.wert))) delete PRE.sv;
+    if(PRE.sv){ delete PRE.rg; delete PRE.b; }   /* Vergütungsvereinbarung wird immer für sich allein versandt */
     if(!PRE.rg && !PRE.sv) PRE=null;
   }
   var SV = PRE && PRE.sv ? {verf:PRE.sv.verf.trim(), wert:euro(PRE.sv.wert)} : null;
@@ -815,8 +820,14 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   /* ===== Vorgabe anwenden ===== */
   function applyPre(){
     if(!PRE) return;
-    if(SV){ document.getElementById("c5").hidden=false; document.getElementById("d5").checked=true;
-      document.getElementById("leadN").textContent="fünf Formulare (1 · Aufnahmebogen, 2 · E-Mail-Erklärung, 3 · Handakten-Erklärung, 4 · Vollmacht, 5 · Vergütungsvereinbarung)"; }
+    if(SV){
+      document.getElementById("c5").hidden=false; document.getElementById("d5").checked=true;
+      ["1","2","3","4"].forEach(function(n){ var c=document.getElementById("d"+n); c.checked=false; c.closest("section").hidden=true; });
+      document.querySelector("h1").textContent="Vergütungsvereinbarung";
+      var ln=document.getElementById("leadN"); if(ln) ln.parentNode.innerHTML="Bitte prüfen Sie die Vergütungsvereinbarung, ergänzen Sie Ihre Angaben und unterschreiben Sie. Verfahren und Gegenstandswert hat die Kanzlei vorgegeben.";
+      document.getElementById("c5").querySelector("h2").textContent="Vergütungsvereinbarung (Gegenstandswert)";
+      document.getElementById("c5").querySelector(".incl").hidden=true;
+    }
     if(!PRE.rg){ preview(); return; }
     document.getElementById("rgsel").value=PRE.rg;
     document.querySelector('[data-k=betr]').value=PRE.b||"";
@@ -833,54 +844,50 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   function showK(){ kz.hidden = !/^#kanzlei/.test(location.hash); }
   showK(); window.addEventListener("hashchange", showK);
   var kMsg=document.getElementById("k_msg"), kOut=document.getElementById("k_out");
-  function kData(){
-    var rg=document.getElementById("k_rg").value, b=document.getElementById("k_betr").value.trim(),
-        verf=document.getElementById("k_verf").value.trim(), wert=document.getElementById("k_wert").value.trim();
+  function kData(kind){
     function err(t){ kMsg.style.color="#9a3b1a"; kMsg.textContent=t; return null; }
-    if(!rg && !b && !verf && !wert) return err("Bitte die Angaben für die Vollmacht und/oder die Vergütungsvereinbarung eintragen.");
-    var d={};
-    if(rg || b){
+    if(kind==="vm"){
+      var rg=document.getElementById("k_rg").value, b=document.getElementById("k_betr").value.trim();
       if(!rg) return err("Bitte für die Vollmacht das Rechtsgebiet wählen.");
       if(checkEl(document.getElementById("k_betr"),true)) return err("Bitte den Gegenstand des Mandats angeben (mindestens 5 Buchstaben).");
-      d.rg=rg; d.b=b;
+      kMsg.style.color=""; return {rg:rg,b:b};
     }
-    if(verf || wert){
-      if(checkEl(document.getElementById("k_verf"),true)) return err("Bitte das Verfahren für die Vergütungsvereinbarung angeben (mindestens 5 Buchstaben).");
-      if(checkEl(document.getElementById("k_wert"),true)) return err("Bitte den Gegenstandswert in vollen Euro angeben (z. B. 25.000).");
-      d.sv={verf:verf, wert:euro(wert)};
-    }
-    kMsg.style.color=""; return d;
+    var verf=document.getElementById("k_verf").value.trim(), wert=document.getElementById("k_wert").value.trim();
+    if(checkEl(document.getElementById("k_verf"),true)) return err("Bitte das Verfahren für die Vergütungsvereinbarung angeben (mindestens 5 Buchstaben).");
+    if(checkEl(document.getElementById("k_wert"),true)) return err("Bitte den Gegenstandswert in vollen Euro angeben (z. B. 25.000).");
+    kMsg.style.color=""; return {sv:{verf:verf, wert:euro(wert)}};
   }
   document.getElementById("k_wert").addEventListener("input",function(){ var n=euro(this.value); document.getElementById("k_worte").value = n ? worte(n)+" Euro" : ""; });
   function base(){ return /^https?:/.test(location.protocol) ? location.origin+location.pathname : "https://ra-abesser.de/formulare/"; }
-  var lastLink="";
-  document.getElementById("k_link").addEventListener("click",function(){
-    var d=kData(); if(!d) return;
-    lastLink=base()+"#v="+b64e(d);
+  var lastLink="", lastKind="vm";
+  function kWhat(k){ return k==="sv" ? "Vergütungsvereinbarung" : "Vollmacht"; }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-kl]"),function(btn){ btn.addEventListener("click",function(){
+    var k=btn.dataset.kl, d=kData(k); if(!d) return;
+    lastLink=base()+"#v="+b64e(d); lastKind=k;
     kOut.value=lastLink; kOut.hidden=false; document.getElementById("k_acts").hidden=false;
     document.getElementById("k_share").hidden=!navigator.share;
-    kMsg.textContent="Link erzeugt. Senden Sie ihn dem Mandanten per E-Mail.";
-  });
+    kMsg.textContent="Link zur "+kWhat(k)+" erzeugt. Senden Sie ihn dem Mandanten per E-Mail.";
+  }); });
   document.getElementById("k_copy").addEventListener("click",function(){
     function done(){ kMsg.textContent="Link kopiert."; }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(lastLink).then(done,function(){ kOut.select(); document.execCommand("copy"); done(); }); }
     else { kOut.select(); document.execCommand("copy"); done(); }
   });
   document.getElementById("k_share").addEventListener("click",function(){
-    if(navigator.share) navigator.share({title:"Mandantenformulare – Rechtsanwalt Abeßer", text:"Bitte füllen Sie die Mandantenformulare aus und unterschreiben Sie sie:", url:lastLink}).catch(function(){});
+    if(navigator.share) navigator.share(lastKind==="sv" ? {title:"Vergütungsvereinbarung – Rechtsanwalt Abeßer", text:"Bitte prüfen und unterschreiben Sie die Vergütungsvereinbarung:", url:lastLink} : {title:"Mandantenformulare – Rechtsanwalt Abeßer", text:"Bitte füllen Sie die Mandantenformulare aus und unterschreiben Sie sie:", url:lastLink}).catch(function(){});
   });
   document.getElementById("k_open").addEventListener("click",function(){ window.open(lastLink,"_blank"); });
-  document.getElementById("k_file").addEventListener("click",function(){
-    var d=kData(); if(!d) return;
+  Array.prototype.forEach.call(document.querySelectorAll("[data-kf]"),function(btn){ btn.addEventListener("click",function(){
+    var k=btn.dataset.kf, d=kData(k); if(!d) return;
     var js=JSON.stringify(d).replace(/</g,"\\u003c");
     var html=ORIG.replace("<script>\n(function(){", "<script>window.PREFILL="+js+";<\/script>\n<script>\n(function(){");
     html=html.replace(/(href|src)="\.\.\//g,'$1="https://ra-abesser.de/');
     var blob=new Blob([html],{type:"text/html"}), a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
-    a.download="Mandantenformulare_RA_Abesser_"+(d.rg ? RG[d.rg].name : "Verguetungsvereinbarung").replace(/[^A-Za-zÄÖÜäöüß]+/g,"_")+".html";
+    a.download=(k==="sv" ? "Verguetungsvereinbarung_RA_Abesser" : "Mandantenformulare_RA_Abesser_"+RG[d.rg].name.replace(/[^A-Za-zÄÖÜäöüß]+/g,"_"))+".html";
     document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },1000);
-    kMsg.textContent="Datei gespeichert. Hängen Sie sie an Ihre E-Mail an.";
-  });
+    kMsg.textContent="Datei mit der "+kWhat(k)+" gespeichert. Hängen Sie sie an Ihre E-Mail an.";
+  }); });
 
   /* ===== Versand an die Kanzlei (nur auf der Website, nicht als Datei-Anhang) ===== */
   var WEB = /^https?:$/.test(location.protocol);
@@ -956,7 +963,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   var sStat=document.getElementById("s_status"), sGo=document.getElementById("s_go");
   function sMsg(t,cls){ sStat.className="sendstatus"+(cls?" "+cls:""); sStat.innerHTML=t; }
   var NAMES={1:"Mandanten-Aufnahmebogen",2:"Befreiung von der Schweigepflicht (E-Mail)",3:"Erklärung zu Dokumenten / Handakte",4:"Vollmacht",5:"Vergütungsvereinbarung (Gegenstandswert)"};
-  function selected(){ return ["1","2","3","4","5"].filter(function(n){ return document.getElementById("d"+n).checked && !document.getElementById("d"+n).closest("[hidden]"); }); }
+  function selected(){ return ["1","2","3","4","5"].filter(function(n){ return document.getElementById("d"+n).checked && !document.getElementById("d"+n).closest("section").hidden; }); }
   if(WEB){
     document.getElementById("btnSend").addEventListener("click",function(){ var c=document.getElementById("send"); c.scrollIntoView({behavior:"smooth",block:"start"}); });
     var v0=vals(); document.getElementById("s_tel").value=v0.telmobil||v0.telprivat||v0.telberuf||"";
@@ -971,7 +978,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       if(!sel.length){ sMsg("Bitte wählen Sie mindestens ein Formular aus.","err"); return; }
       if(document.getElementById("d4").checked && !v.rg){ sMsg("Bitte wählen Sie für die Vollmacht (Formular 4) das Rechtsgebiet aus.","err"); return; }
       var unsigned=sel.filter(function(n){return !SIGS[n];});
-      if(unsigned.length){ sMsg("Bitte unterschreiben Sie noch im Unterschriftsfeld von Formular "+unsigned.join(", ")+".","err"); return; }
+      if(unsigned.length){ sMsg(SV ? "Bitte unterschreiben Sie noch im Unterschriftsfeld." : "Bitte unterschreiben Sie noch im Unterschriftsfeld von Formular "+unsigned.join(", ")+".","err"); return; }
       var tel=document.getElementById("s_tel").value.trim();
       if(!document.getElementById("s_consent").checked){ sMsg("Bitte bestätigen Sie das Einverständnis zur Übermittlung.","err"); return; }
       sGo.disabled=true; sMsg("Sicherheitsprüfung …");
@@ -981,22 +988,22 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       .then(function(blob){
         lastPdf=blob;
         var d=new Date(), ds=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-        lastPdfName="Mandantenformulare_"+(v.nachname||"Mandant").replace(/[^A-Za-z0-9ÄÖÜäöüß-]+/g,"_")+"_"+ds+".pdf";
+        lastPdfName=(SV?"Verguetungsvereinbarung_":"Mandantenformulare_")+(v.nachname||"Mandant").replace(/[^A-Za-z0-9ÄÖÜäöüß-]+/g,"_")+"_"+ds+".pdf";
         if(blob.size>9.5*1024*1024) throw new Error("size");
         sMsg("Wird gesendet …");
         return blobB64(blob);
       })
       .then(function(b64){
         var r=RG[v.rg], name=(v.vorname+" "+v.nachname).trim();
-        var txt="Übermittelt über die Seite „Mandantenformulare“ (ra-abesser.de/formulare/).\n\n"+
+        var txt="Übermittelt über die Seite „"+(SV?"Vergütungsvereinbarung":"Mandantenformulare")+"“ (ra-abesser.de/formulare/).\n\n"+
           "Enthaltene Formulare (alle digital unterschrieben):\n"+sel.map(function(n){return "– "+NAMES[n];}).join("\n")+
           (document.getElementById("d4").checked && r ? "\n\nVollmacht: "+r.name+(v.betr?" – betr. "+v.betr:"") : "")+
           (sel.indexOf("5")>=0 ? "\n\nVergütungsvereinbarung: "+SV.verf+" – Gegenstandswert "+eurFmt(SV.wert)+" EUR" : "")+
           "\n\nAnschrift: "+[v.strasse,(v.plz+" "+v.wohnort).trim()].filter(Boolean).join(", ")+
           (document.getElementById("s_msg").value.trim() ? "\n\nNachricht:\n"+document.getElementById("s_msg").value.trim() : "")+
-          "\n\nDie Formulare sind als PDF angehängt.";
+          (SV?"\n\nDie Vergütungsvereinbarung ist als PDF angehängt.":"\n\nDie Formulare sind als PDF angehängt.");
         var data={vorname:v.vorname.slice(0,100), name:v.nachname.slice(0,100), email:v.email, telefon:tel,
-          betreff:("Mandantenformulare – "+name).slice(0,200), nachricht:txt.slice(0,10000), consent:true, token:tok,
+          betreff:((SV?"Vergütungsvereinbarung – ":"Mandantenformulare – ")+name).slice(0,200), nachricht:txt.slice(0,10000), consent:true, token:tok,
           anhaenge:[{name:lastPdfName, content:b64}]};
         return fetch("/api/kontakt",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)});
       })
@@ -1004,7 +1011,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       .then(function(d){
         tsToken=null;
         if(d.ok){
-          sMsg("Vielen Dank! Ihre Formulare wurden an Rechtsanwalt Abeßer gesendet. Sie müssen nichts weiter tun.","ok");
+          sMsg("Vielen Dank! Ihre "+(SV?"Vergütungsvereinbarung wurde":"Formulare wurden")+" an Rechtsanwalt Abeßer gesendet. Sie müssen nichts weiter tun.","ok");
           document.getElementById("s_save").hidden=false;
           sGo.textContent="Gesendet"; 
           if(!document.getElementById("remember").checked) wipe();
@@ -1138,7 +1145,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       el.classList.toggle("missing", m);
       if(m) miss.push(el.closest("label").querySelector("span").textContent);
     });
-    selected().forEach(function(n){ if(!SIGS[n]) miss.push("Unterschrift Formular "+n); });
+    selected().forEach(function(n){ if(!SIGS[n]) miss.push(SV ? "Unterschrift" : "Unterschrift Formular "+n); });
     if(miss.length){
       showNotice("Noch leer: <strong>"+esc(miss.join(", "))+"</strong>. Sie können dies jetzt nachholen oder später auf dem Ausdruck von Hand ergänzen.<br><button type='button' class='ghost' id='printAnyway'>Trotzdem drucken</button>");
       document.getElementById("printAnyway").addEventListener("click", doPrint);
@@ -1276,7 +1283,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     var d; try{ d=JSON.parse(j); }catch(e){ d=null; }
     if(!d || !d.k || leer(d) || Date.now()-(d.t||0) > MDAYS*864e5){ wipe(); remember.checked=false; return; }
     inputs.forEach(function(el){ var k=el.dataset.k; if(!(k in d.k) || fixed(k)) return; if(el.type==="checkbox") el.checked=!!d.k[k]; else el.value=d.k[k]; });
-    ["1","2","3","4","5"].forEach(function(n){ if(n in d.d && !(PRE && PRE.rg && n==="4") && !(SV && n==="5")) document.getElementById("d"+n).checked=!!d.d[n]; });
+    ["1","2","3","4","5"].forEach(function(n){ if(n in d.d && !(PRE && PRE.rg && n==="4") && !SV) document.getElementById("d"+n).checked=!!d.d[n]; });
     inlines.forEach(function(el){ if(el.dataset.f in d.f){ el.value=d.f[el.dataset.f]; el.dataset.own="1"; } });
     if(WEB){
       var t=document.getElementById("s_tel");

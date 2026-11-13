@@ -67,6 +67,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** In der Vorschau: Mandantenformulare merken sich die Eingaben (13. 11., Wunsch Tobias). Immer bis zum Schließen des Fensters; mit Häkchen „Eingaben auf diesem Gerät merken“ bis zu 30 Tage. Nur im Browser des Mandanten, nie Unterschriften, Einverständnis oder Datum; „Löschen“ und erfolgreicher Versand (ohne Häkchen) entfernen alles.
 - [x] **Claude:** In der Vorschau: Adressvorschläge beim Tippen von Straße und PLZ (Worker `ra-abesser-adresse`, OpenStreetMap über Photon/komoot) und besseres automatisches Ausfüllen durch den Browser (gespeicherte Name/Anschrift/Telefon) (13. 11., Wunsch Tobias). Datenschutzerklärung der Vorschau, Ziffer 7: Entwurf zu Adressvorschlägen und Zwischenspeicherung.
 - [x] **Tobias:** Freigabe 13. 11.: „Eingaben merken“, Adressvorschläge, Browser-Ausfüllen, Hinweis Besoldungsgruppe und Datenschutz Ziffer 7 (Adressvorschläge, Zwischenspeicherung) – auf der echten Website veröffentlicht.
+- [x] **Claude:** In der Vorschau: Formular 5 „Vergütungsvereinbarung (Gegenstandswert, § 3a RVG)“ nach Tobias' Muster (13. 11.). Verfahren und Gegenstandswert gibt nur die Kanzlei vor (https://ra-abesser.de/preview/formulare/#kanzlei), der Mandant erhält Link oder Datei, unterschreibt und sendet wie die Vollmacht.
+- [ ] **Tobias:** Vergütungsvereinbarung in der Vorschau prüfen (Text, Druckbild) und für die echte Website freigeben.
 - [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 
 ## 8. Videoberatung anfragen und Termin bestätigen

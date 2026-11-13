@@ -69,6 +69,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Freigabe 13. 11.: „Eingaben merken“, Adressvorschläge, Browser-Ausfüllen, Hinweis Besoldungsgruppe und Datenschutz Ziffer 7 (Adressvorschläge, Zwischenspeicherung) – auf der echten Website veröffentlicht.
 - [x] **Claude:** In der Vorschau: Formular 5 „Vergütungsvereinbarung (Gegenstandswert, § 3a RVG)“ nach Tobias' Muster (13. 11.). Verfahren und Gegenstandswert gibt nur die Kanzlei vor (https://ra-abesser.de/preview/formulare/#kanzlei), der Mandant erhält Link oder Datei, unterschreibt und sendet wie die Vollmacht. Seit 13. 11. getrennt von der Vollmacht: eigener Link/eigene Datei, eigene E-Mail an die Kanzlei.
 - [x] **Tobias:** Vergütungsvereinbarung freigegeben (13. 11., § 3 ohne doppeltes „dass“); auf der echten Website veröffentlicht: https://ra-abesser.de/formulare/#kanzlei
+- [x] **Claude:** In der Vorschau: Formular 6 „Vergütungsvereinbarung/Disziplinarrecht“ nach Tobias' Muster (13. 11.), eigener Link im Kanzlei-Bereich.
+- [ ] **Tobias:** Vergütungsvereinbarung/Disziplinarrecht in der Vorschau prüfen und freigeben.
 - [ ] **Tobias:** Einmal Link zur Vergütungsvereinbarung erzeugen, selbst als Mandant ausfüllen, unterschreiben und senden – prüfen, ob die E-Mail mit PDF ankommt.
 - [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 

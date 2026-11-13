@@ -122,7 +122,11 @@ button.sm{font-size:14px;padding:7px 12px;min-height:38px}
 .doctext .fix{color:var(--accent);font-weight:600}
 .doctext h4{font-size:15px;margin:14px 0 4px}
 .doctext p.c{text-align:center}
-.doctext #svAnr{display:block;margin-bottom:2px}
+.doctext #svAnr,.doctext #vdAmt{display:block;margin-bottom:2px}
+.doctext ol.al{list-style:lower-alpha}
+.card h2,.wrap h1{overflow-wrap:break-word}
+.doctext{overflow-wrap:break-word;hyphens:auto;-webkit-hyphens:auto}
+.doctext .ind{margin-left:22px}
 .doctext .zbox{float:right;border:1px solid #888;font-size:12px;padding:4px 8px;margin:0 0 8px 10px;text-align:center;font-family:inherit}
 section.kanzlei{border:2px solid var(--accent);background:#fbfcfe}
 section.kanzlei .row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
@@ -165,6 +169,9 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
 .docs .doc.sv .body h4{font-size:10.5pt;margin:9pt 0 2pt;page-break-after:avoid;break-after:avoid}
 .docs .doc.sv .body p.c{text-align:center;margin-bottom:14pt}
 .docs .doc.sv .sig{margin-top:22pt}
+.docs .doc.sv ol.al{list-style:lower-alpha;margin:0 0 4pt;padding-left:17pt}
+.docs .doc.sv ol.al li{margin-bottom:2pt}
+.docs .doc.sv .ind{margin-left:14pt}
 .docs .legal p{margin:0 0 5pt}
 .docs .legal ul{margin:0 0 5pt;padding-left:16pt}
 .docs .legal li{margin-bottom:2pt}
@@ -228,6 +235,18 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <div class="row">
       <button type="button" class="primary" data-kl="sv">Link: Vergütungsvereinbarung/Gegenstandswert</button>
       <button type="button" class="ghost" data-kf="sv">Vergütungsvereinbarung/Gegenstandswert als Datei (E-Mail-Anhang)</button>
+    </div>
+    <p class="group-label" style="margin-top:22px">Vergütungsvereinbarung/Disziplinarrecht <em style="font-weight:normal;color:var(--muted)">(nach § 3a RVG)</em></p>
+    <div class="grid">
+      <label class="f full"><span>Disziplinarverfahren geführt seitens <em>(§ 1)</em></span><input type="text" id="k_beh" placeholder="z. B. des Bundesamts für das Personalmanagement der Bundeswehr"></label>
+      <label class="f"><span>Aktenzeichen <em>(§ 1)</em></span><input type="text" id="k_az"></label>
+      <label class="f"><span>eingeleitet mit Schreiben vom <em>(§ 1)</em></span><input type="date" id="k_dat"></label>
+      <label class="f"><span>sofort fällig in EUR <em>(§ 6)</em></span><input type="text" id="k_vor" inputmode="numeric" placeholder="z. B. 1.500"></label>
+      <label class="f"><span>in Worten <em>(automatisch)</em></span><input type="text" id="k_vorw" readonly tabindex="-1"></label>
+    </div>
+    <div class="row">
+      <button type="button" class="primary" data-kl="vd">Link: Vergütungsvereinbarung/Disziplinarrecht</button>
+      <button type="button" class="ghost" data-kf="vd">Vergütungsvereinbarung/Disziplinarrecht als Datei (E-Mail-Anhang)</button>
     </div>
     <textarea id="k_out" readonly hidden></textarea>
     <div class="row" id="k_acts" hidden>
@@ -350,6 +369,19 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     <div class="sigpad" data-n="5"></div>
   </section>
 
+  <section class="card" id="c6" hidden>
+    <h2>6 · Vergütungsvereinbarung/<wbr>Disziplinarrecht</h2>
+    <p class="sub">Vereinbarung nach § 3a RVG. Verfahren und Fälligkeit hat die Kanzlei vorgegeben.</p>
+    <label class="incl"><input type="checkbox" id="d6"> Dieses Formular drucken</label>
+    <div class="grid">
+      <label class="f"><span>Anrede</span><select name="vdanr" data-k="vdanr"><option value="">Frau/Herr</option><option value="Frau">Frau</option><option value="Herr">Herr</option><option value="-">ohne Anrede</option></select></label>
+      <label class="f"><span>Amtsbezeichnung / Dienstgrad</span><input type="text" name="vdamt" data-k="vdamt" autocomplete="organization-title"></label>
+      <label class="f"><span>Geburtsdatum</span><input type="date" name="vdgeb" data-k="vdgeb" autocomplete="bday"></label>
+    </div>
+    <div class="doctext" id="prev6"></div>
+    <div class="sigpad" data-n="6"></div>
+  </section>
+
   <section class="card sendcard web-only" id="send">
     <h2>An die Kanzlei senden</h2>
     <p class="sub">Die ausgewählten Formulare werden als PDF-Datei mit Ihren Unterschriften verschlüsselt an Rechtsanwalt Abeßer (info@ra-abesser.de) übermittelt. Ein Ausdruck ist dann nicht nötig.</p>
@@ -469,11 +501,18 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   if(PRE){
     if(VM_ORDER.indexOf(PRE.rg)<0){ delete PRE.rg; delete PRE.b; }
     if(!(PRE.sv && typeof PRE.sv.verf==="string" && PRE.sv.verf.trim() && euro(PRE.sv.wert))) delete PRE.sv;
-    if(PRE.sv){ delete PRE.rg; delete PRE.b; }   /* Vergütungsvereinbarung wird immer für sich allein versandt */
-    if(!PRE.rg && !PRE.sv) PRE=null;
+    var vd=PRE.vd;
+    if(!(vd && typeof vd.beh==="string" && vd.beh.trim() && typeof vd.az==="string" && vd.az.trim() && /^\d{4}-\d{2}-\d{2}$/.test(vd.dat||"") && euro(vd.vor))) delete PRE.vd;
+    if(PRE.sv) delete PRE.vd;
+    if(PRE.sv || PRE.vd){ delete PRE.rg; delete PRE.b; }   /* Vergütungsvereinbarungen werden immer für sich allein versandt */
+    if(!PRE.rg && !PRE.sv && !PRE.vd) PRE=null;
   }
   var SVNAME = "Vergütungsvereinbarung/Gegenstandswert";   /* Name im Formular, Betreff und Kanzlei-Bereich */
   var SV = PRE && PRE.sv ? {verf:PRE.sv.verf.trim(), wert:euro(PRE.sv.wert)} : null;
+  var VDNAME = "Vergütungsvereinbarung/Disziplinarrecht";
+  var VD = PRE && PRE.vd ? {beh:PRE.vd.beh.trim(), az:PRE.vd.az.trim(), dat:PRE.vd.dat, vor:euro(PRE.vd.vor)} : null;
+  /* Aktive Vergütungsvereinbarung (Link der Kanzlei): dann nur dieses Formular */
+  var VV = SV ? {n:"5", name:SVNAME} : VD ? {n:"6", name:VDNAME} : null;
 
   /* Gegenstandswert: „25.000“, „25000“, „25.000,00 €“ → 25000 (nur volle Euro) */
   function euro(s){
@@ -551,7 +590,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   function letterhead(){
     return '<div class="lh"><span>'+K.name+' · '+ADR+'</span><span>Tel. '+K.tel+' · '+K.mail+'</span></div>';
   }
-  var SIGS={1:null,2:null,3:null,4:null,5:null};
+  var SIGS={1:null,2:null,3:null,4:null,5:null,6:null};
   function sig(v, cap, n){
     var img=SIGS[n];
     return '<div class="sig"><div><div class="l">'+esc(v.sigort)+'</div><div class="c">(Ort)</div></div>'+
@@ -708,6 +747,56 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     '</div>';
   }
 
+  /* ===== 6 · Vergütungsvereinbarung/Disziplinarrecht – Verfahren und Fälligkeit nur durch die Kanzlei ===== */
+  function text6(v,screen){
+    var name=fv(v,"6","name"), adr=fv(v,"6","adr"), anr=v.vdanr==="-" ? "" : (v.vdanr||"Frau/Herr");
+    var fx=function(t,w){ return screen ? '<span class="fix">'+t+'</span>' : '<span class="val" style="min-width:'+w+'">'+t+'</span>'; };
+    var beh=VD?esc(VD.beh):"…", az=VD?esc(VD.az):"…", dat=VD?dmy(VD.dat):"…", vor=VD?eurFmt(VD.vor):"…", vorw=VD?worte(VD.vor):"…";
+    return '<p class="c"><strong>VERGÜTUNGSVEREINBARUNG</strong><br>nach § 3a des Rechtsanwaltsvergütungsgesetzes</p>'+
+      (screen
+        ? '<div class="block"><span id="vdAmt"><span id="vdAnr"></span><span id="vdAmt2"></span></span>'+inl("6","name","Vor- und Nachname")+'<div class="lbl">(Vor- und Nachname)</div></div>'+
+          '<p class="tight">* <span id="vdGeb"></span>,</p>'+
+          '<div class="block wh">wohnhaft: '+inl("6","adr","Straße Hausnr., PLZ Ort")+'</div>'
+        : '<p class="tight">'+esc(anr)+(anr?' ':'')+'<span class="val" style="min-width:20%">'+(esc(v.vdamt)||"&nbsp;")+'</span> <span class="val" style="min-width:40%">'+(esc(name)||"&nbsp;")+'</span>, * <span class="val" style="min-width:16%">'+(esc(dmy(v.vdgeb))||"&nbsp;")+'</span>,</p>'+
+          '<p class="tight">wohnhaft: <span class="val" style="min-width:70%">'+(esc(adr)||"&nbsp;")+'</span>,</p>')+
+      '<p>– im Folgenden: „Mandantschaft“ –</p>'+
+      '<p class="tight">und '+K.name+', '+ADR+',</p><p>– im Folgenden: „Rechtsanwalt“ –,</p>'+
+      '<p>treffen folgende Vergütungsvereinbarung:</p>'+
+      '<h4>§ 1</h4><p class="tight l">In dem gegen die Mandantschaft seitens '+fx(beh,"45%")+' zum dortigen Aktenzeichen '+fx(az,"20%")+' geführten und mit behördlichem Schreiben vom '+fx(dat,"14%")+' eingeleiteten Disziplinarverfahren verpflichtet sich die Mandantschaft, dem Rechtsanwalt abweichend von den gesetzlichen Gebühren</p>'+
+      '<ol class="vm"><li>im außergerichtlichen Verfahren<ol class="al">'+
+        '<li>eine Grundgebühr gem. Ziff. 6200 VV RVG in Höhe von 840,00 EUR (achthundertundvierzig Euro),</li>'+
+        '<li>eine Terminsgebühr gem. Ziff. 6201 VV RVG in Höhe von 888,00 EUR (achthundertundachtundachtzig Euro) pro Tag,</li>'+
+        '<li>eine Verfahrensgebühr gem. Ziff. 6202 VV RVG in Höhe von 696,00 EUR (sechshundertundsechsundneunzig Euro),</li></ol></li>'+
+      '<li>im gerichtlichen Verfahren I. Instanz<ol class="al">'+
+        '<li>eine Verfahrensgebühr gem. Ziff. 6203 VV RVG in Höhe von 768,00 EUR (siebenhundertundachtundsechzig Euro),</li>'+
+        '<li>eine Terminsgebühr gem. Ziff. 6204 VV RVG in Höhe von 1.342,00 EUR (eintausenddreihundertundzweiundvierzig Euro) pro Verhandlungstag</li></ol></li></ol>'+
+      '<p>zu zahlen. Die Mandantschaft und der Rechtsanwalt sind sich einig, dass die Terminsgebühren nach Satz 1 Ziff. 1b) und 2b) auch dann anfallen, wenn der Termin oder die mündliche Gerichtsverhandlung als Videokonferenz stattfinden.</p>'+
+      '<h4>§ 2</h4><p>Die in § 1 genannte Vergütung umfasst nur die Kosten einer anwaltlichen Tätigkeit bis zum Abschluss des erstinstanzlichen Verfahrens. Für alle weiteren Verfahren, insbesondere bei Eintritt in ein zweitinstanzliches Gerichtsverfahren, ist eine neue Vergütungsvereinbarung zu treffen.</p>'+
+      '<h4>§ 3</h4><p>Die Mandantschaft verpflichtet sich zudem, die bei der Verteidigung entstehenden Auslagen – z. B. Fahrkosten (ICE erster Klasse), Unterkunft (mind. 3-Sterne-Hotel), Tage- u. Abwesenheitsgeld – nach gesetzlicher Vorschrift an den Rechtsanwalt zu zahlen und auf Vergütung und Auslagen den jeweils gültigen Mehrwertsteuersatz – derzeit 19 % – sowie einen Pauschalbetrag in Höhe von 40,00 EUR (vierzig Euro) für die etwaige Anfertigung und/oder Überlassung von Aktenscans an den Rechtsanwalt zu entrichten.</p>'+
+      '<h4>§ 4</h4><p class="tight">Die Mandantschaft erklärt, dass</p><ol class="al">'+
+        '<li>die in den §§ 1 bis 3 dieses Vertrages genannte Vergütung frei vereinbart worden ist,</li>'+
+        '<li>sie davon in Kenntnis gesetzt wurde, dass<div class="ind">aa) die gegnerische Partei, ein Verfahrensbeteiligter oder die Staatskasse im Falle der Kostenerstattung regelmäßig nicht mehr als die gesetzliche Vergütung erstatten muss,<br>bb) diese Vergütungsvereinbarung von der gesetzlichen Gebührenregelung für Rechtsanwälte, wie sie das Rechtsanwaltsvergütungsgesetz vorsieht, abweicht,</div></li>'+
+        '<li>die Angelegenheit von überragender beruflicher, wirtschaftlicher und persönlicher Bedeutung für sie ist.</li></ol>'+
+      '<h4>§ 5</h4><p>Die vorstehenden Vereinbarungen gelten unabhängig vom Erfolg der anwaltlichen Tätigkeit.</p>'+
+      '<h4>§ 6</h4><p>Die Vergütung ist fällig wie folgt: '+fx(vor,"14%")+' EUR (in Worten: '+fx(vorw,"28%")+' Euro) sofort, der Rest nach anwaltlicher Rechnungsstellung.</p>'+
+      '<h4>§ 7</h4><p>Es gelten die gesetzlichen Gebühren, wenn diese höher sind als die in dieser Vereinbarung abgesprochene Vergütung.</p>'+
+      '<h4>§ 8</h4><p>Die Vergütungsvereinbarung bleibt bei vorzeitiger Mandatsauflösung unter Rückforderungsverzicht für geleistete Beträge bestehen.</p>'+
+      '<h4>§ 9</h4><p>Jede Änderung dieser Vereinbarung bedarf der Schriftform; auch das Schriftformerfordernis darf nur schriftlich geändert werden.</p>'+
+      '<h4>§ 10</h4><p>Sollten einzelne Teile dieser Vereinbarung unwirksam sein, so tritt an ihre Stelle die gesetzliche Regelung.</p>'+
+      '<h4>§ 11</h4><p>Die Mandantschaft erklärt, dass sie eine Originalausfertigung dieser Vereinbarung erhalten hat.</p>';
+  }
+  function doc6(v){
+    var name=fv(v,"6","name"), img=SIGS[6], who=[v.vdamt,name].filter(Boolean).join(" ");
+    return '<div class="doc sv">'+letterhead()+
+    '<div class="body">'+text6(v)+'</div>'+
+    '<div class="sig"><div><div class="l">'+esc(v.sigort)+'</div><div class="c">(Ort)</div></div>'+
+      '<div><div class="l">'+esc(dmy(v.sigdatum))+'</div><div class="c">(Datum)</div></div></div>'+
+    '<div class="sig"><div class="w"><div class="l'+(img?' si':'')+'">'+(img?'<img src="'+img+'" alt="Unterschrift">':'&nbsp;')+'</div><div class="c">('+(esc(who)||"Dienstgrad Vor- u. Nachname")+')<br>– als Mandantschaft –</div></div>'+
+      '<div class="w"><div class="l">&nbsp;</div><div class="c">('+K.kurz+')<br>– als Rechtsanwalt –</div></div></div>'+
+    (img?'<div class="esig">Unterschrift der Mandantschaft elektronisch (per Finger/Maus) auf dem Bildschirm geleistet.</div>':'')+
+    '</div>';
+  }
+
   function build(){
     var v=vals(), h="";
     if(document.getElementById("d1").checked) h+=doc1(v);
@@ -715,6 +804,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     if(document.getElementById("d3").checked) h+=doc3(v);
     if(document.getElementById("d4").checked) h+=doc4(v);
     if(SV && document.getElementById("d5").checked) h+=doc5(v);
+    if(VD && document.getElementById("d6").checked) h+=doc6(v);
     document.getElementById("print").innerHTML=h;
     return h;
   }
@@ -726,6 +816,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   document.getElementById("prev3").innerHTML=text3(vals(),true);
   document.getElementById("prev4").innerHTML=text4(vals(),true);
   document.getElementById("prev5").innerHTML=text5(vals(),true);
+  document.getElementById("prev6").innerHTML=text6(vals(),true);
   var inlines=Array.prototype.slice.call(document.querySelectorAll("input.inl"));
   inlines.forEach(function(el){
     el.addEventListener("input",function(){ el.dataset.own = el.value.trim() ? "1" : ""; });
@@ -739,7 +830,10 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     document.getElementById("vmIntro").textContent = r ? r.intro : STD_INTRO;
     document.getElementById("vmList").innerHTML = r ? r.list.map(function(t){return "<li>"+t+"</li>";}).join("") : "<li><em>Die Befugnisse erscheinen, sobald ein Rechtsgebiet gewählt ist.</em></li>";
     document.getElementById("svAnr").textContent = v.svanr==="-" ? "" : (v.svanr || "Frau/Herrn");
-    ["1","2","3","4","5"].forEach(function(n){
+    document.getElementById("vdAnr").textContent = v.vdanr==="-" ? "" : (v.vdanr || "Frau/Herr")+" ";
+    document.getElementById("vdAmt2").textContent = v.vdamt ? v.vdamt : "(Amtsbezeichnung / Dienstgrad)";
+    document.getElementById("vdGeb").textContent = v.vdgeb ? dmy(v.vdgeb) : "(Geburtsdatum)";
+    ["1","2","3","4","5","6"].forEach(function(n){
       var c=document.getElementById("d"+n).closest("section");
       c.classList.toggle("off", !document.getElementById("d"+n).checked);
     });
@@ -821,13 +915,13 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   /* ===== Vorgabe anwenden ===== */
   function applyPre(){
     if(!PRE) return;
-    if(SV){
-      document.getElementById("c5").hidden=false; document.getElementById("d5").checked=true;
+    if(VV){
+      var cv=document.getElementById("c"+VV.n); cv.hidden=false; document.getElementById("d"+VV.n).checked=true;
       ["1","2","3","4"].forEach(function(n){ var c=document.getElementById("d"+n); c.checked=false; c.closest("section").hidden=true; });
-      document.querySelector("h1").textContent=SVNAME;
-      var ln=document.getElementById("leadN"); if(ln) ln.parentNode.innerHTML="Bitte prüfen Sie die Vergütungsvereinbarung, ergänzen Sie Ihre Angaben und unterschreiben Sie. Verfahren und Gegenstandswert hat die Kanzlei vorgegeben.";
-      document.getElementById("c5").querySelector("h2").textContent=SVNAME;
-      document.getElementById("c5").querySelector(".incl").hidden=true;
+      document.querySelector("h1").textContent=VV.name.replace("/","/\u200B");
+      var ln=document.getElementById("leadN"); if(ln) ln.parentNode.innerHTML="Bitte prüfen Sie die Vergütungsvereinbarung, ergänzen Sie Ihre Angaben und unterschreiben Sie. Die Angaben zum Verfahren hat die Kanzlei vorgegeben.";
+      cv.querySelector("h2").textContent=VV.name.replace("/","/\u200B");
+      cv.querySelector(".incl").hidden=true;
     }
     if(!PRE.rg){ preview(); return; }
     document.getElementById("rgsel").value=PRE.rg;
@@ -853,15 +947,24 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       if(checkEl(document.getElementById("k_betr"),true)) return err("Bitte den Gegenstand des Mandats angeben (mindestens 5 Buchstaben).");
       kMsg.style.color=""; return {rg:rg,b:b};
     }
+    if(kind==="vd"){
+      if(checkEl(document.getElementById("k_beh"),true)) return err("Bitte angeben, seitens welcher Stelle das Disziplinarverfahren geführt wird (mindestens 5 Buchstaben).");
+      if(checkEl(document.getElementById("k_az"),true)) return err("Bitte das Aktenzeichen angeben.");
+      if(checkEl(document.getElementById("k_dat"),true)) return err("Bitte das Datum des Einleitungsschreibens angeben (nicht in der Zukunft).");
+      if(checkEl(document.getElementById("k_vor"),true)) return err("Bitte den sofort fälligen Betrag in vollen Euro angeben (z. B. 1.500).");
+      kMsg.style.color="";
+      return {vd:{beh:document.getElementById("k_beh").value.trim(), az:document.getElementById("k_az").value.trim(), dat:document.getElementById("k_dat").value, vor:euro(document.getElementById("k_vor").value)}};
+    }
     var verf=document.getElementById("k_verf").value.trim(), wert=document.getElementById("k_wert").value.trim();
     if(checkEl(document.getElementById("k_verf"),true)) return err("Bitte das Verfahren für die Vergütungsvereinbarung angeben (mindestens 5 Buchstaben).");
     if(checkEl(document.getElementById("k_wert"),true)) return err("Bitte den Gegenstandswert in vollen Euro angeben (z. B. 25.000).");
     kMsg.style.color=""; return {sv:{verf:verf, wert:euro(wert)}};
   }
+  document.getElementById("k_vor").addEventListener("input",function(){ var n=euro(this.value); document.getElementById("k_vorw").value = n ? worte(n)+" Euro" : ""; });
   document.getElementById("k_wert").addEventListener("input",function(){ var n=euro(this.value); document.getElementById("k_worte").value = n ? worte(n)+" Euro" : ""; });
   function base(){ return /^https?:/.test(location.protocol) ? location.origin+location.pathname : "https://ra-abesser.de/formulare/"; }
   var lastLink="", lastKind="vm";
-  function kWhat(k){ return k==="sv" ? "„"+SVNAME+"“" : "Vollmacht"; }
+  function kWhat(k){ return k==="sv" ? "„"+SVNAME+"“" : k==="vd" ? "„"+VDNAME+"“" : "Vollmacht"; }
   Array.prototype.forEach.call(document.querySelectorAll("[data-kl]"),function(btn){ btn.addEventListener("click",function(){
     var k=btn.dataset.kl, d=kData(k); if(!d) return;
     lastLink=base()+"#v="+b64e(d); lastKind=k;
@@ -875,7 +978,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     else { kOut.select(); document.execCommand("copy"); done(); }
   });
   document.getElementById("k_share").addEventListener("click",function(){
-    if(navigator.share) navigator.share(lastKind==="sv" ? {title:SVNAME+" – Rechtsanwalt Abeßer", text:"Bitte prüfen und unterschreiben Sie die Vergütungsvereinbarung:", url:lastLink} : {title:"Mandantenformulare – Rechtsanwalt Abeßer", text:"Bitte füllen Sie die Mandantenformulare aus und unterschreiben Sie sie:", url:lastLink}).catch(function(){});
+    if(navigator.share) navigator.share(lastKind!=="vm" ? {title:(lastKind==="sv"?SVNAME:VDNAME)+" – Rechtsanwalt Abeßer", text:"Bitte prüfen und unterschreiben Sie die Vergütungsvereinbarung:", url:lastLink} : {title:"Mandantenformulare – Rechtsanwalt Abeßer", text:"Bitte füllen Sie die Mandantenformulare aus und unterschreiben Sie sie:", url:lastLink}).catch(function(){});
   });
   document.getElementById("k_open").addEventListener("click",function(){ window.open(lastLink,"_blank"); });
   Array.prototype.forEach.call(document.querySelectorAll("[data-kf]"),function(btn){ btn.addEventListener("click",function(){
@@ -885,7 +988,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     html=html.replace(/(href|src)="\.\.\//g,'$1="https://ra-abesser.de/');
     var blob=new Blob([html],{type:"text/html"}), a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
-    a.download=(k==="sv" ? "Verguetungsvereinbarung_Gegenstandswert_RA_Abesser" : "Mandantenformulare_RA_Abesser_"+RG[d.rg].name.replace(/[^A-Za-zÄÖÜäöüß]+/g,"_"))+".html";
+    a.download=(k==="sv" ? "Verguetungsvereinbarung_Gegenstandswert_RA_Abesser" : k==="vd" ? "Verguetungsvereinbarung_Disziplinarrecht_RA_Abesser" : "Mandantenformulare_RA_Abesser_"+RG[d.rg].name.replace(/[^A-Za-zÄÖÜäöüß]+/g,"_"))+".html";
     document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },1000);
     kMsg.textContent="Datei mit der "+kWhat(k)+" gespeichert. Hängen Sie sie an Ihre E-Mail an.";
   }); });
@@ -963,8 +1066,8 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   }
   var sStat=document.getElementById("s_status"), sGo=document.getElementById("s_go");
   function sMsg(t,cls){ sStat.className="sendstatus"+(cls?" "+cls:""); sStat.innerHTML=t; }
-  var NAMES={1:"Mandanten-Aufnahmebogen",2:"Befreiung von der Schweigepflicht (E-Mail)",3:"Erklärung zu Dokumenten / Handakte",4:"Vollmacht",5:SVNAME};
-  function selected(){ return ["1","2","3","4","5"].filter(function(n){ return document.getElementById("d"+n).checked && !document.getElementById("d"+n).closest("section").hidden; }); }
+  var NAMES={1:"Mandanten-Aufnahmebogen",2:"Befreiung von der Schweigepflicht (E-Mail)",3:"Erklärung zu Dokumenten / Handakte",4:"Vollmacht",5:SVNAME,6:VDNAME};
+  function selected(){ return ["1","2","3","4","5","6"].filter(function(n){ return document.getElementById("d"+n).checked && !document.getElementById("d"+n).closest("section").hidden; }); }
   if(WEB){
     document.getElementById("btnSend").addEventListener("click",function(){ var c=document.getElementById("send"); c.scrollIntoView({behavior:"smooth",block:"start"}); });
     var v0=vals(); document.getElementById("s_tel").value=v0.telmobil||v0.telprivat||v0.telberuf||"";
@@ -973,13 +1076,13 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     document.getElementById("s_save").addEventListener("click",savePdf);
     sGo.addEventListener("click",function(){
       var v=vals(), sel=selected();
-      var REQ=/^(vorname|nachname|strasse|plz|wohnort|email|sigort|sigdatum|betr)$/;
+      var REQ=/^(vorname|nachname|strasse|plz|wohnort|email|sigort|sigdatum|betr|vdamt|vdgeb)$/;
       var bad=validateAll(function(el){ return REQ.test(el.dataset.k||"") || /^\d(name|adr|mail)$/.test(el.dataset.f||""); });
       if(bad.length){ sMsg("Bitte prüfen bzw. ergänzen Sie: "+esc(bad.join(", "))+". Die Hinweise stehen jeweils unter dem Feld.","err"); return; }
       if(!sel.length){ sMsg("Bitte wählen Sie mindestens ein Formular aus.","err"); return; }
       if(document.getElementById("d4").checked && !v.rg){ sMsg("Bitte wählen Sie für die Vollmacht (Formular 4) das Rechtsgebiet aus.","err"); return; }
       var unsigned=sel.filter(function(n){return !SIGS[n];});
-      if(unsigned.length){ sMsg(SV ? "Bitte unterschreiben Sie noch im Unterschriftsfeld." : "Bitte unterschreiben Sie noch im Unterschriftsfeld von Formular "+unsigned.join(", ")+".","err"); return; }
+      if(unsigned.length){ sMsg(VV ? "Bitte unterschreiben Sie noch im Unterschriftsfeld." : "Bitte unterschreiben Sie noch im Unterschriftsfeld von Formular "+unsigned.join(", ")+".","err"); return; }
       var tel=document.getElementById("s_tel").value.trim();
       if(!document.getElementById("s_consent").checked){ sMsg("Bitte bestätigen Sie das Einverständnis zur Übermittlung.","err"); return; }
       sGo.disabled=true; sMsg("Sicherheitsprüfung …");
@@ -989,22 +1092,23 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       .then(function(blob){
         lastPdf=blob;
         var d=new Date(), ds=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-        lastPdfName=(SV?"Verguetungsvereinbarung_Gegenstandswert_":"Mandantenformulare_")+(v.nachname||"Mandant").replace(/[^A-Za-z0-9ÄÖÜäöüß-]+/g,"_")+"_"+ds+".pdf";
+        lastPdfName=(SV?"Verguetungsvereinbarung_Gegenstandswert_":VD?"Verguetungsvereinbarung_Disziplinarrecht_":"Mandantenformulare_")+(v.nachname||"Mandant").replace(/[^A-Za-z0-9ÄÖÜäöüß-]+/g,"_")+"_"+ds+".pdf";
         if(blob.size>9.5*1024*1024) throw new Error("size");
         sMsg("Wird gesendet …");
         return blobB64(blob);
       })
       .then(function(b64){
         var r=RG[v.rg], name=(v.vorname+" "+v.nachname).trim();
-        var txt="Übermittelt über die Seite „"+(SV?SVNAME:"Mandantenformulare")+"“ (ra-abesser.de/formulare/).\n\n"+
+        var txt="Übermittelt über die Seite „"+(VV?VV.name:"Mandantenformulare")+"“ (ra-abesser.de/formulare/).\n\n"+
           "Enthaltene Formulare (alle digital unterschrieben):\n"+sel.map(function(n){return "– "+NAMES[n];}).join("\n")+
           (document.getElementById("d4").checked && r ? "\n\nVollmacht: "+r.name+(v.betr?" – betr. "+v.betr:"") : "")+
           (sel.indexOf("5")>=0 ? "\n\n"+SVNAME+": "+SV.verf+" – Gegenstandswert "+eurFmt(SV.wert)+" EUR" : "")+
+          (sel.indexOf("6")>=0 ? "\n\n"+VDNAME+": Disziplinarverfahren seitens "+VD.beh+", Az. "+VD.az+", eingeleitet mit Schreiben vom "+dmy(VD.dat)+" – sofort fällig "+eurFmt(VD.vor)+" EUR" : "")+
           "\n\nAnschrift: "+[v.strasse,(v.plz+" "+v.wohnort).trim()].filter(Boolean).join(", ")+
           (document.getElementById("s_msg").value.trim() ? "\n\nNachricht:\n"+document.getElementById("s_msg").value.trim() : "")+
-          (SV?"\n\nDie Vergütungsvereinbarung ist als PDF angehängt.":"\n\nDie Formulare sind als PDF angehängt.");
+          (VV?"\n\nDie Vergütungsvereinbarung ist als PDF angehängt.":"\n\nDie Formulare sind als PDF angehängt.");
         var data={vorname:v.vorname.slice(0,100), name:v.nachname.slice(0,100), email:v.email, telefon:tel,
-          betreff:((SV?SVNAME+" – ":"Mandantenformulare – ")+name).slice(0,200), nachricht:txt.slice(0,10000), consent:true, token:tok,
+          betreff:((VV?VV.name+" – ":"Mandantenformulare – ")+name).slice(0,200), nachricht:txt.slice(0,10000), consent:true, token:tok,
           anhaenge:[{name:lastPdfName, content:b64}]};
         return fetch("/api/kontakt",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)});
       })
@@ -1012,7 +1116,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       .then(function(d){
         tsToken=null;
         if(d.ok){
-          sMsg("Vielen Dank! Ihre "+(SV?"Vergütungsvereinbarung wurde":"Formulare wurden")+" an Rechtsanwalt Abeßer gesendet. Sie müssen nichts weiter tun.","ok");
+          sMsg("Vielen Dank! Ihre "+(VV?"Vergütungsvereinbarung wurde":"Formulare wurden")+" an Rechtsanwalt Abeßer gesendet. Sie müssen nichts weiter tun.","ok");
           document.getElementById("s_save").hidden=false;
           sGo.textContent="Gesendet"; 
           if(!document.getElementById("remember").checked) wipe();
@@ -1072,16 +1176,21 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     mail:function(v){ return MAIL.test(v) ? "" : MSG_MAIL; },
     s_tel:phone
   };
+  RULES.vdamt=RULES.amt; RULES.vdgeb=RULES.geburt;
   function ruleFor(el){
     if(el.dataset.k && RULES[el.dataset.k]) return RULES[el.dataset.k];
     if(el.dataset.f) return RULES[el.dataset.f.slice(1)];
     if(el.id==="s_tel") return RULES.s_tel;
     if(el.id==="k_betr" || el.id==="k_verf") return RULES.betr;
+    if(el.id==="k_beh") return RULES.betr;
+    if(el.id==="k_az") return function(v){ return /[A-Za-z0-9]/.test(v) && v.length>=3 ? "" : "Bitte ein gültiges Aktenzeichen angeben."; };
+    if(el.id==="k_dat") return function(v){ var d=isoDate(v); return d && d<=today() ? "" : "Bitte ein gültiges Datum angeben (nicht in der Zukunft)."; };
+    if(el.id==="k_vor") return function(v){ return euro(v) ? "" : "Bitte den Betrag in vollen Euro angeben (z. B. 1.500)."; };
     if(el.id==="k_wert") return function(v){ return euro(v) ? "" : "Bitte den Gegenstandswert in vollen Euro angeben (z. B. 25.000)."; };
     return null;
   }
   function labelOf(el){
-    if(el.dataset.f) return { "2name":"Name (Formular 2)","2adr":"Anschrift (Formular 2)","2mail":"E-Mail-Adresse (Formular 2)","3name":"Name (Formular 3)","3adr":"Anschrift (Formular 3)","4name":"Name (Vollmacht)","5name":"Name ("+SVNAME+")","5adr":"Anschrift ("+SVNAME+")" }[el.dataset.f]||el.placeholder;
+    if(el.dataset.f) return { "2name":"Name (Formular 2)","2adr":"Anschrift (Formular 2)","2mail":"E-Mail-Adresse (Formular 2)","3name":"Name (Formular 3)","3adr":"Anschrift (Formular 3)","4name":"Name (Vollmacht)","5name":"Name ("+SVNAME+")","5adr":"Anschrift ("+SVNAME+")","6name":"Name ("+VDNAME+")","6adr":"Anschrift ("+VDNAME+")" }[el.dataset.f]||el.placeholder;
     var l=el.closest("label"), sp=l&&l.querySelector("span");
     if(!sp) return el.placeholder||"Feld";
     var t=sp.cloneNode(true); Array.prototype.forEach.call(t.querySelectorAll("em,.ferr"),function(x){x.remove();}); return t.textContent.trim();
@@ -1125,6 +1234,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
   /* Kalender-Grenzen */
   (function(){ var t=today(), iso=function(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
     var g=document.querySelector("[data-k=geburt]"), mx=new Date(t); mx.setFullYear(t.getFullYear()-16); g.max=iso(mx); g.min="1920-01-01";
+    var g6=document.querySelector("[data-k=vdgeb]"); g6.max=iso(mx); g6.min="1920-01-01"; document.getElementById("k_dat").max=iso(t);
     var sd=document.querySelector("[data-k=sigdatum]"); sd.max=iso(t); })();
 
   var notice=document.getElementById("notice");
@@ -1146,7 +1256,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       el.classList.toggle("missing", m);
       if(m) miss.push(el.closest("label").querySelector("span").textContent);
     });
-    selected().forEach(function(n){ if(!SIGS[n]) miss.push(SV ? "Unterschrift" : "Unterschrift Formular "+n); });
+    selected().forEach(function(n){ if(!SIGS[n]) miss.push(VV ? "Unterschrift" : "Unterschrift Formular "+n); });
     if(miss.length){
       showNotice("Noch leer: <strong>"+esc(miss.join(", "))+"</strong>. Sie können dies jetzt nachholen oder später auf dem Ausdruck von Hand ergänzen.<br><button type='button' class='ghost' id='printAnyway'>Trotzdem drucken</button>");
       document.getElementById("printAnyway").addEventListener("click", doPrint);
@@ -1163,7 +1273,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     inputs.forEach(function(el){ if(el.type==="checkbox") el.checked=false; else el.value=""; el.classList.remove("missing"); });
     notice.classList.remove("show");
     inlines.forEach(function(el){ el.value=""; el.dataset.own=""; });
-    SIGS[1]=SIGS[2]=SIGS[3]=SIGS[4]=SIGS[5]=null; for(var k in PADS) PADS[k].redraw();
+    SIGS[1]=SIGS[2]=SIGS[3]=SIGS[4]=SIGS[5]=SIGS[6]=null; for(var k in PADS) PADS[k].redraw();
     applyPre();
     allFields().forEach(function(el){ showErr(el,""); });
     if(WEB){ lastPdf=null; document.getElementById("s_save").hidden=true; sGo.disabled=false; sGo.textContent="Jetzt an die Kanzlei senden"; sMsg(""); document.getElementById("s_consent").checked=false; document.getElementById("s_msg").value=""; }
@@ -1260,7 +1370,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     var d={t:Date.now(),k:{},f:{},d:{}};
     inputs.forEach(function(el){ var k=el.dataset.k; if(k==="sigdatum"||fixed(k)) return; d.k[k]= el.type==="checkbox" ? el.checked : el.value; });
     inlines.forEach(function(el){ if(el.dataset.own) d.f[el.dataset.f]=el.value; });
-    ["1","2","3","4","5"].forEach(function(n){ d.d[n]=document.getElementById("d"+n).checked; });
+    ["1","2","3","4","5","6"].forEach(function(n){ d.d[n]=document.getElementById("d"+n).checked; });
     if(WEB){ var t=document.getElementById("s_tel"); d.tel=t.value; d.telOwn=!!t.dataset.own; d.msg=document.getElementById("s_msg").value; }
     return d;
   }
@@ -1284,7 +1394,7 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     var d; try{ d=JSON.parse(j); }catch(e){ d=null; }
     if(!d || !d.k || leer(d) || Date.now()-(d.t||0) > MDAYS*864e5){ wipe(); remember.checked=false; return; }
     inputs.forEach(function(el){ var k=el.dataset.k; if(!(k in d.k) || fixed(k)) return; if(el.type==="checkbox") el.checked=!!d.k[k]; else el.value=d.k[k]; });
-    ["1","2","3","4","5"].forEach(function(n){ if(n in d.d && !(PRE && PRE.rg && n==="4") && !SV) document.getElementById("d"+n).checked=!!d.d[n]; });
+    ["1","2","3","4","5","6"].forEach(function(n){ if(n in d.d && !(PRE && PRE.rg && n==="4") && !VV) document.getElementById("d"+n).checked=!!d.d[n]; });
     inlines.forEach(function(el){ if(el.dataset.f in d.f){ el.value=d.f[el.dataset.f]; el.dataset.own="1"; } });
     if(WEB){
       var t=document.getElementById("s_tel");

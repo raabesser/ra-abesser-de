@@ -17,7 +17,8 @@
     { id: "hellblau", name: "Hellblau", bild: "hellblau" },
     { id: "dunkelblau", name: "Dunkelblau", bild: "dunkelblau" }
   ];
-  var SEG_W = 480, SEG_H = 270;   // Auflösung für die Erkennung (schont den Prozessor)
+  var SEG = 480;                  // längere Seite des Bildes für die Erkennung (schont den Prozessor)
+  var MAXW = 1280;                // längere Seite des gesendeten Bildes
   var FPS = 30;
 
   var loading = null, segmenter = null;
@@ -70,14 +71,32 @@
     octx.drawImage(im, (W - w) / 2, (H - h) / 2, w, h);
   }
 
+  // Maße immer aus dem tatsächlichen Kamerabild nehmen: iPhones melden im Hochformat
+  // oft Querformat-Maße (getSettings), und beim Drehen ändert sich das Format.
+  function masse() {
+    var vw = video.videoWidth, vh = video.videoHeight;
+    if (!vw || !vh) return;
+    var r = Math.min(1, MAXW / Math.max(vw, vh));
+    var W = Math.round(vw * r / 2) * 2, H = Math.round(vh * r / 2) * 2;
+    if (out.width !== W || out.height !== H) { out.width = W; out.height = H; }
+    var sr = SEG / Math.max(vw, vh);
+    var sw = Math.round(vw * sr), sh = Math.round(vh * sr);
+    if (small.width !== sw || small.height !== sh) {
+      small.width = mask.width = sw; small.height = mask.height = sh;
+      maskData = mctx.createImageData(sw, sh);
+      for (var i = 0; i < maskData.data.length; i += 4) { maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = 255; }
+    }
+  }
+
   function frame() {
     if (!running || busy || !segmenter || video.readyState < 2) return;
     var t0 = performance.now();
     if (t0 < naechster) return;
     busy = true;
     try {
+      masse();
       var W = out.width, H = out.height;
-      sctx.drawImage(video, 0, 0, SEG_W, SEG_H);
+      sctx.drawImage(video, 0, 0, small.width, small.height);
       var ts = performance.now();
       if (ts <= lastTs) ts = lastTs + 1;
       lastTs = ts;
@@ -85,7 +104,8 @@
       var cm = res && res.confidenceMasks && res.confidenceMasks[0];
       if (cm) {
         var f = cm.getAsFloat32Array(), d = maskData.data;
-        for (var i = 0, j = 3; i < f.length; i++, j += 4) d[j] = f[i] * 255;
+        var n = Math.min(f.length, d.length / 4);
+        for (var i = 0, j = 3; i < n; i++, j += 4) d[j] = f[i] * 255;
         mctx.putImageData(maskData, 0, 0);
       }
       if (res && res.close) res.close();
@@ -128,18 +148,22 @@
 
   function start(kamera, m) {
     var s = kamera.getSettings ? kamera.getSettings() : {};
-    var W = Math.min(s.width || 1280, 1280), H = Math.round(W * ((s.height || 720) / (s.width || 1280)));
+    var W = Math.min(s.width || MAXW, MAXW), H = Math.round(W * ((s.height || 720) / (s.width || 1280)));
     return Promise.all([laden(), setMode(m)]).then(function () {
       if (!video) {
         video = document.createElement("video");
         video.muted = true; video.playsInline = true; video.autoplay = true;
+        video.setAttribute("playsinline", ""); video.setAttribute("muted", "");
+        // Unsichtbar ins Dokument hängen: iPhones liefern sonst teils keine neuen Bilder
+        video.style.cssText = "position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none;z-index:-1";
+        document.body.appendChild(video);
         out = document.createElement("canvas");
         octx = out.getContext("2d");
-        small = document.createElement("canvas"); small.width = SEG_W; small.height = SEG_H;
+        small = document.createElement("canvas"); small.width = SEG; small.height = Math.round(SEG * 9 / 16);
         sctx = small.getContext("2d");
-        mask = document.createElement("canvas"); mask.width = SEG_W; mask.height = SEG_H;
+        mask = document.createElement("canvas"); mask.width = small.width; mask.height = small.height;
         mctx = mask.getContext("2d");
-        maskData = mctx.createImageData(SEG_W, SEG_H);
+        maskData = mctx.createImageData(small.width, small.height);
         for (var i = 0; i < maskData.data.length; i += 4) { maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = 255; }
       }
       if (out.width !== W || out.height !== H || !outTrack) {

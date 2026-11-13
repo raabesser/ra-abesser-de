@@ -74,6 +74,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Tobias:** Freigabe 13. 11.: beide Vergütungsvereinbarungen (Gegenstandswert, Disziplinarrecht), nur von der Kanzlei ausfüllbar, Mandant druckt und sendet per Post – auf der echten Website veröffentlicht.
 - [x] **Claude:** In der Vorschau: Vergütungsvereinbarungen passen beim Drucken auf je eine A4-Seite (13. 11., Wunsch Tobias).
 - [x] **Tobias:** Freigabe 13. 11.: A4-Druck der Vergütungsvereinbarungen und „Ziff. 1b. und 2b.“ – auf der echten Website veröffentlicht.
+- [x] **Claude:** In der Vorschau (13. 11.): fünf weitere Vergütungsvereinbarungen nach Tobias' Mustern – Strafrecht Beamte, Strafrecht Soldaten, Strafrecht Zeugenbeistand, WBO, Wehrdisziplinarrecht; Kanzlei-Bereich mit Auswahlliste.
+- [ ] **Tobias:** Die fünf neuen Vergütungsvereinbarungen in der Vorschau prüfen (Texte, Felder, A4-Druck) und freigeben.
 - [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 
 ## 8. Videoberatung anfragen und Termin bestätigen

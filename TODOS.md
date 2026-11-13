@@ -70,8 +70,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] **Claude:** In der Vorschau: Formular 5 „Vergütungsvereinbarung (Gegenstandswert, § 3a RVG)“ nach Tobias' Muster (13. 11.). Verfahren und Gegenstandswert gibt nur die Kanzlei vor (https://ra-abesser.de/preview/formulare/#kanzlei), der Mandant erhält Link oder Datei, unterschreibt und sendet wie die Vollmacht. Seit 13. 11. getrennt von der Vollmacht: eigener Link/eigene Datei, eigene E-Mail an die Kanzlei.
 - [x] **Tobias:** Vergütungsvereinbarung freigegeben (13. 11., § 3 ohne doppeltes „dass“); auf der echten Website veröffentlicht: https://ra-abesser.de/formulare/#kanzlei
 - [x] **Claude:** In der Vorschau: Formular 6 „Vergütungsvereinbarung/Disziplinarrecht“ nach Tobias' Muster (13. 11.), eigener Link im Kanzlei-Bereich.
-- [ ] **Tobias:** Vergütungsvereinbarung/Disziplinarrecht in der Vorschau prüfen und freigeben.
-- [ ] **Tobias:** Einmal Link zur Vergütungsvereinbarung erzeugen, selbst als Mandant ausfüllen, unterschreiben und senden – prüfen, ob die E-Mail mit PDF ankommt.
+- [x] **Claude:** In der Vorschau (13. 11., Wunsch Tobias): Vergütungsvereinbarungen füllt nur noch die Kanzlei aus (auch Name, Anschrift usw. des Mandanten); der Mandant kann sie nur ausdrucken, im Original unterschreiben und per Post senden. § 1 Disziplinarrecht: „stattfindet“.
+- [ ] **Tobias:** Beide Vergütungsvereinbarungen (Gegenstandswert, Disziplinarrecht) in der Vorschau prüfen und freigeben – auf der echten Website kann der Mandant die Gegenstandswert-Vereinbarung derzeit noch online unterschreiben und senden.
 - [ ] **Tobias:** Einmal echten Versand testen (https://ra-abesser.de/formulare/ mit eigenen Testdaten ausfüllen, unterschreiben, senden) und prüfen, ob E-Mail mit PDF ankommt.
 
 ## 8. Videoberatung anfragen und Termin bestätigen

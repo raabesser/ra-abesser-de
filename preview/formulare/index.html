@@ -131,6 +131,12 @@ section.kanzlei{border:2px solid var(--accent);background:#fbfcfe}
 section.kanzlei .row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 section.kanzlei textarea{width:100%;font:14px/1.4 ui-monospace,Menlo,Consolas,monospace;padding:8px;border:1px solid #b9c0c9;border-radius:6px;min-height:70px;word-break:break-all}
 section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px}
+/* Kanzlei-Bereich: ganze Vergütungsvereinbarung als A4-Seite, live beim Ausfüllen */
+.kv-wrap{margin:6px 0 4px;background:#e3e7ec;border:1px solid var(--line);border-radius:6px;padding:12px;overflow:hidden}
+.kv-scale{position:relative;overflow:hidden;margin:0 auto}
+.kv-sheet{position:absolute;left:0;top:0;width:210mm;min-height:297mm;box-sizing:border-box;padding:16mm 20mm 16mm 22mm;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.18);transform-origin:0 0}
+.kv-sheet .doc.sv{margin:0}
+.kv-hint{font-size:14px;color:var(--muted);margin:0 0 6px}
 .sendcard textarea{width:100%;font:inherit;font-size:16px;padding:10px 11px;border:1px solid #b9c0c9;border-radius:6px;min-height:90px;resize:vertical}
 .consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 14px;font-size:15px;cursor:pointer}
 .consent input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--accent)}
@@ -261,6 +267,9 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
       <button type="button" class="ghost sm" id="k_open">Wie Mandant öffnen</button>
     </div>
     <p class="ok" id="k_msg" aria-live="polite"></p>
+    <p class="group-label" style="margin-top:18px">Vergütungsvereinbarung im Ganzen <em style="font-weight:normal;color:var(--muted)">(so wird sie gedruckt)</em></p>
+    <p class="kv-hint">Ändert sich bei jeder Eingabe sofort mit. Noch leere Angaben erscheinen als Linie.</p>
+    <div class="kv-wrap"><div class="kv-scale" id="k_vscale"><div class="kv-sheet docs" id="k_vprev"></div></div></div>
   </section>
 
   <h1>Mandantenformulare</h1>
@@ -677,9 +686,9 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     return {t:o.t, def:def, name:def.name, f:f, m:M, n:"5"};
   }
   function textVV(v,screen){ return VV ? VV.def.text(VV.f, VV.m, fxf(!!screen)) : ""; }
-  function docVV(){
-    var m=VV.m, cap=esc([m.amt,m.name].filter(Boolean).join(" "))||"Vor- und Nachname";
-    return '<div class="doc sv">'+letterhead()+'<div class="body">'+textVV(null,false)+'</div>'+sigHand(cap)+'</div>';
+  function docVV(o){
+    o=o||VV; var m=o.m, cap=esc([m.amt,m.name].filter(Boolean).join(" "))||"Vor- und Nachname";
+    return '<div class="doc sv">'+letterhead()+'<div class="body">'+o.def.text(o.f, o.m, fxf(false))+'</div>'+sigHand(cap)+'</div>';
   }
   /* Unterschriftsblock zum Unterschreiben von Hand: Ort und Datum leer */
   function sigHand(cap){
@@ -1071,7 +1080,32 @@ section.kanzlei .ok{color:#1d6b35;font-size:14px;min-height:20px;margin:0 0 10px
     document.getElementById("k_m_amt_l").hidden = def.m.indexOf("amt")<0;
     document.getElementById("k_m_geb_l").hidden = def.m.indexOf("geb")<0;
   }
-  kvt.addEventListener("change",kvShow); kvShow();
+  kvt.addEventListener("change",function(){ kvShow(); kvPrev(); }); kvShow();
+  /* Ganze Vereinbarung live anzeigen (aktuelle Eingaben, auch unvollständige) */
+  var kvSheet=document.getElementById("k_vprev"), kvScale=document.getElementById("k_vscale");
+  function kvPrev(){
+    var t=kvt.value, def=VVT[t], g=function(id){ return document.getElementById(id).value.trim(); };
+    var M={anr:document.getElementById("k_m_anr").value, name:g("k_m_name"), adr:g("k_m_adr")};
+    if(def.m.indexOf("amt")>=0) M.amt=g("k_m_amt");
+    if(def.m.indexOf("geb")>=0) M.geb=document.getElementById("k_m_geb").value;
+    var F={};
+    def.f.forEach(function(fd){ var v=document.getElementById('kf_'+t+'_'+fd.k).value; F[fd.k]= fd.t==="eur" ? euro(v) : String(v).trim(); });
+    var h=docVV({def:def, f:F, m:M});
+    /* Beträge noch leer: Linie statt „0,00“ / „null“ */
+    h=h.replace(/(<span class="val"[^>]*>)(0,00|null)<\/span>/g,'$1&nbsp;</span>');
+    kvSheet.innerHTML=fitA4(h);
+    kvFit();
+  }
+  function kvFit(){
+    var w=kvScale.parentNode.clientWidth-24, sw=kvSheet.offsetWidth; if(!w||!sw) return;
+    var z=Math.min(1,w/sw);
+    kvSheet.style.transform="scale("+z+")";
+    kvScale.style.width=Math.floor(sw*z)+"px"; kvScale.style.height=Math.ceil(kvSheet.offsetHeight*z)+"px";
+  }
+  kz.addEventListener("input",kvPrev); kz.addEventListener("change",kvPrev);
+  window.addEventListener("resize",kvFit);
+  window.addEventListener("hashchange",function(){ if(!kz.hidden) kvPrev(); });
+  if(!kz.hidden) kvPrev();
   kvf.addEventListener("input",function(e){ var el=e.target; if(el.dataset.ft==="eur"){ var w=kvf.querySelector('[data-worte="'+el.id+'"]'), n=euro(el.value); if(w) w.value = n ? worte(n)+" Euro" : ""; } });
   function kData(kind){
     function err(t){ kMsg.style.color="#9a3b1a"; kMsg.textContent=t; return null; }

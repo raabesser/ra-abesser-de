@@ -26,8 +26,8 @@ Wer gerade woran arbeitet (Claude trägt ein und aus). Format: Seite/Thema – w
 - [x] Entschieden (9. 11.): Absender erhalten **keine** Kopie und keine Eingangsbestätigung per E-Mail (Missbrauchsgefahr als Spam-Versender). Die Erfolgsmeldung im Formular genügt.
 - [x] **Tobias:** Testnachricht ist im Postfach `info@ra-abesser.de` angekommen; Kontaktformular funktioniert vollständig (9. 11.).
 - [x] **Claude:** Doppelte Formular-Mails behoben (9. 11., Freigabe Tobias): Ursache waren zwei Absendungen vom selben Handy. Das Formular verschwindet jetzt nach dem Senden (deutliche Bestätigung), und der Worker verschickt dieselbe Nachricht innerhalb von 10 Minuten nur einmal.
-
 - [x] **Tobias:** Hinweis beim Dokumente-Upload (kein Mandatsverhältnis, keine Fristenkontrolle, Sichtung erst nach Mandatsübernahme) freigegeben und auf der echten Website veröffentlicht (26. 11.).
+
 ## 3. Rechtliches
 
 - [x] **Tobias:** Neue Abschnitte der Datenschutzerklärung („Hosting und Cloudflare“, „Kontaktformular“/Brevo, Spamschutz/Turnstile) geprüft und freigegeben (8. 11., im Chat mit Claude).
